@@ -8,15 +8,15 @@ The adversary is trying to gather information they can use to plan future operat
 # Tables of Content #
 ---------------------
 
-- [Active Scanning] (#Active-Scanning)
-- [Gathering Host Information] (#Gathering-Host-Information)
-- [Gathering Victim Identity Information] (#Gathering-Victim-Identity-Information)
-- [Gathering Victim Organization Information] (#Gathering-Victim-Organization-Information)
-- [Phishing for Information] (#Phishing-for-Information)
-- Searching Open Technical Databases (#Searching-Open-Technical-Database)
-- Searching Open Websites / Domains (#Searching-Open-Websites-/-Domains)
-- Searching Victim-Owned Websites (#Searching-Victim-Owned-Websites)
-- Searching Closed Sources (#Searching-Closed-Sources)
+- [Active Scanning](#Active-Scanning)
+- [Gathering Host Information](#Gathering-Host-Information)
+- [Gathering Victim Identity Information](#Gathering-Victim-Identity-Information)
+- [Gathering Victim Organization Information](#Gathering-Victim-Organization-Information)
+- [Phishing for Information](#Phishing-for-Information)
+- [Searching Open Technical Databases](#Searching-Open-Technical-Database)
+- [Searching Open Websites / Domains](#Searching-Open-Websites-Domains)
+- [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
+- [Searching Closed Sources](#Searching-Closed-Sources)
 
 ## Active Scanning ##
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
