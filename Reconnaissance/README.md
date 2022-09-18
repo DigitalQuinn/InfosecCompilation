@@ -18,6 +18,7 @@ The adversary is trying to gather information they can use to plan future operat
 - [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
 - [Searching Closed Sources](#Searching-Closed-Sources)
 
+---------------------
 ## Active Scanning ##
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
 
@@ -36,7 +37,7 @@ These scans may also include more broad attempts to identify more commonly known
 ### Wordlist Scanning ###
 Adversaries may iteratively probe infrastructure using brute-forcing and crawling techniques. While this technique employs similar methods to Brute Force, its goal is the identification of content and infrastructure rather than the discovery of valid credentials. Wordlists used in these scans may contain generic, commonly used names and file extensions or terms specific to a particular software. Adversaries may also create custom, target-specific wordlists using data gathered from other reconnaissance techniques.
 
-
+--------------------------------
 ## Gathering Host Information ##
 Adversaries may gather information about the victim's hosts that can be used during targeting. Information about hosts may include a variety of details, including administrative data (ex: name, assigned IP, functionality, etc.) as well as specifics regarding its configuration (ex: operating system, language, etc.).
 
@@ -52,6 +53,7 @@ Adversaries may gather information about the victim's host firmware that can be 
 ### Client Configuration ###
 Adversaries may gather information about the victim's client configurations that can be used during targeting. Information about client configurations may include a variety of details and settings, including operating system/version, virtualization, architecture (ex: 32 or 64 bit), language, and/or time zone.
 
+-------------------------------------------
 ## Gathering Victim Identity Information ##
 Adversaries may gather information about the victim's identity that can be used during targeting. Information about identities may include a variety of details, including personal data (ex: employee names, email addresses, etc.) as well as sensitive details such as credentials.
 
@@ -68,6 +70,7 @@ Adversaries may gather email addresses that can be used during targeting. Even i
 ### Employee Names ###
 Adversaries may gather employee names that can be used during targeting. Employee names be used to derive email addresses as well as to help guide other reconnaissance efforts and/or craft more-believable lures.
 
+-----------------------------------------------
 ## Gathering Victim Organization Information ##
 Adversaries may gather information about the victim's organization that can be used during targeting. Information about an organization may include a variety of details, including the names of divisions/departments, specifics of business operations, as well as the roles and responsibilities of key employees.
 
@@ -83,6 +86,7 @@ Adversaries may gather information about the victim's business tempo that can be
 ### Identify Roles ###
 Adversaries may gather information about identities and roles within the victim organization that can be used during targeting. Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
 
+------------------------------
 ## Phishing for Information ##
 Phishing for information is an attempt to trick targets into divulging information, frequently credentials or other actionable information. All forms of phishing are electronically delivered social engineering. Adversaries may also try to obtain information directly through the exchange of emails, instant messages, or other electronic conversation means.
 
@@ -97,6 +101,7 @@ Adversaries may send spearphishing messages with a malicious attachment to elici
 ### Spearphishing Link ###
 Adversaries may send spearphishing messages with a malicious link to elicit sensitive information that can be used during targeting. The malicious emails contain links generally accompanied by social engineering text to coax the user to actively click or copy and paste a URL into a browser. The given website may closely resemble a legitimate site in appearance and have a URL containing elements from the real site. From the fake website, information is gathered in web forms and sent to the adversary. 
 
+----------------------------------------
 ## Searching Open Technical Databases ##
 Adversaries may search freely available technical databases for information about victims that can be used during targeting. Information about victims may be available in online databases and repositories, such as registrations of domains/certificates as well as public collections of network data/artifacts gathered from traffic and/or scans. Adversaries may search in different open databases depending on what information they seek to gather. 
 
@@ -114,6 +119,7 @@ Digital certificates are issued by a certificate authority (CA) in order to cryp
 
 Adversaries may search digital certificate data to gather actionable information. Threat actors can use online resources and lookup tools to harvest information about certificates.[1] Digital certificate data may also be available from artifacts signed by the organization (ex: certificates used from encrypted web traffic are served with content). 
 
+
 ### CDNs ###
 CDNs allow an organization to host content from a distributed, load balanced array of servers. CDNs may also allow organizations to customize content delivery based on the requestor’s geographical region.
 
@@ -124,7 +130,7 @@ Various online services continuously publish the results of Internet scans/surve
 
 Adversaries may search scan databases to gather actionable information. Threat actors can use online resources and lookup tools to harvest information from these services. Adversaries may seek information about their already identified targets, or use these datasets to discover opportunities for successful breaches.
 
-
+---------------------------------------
 ## Searching Open Websites / Domains ##
 Information about victims may be available in various online sites, such as social media, new sites, or those hosting information about business operations such as hiring or requested/rewarded contracts. Adversaries may search in different online sites depending on what information they seek to gather.
 
@@ -138,9 +144,11 @@ Search engine services typical crawl online sites to index context and may provi
 
 Adversaries may craft various search engine queries depending on what information they seek to gather. Threat actors may use search engines to harvest general information about victims, as well as use specialized queries to look for spillages/leaks of sensitive information such as network details or credentials.
 
+-------------------------------------
 ## Searching Victim-Owned Websites ##
 Victim-owned websites may contain a variety of details, including names of departments/divisions, physical locations, and data about key employees such as names, roles, and contact info (ex: Email Addresses). These sites may also have details highlighting business operations and relationships. Adversaries may search victim-owned websites to gather actionable information.thats 
 
+------------------------------
 ## Searching Closed Sources ##
 
 Adversaries may search and gather information about victims from closed sources that can be used during targeting. Information about victims may be available for purchase from reputable private sources and databases, such as paid subscriptions to feeds of technical/threat intelligence data. Adversaries may also purchase information from less-reputable sources such as dark web or cybercrime blackmarkets. Adversaries may search in different closed databases depending on what information they seek to gather. 
