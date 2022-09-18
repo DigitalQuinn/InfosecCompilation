@@ -13,8 +13,8 @@ The adversary is trying to gather information they can use to plan future operat
 - [Gathering Victim Identity Information](#Gathering-Victim-Identity-Information)
 - [Gathering Victim Organization Information](#Gathering-Victim-Organization-Information)
 - [Phishing for Information](#Phishing-for-Information)
-- [Searching Open Technical Databases](#Searching-Open-Technical-Database)
-- [Searching Open Websites / Domains](#Searching-Open-Websites-Domains)
+- [Searching Open Technical Databases](#Searching-Open-Technical-Databases)
+- [Searching Open Websites / Domains](#Searching-Open-Websites-/-Domains)
 - [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
 - [Searching Closed Sources](#Searching-Closed-Sources)
 
@@ -52,7 +52,7 @@ Adversaries may gather information about the victim's host firmware that can be 
 ### Client Configuration ###
 Adversaries may gather information about the victim's client configurations that can be used during targeting. Information about client configurations may include a variety of details and settings, including operating system/version, virtualization, architecture (ex: 32 or 64 bit), language, and/or time zone.
 
-## Gather Victim Identity Information ##
+## Gathering Victim Identity Information ##
 Adversaries may gather information about the victim's identity that can be used during targeting. Information about identities may include a variety of details, including personal data (ex: employee names, email addresses, etc.) as well as sensitive details such as credentials.
 
 ### Credentials ###
@@ -97,7 +97,7 @@ Adversaries may send spearphishing messages with a malicious attachment to elici
 ### Spearphishing Link ###
 Adversaries may send spearphishing messages with a malicious link to elicit sensitive information that can be used during targeting. The malicious emails contain links generally accompanied by social engineering text to coax the user to actively click or copy and paste a URL into a browser. The given website may closely resemble a legitimate site in appearance and have a URL containing elements from the real site. From the fake website, information is gathered in web forms and sent to the adversary. 
 
-## Search Open Technical Databases ##
+## Searching Open Technical Databases ##
 Adversaries may search freely available technical databases for information about victims that can be used during targeting. Information about victims may be available in online databases and repositories, such as registrations of domains/certificates as well as public collections of network data/artifacts gathered from traffic and/or scans. Adversaries may search in different open databases depending on what information they seek to gather. 
 
 ### DNS / Passive DNS ###
@@ -125,7 +125,7 @@ Various online services continuously publish the results of Internet scans/surve
 Adversaries may search scan databases to gather actionable information. Threat actors can use online resources and lookup tools to harvest information from these services. Adversaries may seek information about their already identified targets, or use these datasets to discover opportunities for successful breaches.
 
 
-## Search Open Websites / Domains ##
+## Searching Open Websites / Domains ##
 Information about victims may be available in various online sites, such as social media, new sites, or those hosting information about business operations such as hiring or requested/rewarded contracts. Adversaries may search in different online sites depending on what information they seek to gather.
 
 ### Social Media ###
@@ -138,10 +138,10 @@ Search engine services typical crawl online sites to index context and may provi
 
 Adversaries may craft various search engine queries depending on what information they seek to gather. Threat actors may use search engines to harvest general information about victims, as well as use specialized queries to look for spillages/leaks of sensitive information such as network details or credentials.
 
-## Search Victim-Owned Websites ##
+## Searching Victim-Owned Websites ##
 Victim-owned websites may contain a variety of details, including names of departments/divisions, physical locations, and data about key employees such as names, roles, and contact info (ex: Email Addresses). These sites may also have details highlighting business operations and relationships. Adversaries may search victim-owned websites to gather actionable information.thats 
 
-## Search Closed Sources ##
+## Searching Closed Sources ##
 
 Adversaries may search and gather information about victims from closed sources that can be used during targeting. Information about victims may be available for purchase from reputable private sources and databases, such as paid subscriptions to feeds of technical/threat intelligence data. Adversaries may also purchase information from less-reputable sources such as dark web or cybercrime blackmarkets. Adversaries may search in different closed databases depending on what information they seek to gather. 
 
