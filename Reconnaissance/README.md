@@ -4,7 +4,16 @@ The adversary is trying to gather information they can use to plan future operat
 
 **Reconnaissance:** Consists of techniques that involve adversaries actively or passively gathering information that can be used to support targeting. Such information may include details of the victim organization, infrastructure, or staff/personnel. This information can be leveraged by the adversary to aid in other phases of the adversary lifecycle, such as using gathered information to plan and execute Initial Access, to scope and prioritize post-compromise objectives, or to drive and lead further Reconnaissance efforts.
 
-# Techniques #
+# Tables of Content #
+  - Active Scanning
+  - Gathering Host Information
+  - Gathering Victim Identity Information
+  - Gathering Victim Organization Information
+  - Phishing for Information
+  - Searching Open Technical Databases
+  - Searching Open Websites / Domains
+  - Searching Victim-Owned Websites
+  - Searching Closed Sources
 
 ## Active Scanning ##
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
