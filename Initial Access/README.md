@@ -65,23 +65,53 @@ Adversaries may move onto systems, possibly those on disconnected or air-gapped 
 # Supply Chain Compromise #
 Adversaries may manipulate products or product delivery mechanisms prior to receipt by a final consumer for the purpose of data or system compromise.
 
-Supply chain compromise can take place at any stage of the supply chain including:
+Supply chain compromise can take place at any stage of the supply chain. Adversaries looking to gain execution have often focused on malicious additions to legitimate software in software distribution or update channels. Targeting may be specific to a desired victim set or malicious software may be distributed to a broad set of consumers but only move on to additional tactics on specific victims.
 
-*Manipulation of development tools
-Manipulation of a development environment
-Manipulation of source code repositories (public or private)
-Manipulation of source code in open-source dependencies
-Manipulation of software update/distribution mechanisms
-Compromised/infected system images (multiple cases of removable media infected at the factory)[1][2]
-Replacement of legitimate software with modified versions
-Sales of modified/counterfeit products to legitimate distributors
-Shipment interdiction*
-While supply chain compromise can impact any component of hardware or software, adversaries looking to gain execution have often focused on malicious additions to legitimate software in software distribution or update channels.[3][4][5] Targeting may be specific to a desired victim set or malicious software may be distributed to a broad set of consumers but only move on to additional tactics on specific victims.[6][3][5] Popular open source projects that are used as dependencies in many applications may also be targeted as a means to add malicious code to users of the dependency.[7]
+
+## Compromise Software Dependencies & Development Tools ##
+Adversaries may manipulate software dependencies and development tools prior to receipt by a final consumer for the purpose of data or system compromise -- Applications often depend on external software to function properly. Popular open source projects that are used as dependencies in many applications may be targeted as a means to add malicious code to users of the dependency.
+
+
+
+## Compromise Software Supply Chain ##
+Supply chain compromise of software can take place in a number of ways, including manipulation of the application source code, manipulation of the update/distribution mechanism for that software, or replacing compiled releases with a modified version.
+
+
+
+## Compromise Hardware Supply Chain ##
+By modifying hardware or firmware in the supply chain, adversaries can insert a backdoor into consumer networks that may be difficult to detect and give the adversary a high degree of control over the system. Hardware backdoors may be inserted into various devices, such as servers, workstations, network infrastructure, or peripherals.
 
 
 # Trusted Relationships #
+Access through trusted third party relationship exploits an existing connection that may not be protected or receives less scrutiny than standard mechanisms of gaining access to a network.
 
+Organizations often grant elevated access to second or third-party external providers in order to allow them to manage internal systems as well as cloud-based environments. The third-party provider's access may be intended to be limited to the infrastructure being maintained, but may exist on the same network as the rest of the enterprise. As such, valid accounts used by the other party for access to internal network systems may be compromised and used.
 
 
 # Valid Accounts #
+Compromised credentials may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services. Compromised credentials may also grant an adversary increased privilege to specific systems or access to restricted areas of the network.
 
+Attackers may abuse inactive accounts allowing them to evade detection, as the original account user will not be present to identify any anomalous activity taking place on their account.
+
+
+## Default Accounts ##
+Default accounts are those that are built-into an OS, such as the Guest or Administrator accounts on Windows systems, also including default factory/provider set accounts on other types of systems, software, or devices, including the root user account in AWS and the default service account in Kubernetes.
+
+Appliances that come preset with a username and password combination pose a serious threat to organizations that do not change it post installation, as they are easy targets for an adversary. Similarly, adversaries may also utilize publicly disclosed or stolen private keys or credential materials to legitimately connect to remote environments via remote services.
+
+## Domain Accounts ##
+Domain accounts are those managed by Active Directory Domain Services where access and permissions are configured across systems and services that are part of that domain. Domain accounts can cover users, administrators, and services.
+
+Adversaries may compromise domain accounts, some with a high level of privileges, through various means such as OS Credential Dumping or password reuse, allowing access to privileged resources of the domain.
+
+## Local Accounts ##
+ Local accounts are those configured by an organization for use by users, remote support, services, or for administration on a single system or service.
+
+Local Accounts may also be abused to elevate privileges and harvest credentials through OS Credential Dumping. Password reuse may allow the abuse of local accounts across a set of machines on a network for the purposes of Privilege Escalation and Lateral Movement.
+
+## Cloud Accounts ##
+Cloud accounts are those created and configured by an organization for use by users, remote support, services, or for administration of resources within a cloud service provider or SaaS application. Cloud accounts may be federated with traditional identity management system, such as Window Active Directory.
+
+Compromised credentials for cloud accounts can be used to harvest sensitive data from online storage accounts and databases. Access to cloud accounts can also be abused to gain Initial Access to a network by abusing a Trusted Relationship. Similar to Domain Accounts, compromise of federated cloud accounts may allow adversaries to more easily move laterally within an environment.
+
+Once a cloud account is compromised, an adversary may perform Account Manipulation - for example, by adding Additional Cloud Roles - to maintain persistence and potentially escalate their privileges.
