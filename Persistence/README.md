@@ -826,106 +826,106 @@ Services may be created with administrator privileges but are executed under SYS
 * **APT38:** APT38 has installed a new Windows service to establish persistence
 * **APT41:** APT41 modified legitimate Windows services to install malware backdoors
   * APT41 created the StorSyncSvc service to provide persistence for Cobalt Strike
-  * **Attor:** Attor's dispatcher can establish persistence by registering a new service
-  * **AuditCred:** AuditCred is installed as a new service on the system
-  * **Bankshot:** Bankshot can terminate a specific process by its process id
-  * **BBSRAT:** BBSRAT can modify service configurations
-  * **Bisonal:** Bisonal has been modified to be used as a Windows service
-  * **BitPaymer:** BitPaymer has attempted to install itself as a service to maintain persistence
-  * **BlackEnergy:** One variant of BlackEnergy creates a new service using either a hard-coded or randomly generated name
-  * **Blue Mockingbird:** Blue Mockingbird has made their XMRIG payloads persistent as a Windows Service
-  * **Briba:** Briba installs a service pointing to a malicious DLL dropped to disk
-  * **Carbanak:** Carbanak malware installs itself as a service to provide persistence and SYSTEM privileges
-  * **Carbon:** Carbon establishes persistence by creating a service and naming it based off the operating system version running on the current machine
-  * **Catchamas:** Catchamas adds a new service named NetAdapter to establish persistence
-  * **Clambling:** Clambling can register itself as a system service to gain persistence
-  * **Cobalt Group:** Cobalt Group has created new services to establish persistence
-  * **Cobalt Strike:** Cobalt Strike can install a new service
-  * **Conficker:** Conficker copies itself into the %systemroot%\system32 directory and registers as a service
-  * **CosmicDuke:** CosmicDuke uses Windows services typically named "javamtsup" for persistence
-  * **CozyCar:** One persistence mechanism used by CozyCar is to register itself as a Windows service
-  * **Cuba:** Cuba can modify services by using the OpenService and ChangeServiceConfig functions
-  * **DarkVishnya:** DarkVishnya created new services for shellcode loaders distribution
-  * **Dtrack:** Dtrack can add a service called WBService to establish persistence
-  * **Duqu:** Duqu creates a new service that loads a malicious driver when the system starts. When Duqu is active, the operating system believes that the driver is legitimate, as it has been signed with a valid private key
-  * **Dyre:** Dyre registers itself as a service by adding several Registry keys
-  * **Elise:** Elise configures itself as a service
-  * **Emissary:** Emissary is capable of configuring itself as a service
-  * **Emotet:** Emotet has been observed creating new services to maintain persistence
-  * **Empire:** Empire can utilize built-in modules to modify service binaries and restore them to their original state
-  * **Exaramel for Windows:** The Exaramel for Windows dropper creates and starts a Windows service named wsmprovav with the description "Windows Check AV"
-  * **FALLCHILL:** FALLCHILL has been installed as a Windows service
-  * **FIN7:** FIN7 created new Windows services and added them to the startup directories for persistence
-  * **FinFisher:** FinFisher creates a new Windows service with the malicious executable for persistence
-  * **Gelsemium:** Gelsemium can drop itself in `C:\Windows\System32\spool\prtprocs\x64\winprint.dll` as an alternative Print Processor to be loaded automatically when the spoolsv Windows service starts
-  * **gh0st RAT:** gh0st RAT can create a new service to establish persistence
-  * **GoldenSpy:** GoldenSpy has established persistence by running in the background as an autostart service
-  * **GreyEnergy:** GreyEnergy chooses a service, drops a DLL file, and writes it to that serviceDLL Registry key
-  * **hcdLoader:** hcdLoader installs itself as a service for persistence
-  * **HermeticWiper:** HermeticWiper can load drivers by creating a new service using the CreateServiceW API
-  * **Honeybee:** Honeybee has batch files that modify the system service COMSysApp to load a malicious DLL
-  * **Hydraq:** Hydraq creates new services to establish persistence
-  * **Industroyer:** Industroyer can use an arbitrary system service to load at system boot for persistence and replaces the ImagePath registry value of a Windows service with a new backdoor binary
-  * **InnaputRAT:** Some InnaputRAT variants create a new Windows service to establish persistence
-  * **InvisiMole:** InvisiMole can register a Windows service named CsPower as part of its execution chain, and a Windows service named *clr_optimization_v2.0.51527_X86* to achieve persistence
-  * **JHUHUGIT:** JHUHUGIT has registered itself as a service to establish persistence
-  * **Kazuar:** Kazuar can install itself as a new service
-  * **Ke3chang:** Ke3chang backdoor RoyalDNS established persistence through adding a service called Nwsapagent
-  * **KeyBoy:** KeyBoy installs a service pointing to a malicious DLL dropped to disk
-  * **Kimsuky:** Kimsuky has created new services for persistence
-  * **KONNI:** KONNI has registered itself as a service using its export function
-  * **Kwampirs:** Kwampirs creates a new service named WmiApSrvEx to establish persistence
-  * **Lazarus Group:** Several Lazarus Group malware families install themselves as new services
-  * **LoudMiner:** LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file
-  * **MoonWind:** MoonWind installs itself as a new service with automatic startup to establish persistence. The service checks every 60 seconds to determine if the malware is running; if not, it will spawn a new instance
-  * **Naid:** Naid creates a new service to establish
-  * **Nebulae:** Nebulae can create a service to establish persistence
-  * **Nerex:** Nerex creates a Registry subkey that registers a new service
-  * **Nidiran:** Nidiran can create a new service named msamger (Microsoft Security Accounts Manager)
-  * **Okrum:** To establish persistence, Okrum can install itself as a new service named NtmSsvc
-  * **Pandora:** Pandora has the ability to gain system privileges through Windows services
-  * **PipeMon:** PipeMon can establish persistence by registering a malicious DLL as an alternative Print Processor which is loaded when the print spooler service starts
-  * **PlugX:** PlugX can be added as a service to establish persistence. PlugX also has a module to change service configurations as well as start, control, and delete services
-  * **PoisonIvy:** PoisonIvy creates a Registry subkey that registers a new service. PoisonIvy also creates a Registry entry modifying the Logical Disk Manager service to point to a malicious DLL dropped to disk
-  * **PowerSploit:** PowerSploit contains a collection of Privesc-PowerUp modules that can discover and replace/modify service binaries, paths, and configs
-  * **PROMETHIUM:** PROMETHIUM has created new services and modified existing services for persistence
-  * **PsExec:** PsExec can leverage Windows services to escalate privileges from administrator to SYSTEM with the -s argument
-  * **Ragnar Locker:** Ragnar Locker has used sc.exe to create a new service for the VirtualBox driver
-  * **RainyDay:** RainyDay can use services to establish persistence
-  * **RawPOS:** RawPOS installs itself as a service to maintain persistence
-  * **RDAT:** RDAT has created a service when it is installed on the victim machine
-  * **Reaver:** Reaver installs itself as a new service
-  * **Sakula:** Some Sakula samples install themselves as services for persistence by calling WinExec with the net start argument
-  * **Seasalt:** Seasalt is capable of installing itself as a service
-  * **Shamoon:** Shamoon creates a new service named "ntssrv" to execute the payload. Newer versions create the "MaintenaceSrv" and "hdv_725x" services
-  * **ShimRat:** ShimRat has installed a Windows service to maintain persistence on victim machines
-  * **SILENTTRINITY:** SILENTTRINITY can establish persistence by creating a new service
-  * **SLOTHFULMEDIA:** SLOTHFULMEDIA has created a service on victim machines named "TaskFrame" to establish persistence
-  * **StreamEx:** StreamEx establishes persistence by installing a new service pointing to its DLL and setting the service to auto-start
-  * **StrongPity:** StrongPity has created new services and modified existing services for persistence
-  * **Stuxnet:** Stuxnet uses a driver registered as a boot start service as the main load-point
-  * **SysUpdate:** SysUpdate can create a service to establish persistence
-  * **TDTESS:** If running as administrator, TDTESS installs itself as a new service named bmwappushservice to establish persistence
-  * **TeamTNT:** TeamTNT uses malware that adds cryptocurrency miners as a service
-  * **TEARDROP:** TEARDROP ran as a Windows service from the c:\windows\syswow64 folder
-  * **Threat Group-3390:** A Threat Group-3390 tool can create a new service, naming it after the config information, to gain persistence
-  * **ThreatNeedle:** ThreatNeedle can run in memory and register its payload as a Windows service
-  * **TinyZBot:** TinyZBot can install as a Windows service for persistence
-  * **TrickBot:** TrickBot establishes persistence by creating an autostart service that allows it to run whenever the machine boots
-  * **Tropic Trooper:** Tropic Trooper has installed a service pointing to a malicious DLL dropped to disk
-  * **TYPEFRAME:** TYPEFRAME variants can add malicious DLL modules as new services.TYPEFRAME can also delete services from the victim’s machine
-  * **Ursnif:** Ursnif has registered itself as a system service in the Registry for automatic execution at system startup
-  * **Volgmer:** Volgmer installs a copy of itself in a randomly selected service, then overwrites the ServiceDLL entry in the service's Registry entry. Some Volgmer variants also install .dll files as services with names generated by a list of hard-coded strings
-  * **WannaCry:** WannaCry creates the service "mssecsvc2.0" with the display name "Microsoft Security Center (2.0) Service"
-  * **WastedLocker:** WastedLocker created and established a service that runs until the encryption process is complete
-  * **Wiarp:** Wiarp creates a backdoor through which remote attackers can create a service
-  * **Wingbird:** Wingbird uses services.exe to register a new autostart service named "Audit Service" using a copy of the local lsass.exe file
-  * **Winnti for Windows:**	Winnti for Windows sets its DLL file as a new service in the Registry to establish persistence
-  * **Wizard Spider:** Wizard Spider has installed TrickBot as a service named ControlServiceA in order to establish persistence
-  * **ZeroT:** ZeroT can add a new service to ensure PlugX persists on the system when delivered as another payload onto the system
-  * **ZLib:** ZLib creates Registry keys to allow itself to run as various services
-  * **zwShell:** zwShell has established persistence by adding itself as a new service
-  * **ZxShell:** ZxShell can create a new service using the service parser function ProcessScCommand
+* **Attor:** Attor's dispatcher can establish persistence by registering a new service
+* **AuditCred:** AuditCred is installed as a new service on the system
+* **Bankshot:** Bankshot can terminate a specific process by its process id
+* **BBSRAT:** BBSRAT can modify service configurations
+* **Bisonal:** Bisonal has been modified to be used as a Windows service
+* **BitPaymer:** BitPaymer has attempted to install itself as a service to maintain persistence
+* **BlackEnergy:** One variant of BlackEnergy creates a new service using either a hard-coded or randomly generated name
+* **Blue Mockingbird:** Blue Mockingbird has made their XMRIG payloads persistent as a Windows Service
+* **Briba:** Briba installs a service pointing to a malicious DLL dropped to disk
+* **Carbanak:** Carbanak malware installs itself as a service to provide persistence and SYSTEM privileges
+* **Carbon:** Carbon establishes persistence by creating a service and naming it based off the operating system version running on the current machine
+* **Catchamas:** Catchamas adds a new service named NetAdapter to establish persistence
+* **Clambling:** Clambling can register itself as a system service to gain persistence
+* **Cobalt Group:** Cobalt Group has created new services to establish persistence
+* **Cobalt Strike:** Cobalt Strike can install a new service
+* **Conficker:** Conficker copies itself into the %systemroot%\system32 directory and registers as a service
+* **CosmicDuke:** CosmicDuke uses Windows services typically named "javamtsup" for persistence
+* **CozyCar:** One persistence mechanism used by CozyCar is to register itself as a Windows service
+* **Cuba:** Cuba can modify services by using the OpenService and ChangeServiceConfig functions
+* **DarkVishnya:** DarkVishnya created new services for shellcode loaders distribution
+* **Dtrack:** Dtrack can add a service called WBService to establish persistence
+* **Duqu:** Duqu creates a new service that loads a malicious driver when the system starts. When Duqu is active, the operating system believes that the driver is legitimate, as it has been signed with a valid private key
+* **Dyre:** Dyre registers itself as a service by adding several Registry keys
+* **Elise:** Elise configures itself as a service
+* **Emissary:** Emissary is capable of configuring itself as a service
+* **Emotet:** Emotet has been observed creating new services to maintain persistence
+* **Empire:** Empire can utilize built-in modules to modify service binaries and restore them to their original state
+* **Exaramel for Windows:** The Exaramel for Windows dropper creates and starts a Windows service named wsmprovav with the description "Windows Check AV"
+* **FALLCHILL:** FALLCHILL has been installed as a Windows service
+* **FIN7:** FIN7 created new Windows services and added them to the startup directories for persistence
+* **FinFisher:** FinFisher creates a new Windows service with the malicious executable for persistence
+* **Gelsemium:** Gelsemium can drop itself in `C:\Windows\System32\spool\prtprocs\x64\winprint.dll` as an alternative Print Processor to be loaded automatically when the spoolsv Windows service starts
+* **gh0st RAT:** gh0st RAT can create a new service to establish persistence
+* **GoldenSpy:** GoldenSpy has established persistence by running in the background as an autostart service
+* **GreyEnergy:** GreyEnergy chooses a service, drops a DLL file, and writes it to that serviceDLL Registry key
+* **hcdLoader:** hcdLoader installs itself as a service for persistence
+* **HermeticWiper:** HermeticWiper can load drivers by creating a new service using the CreateServiceW API
+* **Honeybee:** Honeybee has batch files that modify the system service COMSysApp to load a malicious DLL
+* **Hydraq:** Hydraq creates new services to establish persistence
+* **Industroyer:** Industroyer can use an arbitrary system service to load at system boot for persistence and replaces the ImagePath registry value of a Windows service with a new backdoor binary
+* **InnaputRAT:** Some InnaputRAT variants create a new Windows service to establish persistence
+* **InvisiMole:** InvisiMole can register a Windows service named CsPower as part of its execution chain, and a Windows service named *clr_optimization_v2.0.51527_X86* to achieve persistence
+* **JHUHUGIT:** JHUHUGIT has registered itself as a service to establish persistence
+* **Kazuar:** Kazuar can install itself as a new service
+* **Ke3chang:** Ke3chang backdoor RoyalDNS established persistence through adding a service called Nwsapagent
+* **KeyBoy:** KeyBoy installs a service pointing to a malicious DLL dropped to disk
+* **Kimsuky:** Kimsuky has created new services for persistence
+* **KONNI:** KONNI has registered itself as a service using its export function
+* **Kwampirs:** Kwampirs creates a new service named WmiApSrvEx to establish persistence
+* **Lazarus Group:** Several Lazarus Group malware families install themselves as new services
+* **LoudMiner:** LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file
+* **MoonWind:** MoonWind installs itself as a new service with automatic startup to establish persistence. The service checks every 60 seconds to determine if the malware is running; if not, it will spawn a new instance
+* **Naid:** Naid creates a new service to establish
+* **Nebulae:** Nebulae can create a service to establish persistence
+* **Nerex:** Nerex creates a Registry subkey that registers a new service
+* **Nidiran:** Nidiran can create a new service named msamger (Microsoft Security Accounts Manager)
+* **Okrum:** To establish persistence, Okrum can install itself as a new service named NtmSsvc
+* **Pandora:** Pandora has the ability to gain system privileges through Windows services
+* **PipeMon:** PipeMon can establish persistence by registering a malicious DLL as an alternative Print Processor which is loaded when the print spooler service starts
+* **PlugX:** PlugX can be added as a service to establish persistence. PlugX also has a module to change service configurations as well as start, control, and delete services
+* **PoisonIvy:** PoisonIvy creates a Registry subkey that registers a new service. PoisonIvy also creates a Registry entry modifying the Logical Disk Manager service to point to a malicious DLL dropped to disk
+* **PowerSploit:** PowerSploit contains a collection of Privesc-PowerUp modules that can discover and replace/modify service binaries, paths, and configs
+* **PROMETHIUM:** PROMETHIUM has created new services and modified existing services for persistence
+* **PsExec:** PsExec can leverage Windows services to escalate privileges from administrator to SYSTEM with the -s argument
+* **Ragnar Locker:** Ragnar Locker has used sc.exe to create a new service for the VirtualBox driver
+* **RainyDay:** RainyDay can use services to establish persistence
+* **RawPOS:** RawPOS installs itself as a service to maintain persistence
+* **RDAT:** RDAT has created a service when it is installed on the victim machine
+* **Reaver:** Reaver installs itself as a new service
+* **Sakula:** Some Sakula samples install themselves as services for persistence by calling WinExec with the net start argument
+* **Seasalt:** Seasalt is capable of installing itself as a service
+* **Shamoon:** Shamoon creates a new service named "ntssrv" to execute the payload. Newer versions create the "MaintenaceSrv" and "hdv_725x" services
+* **ShimRat:** ShimRat has installed a Windows service to maintain persistence on victim machines
+* **SILENTTRINITY:** SILENTTRINITY can establish persistence by creating a new service
+* **SLOTHFULMEDIA:** SLOTHFULMEDIA has created a service on victim machines named "TaskFrame" to establish persistence
+* **StreamEx:** StreamEx establishes persistence by installing a new service pointing to its DLL and setting the service to auto-start
+* **StrongPity:** StrongPity has created new services and modified existing services for persistence
+* **Stuxnet:** Stuxnet uses a driver registered as a boot start service as the main load-point
+* **SysUpdate:** SysUpdate can create a service to establish persistence
+* **TDTESS:** If running as administrator, TDTESS installs itself as a new service named bmwappushservice to establish persistence
+* **TeamTNT:** TeamTNT uses malware that adds cryptocurrency miners as a service
+* **TEARDROP:** TEARDROP ran as a Windows service from the c:\windows\syswow64 folder
+* **Threat Group-3390:** A Threat Group-3390 tool can create a new service, naming it after the config information, to gain persistence
+* **ThreatNeedle:** ThreatNeedle can run in memory and register its payload as a Windows service
+* **TinyZBot:** TinyZBot can install as a Windows service for persistence
+* **TrickBot:** TrickBot establishes persistence by creating an autostart service that allows it to run whenever the machine boots
+* **Tropic Trooper:** Tropic Trooper has installed a service pointing to a malicious DLL dropped to disk
+* **TYPEFRAME:** TYPEFRAME variants can add malicious DLL modules as new services.TYPEFRAME can also delete services from the victim’s machine
+* **Ursnif:** Ursnif has registered itself as a system service in the Registry for automatic execution at system startup
+* **Volgmer:** Volgmer installs a copy of itself in a randomly selected service, then overwrites the ServiceDLL entry in the service's Registry entry. Some Volgmer variants also install .dll files as services with names generated by a list of hard-coded strings
+* **WannaCry:** WannaCry creates the service "mssecsvc2.0" with the display name "Microsoft Security Center (2.0) Service"
+* **WastedLocker:** WastedLocker created and established a service that runs until the encryption process is complete
+* **Wiarp:** Wiarp creates a backdoor through which remote attackers can create a service
+* **Wingbird:** Wingbird uses services.exe to register a new autostart service named "Audit Service" using a copy of the local lsass.exe file
+* **Winnti for Windows:**	Winnti for Windows sets its DLL file as a new service in the Registry to establish persistence
+* **Wizard Spider:** Wizard Spider has installed TrickBot as a service named ControlServiceA in order to establish persistence
+* **ZeroT:** ZeroT can add a new service to ensure PlugX persists on the system when delivered as another payload onto the system
+* **ZLib:** ZLib creates Registry keys to allow itself to run as various services
+* **zwShell:** zwShell has established persistence by adding itself as a new service
+* **ZxShell:** ZxShell can create a new service using the service parser function ProcessScCommand
 
 
 
