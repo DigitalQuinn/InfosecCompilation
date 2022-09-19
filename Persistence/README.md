@@ -1087,12 +1087,15 @@ Leverage zsh, the default shell for macOS 10.15+
 * When the Terminal.app is opened, the application launches a zsh login shell and a zsh interactive shell
   * The login shell configures the system environment using `/etc/profile`, `/etc/zshenv`, `/etc/zprofile`, and `/etc/zlogin`
   * The login shell then configures the user environment with `~/.zprofile` and `~/.zlogin`. The interactive shell uses the `~/.zshrc` to configure the user environment. Upon exiting, `/etc/zlogout` and `~/.zlogout` are executed
-* For legacy programs, macOS executes `/etc/bashrc` on startup.
+* For legacy programs, macOS executes `/etc/bashrc` on startup
 
 
 ### Procedure ###
+* **Green Lambert:** Establishes persistence on a compromised host through modifying the profile, login, and run command (rc) files associated with the bash, csh, and tcsh shells
+* **Linux Rabbit:** Maintains persistence on an infected machine through rc.local and .bashrc files
 
 ### Mitigation ###
+* **Restrict File and Directory Permissions:** Making these files immutable and only changeable by certain administrators will limit the ability for adversaries to easily create user level persistence.
 
 ### Bypassing ###
 
@@ -1100,52 +1103,318 @@ Leverage zsh, the default shell for macOS 10.15+
 
 
 ## Trap ##
+The trap command allows programs and shells to specify commands that will be executed upon receiving interrupt signals. A common situation is a script allowing for graceful termination and handling of common keyboard interrupts like ctrl+c and ctrl+d.
 
-
-
-## LC_LOAD_DYLIB Addition ##
-
-
-
-## Netsh Helper DLL ##
-
-
-
-## AppCert DLLs ##
-
-
-
-## AppInit DLLs ##
-
-
-
-## Application Shimming ##
-
-
-
-## Image File Execution ##
-
-
-
-## PowerShell Profile ##
-
-
-
-## Emond ##
-
-
-
-## Component Object Model Hijacking ##
-
-
-
-
+Adversaries can use this to register code to be executed when the shell encounters specific interrupts as a persistence mechanism. Trap commands are of the following format trap 'command list' signals where "command list" will be executed when "signals" are received
 
 
 ### Procedure ###
 This type of attack technique cannot be easily mitigated with preventive controls since it is based on the abuse of system features
 
+
+
 ### Mitigation ###
+* **Command	Command Execution:** Monitor executed commands and arguments that may establish persistence by executing malicious content triggered by an interrupt signal
+* **File Creation:** Monitor for newly constructed files that may establish persistence by executing malicious content triggered by an interrupt signal
+* **File Modification:** Monitor for changes made to files that may establish persistence by executing malicious content triggered by an interrupt signal
+* **Process	Process Creation:** Monitor newly executed processes that may establish persistence by executing malicious content triggered by an interrupt signal
+
+
+### Bypassing ###
+
+
+
+## LC_LOAD_DYLIB Addition ##
+**Mach-O** binaries have a series of headers that are used to perform certain operations when a binary is loaded. The *LC_LOAD_DYLIB* header in a Mach-O binary tells macOS and OS X which dynamic libraries (dylibs) to load during execution time
+* These can be added ad-hoc to the compiled binary as long as adjustments are made to the rest of the fields and dependencies
+
+Adversaries may modify Mach-O binary headers to load and execute malicious dylibs every time the binary is executed
+
+Although any changes will invalidate digital signatures on binaries because the binary is being modified, this can be remediated by simply removing the *LC_CODE_SIGNATURE* command from the binary so that the signature isn’t checked at load time
+
+
+### Procedure ###
+
+
+### Mitigation ###
+* **Audit:** Binaries can also be baselined for what dynamic libraries they require, and if an app requires a new dynamic library that wasn\u2019t included as part of an update, it should be investigated
+* **Code Signing:** Enforce that all binaries be signed by the correct Apple Developer IDs
+* **Execution Prevention:** Allow applications via known hashes
+
+### Bypassing ###
+
+
+
+
+## Netsh Helper DLL ##
+**Netsh.exe (Netshell):** A command-line scripting utility used to interact with the network configuration of a system. It contains functionality to add helper DLLs for extending functionality of the utility
+* The paths to registered netsh.exe helper DLLs are entered into the Windows Registry at `HKLM\SOFTWARE\Microsoft\Netsh`
+
+Adversaries can use netsh.exe helper DLLs to trigger execution of arbitrary code in a persistent manner
+* This execution would take place anytime netsh.exe is executed, which could happen automatically, with another persistence technique, or if other software (ex: VPN) is present on the system that executes netsh.exe as part of its normal functionality
+
+
+### Procedure ###
+**netsh:** Can be used as a persistence proxy technique to execute a helper DLL when netsh.exe is executed
+
+
+### Mitigation ###
+* This type of attack technique cannot be easily mitigated with preventive controls since it is based on the abuse of system features
+
+
+### Bypassing ###
+
+
+## Accessibility Features ##
+Windows contains accessibility features that may be launched with a key combination before a user has logged in. An adversary can modify the way these programs are launched to get a command prompt or backdoor without logging in to the system
+
+Two common accessibility programs are `C:\Windows\System32\sethc.exe`, launched when the shift key is pressed five times and `C:\Windows\System32\utilman.exe`, launched when the Windows + U key combination is pressed
+* *sethc.exe* program (Sticky Keys) has been used by adversaries for unauthenticated access through a remote desktop login screen
+
+Common methods used by adversaries include replacing accessibility feature binaries or pointers/references to these binaries in the Registry
+* In newer versions of Windows, the replaced binary needs to be digitally signed for x64 systems, the binary must reside in `%systemdir%\`, and it must be protected by Windows File or Resource Protection (WFP/WRP)
+  * **Note:** The Image File Execution Options Injection debugger method was likely discovered as a potential workaround because it does not require the corresponding accessibility feature binary to be replaced
+
+For simple binary replacement the program (`C:\Windows\System32\utilman.exe`) may be replaced with "cmd.exe" or another program that provides backdoor access
+* Subsequently, pressing the appropriate key combination at the login screen while sitting at the keyboard or when connected over Remote Desktop Protocol will cause the replaced file to be executed with SYSTEM privileges
+
+Other accessibility features exist that may also be leveraged in a similar fashion:
+
+* On-Screen Keyboard: `C:\Windows\System32\osk.exe`
+* Magnifier: `C:\Windows\System32\Magnify.exe`
+* Narrator: `C:\Windows\System32\Narrator.exe`
+* Display Switcher: `C:\Windows\System32\DisplaySwitch.exe`
+* App Switcher: `C:\Windows\System32\AtBroker.exe`
+
+
+### Procedure ###
+* **APT29:** Used sticky-keys to obtain unauthenticated, privileged console access
+* **APT3:** APT3 replaces the Sticky Keys binary C:\Windows\System32\sethc.exe for persistence
+* **APT41:** APT41 leveraged sticky keys to establish persistence
+* **Axiom:** Axiom actors have been known to use the Sticky Keys replacement within RDP sessions to obtain persistence
+* **Deep Panda:** Deep Panda has used the sticky-keys technique to bypass the RDP login screen on remote systems during intrusions
+* **Empire:** Empire can leverage WMI debugging to remotely replace binaries like sethc.exe, Utilman.exe, and Magnify.exe with cmd.exe
+* **Fox Kitten:** Fox Kitten has used sticky keys to launch a command prompt
+
+
+### Mitigation ###
+* **Execution Prevention:** Identify and block potentially malicious software executed through accessibility features functionality by using application control tools, like Windows Defender Application Control, AppLocker, or Software Restriction Policies where appropriate
+* **Limit Access to Resource Over Network:** Use a Remote Desktop Gateway to manage connections and security configuration of RDP within a network
+* **Operating System Configuration:** Ensure that Network Level Authentication is enabled to force the remote desktop session to authenticate before the session is created and the login screen displayed. It is enabled by default on Windows Vista and later
+
+
+### Bypassing ###
+
+
+
+
+
+
+
+## AppCert DLLs ##
+DLLs that are specified in the AppCertDLLs Registry key under `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\` are loaded into every process that calls the ubiquitously used application programming interface (API) functions *CreateProcess*, *CreateProcessAsUser*, *CreateProcessWithLoginW*, CreateProcessWithTokenW, or WinExec
+
+This value can be abused to obtain elevated privileges by causing a malicious DLL to be loaded and run in the context of separate processes on the computer
+* Malicious AppCert DLLs may also provide persistence by continuously being triggered by API activity
+
+
+
+### Procedure ###
+* **Honeybee:** Service-based DLL implant can execute a downloaded file with parameters specified using *CreateProcessAsUser*
+* **PUNCHBUGGY:** PUNCHBUGGY can establish using a AppCertDLLs Registry key
+
+### Mitigation ###
+* **Execution Prevention:** Identify and block potentially malicious software executed through AppCertDLLs functionality by using application control tools, like Windows Defender Application Control, AppLocker, or Software Restriction Policies where appropriate
+  
+
+### Bypassing ###
+
+
+
+
+## AppInit DLLs ##
+DLLs that are specified in the *AppInit_DLLs* value in the Registry keys `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows` or `HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Windows` are loaded by user32.dll into every process that loads user32.dll
+* This is nearly every program, since user32.dll is a very common library
+
+These values can be abused to obtain elevated privileges by causing a malicious DLL to be loaded and run in the context of separate processes on the computer
+* Malicious AppInit DLLs may also provide persistence by continuously being triggered by API activity
+
+* **Note:**The AppInit DLL functionality is disabled in Windows 8 and later versions when secure boot is enabled
+
+
+
+### Procedure ###
+* **APT39:** Has used malware to set LoadAppInit_DLLs in the Registry key `SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows` in order to establish persistence
+* **Cherry Picker:** Some variants of Cherry Picker use *AppInit_DLLs* to achieve persistence by creating the following Registry key: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows "AppInit_DLLs"="pserver32.dll`
+* **Ramsay:** Ramsay can insert itself into the address space of other applications using the AppInit DLL Registry key
+* **T9000:** T9000 uses the *AppInit_DLL* functionality to achieve persistence by ensuring that every user mode process that is spawned will load its malicious DLL, ResN32.dll
+  * It does this by creating the following Registry keys: `HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows\AppInit_DLLs` – `%APPDATA%\Intel\ResN32.dll` and `HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows\LoadAppInit_DLLs` – 0x1
+
+### Mitigation ###
+* **Execution Prevention:** Identify and block potentially malicious software executed through AppInit DLLs functionality by using application control tools, like Windows Defender Application Control, AppLocker, or Software Restriction Policies where appropriate
+* **Update Software:** Upgrade to Windows 8 or later and enable secure boot
+
+
+### Bypassing ###
+
+
+
+
+
+
+
+## Application Shimming ##
+The Microsoft Windows Application Compatibility Infrastructure/Framework (Application Shim) was created to allow for backward compatibility of software as the operating system codebase changes over time
+* The application shimming feature allows developers to apply fixes to applications (without rewriting code) that were created for Windows XP so that it will work with Windows 10
+
+Within the framework, shims are created to act as a buffer between the program (or more specifically, the Import Address Table) and the Windows OS
+* When a program is executed, the shim cache is referenced to determine if the program requires the use of the shim database (.sdb)
+* If so, the shim database uses hooking to redirect the code as necessary in order to communicate with the OS
+
+**A list of all shims currently installed by the default Windows installer (sdbinst.exe) is kept in:**
+
+* %WINDIR%\AppPatch\sysmain.sdb and
+`hklm\software\microsoft\windows nt\currentversion\appcompatflags\installedsdb`
+
+**Custom databases are stored in:**
+
+* `%WINDIR%\AppPatch\custom` & `%WINDIR%\AppPatch\AppPatch64\Custom` and
+`hklm\software\microsoft\windows nt\currentversion\appcompatflags\custom`
+
+
+To keep shims secure, Windows designed them to run in user mode so they cannot modify the kernel and you must have administrator privileges to install a shim
+* Certain shims can be used to Bypass User Account Control (UAC and RedirectEXE), inject DLLs into processes (InjectDLL), disable Data Execution Prevention (DisableNX) and Structure Exception Handling (DisableSEH), and intercept memory addresses (GetProcAddress)
+
+Utilizing these shims may allow an adversary to perform several malicious acts such as elevate privileges, install backdoors, disable defenses like Windows Defender, etc 
+* Shims can also be abused to establish persistence by continuously being invoked by affected programs
+
+
+### Procedure ###
+* **FIN7:** Has used application shim databases for persistence
+* **Pillowmint:** Has used a malicious shim database to maintain persistence
+* **SDBbot:** SDBbot has the ability to use application shimming for persistence if it detects it is running as admin on Windows XP or 7, by creating a shim database to patch services.exe
+* **ShimRat:** ShimRat has installed shim databases in the AppPatch folder
+
+
+### Mitigation ###
+* **Update Software:** Microsoft released an optional patch update - KB3045645 - that will remove the "auto-elevate" flag within the sdbinst.exe. This will prevent use of application shimming to bypass UAC
+* **User Account Control:** Changing UAC settings to "Always Notify" will give the user more visibility when UAC elevation is requested, however, this option will not be popular among users due to the constant UAC interruptions
+
+
+### Bypassing ###
+
+
+
+## Image File Execution ##
+
+Adversaries may establish persistence and/or elevate privileges by executing malicious content triggered by Image File Execution Options (IFEO) debuggers. IFEOs enable a developer to attach a debugger to an application. When a process is created, a debugger present in an application’s IFEO will be prepended to the application’s name, effectively launching the new process under the debugger (e.g., C:\dbg\ntsd.exe -g notepad.exe). [1]
+
+IFEOs can be set directly via the Registry or in Global Flags via the GFlags tool. [2] IFEOs are represented as Debugger values in the Registry under HKLM\SOFTWARE{\Wow6432Node}\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ where <executable> is the binary on which the debugger is attached. [1]
+
+IFEOs can also enable an arbitrary monitor program to be launched when a specified program silently exits (i.e. is prematurely terminated by itself or a second, non kernel-mode process). [3] [4] Similar to debuggers, silent exit monitoring can be enabled through GFlags and/or by directly modifying IFEO and silent process exit Registry values in HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\
+
+Similar to Accessibility Features, on Windows Vista and later as well as Windows Server 2008 and later, a Registry key may be modified that configures "cmd.exe," or another program that provides backdoor access, as a "debugger" for an accessibility program (ex: utilman.exe). After the Registry is modified, pressing the appropriate key combination at the login screen while at the keyboard or when connected with Remote Desktop Protocol will cause the "debugger" program to be executed with SYSTEM privileges. [5]
+
+Similar to Process Injection, these values may also be abused to obtain privilege escalation by causing a malicious executable to be loaded and run in the context of separate processes on the computer. [6] Installing IFEO mechanisms may also provide Persistence via continuous triggered invocation.
+
+Malware may also use IFEO to Impair Defenses by registering invalid debuggers that redirect and effectively disable various system and security applications
+
+
+### Procedure ###
+* **SDBbot:** SDBbot has the ability to use image file execution options for persistence if it detects it is running with admin privileges on a Windows version newer than Windows 7
+* **SUNBURST:** SUNBURST created an Image File Execution Options (IFEO) Debugger registry value for the process dllhost.exe to trigger the installation of Cobalt Strike
+* **TEMP.Veles:** TEMP.Veles has modified and added entries within `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options` to maintain persistence
+
+### Mitigation ###
+This type of attack technique cannot be easily mitigated with preventive controls since it is based on the abuse of system features.
+
+
+
+### Bypassing ###
+
+
+
+## PowerShell Profile ##
+A PowerShell profile (profile.ps1) is a script that runs when PowerShell starts and can be used as a logon script to customize user environments
+
+
+* PowerShell supports several profiles depending on the user or host program
+  * There can be different profiles for PowerShell host programs such as the PowerShell console, PowerShell ISE or Visual Studio Code
+  * An administrator can also configure a profile that applies to all users and host programs on the local computer
+
+
+Adversaries may modify these profiles to include arbitrary commands, functions, modules, and/or PowerShell drives to gain persistence
+* Every time a user opens a PowerShell session the modified script will be executed unless the *-NoProfile* flag is used when it is launched
+
+
+An adversary may also be able to escalate privileges if a script in a PowerShell profile is loaded and executed by an account with higher privileges, such as a domain administrator
+
+
+
+### Procedure ###
+* **Turla:** Turla has used PowerShell profiles to maintain persistence on an infected machine
+
+
+### Mitigation ###
+* **Code Signing:** Enforce execution of only signed PowerShell scripts. Sign profiles to avoid them from being modified
+* **Restrict File and Directory Permissions:** Making PowerShell profiles immutable and only changeable by certain administrators will limit the ability for adversaries to easily create user level persistence
+* **Software Configuration:** Avoid PowerShell profiles if not needed. Use the -No Profile flag with when executing PowerShell scripts remotely to prevent local profiles and scripts from being executed
+
+
+### Bypassing ###
+
+
+
+## Emond ##
+Event Monitor Daemon (Emond): A Launch Daemon that accepts events from various services, runs them through a simple rules engine, and takes action. The emond binary at `/sbin/` emond will load any rules from the `/etc/emond.d/rules/` directory and take action once an explicitly defined event takes place
+
+The rule files are in the plist format and define the name, event type, and action to take
+* Event types include system startup and user authentication
+* Examples of actions are to run a system command or send an email. The emond service will not launch if there is no file present in the QueueDirectories path `/private/var/db/emondClients`, specified in the Launch Daemon configuration file at `/System/Library/LaunchDaemons/com.apple.emond.plist`
+
+Adversaries may abuse this service by writing a rule to execute commands when a defined event occurs, such as system start up or user authentication. Adversaries may also be able to escalate privileges from administrator to root as the emond service is executed with root privileges by the Launch Daemon service
+
+
+
+## Procedure ##
+Disable or Remove Feature or Program	
+Consider disabling emond by removing the Launch Daemon plist file.
+
+
+### Detection ###
+* **Command	Command Execution:** Monitor executed commands and arguments that may gain persistence and elevate privileges by executing malicious content triggered by the Emond
+* **File Creation:** Monitor emond rules creation by checking for files created in `/etc/emond.d/rules/` and `/private/var/db/emondClients`
+* **File Modification:** Monitor emond rules creation by checking for files modified in `/etc/emond.d/rules/` and `/private/var/db/emondClients`
+* **Process Creation:** Monitor newly executed processes that may gain persistence and elevate privileges by executing malicious content triggered by the Emond
+
+### Bypassing ###
+
+
+
+
+## Component Object Model Hijacking ##
+COM: A system within Windows to enable interaction between software components through the operating system -- References to various COM objects are stored in the Registry
+
+Adversaries can use the COM system to insert malicious code that can be executed in place of legitimate software through hijacking the COM references and relationships as a means for persistence
+* Hijacking a COM object requires a change in the Registry to replace a reference to a legitimate system component which may cause that component to not work when executed. When that system component is executed through normal system operation the adversary's code will be executed instead
+* An adversary is likely to hijack objects that are used frequently enough to maintain a consistent level of persistence, but are unlikely to break noticeable functionality within the system as to avoid system instability that could lead to detection
+
+
+### Procedure ###
+* **ADVSTORESHELL:** Some variants of ADVSTORESHELL achieve persistence by registering the payload as a Shell Icon Overlay handler COM object
+* **APT28:** APT28 has used COM hijacking for persistence by replacing the legitimate MMDeviceEnumerator object with a payload
+* **BBSRAT:** BBSRAT has been seen persisting via COM hijacking through replacement of the COM object for MruPidlList `{42aedc87-2188-41fd-b9a3-0c966feabec1}` or Microsoft WBEM New Event Subsystem `{F3130CDB-AA52-4C3A-AB32-85FFC23AF9C1}` depending on the system's CPU architecture
+* **ComRAT:** ComRAT samples have been seen which hijack COM objects for persistence by replacing the path to shell32.dll in registry location `HKCU\Software\Classes\CLSID``{42aedc87-2188-41fd-b9a3-0c966feabec1}\InprocServer32`
+* **Ferocious:** Ferocious can use COM hijacking to establish persistence
+* **JHUHUGIT:** JHUHUGIT has used COM hijacking to establish persistence by hijacking a class named MMDeviceEnumerator and also by registering the payload as a Shell Icon Overlay handler COM object (`{3543619C-D563-43f7-95EA-4DA7E1CC396A}`)
+* **KONNI:** KONNI has modified ComSysApp service to load the malicious DLL payload
+* **Mosquito:** Mosquito uses COM hijacking as a method of persistence
+* **SILENTTRINITY:** SILENTTRINITY can add a CLSID key for payload execution through `Registry.CurrentUser.CreateSubKey("Software\\Classes\\CLSID\\{" + clsid + "}\\InProcServer32")`
+* **WarzoneRAT:** WarzoneRAT can perform COM hijacking by setting the path to itself to the `HKCU\Software\Classes\Folder\shell\open\command` key with a *DelegateExecute* parameter
+  
+
+## Mitigations ##
+This type of attack technique cannot be easily mitigated with preventive controls since it is based on the abuse of system features
 
 
 ### Bypassing ###
@@ -1153,24 +1422,180 @@ This type of attack technique cannot be easily mitigated with preventive control
 
 ----------------------------
 # External Remote Services #
+Remote services such as VPNs, Citrix, and other access mechanisms allow users to connect to internal enterprise network resources from external locations. There are often remote service gateways that manage connections and credential authentication for these services. Services such as Windows Remote Management and VNC can also be used externally
+
+Access to Valid Accounts to use the service is often a requirement, which could be obtained through credential pharming or by obtaining the credentials from users after compromising the enterprise network
+* Access to remote services may be used as a redundant or persistent access mechanism during an operation
+
+Access may also be gained through an exposed service that doesn’t require authentication
+* In containerized environments, this may include an exposed Docker API, Kubernetes API server, kubelet, or web application such as the Kubernetes dashboard
 
 
+## Procedure ##
+* **APT18:** Actors leverage legitimate credentials to log into external remote services
+* **APT28:** APT28 has used Tor and a variety of commercial VPN services to route brute force authentication attempts
+* **APT29:** APT29 has used compromised identities to access networks via SSH, VPNs, and other remote access tools
+* **APT41:** APT41 compromised an online billing/payment service using VPN access between a third-party service provider and the targeted payment service
+* **Chimera:** Chimera has used legitimate credentials to login to an external VPN, Citrix, SSH, and other remote services
+* **Doki:** Doki was executed through an open Docker daemon API port
+* **Dragonfly:** Dragonfly has used VPNs and Outlook Web Access (OWA) to maintain access to victim networks
+* **FIN5:** FIN5 has used legitimate VPN, Citrix, or VNC credentials to maintain access to a victim environment
+* **GALLIUM:** GALLIUM has used VPN services, including SoftEther VPN, to access and maintain persistence in victim environments
+* **GOLD SOUTHFIELD:** GOLD SOUTHFIELD has used publicly-accessible RDP and remote management and monitoring (RMM) servers to gain access to victim machines
+* **Hildegard:** Hildegard was executed through an unsecure kubelet that allowed anonymous access to the victim environment
+* **Ke3chang:** Ke3chang has gained access through VPNs including with compromised accounts and stolen VPN certificates
+* **Kimsuky:** Kimsuky has used RDP to establish persistence
+* **Kinsing:** Kinsing was executed in an Ubuntu container deployed via an open Docker daemon API
+* **Leviathan:** Leviathan has used external remote services such as virtual private networks (VPN) to gain initial access
+* **Linux Rabbit:** Linux Rabbit attempts to gain access to the server via SSH
+* **Night Dragon:** Night Dragon has used compromised VPN accounts to gain access to victim systems
+* **OilRig:** OilRig uses remote services such as VPN, Citrix, or OWA to persist in an environment
+* **Operation Wocao:** Operation Wocao has used stolen credentials to connect to the victim's network via VPN
+* **Sandworm Team:** Sandworm Team has used Dropbear SSH with a hardcoded backdoor password to maintain persistence within the target network. Sandworm Team has also used VPN tunnels established in legitimate software company infrastructure to gain access to internal networks of that software company's users
+* **TeamTNT:** TeamTNT has used open-source tools such as Weave Scope to target exposed Docker API ports and gain initial access to victim environments
+  * TeamTNT has also targeted exposed kubelets for Kubernetes environments
+  * **TEMP.Veles:** TEMP.Veles has used a VPN to persist in the victim environment
+  * **Threat Group-3390:** Threat Group-3390 actors look for and use VPN profiles during an operation to access the network using external VPN services
+    * Threat Group-3390 has also obtained OWA account credentials during intrusions that it subsequently used to attempt to regain access when evicted from a victim network
+* Wizard Spider:** Wizard Spider has accessed victim networks by using stolen credentials to access the corporate VPN infrastructure
 
-### Procedure ###
 
-### Mitigation ###
+### Mitigations ###
+* **Disable or Remove Feature or Program:** Disable or block remotely available services that may be unnecessary
+* **Limit Access to Resource Over Network:** Limit access to remote services through centrally managed concentrators such as VPNs and other managed remote access systems
+* **Multi-factor Authentication:** Use strong two-factor or multi-factor authentication for remote service accounts to mitigate an adversary's ability to leverage stolen credentials, but be aware of Multi-Factor Authentication Interception techniques for some two-factor authentication implementations
+* **Network Segmentation:** Deny direct remote access to internal systems through the use of network proxies, gateways, and firewalls
+
 
 ### Bypassing ###
+
+
+
+
+
 -------------------------
 # Hijack Execution Flow #
+Hijacking execution flow can be for the purposes of persistence, since this hijacked execution may reoccur over time
+* Adversaries may also use these mechanisms to elevate privileges or evade defenses, such as application control or other restrictions on execution
+
+There are many ways an adversary may hijack the flow of execution, including by manipulating how the operating system locates programs to be executed
+* How the operating system locates libraries to be used by a program can also be intercepted
+* Locations where the operating system looks for programs/resources, such as file directories and in the case of Windows the Registry, could also be poisoned to include malicious payloads
 
 
 
-### Procedure ###
+## DLL Search Order Hijacking 
+Windows systems use a common method to look for required DLLs to load into a program.
+Hijacking DLL loads may be for the purpose of establishing persistence as well as elevating privileges and/or evading restrictions on file execution.
 
-### Mitigation ###
+**Hijacking DLL loads**
+* Planting trojan DLLs in a directory that will be searched before the location of a legitimate library that will be requested by a program, causing Windows to load their malicious library when it is called for by the victim program
+
+* Binary planting attacks -- Placing a malicious DLL with the same name as an ambiguously specified DLL in a location that Windows searches before the legitimate DLL
+  * Often this location is the current working directory of the program
+  * Remote DLL preloading attacks occur when a program sets its current directory to a remote location such as a Web share before loading a DLL
+  
+
+* Directly modify the search order via DLL redirection, which after being enabled (in the Registry and creation of a redirection file) may cause a program to load a different DLL
+
+* If a search order-vulnerable program is configured to run at a higher privilege level, then the adversary-controlled DLL that is loaded will also be executed at the higher level
+  * This technique could be used for privilege escalation from user to administrator or SYSTEM or from administrator to SYSTEM, depending on the program
+
+
+
+
+### Procedure
+* **APT41:** APT41 has used search order hijacking to execute malicious payloads, such as Winnti RAT
+* **Aquatic Panda:** Aquatic Panda has used DLL search-order hijacking to load exe, dll, and dat files into memory
+* **Astaroth:** Astaroth can launch itself via DLL Search Order Hijacking
+* **BackdoorDiplomacy:** BackdoorDiplomacy has executed DLL search order hijacking
+* **BOOSTWRITE:** BOOSTWRITE has exploited the loading of the legitimate Dwrite.dll file by actually loading the gdi library, which then loads the gdiplus library and ultimately loads the local Dwrite dll
+* **Chaes:** Chaes has used search order hijacking to load a malicious DLL
+* **Crutch:** Crutch can persist via DLL search order hijacking on Google Chrome, Mozilla Firefox, or Microsoft OneDrive
+* **Downdelph:** Downdelph uses search order hijacking of the Windows executable sysprep.exe to escalate privileges
+* **Empire:** Empire contains modules that can discover and exploit various DLL hijacking opportunities
+* **Evilnum:** Evilnum has used the malware variant, TerraTV, to load a malicious DLL placed in the TeamViewer directory, instead of the original Windows DLL located in a system folder
+* **FinFisher:** A FinFisher variant uses DLL search order hijacking
+* **FoggyWeb:** FoggyWeb's loader has used DLL Search Order Hijacking to load malicious code instead of the legitimate version.dll during the Microsoft.IdentityServer.ServiceHost.exe execution process
+* **Hikit:** Hikit has used DLL Search Order Hijacking to load oci.dll as a persistence mechanism
+* **HTTPBrowser:** HTTPBrowser abuses the Windows DLL load order by using a legitimate Symantec anti-virus binary, VPDN_LU.exe, to load a malicious DLL that mimics a legitimate Symantec DLL, navlu.dll
+* **InvisiMole:** InvisiMole can be launched by using DLL search order hijacking in which the wrapper DLL is placed in the same folder as explorer.exe and loaded during startup into the Windows Explorer process instead of the legitimate library
+* **Melcoz:** Melcoz can use DLL hijacking to bypass security controls
+* **menuPass:** menuPass has used DLL search order hijacking
+* **MirageFox:** MirageFox is likely loaded via DLL hijacking into a legitimate McAfee binary
+* **PlugX:** PlugX has the ability to use DLL search order hijacking for installation on targeted systems
+* **PowerSploit:** PowerSploit contains a collection of Privesc-PowerUp modules that can discover and exploit DLL hijacking opportunities in services and processes
+* **Prikormka:** Prikormka uses DLL search order hijacking for persistence by saving itself as ntshrui.dll to the Windows directory so it will load before the legitimate ntshrui.dll saved in the System32 subdirectory
+* **Ramsay:** Ramsay can hijack outdated Windows application dependencies with malicious versions of its own DLL payload
+* **RedLeaves:** RedLeaves is launched through use of DLL search order hijacking to load a malicious dll
+* **RTM:** RTM has used search order hijacking to force TeamViewer to load a malicious DLL
+* **Threat Group-3390:** Threat Group-3390 has performed DLL search order hijacking to execute their payload
+* **Tonto Team:** Tonto Team abuses a legitimate and signed Microsoft executable to launch a malicious DLL
+* **WastedLocker:** WastedLocker has performed DLL hijacking before execution
+* **WEBC2:** Variants of WEBC2 achieve persistence by using DLL search order hijacking, usually by copying the DLL file to `%SYSTEMROOT%` (C:\WINDOWS\ntshrui.dll)
+* **Whitefly:** Whitefly has used search order hijacking to run the loader Vcrodat
+
+
+
+### Mitigation
+Audit	
+Use auditing tools capable of detecting DLL search order hijacking opportunities on systems within an enterprise and correct them. Toolkits like the PowerSploit framework contain PowerUp modules that can be used to explore systems for DLL hijacking weaknesses
+
+Use the program sxstrace.exe that is included with Windows along with manual inspection to check manifest files for side-by-side problems in software
+M1038	Execution Prevention	
+Adversaries may use new DLLs to execute this technique. Identify and block potentially malicious software executed through search order hijacking by using application control solutions capable of blocking DLLs loaded by legitimate software.
+M1044	Restrict Library Loading	
+Disallow loading of remote DLLs. This is included by default in Windows Server 2012+ and is available by patch for XP+ and Server 2003+.
+
+Enable Safe DLL Search Mode to force search for system DLLs in directories with greater restrictions (e.g. %SYSTEMROOT%)to be used before local directory DLLs (e.g. a user's home directory)
+
+The Safe DLL Search Mode can be enabled via Group Policy at Computer Configuration > [Policies] > Administrative Templates > MSS (Legacy): MSS: (SafeDllSearchMode) Enable Safe DLL search mode. The associated Windows Registry key for this is located at `HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\SafeDLLSearchMode`
+
+### Bypass
+
+
+
+
+
+
+## DLL Side-Loading
+
+
+
+## Dylib Hijacking
+
+
+## Executable Installer File Permissions Weakness
+
+
+## Dynamic Linker Hijacking
+
+
+## Path Interception by PATH Environment Variable
+
+
+## Path Interception by Search Order Hijacking
+
+
+## Path Interception by Unquoted Path
+
+
+## Services File Permissions Weakness
+
+
+## Services Registry Permissions Weakness
+
+
+## COR_PROFILER
+
+
+## KernelCallbackTable
 
 ### Bypassing ###
+
+
+
+
 --------------------------
 # Implant Internal Image #
 
@@ -1240,5 +1665,5 @@ This type of attack technique cannot be easily mitigated with preventive control
 
 ### Bypassing ###
 
-------------------
 # Valid Accounts #
+------------------
