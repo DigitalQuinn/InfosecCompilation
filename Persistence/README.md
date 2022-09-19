@@ -4,7 +4,7 @@
 ---------------------
 # Tables of Contents #
 ---------------------
-- [Account Manipulatiton](#account-manipulation)<style>H1{color:Red;}</style>
+- [Account Manipulatiton](#account-manipulation)
 - [BITS Jobs](#bits-jobs)
 - [Account Manipulation](#account-manipulation)
 - [Boot or Logon Autostart Execution](#boot-or-logon-autostart-execution)
@@ -32,7 +32,7 @@
 
 
 ------------------------
-# Account Manipulation #
+# <style>H1{color:Red;}</style> Account Manipulation #
 Account manipulation may consist of any action that preserves adversary access to a compromised account, such as modifying credentials or permission groups. These actions could also include account activity designed to subvert security policies, such as performing iterative password updates to bypass password duration policies and preserve the life of compromised credentials
 
 
