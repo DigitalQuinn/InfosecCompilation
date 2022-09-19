@@ -32,7 +32,7 @@
 
 
 ------------------------
-# <style>H1{color:Red;}</style> Account Manipulation #
+# Account Manipulation #
 Account manipulation may consist of any action that preserves adversary access to a compromised account, such as modifying credentials or permission groups. These actions could also include account activity designed to subvert security policies, such as performing iterative password updates to bypass password duration policies and preserve the life of compromised credentials
 
 
@@ -974,7 +974,120 @@ Additionally, system configuration changes (such as the installation of third pa
 
 -----------------------------
 # Event Triggered Execution #
+Adversaries may establish persistence and/or elevate privileges using system mechanisms that trigger execution based on specific events. Various operating systems have means to monitor and subscribe to events such as logons or other user activity such as running specific applications/binaries.
 
+Adversaries may abuse these mechanisms as a means of maintaining persistent access to a victim via repeatedly executing malicious code. After gaining access to a victim system, adversaries may create/modify event triggers to point to malicious content that will be executed whenever the event trigger is invoked
+
+Since the execution can be proxied by an account with higher permissions, such as SYSTEM or service accounts, an adversary may be able to abuse these triggered execution mechanisms to escalate their privileges.
+
+## Change Default File Allocation ##
+When a file is opened, the default program used to open the file (file association or handler) is checked. File association selections are stored in the Windows Registry and can be edited by users, administrators, or programs that have Registry access or by administrators using the built-in assoc utility. Applications can modify the file association for a given file extension to call an arbitrary program when a file with the given extension is opened.
+
+System file associations are listed under `HKEY_CLASSES_ROOT.[extension]`
+* The entries point to a handler for that extension located at `HKEY_CLASSES_ROOT\[handler]`
+* The various commands are then listed as subkeys underneath the shell key at `HKEY_CLASSES_ROOT\[handler]\shell\[action]\command`; For example:
+
+* `HKEY_CLASSES_ROOT\txtfile\shell\open\command`
+* `HKEY_CLASSES_ROOT\txtfile\shell\print\command`
+* `HKEY_CLASSES_ROOT\txtfile\shell\printto\command`
+The values of the keys listed are commands that are executed when the handler opens the file extension. Adversaries can modify these values to continually execute arbitrary commands
+
+### Procedure ###
+* **Kimsuky:** Has a HWP document stealer module which changes the default program association in the registry to open HWP documents
+* **SILENTTRINITY:** Conducts an image hijack of an .msc file extension as part of its UAC bypass process
+
+
+### Mitigation ###
+This type of attack technique cannot be easily mitigated with preventive controls since it is based on the abuse of system features
+
+### Bypassing ###
+
+
+
+## Screensaver ##
+Screensavers are programs that execute after a configurable time of user inactivity and consist of Portable Executable (PE) files with a .scr file extension. The Windows screensaver application scrnsave.scr is located in `C:\Windows\System32\`, and `C:\Windows\sysWOW64\` on 64-bit Windows systems, along with screensavers included with base Windows installations.
+
+The following screensaver settings are stored in the Registry (`HKCU\Control Panel\Desktop\`) and could be manipulated to achieve persistence:
+
+* **SCRNSAVE.exe** - set to malicious PE path
+* **ScreenSaveActive** - set to '1' to enable the screensaver
+* **ScreenSaverIsSecure** - set to '0' to not require a password to unlock
+* **ScreenSaveTimeout** - sets user inactivity timeout before screensaver is executed
+
+
+**Note:** Adversaries can use screensaver settings to maintain persistence by setting the screensaver to run malware after a certain timeframe of user inactivity
+
+
+### Procedure ###
+* **Gazer:** Establishes persistence through the system screensaver by configuring it to execute the malware
+
+### Mitigation ###
+* **Disable or Remove Feature or Program:** Use Group Policy to disable screensavers if they are unnecessary
+* **Execution Prevention:** Block .scr files from being executed from non-standard locations
+
+
+### Bypassing ###
+
+
+## Windows Management Instrumentation Event Subscription ##
+WMI can be used to install event filters, providers, consumers, and bindings that execute code when a defined event occurs. Examples of events that may be subscribed to are the wall clock time, user loging, or the computer's uptime.
+
+Adversaries may use the capabilities of WMI to subscribe to an event and execute arbitrary code when that event occurs, providing persistence on a system
+* Adversaries may also compile WMI scripts into Windows Management Object (MOF) files (.mof extension) that can be used to create a malicious subscription
+
+WMI subscription execution is proxied by the WMI Provider Host process (WmiPrvSe.exe) and thus may result in elevated SYSTEM privileges.
+
+
+### Procedure ###
+* **adbupd:** adbupd can use a WMI script to achieve persistence
+* **APT29:** APT29 has used WMI event subscriptions for persistence
+* **APT33:** APT33 has attempted to use WMI event subscriptions to establish persistence on compromised hosts
+* **Blue Mockingbird:** Blue Mockingbird has used mofcomp.exe to establish WMI Event Subscription persistence mechanisms configured from a *.mof file
+* **FIN8:** FIN8 has used WMI event subscriptions for persistence
+* **Leviathan:** Leviathan has used WMI for persistence
+* **Mustang Panda:** Mustang Panda's custom ORat tool uses a WMI event consumer to maintain persistence
+* **PoshC2:** PoshC2 has the ability to persist on a system using WMI events
+* **POSHSPY:** POSHSPY uses a WMI event subscription to establish persistence
+* **POWERTON:** POWERTON can use WMI for persistence
+* **RegDuke:** RegDuke can persist using a WMI consumer that is launched every time a process named WINWORD.EXE is started
+* **SeaDuke:** SeaDuke uses an event filter in WMI code to execute a previously dropped executable shortly after system startup
+* **SILENTTRINITY:** SILENTTRINITY can create a WMI Event to execute a payload for persistence
+* **TrailBlazer:** TrailBlazer has the ability to use WMI for persistence
+* **Turla:** Turla has used WMI event filters and consumers to establish persistence
+
+
+### Mitigation ###
+* **Behavior Prevention on Endpoint:** On Windows 10, enable Attack Surface Reduction (ASR) rules to prevent malware from abusing WMI to attain persistence
+* **Privileged Account Management:** Prevent credential overlap across systems of administrator and privileged accounts
+* **User Account Management:** By default, only administrators are allowed to connect remotely using WMI; restrict other users that are allowed to connect, or disallow all users from connecting remotely to WMI
+
+### Bypassing ###
+
+
+
+## Unix Shell Configuration Modification ##
+User Unix Shells execute several configuration scripts at different points throughout the session based on events. When a user opens a command-line interface or remotely logs in (such as via SSH) a login shell is initiated
+* The login shell executes scripts from the system (/etc) and the user’s home directory (~/) to configure the environment
+* All login shells on a system use /etc/profile when initiated
+  * These configuration scripts run at the permission level of their directory and are often used to set environment variables, create aliases, and customize the user’s environment
+  * When the shell exits or terminates, additional shell scripts are executed to ensure the shell exits appropriately
+
+**Adversaries may attempt to establish persistence by inserting commands into scripts automatically executed by shells**
+
+**Leveraging Bash** 
+Add commands that launch malicious binaries into the `/etc/profile` and `/etc/profile.d` files
+* These files require root permissions to modify and are executed each time any shell on a system launches
+* For user level permissions, adversaries can insert malicious commands into `~/.bash_profile`, `~/.bash_login`, or `~/` profile which are sourced when a user opens a command-line interface or connects remotely
+  * Since the system only executes the first existing file in the listed order, adversaries have used `~/.bash_profile` to ensure execution
+* Adversaries have also leveraged the `~/.bashrc` file which is additionally executed if the connection is established remotely or an additional interactive shell is opened, such as a new tab in the command-line interface
+* Some malware targets the termination of a program to trigger execution, adversaries can use the `~/.bash_logout` file to execute malicious commands at the end of a session
+
+**Leveraging macOS**
+Leverage zsh, the default shell for macOS 10.15+
+* When the Terminal.app is opened, the application launches a zsh login shell and a zsh interactive shell
+  * The login shell configures the system environment using `/etc/profile`, `/etc/zshenv`, `/etc/zprofile`, and `/etc/zlogin`
+  * The login shell then configures the user environment with `~/.zprofile` and `~/.zlogin`. The interactive shell uses the `~/.zshrc` to configure the user environment. Upon exiting, `/etc/zlogout` and `~/.zlogout` are executed
+* For legacy programs, macOS executes `/etc/bashrc` on startup.
 
 
 ### Procedure ###
@@ -982,6 +1095,62 @@ Additionally, system configuration changes (such as the installation of third pa
 ### Mitigation ###
 
 ### Bypassing ###
+
+
+
+
+## Trap ##
+
+
+
+## LC_LOAD_DYLIB Addition ##
+
+
+
+## Netsh Helper DLL ##
+
+
+
+## AppCert DLLs ##
+
+
+
+## AppInit DLLs ##
+
+
+
+## Application Shimming ##
+
+
+
+## Image File Execution ##
+
+
+
+## PowerShell Profile ##
+
+
+
+## Emond ##
+
+
+
+## Component Object Model Hijacking ##
+
+
+
+
+
+
+### Procedure ###
+This type of attack technique cannot be easily mitigated with preventive controls since it is based on the abuse of system features
+
+### Mitigation ###
+
+
+### Bypassing ###
+
+
 ----------------------------
 # External Remote Services #
 
