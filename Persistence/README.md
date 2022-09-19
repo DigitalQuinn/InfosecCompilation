@@ -4,7 +4,7 @@
 ---------------------
 # Tables of Contents #
 ---------------------
-- [Account Manipulatiton](#account-manipulation)
+- [Account Manipulatiton](#account-manipulation)<style>H1{color:Red;}</style>
 - [BITS Jobs](#bits-jobs)
 - [Account Manipulation](#account-manipulation)
 - [Boot or Logon Autostart Execution](#boot-or-logon-autostart-execution)
