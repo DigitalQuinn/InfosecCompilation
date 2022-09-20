@@ -1559,32 +1559,108 @@ The Safe DLL Search Mode can be enabled via Group Policy at Computer Configurati
 
 
 ## DLL Side-Loading
+DLL side-loading involves hijacking which DLL a program loads. But rather than just planting the DLL within the search order, adversaries may directly side-load their payloads by planting then invoking a legitimate application that executes their payload
 
+Side-loading takes advantage of the DLL search order used by the loader by positioning both the victim application and malicious payload(s) alongside each other. 
+* Benign executables used to side-load payloads may not be flagged during delivery and/or execution
+* Adversary payloads may also be encrypted/packed or otherwise obfuscated until loaded into the memory of the trusted process
 
 
 ## Dylib Hijacking
+Adversaries may execute their own payloads by placing a malicious dynamic library (dylib) with an expected name in a path a victim application searches at runtime. The dynamic loader will try to find the dylibs based on the sequential order of the search paths.
+* Paths to dylibs may be prefixed with `@rpath`, which allows developers to use relative paths to specify an array of search paths used at runtime based on the location of the executable
+* Additionally, if weak linking is used, such as the `LC_LOAD_WEAK_DYLIB` function, an application will still execute even if an expected dylib is not present
+* Weak linking enables developers to run an application on multiple macOS versions as new APIs are added
+
+Adversaries may gain execution by inserting malicious dylibs with the name of the missing dylib in the identified path
+* Dylibs are loaded into an application's address space allowing the malicious dylib to inherit the application's privilege level and resources
+* Based on the application, this could result in privilege escalation and uninhibited network access
+  * This method may also evade detection from security products since the execution is masked under a legitimate process
 
 
 ## Executable Installer File Permissions Weakness
+Installers processes may automatically execute specific binaries as part of their functionality or to perform other actions
+* If the permissions on the file system directory containing a target binary, or permissions on the binary itself, are improperly set, then the target binary may be overwritten with another binary using user-level permissions and executed by the original process
+  * If the original process and thread are running under a higher permissions level, then the replaced binary will also execute under higher-level permissions
 
+Another variation of this technique can be performed by taking advantage of a weakness that is common in executable, self-extracting installers
+* During the installation process, it is common for installers to use a subdirectory within the `%TEMP%` directory to unpack binaries such as DLLs, EXEs, or other payloads
+* When installers create subdirectories and files they often do not set appropriate permissions to restrict write access, which allows for execution of untrusted code placed in the subdirectories or overwriting of binaries used in the installation process
+  * This behavior is related to and may take advantage of DLL Search Order Hijacking.
+
+Adversaries may use this technique to replace legitimate binaries with malicious ones as a means of executing code at a higher permissions level
+* Some installers may require elevated privileges that will result in privilege escalation when executing adversary controlled code
+  * This behavior is related to Bypass User Account Control
+  * If the executing process is set to run at a specific time or during a certain event then this technique can also be used for persistence
 
 ## Dynamic Linker Hijacking
+During the execution preparation phase of a program, the dynamic linker loads specified absolute paths of shared libraries from environment variables and files, such as `LD_PRELOAD` on Linux or `DYLD_INSERT_LIBRARIES` on macOS
+* Libraries specified in environment variables are loaded first, taking precedence over system libraries with the same function name
+* These variables are often used by developers to debug binaries without needing to recompile, deconflict mapped symbols, and implement custom functions without changing the original library
+
+**Linux and macOS**
+Hijacking dynamic linker variables grants access to the victim process's memory, system/network resources, and possibly elevated privileges
+* This method may evade detection from security products since the execution is masked under a legitimate process
+  * Adversaries can set environment variables via CLI using the *export*, *setenv* function, or *putenv* function
+  * Adversaries can also leverage Dynamic Linker Hijacking to export variables in a shell or set variables programmatically using higher level syntax such Python’s *os.environ*
+
+**Linux**
+Set *LD_PRELOAD* to point to malicious libraries that match the name of legitimate libraries which are requested by a victim program, causing the operating system to load the adversary's malicious code upon execution of the victim program
+* *LD_PRELOAD* can be set via the `environment variable` or `/etc/ld.so.preload` file
+  * Libraries specified by *LD_PRELOAD* are loaded and mapped into memory by *dlopen()* and *mmap()* 
+
+**macOS**
+Set the `DYLD_INSERT_LIBRARIES` environment variable to point to malicious libraries containing names of legitimate libraries or functions requested by a victim program
+
 
 
 ## Path Interception by PATH Environment Variable
+The *PATH* environment variable contains a list of directories. Certain methods of executing a program rely solely on the PATH environment variable to determine the locations that are searched for a program when the path for the program is not given
+  
+If any directories are listed in the PATH environment variable before the Windows directory, `%SystemRoot%\system32`, a program may be placed in the preceding directory that is named the same as a Windows program, which will be executed when that command is executed from a script or command-line
 
 
 ## Path Interception by Search Order Hijacking
+**Search order hijacking:** Occurs when an adversary abuses the order in which Windows searches for programs that are not given a path. Unlike DLL Search Order Hijacking, the search order differs depending on the method that is used to execute the program
+* **Note:** It's common for Windows to search in the directory of the initiating program before searching through the Windows system directory
+
+Adversaries may execute their own malicious payloads by hijacking the search order used to load other programs. Because some programs do not call other programs using the full path, adversaries may place their own file in the directory where the calling program is located, causing the operating system to launch their malicious software at the request of the calling program.
+
+* Place a program called "net.exe" within the same directory as example.exe, "net.exe" will be run instead of the Windows system utility net
+* In addition, if an adversary places a program called "net.com" in the same directory as "net.exe", then cmd.exe /C net user will execute "net.com" instead of "net.exe" due to the order of executable extensions defined under PATHEXT
 
 
 ## Path Interception by Unquoted Path
+Adversaries can take advantage of paths that lack surrounding quotations by placing an executable in a higher level directory within the path, so that Windows will choose the adversary's executable to launch
+
+Service paths and shortcut paths may also be vulnerable to path interception if the path has one or more spaces and is not surrounded by quotation marks (`C:\unsafe path \program.exe` vs. `"C:\safe path \program.exe"`) Stored in Windows Registry keys 
+
+Attackers can place an executable in a higher level directory of the path, and Windows will resolve that executable instead of the intended executable.
+* If the path in a shortcut is `C:\program files\myapp.exe`, create a program at `C:\program.exe` that will be run instead of the intended program
 
 
 ## Services File Permissions Weakness
+Adversaries may use flaws in the permissions of Windows services to replace the binary that is executed upon service start
+* If the permissions on the file system directory containing a target binary, or permissions on the binary itself are improperly set, then the target binary may be overwritten with another binary using user-level permissions and executed by the original process
+* If the original process and thread are running under a higher permissions level, then the replaced binary will also execute under higher-level permissions
+  
 
 
 ## Services Registry Permissions Weakness
+Adversaries may use flaws in the permissions for Registry keys related to services to redirect from the originally specified executable to one that they control, in order to launch their own code when a service starts
 
+Windows stores local service configuration information in the Registry under `HKLM\SYSTEM\CurrentControlSet\Services`
+* The information stored under a service's Registry keys can be manipulated to modify a service's execution parameters through tools such as the service controller, sc.exe, PowerShell, or Reg
+
+
+Access to Registry keys is controlled through access control lists and user permissions
+* If the permissions for users and groups are not properly set and allow access to the Registry keys for a service, adversaries may change the service's `binPath/ImagePath` to point to a different executable under their control
+
+Adversaries may also alter other Registry keys in the service’s Registry tree. For example, the FailureCommand key may be changed so that the service is executed in an elevated context anytime the service fails or is intentionally corrupted.
+
+The Performance key contains the name of a driver service's performance DLL and the names of several exported functions in the DLL. If the Performance key is not already present and if an adversary-controlled user has the Create Subkey permission, adversaries may create the Performance key in the service’s Registry tree to point to a malicious DLL
+
+Adversaries may also add the Parameters key, which stores driver-specific data, or other custom subkeys for their malicious services to establish persistence or enable other malicious activities. Additionally, If adversaries launch their malicious services using svchost.exe, the service’s file may be identified using `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\servicename\Parameters\ServiceDll`
 
 ## COR_PROFILER
 
