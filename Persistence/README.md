@@ -1656,61 +1656,217 @@ Windows stores local service configuration information in the Registry under `HK
 Access to Registry keys is controlled through access control lists and user permissions
 * If the permissions for users and groups are not properly set and allow access to the Registry keys for a service, adversaries may change the service's `binPath/ImagePath` to point to a different executable under their control
 
-Adversaries may also alter other Registry keys in the service’s Registry tree. For example, the FailureCommand key may be changed so that the service is executed in an elevated context anytime the service fails or is intentionally corrupted.
+Adversaries may also alter other Registry keys in the service’s Registry tree
+* The *FailureCommand* key may be changed so that the service is executed in an elevated context anytime the service fails or is intentionally corrupted
 
-The Performance key contains the name of a driver service's performance DLL and the names of several exported functions in the DLL. If the Performance key is not already present and if an adversary-controlled user has the Create Subkey permission, adversaries may create the Performance key in the service’s Registry tree to point to a malicious DLL
+The *Performance* key contains the name of a driver service's performance DLL and the names of several exported functions in the DLL
+* If the Performance key is not already present and if an adversary-controlled user has the *Create Subkey* permission, adversaries may create the Performance key in the service’s Registry tree to point to a malicious DLL
 
-Adversaries may also add the Parameters key, which stores driver-specific data, or other custom subkeys for their malicious services to establish persistence or enable other malicious activities. Additionally, If adversaries launch their malicious services using svchost.exe, the service’s file may be identified using `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\servicename\Parameters\ServiceDll`
+Adversaries may also add the *Parameters* key, which stores driver-specific data, or other custom subkeys for their malicious services to establish persistence or enable other malicious activities
+* Additionally, If adversaries launch their malicious services using svchost.exe, the service’s file may be identified using `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\servicename\Parameters\ServiceDll`
 
 ## COR_PROFILER
+**COR_PROFILER:** A .NET Framework feature which allows developers to specify an unmanaged (or external of .NET) profiling DLL to be loaded into each .NET process that loads the Common Language Runtime (CLR). These profilers are designed to monitor, troubleshoot, and debug managed code executed by the .NET CLR.
 
+The COR_PROFILER environment variable can be set at various scopes (system, user, or process) resulting in different levels of influence
+* System and user-wide environment variable scopes are specified in the Registry, where a Component Object Model (COM) object can be registered as a profiler DLL
+* A process scope COR_PROFILER can also be created in-memory without modifying the Registry
+* Starting with .NET Framework 4, the profiling DLL does not need to be registered as long as the location of the DLL is specified in the COR_PROFILER_PATH environment variable.
+
+Adversaries may abuse COR_PROFILER to establish persistence that executes a malicious DLL in the context of all .NET processes every time the CLR is invoked
+
+The COR_PROFILER can also be used to elevate privileges (ex: Bypass User Account Control) if the victim .NET process executes at a higher permission level, as well as to hook and Impair Defenses provided by .NET processes
 
 ## KernelCallbackTable
+**KernelCallbackTable:** Can be found in the Process Environment Block (PEB) and is initialized to an array of graphic functions available to a GUI process once user32.dll is loaded
 
-### Bypassing ###
+Attackers may hijack the execution flow of a process using the *KernelCallbackTable* by replacing an original callback function with a malicious payload
+* Modifying callback functions can be achieved in various ways involving related behaviors such as Reflective Code Loading or Process Injection into another process
 
+A pointer to the memory address of the *KernelCallbackTable* can be obtained by locating the PEB (ex: via a call to the *NtQueryInformationProcess()* Native API function)
+* Once the pointer is located, the *KernelCallbackTable* can be duplicated, and a function in the table (e.g., fnCOPYDATA) set to the address of a malicious payload (ex: via WriteProcessMemory())
+* The PEB is then updated with the new address of the table -- Once the tampered function is invoked, the malicious payload will be triggered
+
+The tampered function is typically invoked using a Windows message. After the process is hijacked and malicious code is executed, the KernelCallbackTable may also be restored to its original state by the rest of the malicious payload
+* Use of the *KernelCallbackTable* to hijack execution flow may evade detection from security products since the execution can be masked under a legitimate process
 
 
 
 --------------------------
 # Implant Internal Image #
+Adversaries may implant cloud or container images with malicious code to establish persistence after gaining access to an environment. Unlike *Upload Malware*, this technique focuses on adversaries implanting an image in a registry within a victim’s environment. Depending on how the infrastructure is provisioned, this could provide persistent access if the infrastructure provisioning tool is instructed to always use the latest image
+
+A tool has been developed to facilitate planting backdoors in cloud container images
+
+If an adversary has access to a compromised AWS instance, and permissions to list the available container images, they may implant a backdoor such as a Web Shell
 
 
 
-### Procedure ###
-
-### Mitigation ###
-
-### Bypassing ###
 ---------------------------------
 # Modify Authentication Process #
+The authentication process is handled by mechanisms, such as the Local Security Authentication Server (LSASS) process and the Security Accounts Manager (SAM) on Windows, pluggable authentication modules (PAM) on Unix-based systems, and authorization plugins on MacOS systems, responsible for gathering, storing, and validating credentials. By modifying an authentication process, an adversary may be able to authenticate to a service or system without using Valid Accounts
+
+Adversaries may maliciously modify a part of this process to either reveal credentials or bypass authentication mechanisms. Compromised credentials or access may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services.
 
 
-### Procedure ###
+## Domain Controller Authentication
+Malware may be used to inject false credentials into the authentication process on a domain controller with the intent of creating a backdoor used to access any user’s account and/or credentials (ex: Skeleton Key)
+* Skeleton key works through a patch on an enterprise domain controller authentication process (LSASS) with credentials that adversaries may use to bypass the standard authentication system
+* Once patched, an adversary can use the injected password to successfully authenticate as any domain user account (until the the skeleton key is erased from memory by a reboot of the domain controller)
+* Authenticated access may enable unfettered access to hosts and/or resources within single-factor authentication environments
+  
 
-### Mitigation ###
+## Password Filter DLL
+Windows password filters are password policy enforcement mechanisms for both domain and local accounts. Filters are implemented as DLLs containing a method to validate potential passwords against password policies
+* Filter DLLs can be positioned on local computers for local accounts and/or domain controllers for domain accounts
+  * Before registering new passwords in the Security Accounts Manager (SAM), the Local Security Authority (LSA) requests validation from each registered filter
+  * Any potential changes cannot take effect until every registered filter acknowledges validation
 
-### Bypassing ###
+Adversaries can register malicious password filters to harvest credentials from local computers and/or entire domains
+* To perform proper validation, filters must receive plain-text credentials from the LSA
+* A malicious password filter would receive these plain-text credentials every time a password request is made
+
+## Pluggable Authentication Modules
+PAM is a modular system of configuration files, libraries, and executable files which guide authentication for many services
+* The most common authentication module is `pam_unix.so`, which retrieves, sets, and verifies account authentication information in `/etc/passwd` and `/etc/shadow`
+
+Adversaries may modify components of the PAM system to create backdoors
+* PAM components, such as `pam_unix.so`, can be patched to accept arbitrary adversary supplied values as legitimate credentials
+
+Malicious modifications to the PAM system may also be abused to steal credentials
+* Adversaries may infect PAM resources with code to harvest user credentials, since the values exchanged with PAM components may be plain-text since PAM does not store passwords
+
+## Network Device Authentication
+Adversaries may use Patch System Image to hard code a password in the operating system, thus bypassing of native authentication mechanisms for local accounts on network devices.
+
+Modify System Image may include implanted code to the operating system for network devices to provide access for adversaries using a specific password. The modification includes a specific password which is implanted in the operating system image via the patch. Upon authentication attempts, the inserted code will first check to see if the user input is the password. If so, access is granted. Otherwise, the implanted code will pass the credentials on for verification of potentially valid credentials
+
+## Reversible Encryption
+An adversary may abuse Active Directory authentication encryption properties to gain access to credentials on Windows systems.The *AllowReversiblePasswordEncryption* property specifies whether reversible password encryption for an account is enabled or disabled.
+* By default this property is disabled; if the property is enabled and/or a user changes their password after it is enabled, an adversary may be able to obtain the plaintext of passwords created/changed after the property was enabled
+  
+  
+To decrypt the passwords, an adversary needs four components:
+
+1. Encrypted password (G$RADIUSCHAP) from the Active Directory user-structure *userParameters*
+2. 16 byte randomly-generated value (G$RADIUSCHAPKEY) also from *userParameters*
+3. Global LSA secret (G$MSRADIUSCHAPKEY)
+4. Static key hardcoded in the Remote Access Subauthentication DLL (RASSFM.DLL)
+
+With this information, an adversary may be able to reproduce the encryption key and subsequently decrypt the encrypted password value
+
+An adversary may set this property at various scopes through Local Group Policy Editor, user properties, Fine-Grained Password Policy (FGPP), or via the ActiveDirectory PowerShell module.
+* An adversary may implement and apply a FGPP to users or groups if the Domain Functional Level is set to "Windows Server 2008" or higher
+* In PowerShell, an adversary may make associated changes to user settings using commands similar to `Set-ADUser -AllowReversiblePasswordEncryption $true`
+
+
+
 ------------------------------
 # Office Application Startup #
+There are multiple mechanisms that can be used with Microsoft Office for persistence when an Office-based application is started; this can include the use of Office Template Macros and add-ins.
+
+* A variety of features have been discovered in Outlook that can be abused to obtain persistence, such as Outlook rules, forms, and Home Page
+* These persistence mechanisms can work within Outlook or be used through Office 365
+
+
+## Office Template Macros
+Microsoft Office contains templates that are part of common Office applications and are used to customize styles. The base templates within the application are used each time an application starts
+
+Office Visual Basic for Applications (VBA) macros can be inserted into the base template and used to execute code when the respective Office application starts in order to obtain persistence
+* By default, Word has a Normal.dotm template created that can be modified to include a malicious macro
+* Shared templates may also be stored and pulled from remote locations
+
+**Word Normal.dotm location:**
+`C:\Users\<username>\AppData\Roaming\Microsoft\Templates\Normal.dotm`
+
+**Excel Personal.xlsb location:**
+`C:\Users\<username>\AppData\Roaming\Microsoft\Excel\XLSTART\PERSONAL.XLSB`
+
+Adversaries may change the location of the base template to point to their own by hijacking the application's search order
+* Word 2016 will first look for Normal.dotm under `C:\Program Files (x86)\Microsoft Office\root\Office16\`, or by modifying the GlobalDotName registry key
+* By modifying the *GlobalDotName* registry key an adversary can specify an arbitrary location, file name, and file extension to use for the template that will be loaded on application startup
+* To abuse *GlobalDotName*, adversaries may first need to register the template as a trusted document or place it in a trusted location
+
+An adversary may enable macros to execute unrestricted depending on the system or enterprise security policy on use of macros
+
+## Office Test
+An Office Test Registry location exists that allows a user to specify an arbitrary DLL that will be executed every time an Office application is started
+* This Registry key is thought to be used by Microsoft to load DLLs for testing and debugging purposes while developing Office applications
+  * This Registry key is not created by default during an Office installation
+
+**There exist user and global Registry keys for the Office Test feature:**
+
+* `HKEY_CURRENT_USER\Software\Microsoft\Office test\Special\Perf`
+* `HKEY_LOCAL_MACHINE\Software\Microsoft\Office test\Special\Perf`
+
+Adversaries may add this Registry key and specify a malicious DLL that will be executed whenever an Office application, such as Word or Excel, is started
+
+## Outlook Forms
+Outlook forms are used as templates for presentation and functionality in Outlook messages
+* Custom Outlook forms can be created that will execute code when a specifically crafted email is sent by an adversary utilizing the same custom Outlook form
+
+Once malicious forms have been added to the user’s mailbox, they will be loaded when Outlook is started
+* Malicious forms will execute when an adversary sends a specifically crafted email to the user
+
+
+## Outlook Home Page
+Outlook Home Page is a legacy feature used to customize the presentation of Outlook folders
+* This feature allows for an internal or external URL to be loaded and presented whenever a folder is opened
+* A malicious HTML page can be crafted that will execute code when loaded by Outlook Home Page
+
+Once malicious home pages have been added to the user’s mailbox, they will be loaded when Outlook is started. Malicious Home Pages will execute when the right Outlook folder is loaded/reloaded
+
+## Outlook Rules
+Outlook rules allow a user to define automated behavior to manage email messages. A benign rule might, for example, automatically move an email to a particular folder in Outlook if it contains specific words from a specific sender
+* Malicious Outlook rules can be created that can trigger code execution when an adversary sends a specifically crafted email to that user
+
+Once malicious rules have been added to the user’s mailbox, they will be loaded when Outlook is started. Malicious rules will execute when an adversary sends a specifically crafted email to the user
+
+## Add-ins
+Office add-ins can be used to add functionality to Office programs
+* There are different types of add-ins that can be used by the various Office products including:
+* Word/Excel add-in Libraries (WLL/XLL), VBA add-ins, Office Component Object Model (COM) add-ins, automation add-ins, VBA Editor (VBE), Visual Studio Tools for Office (VSTO) add-ins, and Outlook add-ins
+
+Add-ins can be used to obtain persistence because they can be set to execute code when an Office application starts
 
 
 
-### Procedure ###
-
-### Mitigation ###
-
-### Bypassing ###
 ---------------
 # Pre-OS Boot #
+Adversaries may abuse Pre-OS Boot mechanisms as a way to establish persistence on a system. During the booting process of a computer, firmware and various startup services are loaded before the operating system. These programs control flow of execution before the operating system takes control
+
+Adversaries may overwrite data in boot drivers or firmware such as BIOS (Basic Input/Output System) and The Unified Extensible Firmware Interface (UEFI) to persist on systems at a layer below the operating system. This can be particularly difficult to detect as malware at this level will not be detected by host software-based defenses
+
+
+## System Firmware
+The BIOS and UEFI or EFI are examples of system firmware that operate as the software interface between the operating system and hardware of a computer.
+
+System firmware like BIOS and (U)EFI underly the functionality of a computer and may be modified by an adversary to perform or assist in malicious activity
+* Capabilities exist to overwrite the system firmware, which may give sophisticated adversaries a means to install malicious firmware updates as a means of persistence on a system that may be difficult to detect
 
 
 
-### Procedure ###
+## Component Firmware
+Some adversaries may employ sophisticated means to compromise computer components and install malicious firmware that will execute adversary code outside of the operating system and main system firmware or BIOS
+* This technique may be similar to System Firmware but conducted upon other system components/devices that may not have the same capability or level of integrity checking.
 
-### Mitigation ###
+Malicious component firmware could provide both a persistent level of access to systems despite potential typical failures to maintain access and hard disk re-images, as well as a way to evade host software-based defenses and integrity checks.
 
-### Bypassing ###
+## Bootkit
+Bootkits reside at a layer below the operating system and may make it difficult to perform full remediation unless an organization suspects one was used and can act accordingly.
+
+A bootkit is a malware variant that modifies the boot sectors of a hard drive, including the Master Boot Record (MBR) and Volume Boot Record (VBR). [1] The MBR is the section of disk that is first loaded after completing hardware initialization by the BIOS. It is the location of the boot loader. An adversary who has raw access to the boot drive may overwrite this area, diverting execution during startup from the normal boot loader to adversary code
+
+The MBR passes control of the boot process to the VBR. Similar to the case of MBR, an adversary who has raw access to the boot drive may overwrite the VBR to divert execution during startup to adversary code.
+
+## ROMMONkit
+
+
+## TFTP Boot
+
+
+
+
 --------------------------
 # Scheduled Tasks / Jobs #
 
