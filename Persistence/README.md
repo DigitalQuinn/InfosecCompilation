@@ -20,7 +20,6 @@
 - [Modify Authentication Process](#modify-authentication-process)
 - [Office Application Startup](#office-application-startup)
 - [Pre-OS Boot](#pre-os-boot)
-- [Scheduled Tasks / Jobs](#scheduled-tasks--jobs)
 - [Server Software Component](#server-software-component)
 - [Traffic Signaling](#traffic-signaling)
 - [Valid Accounts](#valid-accounts)
@@ -1853,49 +1852,152 @@ Some adversaries may employ sophisticated means to compromise computer component
 Malicious component firmware could provide both a persistent level of access to systems despite potential typical failures to maintain access and hard disk re-images, as well as a way to evade host software-based defenses and integrity checks.
 
 ## Bootkit
-Bootkits reside at a layer below the operating system and may make it difficult to perform full remediation unless an organization suspects one was used and can act accordingly.
+Bootkit: Malware variant that modifies the boot sectors of a hard drive, including the Master Boot Record (MBR) and Volume Boot Record (VBR)
+* MBR: The section of disk that is first loaded after completing hardware initialization by the BIOS -- The location of the boot loader
 
-A bootkit is a malware variant that modifies the boot sectors of a hard drive, including the Master Boot Record (MBR) and Volume Boot Record (VBR). [1] The MBR is the section of disk that is first loaded after completing hardware initialization by the BIOS. It is the location of the boot loader. An adversary who has raw access to the boot drive may overwrite this area, diverting execution during startup from the normal boot loader to adversary code
-
-The MBR passes control of the boot process to the VBR. Similar to the case of MBR, an adversary who has raw access to the boot drive may overwrite the VBR to divert execution during startup to adversary code.
+An adversary who has raw access to the boot drive may overwrite this area, diverting execution during startup from the normal boot loader to adversary code
+* The MBR passes control of the boot process to the VBR
+* An adversary who has raw access to the boot drive may overwrite the VBR to divert execution during startup to adversary code
 
 ## ROMMONkit
-
+ROMMON: Cisco network device firmware that functions as a boot loader, boot image, or boot helper to initialize hardware and software when the platform is powered on or reset
+* Similar to TFTP Boot, an adversary may upgrade the ROMMON image locally or remotely with adversary code and restart the device in order to overwrite the existing ROMMON image
+* This provides adversaries with the means to update the ROMMON to gain persistence on a system in a way that may be difficult to detect
 
 ## TFTP Boot
+TFTP boot is commonly used by network administrators to load configuration-controlled network device images from a centralized management server.
+* Netbooting is one option in the boot sequence and can be used to centralize, manage, and control device images
 
+Adversaries may manipulate the configuration on the network device specifying use of a malicious TFTP server, which may be used in conjunction with Modify System Image to load a modified image on device startup or reset
+* The unauthorized image allows adversaries to modify device configuration, add malicious capabilities to the device, and introduce backdoors to maintain control of the network device while minimizing detection through use of a standard functionality
+* This technique is similar to ROMMONkit and may result in the network device running a modified image
 
-
-
---------------------------
-# Scheduled Tasks / Jobs #
-
-
-### Procedure ###
-
-### Mitigation ###
-
-### Bypassing ###
 
 -----------------------------
 # Server Software Component #
+Adversaries may abuse legitimate extensible development features of servers to establish persistent access to systems. Enterprise server applications may include features that allow developers to write and install software or scripts to extend the functionality of the main application. Adversaries may install malicious components to extend and abuse server applications.
+
+
+## SQL Stored Procedures
+SQL Stored Procedures are code that can be saved and reused so that database users do not waste time rewriting frequently used SQL queries
+* Stored procedures can be invoked via SQL statements to the database using the procedure name or via defined events
+
+Adversaries may craft malicious stored procedures that can provide a persistence mechanism in SQL database servers
+* To execute operating system commands through SQL syntax the adversary may have to enable additional functionality, such as `xp_cmdshell` for MSSQL Server
+
+Microsoft SQL Server can enable common language runtime (CLR) integration. With CLR integration enabled, application developers can write stored procedures using any .NET framework language (VB .NET, C#, etc.)
+* Adversaries may craft or modify CLR assemblies that are linked to stored procedures since these CLR assemblies can be made to execute arbitrary commands
+
+## Transport Agent
+Microsoft Exchange transport agents can operate on email messages passing through the transport pipeline to perform various tasks such as filtering spam, filtering malicious attachments, journaling, or adding a corporate signature to the end of all outgoing emails
+
+Transport agents can be written by application developers and then compiled to .NET assemblies that are subsequently registered with the Exchange server. Transport agents will be invoked during a specified stage of email processing and carry out developer defined tasks
+
+Adversaries may register a malicious transport agent to provide a persistence mechanism in Exchange Server that can be triggered by adversary-specified email events. Though a malicious transport agent may be invoked for all emails passing through the Exchange transport pipeline, the agent can be configured to only carry out specific tasks in response to adversary defined criteria
+* The transport agent may only carry out an action like copying in-transit attachments and saving them for later exfiltration if the recipient email address matches an entry on a list provided by the adversary
+
+## Web Shell
+Web shell: A Web script that is placed on an openly accessible Web server to allow an adversary to use the Web server as a gateway into a network. A Web shell may provide a set of functions to execute or a command-line interface on the system that hosts the Web server
+
+In addition to a server-side script, a Web shell may have a client interface program that is used to talk to the Web server 
+
+## IIS Components
+IIS provides several mechanisms to extend the functionality of the web servers
+* Internet Server Application Programming Interface (ISAPI) extensions and filters can be installed to examine and/or modify incoming and outgoing IIS web requests
+* Extensions and filters are deployed as DLL files that export three functions: `Get{Extension/Filter}Version, Http{Extension/Filter}Proc, and Terminate{Extension/Filter}` -- IIS modules may also be installed to extend IIS web servers
+
+Adversaries may install malicious ISAPI extensions and filters to observe and/or modify traffic, execute commands on compromised machines, or proxy command and control traffic
+* ISAPI extensions and filters may have access to all IIS web requests and responses
+  * An adversary may abuse these mechanisms to modify HTTP responses in order to distribute malicious commands/content to previously comprised hosts
+
+Adversaries may also install malicious IIS modules to observe and/or modify traffic
+IIS 7.0 introduced modules that provide the same unrestricted access to HTTP requests and responses as ISAPI extensions and filters
+IIS modules can be written as a DLL that exports RegisterModule, or as a .NET application that interfaces with ASP.NET APIs to access IIS HTTP requests
+
+## Terminal Services DLL
+Adversaries may abuse components of Terminal Services to enable persistent access to systems. Microsoft Terminal Services, renamed to Remote Desktop Services in some Windows Server OSs as of 2022, enable remote terminal connections to hosts. Terminal Services allows servers to transmit a full, interactive, graphical user interface to clients via RDP
+
+Windows Services that are run as a "generic" process (ex: svchost.exe) load the service's DLL file, the location of which is stored in a Registry entry named ServiceDll
+The termsrv.dll file, typically stored in `%SystemRoot%\System32\`, is the default ServiceDll value for Terminal Services in `HKLM\System\CurrentControlSet\services\TermService\Parameters\`
+
+Adversaries may modify and/or replace the Terminal Services DLL to enable persistent access to victimized hosts
+* Modifications to this DLL could be done to execute arbitrary payloads as well as to simply enable abusable features of Terminal Services
+
+Attackers may enable features such as concurrent RDP sessions by either patching the termsrv.dll file or modifying the ServiceDll value to point to a DLL that provides increased RDP functionality
+
+On a non-server Windows OS this increased functionality may also enable an adversary to avoid Terminal Services prompts that warn/log out users of a system when a new RDP session is created
 
 
 
-### Procedure ###
-
-### Mitigation ###
-
-### Bypassing ###
 ---------------------
 # Traffic Signaling #
+Traffic signaling involves the use of a magic value or sequence that must be sent to a system to trigger a special response, such as opening a closed port or executing a malicious task
+* This may take the form of sending a series of packets with certain characteristics before a port will be opened that the adversary can use for C2
 
 
-### Procedure ###
+Adversaries may also communicate with an already open port, but the service listening on that port will only respond to commands or trigger other malicious functionality if passed the appropriate magic value(s)
 
-### Mitigation ###
+The observation of the signal packets to trigger the communication can be conducted through different methods
+* One means is to use the *libpcap* libraries to sniff for the packets in question
+* Another method leverages raw sockets, which enables the malware to use ports that are already open for use by other programs
 
-### Bypassing ###
+On network devices, attackers may use crafted packets to enable Network Device Authentication for standard services offered by the device such as telnet
+* Such signaling may also be used to open a closed service port such as telnet, or to trigger module modification of malware implants on the device, adding, removing, or changing malicious capabilities
+* Attackers may use crafted packets to attempt to connect to one or more (open or closed) ports, but may also attempt to connect to a router interface, broadcast, and network address IP on the same port in order to achieve their goals and objectives
+  * To enable this traffic signaling on embedded devices, adversaries must first achieve and leverage Patch System Image due to the monolithic nature of the architecture
+
+Adversaries may also use the Wake-on-LAN feature to turn on powered off systems
+* Wake-on-LAN: Hardware feature that allows a powered down system to be powered on, or woken up, by sending a magic packet to it
+  * Once the system is powered on, it may become a target for lateral movement 
+
+## Port Knocking 
+To enable a port, an adversary sends a series of attempted connections to a predefined sequence of closed ports
+* After the sequence is completed, opening a port is often accomplished by the host based firewall, but could also be implemented by custom software
+
+This technique has been observed both for the dynamic opening of a listening port as well as the initiating of a connection to a listening server on a different system
+
+
+The observation of the signal packets to trigger the communication can be conducted through different methods
+* One means is to use the libpcap libraries to sniff for the packets in question
+* Another method leverages raw sockets, which enables the malware to use ports that are already open for use by other programs
 
 # Valid Accounts #
 ------------------
+Compromised credentials may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services
+
+
+Compromised credentials may also grant an adversary increased privilege to specific systems or access to restricted areas of the network
+
+Attackers may abuse inactive accounts -- Using these accounts may allow the adversary to evade detection, as the original account user will not be present to identify any anomalous activity taking place on their account
+
+The overlap of permissions for local, domain, and cloud accounts across a network of systems is of concern because the adversary may be able to pivot across accounts and systems to reach a high level of access to bypass access controls set within the enterprise
+
+## Default Account 
+Default accounts are those that are built-into an OS, such as the Guest or Administrator accounts on Windows systems
+* Default accounts also include default factory/provider set accounts on other types of systems, software, or devices
+* Note: Default accounts are not limited to client machines, rather also include accounts that are preset for equipment such as network devices and computer applications whether they are internal, open source, or commercial
+  * Appliances that come preset with a username and password combination pose a serious threat to organizations that do not change it post installation, as they are easy targets for an adversary
+  * Attackers may also utilize publicly disclosed or stolen Private Keys or credential materials to legitimately connect to remote environments via Remote Services
+
+## Domain Account 
+Domain accounts are those managed by Active Directory Domain Services where access and permissions are configured across systems and services that are part of that domain -- Domain accounts can cover users, administrators, and services
+
+Adversaries may compromise domain accounts, some with a high level of privileges, through various means such as OS Credential Dumping or password reuse, allowing access to privileged resources of the domain
+
+## Local Account 
+Local accounts are those configured by an organization for use by users, remote support, services, or for administration on a single system or service
+
+Local Accounts may also be abused to elevate privileges and harvest credentials through OS Credential Dumping
+* Password reuse may allow the abuse of local accounts across a set of machines on a network for the purposes of Privilege Escalation and Lateral Movement
+
+## Cloud Account
+Cloud accounts are those created and configured by an organization for use by users, remote support, services, or for administration of resources within a cloud service provider or SaaS application
+* Cloud accounts may be federated with traditional identity management system
+
+Compromised credentials for cloud accounts can be used to harvest sensitive data from online storage accounts and databases
+* Access to cloud accounts can also be abused to gain Initial Access to a network by abusing a Trusted Relationship
+* Compromise of federated cloud accounts may allow adversaries to more easily move laterally within an environment
+
+Once a cloud account is compromised, an adversary may perform Account Manipulation - for example, by adding Additional Cloud Roles - to maintain persistence and potentially escalate their privileges
+
+
