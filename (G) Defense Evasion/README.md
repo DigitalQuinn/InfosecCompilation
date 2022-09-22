@@ -1,9 +1,9 @@
 # Defense Evasion
 Defense Evasion consists of techniques that adversaries use to avoid detection throughout their compromise. Techniques used for defense evasion include uninstalling/disabling security software or obfuscating/encrypting data and scripts. Adversaries also leverage and abuse trusted processes to hide and masquerade their malware. Other tactics’ techniques are cross-listed here when those techniques include the added benefit of subverting defenses.
 
+
 <hr>
 
--------------------
 # Table of Contents
 - [Abuse Elevation Control Mechanism](#abuse-elevation-control-mechanism)
 - [Access Token Manipulation](#access-token-manipulation)
@@ -49,7 +49,8 @@ Defense Evasion consists of techniques that adversaries use to avoid detection t
 
 <br>
 
------------------------------------
+<hr>
+
 # Abuse Elevation Control Mechanism
 Adversaries may circumvent mechanisms designed to control elevate privileges to gain higher-level permissions. Most modern systems contain native elevation control mechanisms that are intended to limit privileges that a user can perform on a machine. Authorization has to be granted to specific users in order to perform tasks that can be considered of higher risk. An adversary can perform several methods to take advantage of built-in control mechanisms in order to escalate privileges on a system.
 
