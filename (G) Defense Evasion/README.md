@@ -1,6 +1,7 @@
 # Defense Evasion
 Defense Evasion consists of techniques that adversaries use to avoid detection throughout their compromise. Techniques used for defense evasion include uninstalling/disabling security software or obfuscating/encrypting data and scripts. Adversaries also leverage and abuse trusted processes to hide and masquerade their malware. Other tactics’ techniques are cross-listed here when those techniques include the added benefit of subverting defenses.
 
+<hr>
 
 -------------------
 # Table of Contents
@@ -52,6 +53,9 @@ Defense Evasion consists of techniques that adversaries use to avoid detection t
 # Abuse Elevation Control Mechanism
 Adversaries may circumvent mechanisms designed to control elevate privileges to gain higher-level permissions. Most modern systems contain native elevation control mechanisms that are intended to limit privileges that a user can perform on a machine. Authorization has to be granted to specific users in order to perform tasks that can be considered of higher risk. An adversary can perform several methods to take advantage of built-in control mechanisms in order to escalate privileges on a system.
 
+<br>
+
+
 ## Setuid and Setgid
 An adversary may abuse configurations where an application has the setuid or setgid bits set in order to get code running in a different (and possibly more privileged) user’s context
 
@@ -71,6 +75,9 @@ Adversaries may choose to find and target vulnerable binaries with the setuid or
   * `find / -perm +4000 2>/dev/null`: Find files w/ setuid set
   * `find / -perm +2000 2>/dev/null`: Find files w/ setgid set
 
+<br>
+
+
 ## Bypass User Account Control
 Windows UAC allows a program to elevate its privileges to perform a task under administrator-level permissions, possibly by prompting the user for confirmation
 
@@ -80,6 +87,8 @@ If the UAC protection level of a computer is set to anything but the highest lev
 
 Additional bypass methods are regularly discovered and some used in the wild, such as:
 * **eventvwr.exe** can auto-elevate and execute a specified binary or script
+
+<br>
 
 
 ## Sudo and Sudo Caching
@@ -104,6 +113,8 @@ Adversaries can abuse poor configurations of these mechanisms to escalate privil
   * If *tty_tickets* is disabled, adversaries can do this from any tty for that user
 
 
+<br>
+
 
 ## Elevated Execution with Prompt
 Adversaries may leverage the *AuthorizationExecuteWithPrivileges* API to escalate privileges by prompting the user for credentials. The purpose of this API is to give application developers an easy way to perform operations with root privileges, such as for application installation or updating. This API does not validate that the program requesting root privileges comes from a reputable source or has been maliciously modified.
@@ -113,6 +124,8 @@ Although this API is deprecated, it still fully functions in the latest releases
 Adversaries may abuse *AuthorizationExecuteWithPrivileges* to obtain root privileges in order to install malicious software on victims and install persistence mechanisms
 * This technique may be combined with Masquerading to trick the user into granting escalated privileges to malicious code
 * This technique has also been shown to work by modifying legitimate programs present on the machine that make use of this API
+
+<br>
 
 
 # Access Token Manipulation
@@ -126,6 +139,8 @@ An adversary can use built-in Windows API functions to copy access tokens from e
 Any standard user can use the `runas` command, and the Windows API functions, to create impersonation tokens; it does not require access to an administrator account. There are also other mechanisms, such as Active Directory fields, that can be used to modify access tokens
 
 
+<br>
+
 
 ## Token Impersonation/Theft
 An adversary can create a new access token that duplicates an existing token using *DuplicateToken(Ex)*
@@ -134,15 +149,21 @@ An adversary can create a new access token that duplicates an existing token usi
 An adversary may do this when they have a specific, existing process they want to assign the new token to
 * This may be useful for when the target user has a non-network logon session on the system
 
+<br>
+
 
 ## Create Process with Token
 Processes can be created with the token and resulting security context of another user using features such as *CreateProcessWithTokenW* and *runas*
 
 Creating processes with a different token may require the credentials of the target user, specific privileges to impersonate that user, or access to the token to be used (ex: gathered via other means such as *Token Impersonation* or *Make and Impersonate Token*).
 
+<br>
+
 
 ## Make and Impersonate Token
 If an adversary has a username and password but the user is not logged onto the system, the adversary can then create a logon session for the user using the *LogonUser* function. The function will return a copy of the new session's access token and the adversary can use SetThreadToken to assign the token to a thread
+
+<br>
 
 
 ## Parent PID Spoofing
@@ -156,6 +177,8 @@ Adversaries may abuse these mechanisms to evade defenses, such as those blocking
 
 Explicitly assigning the PPID may also enable elevated privileges given appropriate access rights to the parent process
 * An adversary in a privileged user context (i.e. administrator) may spawn a new process and assign the parent as a process running as SYSTEM (such as lsass.exe), causing the new process to be elevated via the inherited access token
+
+<br>
 
 
 ## SID-History Injection
@@ -245,6 +268,8 @@ With sufficient permissions, adversaries can modify domain policy settings. Sinc
 Adversaries may temporarily modify domain policy, carry out a malicious action(s), and then revert the change to remove suspicious indicators.
 
 
+<br>
+
 
 ## Group Policy Modification
 Group policy allows for centralized management of user and computer settings in AD
@@ -256,6 +281,9 @@ Malicious GPO modifications can be used to implement many other malicious behavi
 Publicly available scripts such as `New-GPOImmediateTask` can be leveraged to automate the creation of a malicious Scheduled Task/Job by modifying GPO settings, in this case modifying `<GPO_PATH>\Machine\Preferences\ScheduledTasks\ScheduledTasks.xml`
 * An adversary might modify specific user rights like `SeEnableDelegationPrivilege`, set in `<GPO_PATH>\MACHINE\Microsoft\Windows NT\SecEdit\GptTmpl.inf`, to achieve a subtle AD backdoor with complete control of the domain because the user account under the adversary's control would then be able to modify GPOs
 
+<br>
+
+
 ## Domain Trust Modification
 Adversaries may add new domain trusts or modify the properties of existing domain trusts to evade defenses and/or elevate privileges. Domain trust details, such as whether or not a domain is federated, allow authentication and authorization properties to apply between domains for the purpose of accessing shared resources. These trust objects may include accounts, credentials, and other authentication material applied to servers, tokens, and domains.
 
@@ -266,8 +294,23 @@ Manipulating the domain trusts may allow an adversary to escalate privileges and
 
 ----------------------
 # Execution Guardrails
+Guardrails ensure that a payload only executes against an intended target and reduces collateral damage from an adversary’s campaign. Adversaries may use execution guardrails to constrain execution or actions based on adversary supplied and environment specific conditions that are expected to be present on the target. Values an adversary can provide about a target system or environment to use as guardrails may include specific network share names, attached physical devices, files, joined Active Directory (AD) domains, and local/external IP addresses
 
+Guardrails can be used to prevent exposure of capabilities in environments that are not intended to be compromised or operated within. This use of guardrails is distinct from typical Virtualization/Sandbox Evasion
+* While use of Virtualization/Sandbox Evasion may involve checking for known sandbox values and continuing with execution only if there is no match, the use of guardrails will involve checking for an expected target-specific value and only continuing with execution if there is such a match
 <br>
+
+## Environmental Keying
+**Environmental Keying:** An implementation of *Execution Guardrails* that utilizes cryptographic techniques for deriving encryption/decryption keys from specific types of values in a given computing environment
+* Environmental keying uses cryptography to constrain execution or actions based on adversary supplied environment specific conditions that are expected to be present on the target
+
+Adversaries may environmentally key payloads or other features of malware to evade defenses and constraint execution to a specific target environment. 
+
+Values can be derived from target-specific elements and used to generate a decryption key for an encrypted payload. Target-specific values can be derived from specific network shares, physical devices, software/software versions, files, joined AD domains, system time, and local/external IP addresses.[2][3][4][5][6] By generating the decryption keys from target-specific environmental values, environmental keying can make sandbox detection, anti-virus detection, crowdsourcing of information, and reverse engineering difficult.[2][6] These difficulties can slow down the incident response process and help adversaries hide their tactics, techniques, and procedures (TTPs).
+
+Similar to Obfuscated Files or Information, adversaries may use environmental keying to help protect their TTPs and evade detection. Environmental keying may be used to deliver an encrypted payload to the target that will use target-specific values to decrypt the payload before execution.[2][4][5][6][7] By utilizing target-specific values to decrypt the payload the adversary can avoid packaging the decryption key with the payload or sending it over a potentially monitored network connection. Depending on the technique for gathering target-specific values, reverse engineering of the encrypted payload can be exceptionally difficult.[2] This can be used to prevent exposure of capabilities in environments that are not intended to be compromised or operated within.
+
+Like other Execution Guardrails, environmental keying can be used to prevent exposure of capabilities in environments that are not intended to be compromised or operated within. This activity is distinct from typical Virtualization/Sandbox Evasion. While use of Virtualization/Sandbox Evasion may involve checking for known sandbox values and continuing with execution only if there is no match, the use of environmental keying will involve checking for an expected target-specific value that must match for decryption and subsequent execution to be successful.
 
 ----------------------------------
 # Exploitation for Defense Evasion
