@@ -1044,37 +1044,194 @@ Running code in the context of another process may allow access to the process's
 Adversaries may inject malicious code into processes via ptrace (process trace) system calls in order to evade process-based defenses as well as possibly elevate privileges. Ptrace system call injection is a method of executing arbitrary code in the address space of a separate live process.
 
 The ptrace system call enables a debugging process to observe and control another process (and each individual thread), including changing memory and register values
-Ptrace system call injection is commonly performed by writing arbitrary code into a running process (ex: malloc) then invoking that memory with PTRACE_SETREGS to set the register containing the next instruction to execute. Ptrace system call injection can also be done with PTRACE_POKETEXT/PTRACE_POKEDATA, which copy data to a specific address in the target processes’ memory (ex: the current address of the next instruction).
+Ptrace system call injection is commonly performed by writing arbitrary code into a running process (ex: malloc) then invoking that memory with `PTRACE_SETREGS` to set the register containing the next instruction to execute
+* Ptrace system call injection can also be done with `PTRACE_POKETEXT/PTRACE_POKEDATA`, which copy data to a specific address in the target processes’ memory (ex: the current address of the next instruction)
 
 Ptrace system call injection may not be possible targeting processes that are non-child processes and/or have higher-privileges.s
 
 Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via ptrace system call injection may also evade detection from security products since the execution is masked under a legitimate process.
 
 ## Proc Memory
+**Proc Memory Injection:** A method of executing arbitrary code in the address space of a separate live process
 
+Adversaries may inject malicious code into processes via the `/proc` filesystem in order to evade process-based defenses as well as possibly elevate privileges
+
+* Proc Memory Injection involves enumerating the memory of a process via the `/proc` filesystem `/proc/[pid]` then crafting a return-oriented programming (ROP) payload with available gadgets/instructions. Each running process has its own directory, which includes memory mappings
+* Proc memory injection is commonly performed by overwriting the target processes’ stack using memory mappings provided by the /proc filesystem
+  * This information can be used to enumerate offsets (including the stack) and gadgets (or instructions within the program that can be used to build a malicious payload) otherwise hidden by process memory protections such as address space layout randomization (ASLR)
+  * Once enumerated, the target processes’ memory map within `/proc/[pid]/maps` can be overwritten using `dd`
+
+Other techniques such as Dynamic Linker Hijacking may be used to populate a target process with more available gadgets. Similar to Process Hollowing, proc memory injection may target child processes (such as a backgrounded copy of sleep).
+
+Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via proc memory injection may also evade detection from security products since the execution is masked under a legitimate process.
 
 ## Extra Window Memory Injection
+EWM Injection: A method of executing arbitrary code in the address space of a separate live process
+
+**PRETEXT:**
+Before creating a window, graphical Windows-based processes must prescribe to or register a windows class, which stipulate appearance and behavior (via windows procedures, which are functions that handle I/O of data)
+* Registration of new windows classes can include a request for up to 40 bytes of EWM to be appended to the allocated memory of each instance of that class
+* This EWM is intended to store data specific to that window and has specific API functions to set and get its value
+
+The EWM is large enough to store a 32-bit pointer and is often used to point to a windows procedure. Malware may possibly utilize this memory location in part of an attack chain that includes writing code to shared sections of the process’s memory, placing a pointer to the code in EWM, then invoking execution by returning execution control to the address in the process’s EWM.
+
+Writing payloads to shared sections also avoids the use of highly monitored API calls such as `WriteProcessMemory` and `CreateRemoteThread`
+* More sophisticated malware samples may also potentially bypass protection mechanisms such as data execution prevention (DEP) by triggering a combination of windows procedures and other system functions that will rewrite the malicious payload inside an executable portion of the target process
+
 
 
 ## Process Hollowing
+Process hollowing is a method of executing arbitrary code in the address space of a separate live process
 
+Process hollowing is commonly performed by creating a process in a suspended state then unmapping/hollowing its memory, which can then be replaced with malicious code
+* A victim process can be created with native Windows API calls such as `CreateProcess`, which includes a flag to suspend the processes primary thread
+* At this point the process can be unmapped using APIs calls such as `ZwUnmapViewOfSection` or `NtUnmapViewOfSection` before being written to, realigned to the injected code, and resumed via `VirtualAllocEx, WriteProcessMemory, SetThreadContext, then ResumeThread` respectively
+
+Adversaries may inject malicious code into suspended and hollowed processes in order to evade process-based defenses. 
+
+
+**NOTE:** This is very similar to Thread Local Storage but creates a new process rather than targeting an existing process
+* This behavior will likely not result in elevated privileges since the injected process was spawned from (and thus inherits the security context) of the injecting process
+* However, execution via process hollowing may also evade detection from security products since the execution is masked under a legitimate process
 
 ## Process Doppelganging
+**Process Doppelgänging** A method of executing arbitrary code in the address space of a separate live process
 
+Windows Transactional NTFS (TxF) was introduced in Vista as a method to perform safe file operations. To ensure data integrity, TxF enables only one transacted handle to write to a file at a given time. Until the write handle transaction is terminated, all other handles are isolated from the writer and may only read the committed version of the file that existed at the time the handle was opened. To avoid corruption, TxF performs an automatic rollback if the system or application fails during a write transaction. 
+
+Although deprecated, the TxF application programming interface (API) is still enabled as of Windows 10. 
+
+Adversaries may abuse TxF to a perform a file-less variation of Process Injection
+* Similar to Process Hollowing, process doppelgänging involves replacing the memory of a legitimate process, enabling the veiled execution of malicious code that may evade defenses and detection. Process doppelgänging's use of TxF also avoids the use of highly-monitored API functions such as NtUnmapViewOfSection, VirtualProtectEx, and SetThreadContext. 
+
+**Process Doppelgänging is implemented in 4 steps:**
+
+1. Transact -- Create a TxF transaction using a legitimate executable then overwrite the file with malicious code. These changes will be isolated and only visible within the context of the transaction
+2. Load -- Create a shared section of memory and load the malicious executable.
+3. Rollback -- Undo changes to original executable, effectively removing malicious code from the file system
+4. Animate –- Create a process from the tainted section of memory and initiate execution
+   
+This behavior will likely not result in elevated privileges since the injected process was spawned from (and thus inherits the security context) of the injecting process. However, execution via process doppelgänging may evade detection from security products since the execution is masked under a legitimate process.
 
 ## VDSO Hijacking
+**Virtual Dynamic Shared Object (VDSO) Hijacking:** A method of executing arbitrary code in the address space of a separate live process
 
+VDSO hijacking involves redirecting calls to dynamically linked shared libraries
+* Memory protections may prevent writing executable code to a process via Ptrace System Calls
+* However, an adversary may hijack the syscall interface code stubs mapped into a process from the vdso shared object to execute syscalls to open and map a malicious shared object
+  * This code can then be invoked by redirecting the execution flow of the process via patched memory address references stored in a process' global offset table (which store absolute addresses of mapped library functions)
+
+Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via VDSO hijacking may also evade detection from security products since the execution is masked under a legitimate process.
 
 ## ListPlanting
+**ListPlanting:** A method of executing arbitrary code in the address space of a separate live process. Code executed via ListPlanting may also evade detection from security products since the execution is masked under a legitimate process
 
+List-view controls are user interface windows used to display collections of items
+* Information about an application's list-view settings are stored within the process' memory in a *SysListView32* control
+
+ListPlanting (a form of message-passing "shatter attack") may be performed by copying code into the virtual address space of a process that uses a list-view control then using that code as a custom callback for sorting the listed items
+* Adversaries must first copy code into the target process’ memory space, which can be performed various ways including by directly obtaining a handle to the *SysListView32* child of the victim process window (via Windows API calls such as *FindWindow* and/or *EnumWindows*) or other Process Injection methods
+
+Some variations of ListPlanting may allocate memory in the target process but then use window messages to copy the payload, to avoid the use of the highly monitored `WriteProcessMemory` function
+* An adversary can use the `PostMessage` and/or `SendMessage` API functions to send `LVM_SETITEMPOSITION and LVM_GETITEMPOSITION` messages, effectively copying a payload 2 bytes at a time to the allocated memory
+
+Finally, the payload is triggered by sending the `LVM_SORTITEMS` message to the *SysListView32* child of the process window, with the payload within the newly allocated buffer passed and executed as the `ListView_SortItems` callback
 
 
 --------------------
 # Scheduled Task/Job
+Adversaries may abuse task scheduling functionality to facilitate initial or recurring execution of malicious code. Utilities exist within all major operating systems to schedule programs or scripts to be executed at a specified date and time. A task can also be scheduled on a remote system, provided the proper authentication is met (ex: RPC and file and printer sharing in Windows environments). Scheduling a task on a remote system typically may require being a member of an admin or otherwise privileged group on the remote system
+
+Adversaries may use task scheduling to execute programs at system startup or on a scheduled basis for persistence. These mechanisms can also be abused to run a process under the context of a specified account (such as one with elevated permissions/privileges). Similar to System Binary Proxy Execution, adversaries have also abused task scheduling to potentially mask one-time execution under a trusted system process
+
+
+## At
+``at`` utility exists as an executable within Windows, Linux, and macOS for scheduling tasks at a specified time and date
+
+On Linux and macOS, ``at`` may be invoked by the superuser as well as any users added to the ``at.allow`` file
+* If the ``at.allow`` file does not exist, the ``at.deny`` file is checked
+* Every username not listed in ``at.deny`` is allowed to invoke at. If the ``at.deny`` exists and is empty, global use of at is permitted
+* If neither file exists (which is often the baseline) only the superuser is allowed to use at
+
+Adversaries may use ``at`` to execute programs at system startup or on a scheduled basis for Persistence. ``at`` can also be abused to conduct remote Execution as part of Lateral Movement and/or to run a process under the context of a specified account (such as SYSTEM)
+
+In Linux environments, adversaries may also abuse ``at`` to break out of restricted environments by using a task to spawn an interactive system shell or to run system commands. Similarly, ``at`` may also be used for Privilege Escalation if the binary is allowed to run as superuser via sudo
+
+## Cron ##
+The ``cron`` utility is a time-based job scheduler for Unix-like operating systems. The crontab file contains the schedule of cron entries to be run and the specified times for execution. Any crontab files are stored in operating system-specific file paths.
+
+An adversary may use cron in Linux or Unix environments to execute programs at system startup or on a scheduled basis for Persistence.
+
+## Scheduled Tasks ##
+Adversaries may abuse the Windows Task Scheduler to perform task scheduling for initial or recurring execution of malicious code
+
+There are multiple ways to access the Task Scheduler in Windows
+* **schtasks** can be run directly on the command line, or the Task Scheduler can be opened through the GUI within the Administrator Tools section of the Control Panel
+* Adversaries have used a .NET wrapper for the Windows Task Scheduler, and alternatively, adversaries have used the Windows netapi32 library to create a scheduled task.
+
+The deprecated ``at`` utility could also be abused by adversaries, though at.exe can not access tasks created with schtasks or the Control Panel
+
+* Windows Task Scheduler can execute programs at system startup or on a scheduled basis for persistence
+  * Task Scheduler can also be abused to conduct remote Execution as part of Lateral Movement and/or to run a process under the context of a specified account (such as SYSTEM)
+  * Adversaries have also abused the Windows Task Scheduler to potentially mask one-time execution under signed/trusted system processes
+
+## Systemd Timers ##
+Systemd timers are unit files with file extension .timer that control services. Timers can be set to run on a calendar event or after a time span relative to a starting point. They can be used as an alternative to Cron in Linux environments
+* Systemd timers may be activated remotely via the systemctl command line utility, which operates over SSH
+
+* Each ``.timer`` file must have a corresponding ``.service`` file with the same name. 
+* .service files are Systemd Service unit files that are managed by the systemd system and service manager.[3] Privileged timers are written to ``/etc/systemd/system/`` and ``/usr/lib/systemd/system`` while user level are written to ``~/.config/systemd/user/``
+
+An adversary may use systemd timers to execute malicious code at system startup or on a scheduled basis for persistence. Timers installed using privileged paths may be used to maintain root level persistence. Adversaries may also install user level timers to achieve user level persistence.
+
+## Container Orchestration Job ##
+Container orchestration jobs run these automated tasks at a specific date and time, similar to cron jobs on a Linux system. Deployments of this type can also be configured to maintain a quantity of containers over time, automating the process of maintaining persistence within a cluster.
+
+In Kubernetes, a CronJob may be used to schedule a Job that runs one or more containers to perform specific tasks. An adversary therefore may utilize a CronJob to schedule deployment of a Job that executes malicious code in various nodes within a cluster. 
+
+
 
 
 ----------------
 # Valid Accounts
+Compromised credentials may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services
+
+
+Compromised credentials may also grant an adversary increased privilege to specific systems or access to restricted areas of the network
+
+Attackers may abuse inactive accounts -- Using these accounts may allow the adversary to evade detection, as the original account user will not be present to identify any anomalous activity taking place on their account
+
+The overlap of permissions for local, domain, and cloud accounts across a network of systems is of concern because the adversary may be able to pivot across accounts and systems to reach a high level of access to bypass access controls set within the enterprise
+
+## Default Account 
+Default accounts are those that are built-into an OS, such as the Guest or Administrator accounts on Windows systems
+* Default accounts also include default factory/provider set accounts on other types of systems, software, or devices
+* Note: Default accounts are not limited to client machines, rather also include accounts that are preset for equipment such as network devices and computer applications whether they are internal, open source, or commercial
+  * Appliances that come preset with a username and password combination pose a serious threat to organizations that do not change it post installation, as they are easy targets for an adversary
+  * Attackers may also utilize publicly disclosed or stolen Private Keys or credential materials to legitimately connect to remote environments via Remote Services
+
+## Domain Account 
+Domain accounts are those managed by Active Directory Domain Services where access and permissions are configured across systems and services that are part of that domain -- Domain accounts can cover users, administrators, and services
+
+Adversaries may compromise domain accounts, some with a high level of privileges, through various means such as OS Credential Dumping or password reuse, allowing access to privileged resources of the domain
+
+## Local Account 
+Local accounts are those configured by an organization for use by users, remote support, services, or for administration on a single system or service
+
+Local Accounts may also be abused to elevate privileges and harvest credentials through OS Credential Dumping
+* Password reuse may allow the abuse of local accounts across a set of machines on a network for the purposes of Privilege Escalation and Lateral Movement
+
+## Cloud Account
+Cloud accounts are those created and configured by an organization for use by users, remote support, services, or for administration of resources within a cloud service provider or SaaS application
+* Cloud accounts may be federated with traditional identity management system
+
+Compromised credentials for cloud accounts can be used to harvest sensitive data from online storage accounts and databases
+* Access to cloud accounts can also be abused to gain Initial Access to a network by abusing a Trusted Relationship
+* Compromise of federated cloud accounts may allow adversaries to more easily move laterally within an environment
+
+Once a cloud account is compromised, an adversary may perform Account Manipulation - for example, by adding Additional Cloud Roles - to maintain persistence and potentially escalate their privileges
+
+
 
 
 
