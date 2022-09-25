@@ -22,12 +22,16 @@ Table of Contents
 **Exploitation:** Occurs when an adversary takes advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code
 
 An adversary may need to determine if the remote system is in a vulnerable state, which may be done through *Network Service Discovery* or other Discovery methods looking for common, vulnerable software that may be deployed in the network, the lack of certain patches that may indicate vulnerabilities, or security software that may be used to detect or contain remote exploitation
+<br>
+
 <hr>
 
 # Internal Spearphishing
 **Internal Spearphishing:** A multi-staged campaign where an email account is owned either by controlling the user's device with previously installed malware or by compromising the account credentials of the user. Adversaries attempt to take advantage of a trusted internal account to increase the likelihood of tricking the target into falling for the phish attempt
 
 Adversaries may leverage *Spearphishing Attachment* or *Spearphishing Link* as part of internal spearphishing to deliver a payload or redirect to an external site to capture credentials through Input Capture on sites that mimic email login interfaces
+<br>
+
 <hr>
 
 # Lateral Tool Transfer
@@ -36,6 +40,8 @@ Adversaries may transfer tools or other files between systems in a compromised e
 Adversaries may copy files between internal victim systems to support lateral movement using inherent file sharing protocols such as file sharing over SMB/Windows Admin Shares to connected network shares or with authenticated connections via RDP
 
 Files can also be transferred using native or otherwise present tools on the victim system, such as scp, rsync, curl, sftp, and ftp
+<br>
+
 <hr>
 
 # Remote Service Session Hijacking
@@ -44,6 +50,8 @@ Adversaries may take control of preexisting sessions with remote services to mov
 
 Adversaries may commandeer these sessions to carry out actions on remote systems
 * *Remote Service Session Hijacking* differs from use of *Remote Services* because it hijacks an existing session rather than creating a new session using Valid Accounts
+
+<br>
 
 ## SSH Hijacking
 SSH: Allows a user to connect to another system via an encrypted tunnel, commonly authenticating through a password, certificate or the use of an asymmetric encryption key pair
@@ -63,6 +71,8 @@ RDP: Allows a user to log into an interactive session with a system desktop grap
 * This can be done remotely or locally and with active or disconnected sessions
   * It can also lead to **Remote System Discovery** and **Privilege Escalation** by stealing a Domain Admin or higher privileged account session
 * All of this can be done by using native Windows commands, but it has also been added as a feature in red teaming tools
+<br>
+
 <hr>
 
 # Remote Services
@@ -75,6 +85,7 @@ Legitimate applications (such as *Software Deployment Tools* and other administr
   * ARD leverages a blend of protocols, including VNC to send the screen and control buffers and SSH for secure file transfer
   * Adversaries can abuse applications such as ARD to gain remote code execution and perform lateral movement
     * In versions of macOS prior to 10.14, an adversary can escalate an SSH session to an ARD session which enables an adversary to accept TCC (Transparency, Consent, and Control) prompts without user interaction and gain access to data
+<br>
 
 ## Remote Desktop Protocol
 **RDP:** Allows a user to log into an interactive session with a system desktop graphical user interface on a remote system
@@ -131,6 +142,8 @@ Adversaries may abuse VNC to perform malicious actions as the logged-on user suc
 **WinRM:** Windows service / protocol that allows a user to interact with a remote system (e.g., run an executable, modify the Registry, modify services)
 * It may be called with the `winrm` command or by any number of programs such as PowerShell
 * WinRM can be used as a method of remotely interacting with Windows Management Instrumentation
+<br>
+
 <hr>
 
 # Replication Through Removable Media
