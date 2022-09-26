@@ -24,16 +24,19 @@ The adversary is trying to gather information they can use to plan future operat
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
 
 **Note:** These scans can also be performed in various ways. Information from these scans may reveal opportunities for other forms of reconnaissance.
+
 <br>
 
 ## Scanning IP Blocks ###
 Adversaries may scan IP blocks in order to gather victim network information, such as which IP addresses are actively in use as well as more detailed information about hosts assigned these addresses. Scans may range from simple pings (ICMP requests and responses) to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
+
 <br>
 
 ## Vulnerability Scanning ###
 Adversaries may scan victims for vulnerabilities that can be used during targeting. Vulnerability scans typically check if the configuration of a target host/application (ex: software and version) potentially aligns with the target of a specific exploit the adversary may seek to use.
 
 These scans may also include more broad attempts to identify more commonly known, exploitable vulnerabilities. Vulnerability scans typically harvest running software and version numbers via server banners, listening ports, or other network artifacts.
+
 <br>
 
 ## Wordlist Scanning ###
