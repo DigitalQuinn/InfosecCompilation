@@ -17,27 +17,30 @@ The adversary is trying to gather information they can use to plan future operat
 - [Searching Open Websites / Domains](#Searching-Open-Websites-/-Domains)
 - [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
 - [Searching Closed Sources](#Searching-Closed-Sources)
+<br>
+<hr>
 
----------------------
-## Active Scanning ##
+# Active Scanning ##
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
 
 **Note:** These scans can also be performed in various ways. Information from these scans may reveal opportunities for other forms of reconnaissance.
+<br>
 
-### Scanning IP Blocks ###
+## Scanning IP Blocks ###
 Adversaries may scan IP blocks in order to gather victim network information, such as which IP addresses are actively in use as well as more detailed information about hosts assigned these addresses. Scans may range from simple pings (ICMP requests and responses) to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
+<br>
 
-
-### Vulnerability Scanning ###
+## Vulnerability Scanning ###
 Adversaries may scan victims for vulnerabilities that can be used during targeting. Vulnerability scans typically check if the configuration of a target host/application (ex: software and version) potentially aligns with the target of a specific exploit the adversary may seek to use.
 
 These scans may also include more broad attempts to identify more commonly known, exploitable vulnerabilities. Vulnerability scans typically harvest running software and version numbers via server banners, listening ports, or other network artifacts.
+<br>
 
-
-### Wordlist Scanning ###
+## Wordlist Scanning ###
 Adversaries may iteratively probe infrastructure using brute-forcing and crawling techniques. While this technique employs similar methods to Brute Force, its goal is the identification of content and infrastructure rather than the discovery of valid credentials. Wordlists used in these scans may contain generic, commonly used names and file extensions or terms specific to a particular software. Adversaries may also create custom, target-specific wordlists using data gathered from other reconnaissance techniques.
+<br>
+<hr>
 
---------------------------------
 ## Gathering Host Information ##
 Adversaries may gather information about the victim's hosts that can be used during targeting. Information about hosts may include a variety of details, including administrative data (ex: name, assigned IP, functionality, etc.) as well as specifics regarding its configuration (ex: operating system, language, etc.).
 
