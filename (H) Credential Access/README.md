@@ -1,29 +1,71 @@
 # Credential Access
 
 Credential Access consists of techniques for stealing credentials like account names and passwords. Techniques used to get credentials include keylogging or credential dumping. Using legitimate credentials can give adversaries access to systems, make them harder to detect, and provide the opportunity to create more accounts to help achieve their goals
-<br>
 
+<br>
 <hr>
 
-# Table of Content
+# Table of Contents
 - [Adversary-in-the-Middle](#adversary-in-the-middle)
+  - [LLMNR/NBT-NS Poisoning & SMB Relay](#llmnrnbt-ns-poisoning--smb-relay)
+  - [ARP Cache Poisoning](#arp-cache-poisoning)
+  - [DHCP Spoofing](#dhcp-spoofing)
 - [Brute Force](#brute-force)
+  - [Password Guessing](#password-guessing)
+  - [Password Cracking](#password-cracking)
+  - [Password Spraying](#password-spraying)
+  - [Credential Stuffing](#credential-stuffing)
 - [Credentials From Password Stores](#credentials-from-password-stores)
+  - [Keychain](#keychain)
+  - [Securityd Memory](#securityd-memory)
+  - [Credentials from Web Browsers](#credentials-from-web-browsers)
+  - [Windows Credential Manager](#windows-credential-manager)
+  - [Password Managers](#password-managers)
 - [Exploitation for Credential Access](#exploitation-for-credential-access)
 - [Forced Authentication](#forced-authentication)
 - [Forge Web Credentials](#forge-web-credentials)
+  - [Web Cookies](#web-cookies)
+  - [SAML Tokens](#saml-tokens)
 - [Input Capture](#input-capture)
+  - [Keylogging](#keylogging)
+  - [GUI Input Capture](#gui-input-capture)
+  - [Web Portal Capture](#web-portal-capture)
+  - [Credential API Hooking](#credential-api-hooking)
 - [Nodify Authentication Process](#modify-authentication-process)
+  - [Domain Controller Authentication](#domain-controller-authentication)
+  - [Password Filter DLL](#password-filter-dll)
+  - [Pluggable Authentication Modules](#pluggable-authentication-modules)
+  - [Network Device Authentication](#network-device-authentication)
+  - [Reversible Encryption](#reversible-encryption)
 - [MFA Interception](#mfa-interception)
 - [MFA Request Generation](#mfa-request-generation)
 - [Network Sniffing](#network-sniffing)
 - [OS Credential Dumping](#os-credential-dumping)
+  - [LSASS Memory](#lsass-memory)
+  - [Security Account Manager (SAM)](#security-account-manager-sam)
+  - [NTDS](#ntds)
+  - [LSA Secrets](#lsa-secrets)
+  - [Cached Domain Credentials](#cached-domain-credentials)
+  - [DCSync](#dcsync)
+  - [Proc Filesystem](#proc-filesystem)
+  - [/etc/passwd & /etc/shadow](#etcpasswd-and-etcshadow)
 - [Steal Application Access Tokens](#steal-application-access-token)
 - [Steal or Forge Kerberos Tickets](#steal-or-forge-kerberos-tickets)
+  - [Golden Ticket](#golden-ticket)
+  - [Silver Ticket](#silver-ticket)
+  - [Kerberoasting](#kerberoasting)
+  - [AS-REP Roasting](#as-rep-roasting)
 - [Steal Web Session Cookie](#steal-web-session-cookie)
 - [Unsecured Credentials](#unsecured-credentials)
-<br>
+  - [Credentials In Files](#credentials-in-files)
+  - [Credentials in Registry](#credentials-in-registry)
+  - [Bash History](#bash-history)
+  - [Private Keys](#private-keys)
+  - [Cloud Instance Metadata API](#cloud-instance-metadata-api)
+  - [Group Policy Preferences](#group-policy-preferences)
+  - [Container API](#container-api)
 
+<br>
 <hr>
 
 # Adversary-in-the-Middle
@@ -35,9 +77,10 @@ Attackers may manipulate victim DNS settings to enable other malicious activitie
 
 Adversaries may also leverage the AiTM position to attempt to monitor and/or modify traffic, such as in *Transmitted Data Manipulation*
 * Adversaries can setup a position similar to AiTM to prevent traffic from flowing to the appropriate destination, potentially to *Impair Defenses* and/or in support of a Network DoS
+
 <br>
 
-## LLMNR/NBT-NS Poisoning and SMB Relay
+## LLMNR/NBT-NS Poisoning & SMB Relay
 **Link-Local Multicast Name Resolution (LLMNR) & NetBIOS Name Service (NBT-NS)** are Microsoft Windows components that serve as alternate methods of host identification
 * **LLMNR:** Based upon the DNS format and allows hosts on the same local link to perform name resolution for other hosts
 * **NBT-NS:** Identifies systems on a local network by their NetBIOS name
@@ -53,6 +96,7 @@ Adversaries can spoof an authoritative source for name resolution on a victim ne
 
 ### Tools
 Several tools exist that can be used to poison name services within local networks such as NBNSpoof, Metasploit, and Responder
+
 <br>
 
 ## ARP Cache Poisoning
@@ -69,6 +113,7 @@ An adversary may passively wait for an ARP request to poison the ARP cache of th
 The ARP protocol is stateless and does not require authentication; Therefore, devices may wrongly add or update the MAC address of the IP address in their ARP cache
 
 Adversaries may use ARP cache poisoning as a means to intercept network traffic; This activity may be used to collect and/or relay data such as credentials, especially those sent over an insecure, unencrypted protocol
+
 <br>
 
 ## DHCP Spoofing
@@ -100,6 +145,7 @@ Without knowledge of the password for an account or set of accounts, an adversar
 Brute forcing credentials may take place at various points during a breach
 * Attackers may attempt to brute force access to Valid Accounts within a victim environment leveraging knowledge gathered from other post-compromise behaviors such as *OS Credential Dumping, Account Discovery, or Password Policy Discovery*
 * Adversaries may also combine brute forcing activity with behaviors such as *External Remote Services as part of Initial Access*
+
 <br>
 
 ## Password Guessing
@@ -117,6 +163,7 @@ In addition to management services, adversaries may target SSO and cloud-based a
 * Further, adversaries may abuse network device interfaces (such as wlanAPI) to brute force accessible wifi-router(s) via wireless authentication protocols
 
 In default environments, LDAP and Kerberos connection attempts are less likely to trigger events over SMB, which creates Windows "logon failure" `event ID 4625`
+
 <br>
 
 ## Password Cracking
@@ -126,6 +173,7 @@ In default environments, LDAP and Kerberos connection attempts are less likely t
 Techniques to systematically guess the passwords used to compute hashes are available, or the adversary may use a pre-computed rainbow table to crack hashes
 * Cracking hashes is usually done on adversary-controlled systems outside of the target network
 * The resulting plaintext password resulting from a successfully cracked hash may be used to log into systems, resources, and services in which the account has access
+
 <br>
 
 ## Password Spraying
@@ -140,6 +188,8 @@ Adversaries may use credentials obtained from breach dumps of unrelated accounts
 * The information may be useful to an adversary attempting to compromise accounts by taking advantage of the tendency for users to use the same passwords across personal and business accounts
 
 **NOTE::** Credential stuffing is a risky option because it could cause numerous authentication failures and account lockouts, depending on the organization's login failure policies
+
+<br>
 <hr>
 
 # Credentials From Password Stores
@@ -147,6 +197,7 @@ Adversaries may search for common password storage locations to obtain user cred
 * Passwords are stored in several places on a system, depending on the operating system or application holding the credentials
 * There are also specific applications that store passwords to make it easier for users manage and maintain
   * Once credentials are obtained, they can be used to perform lateral movement and access restricted information
+
 <br>
 
 ## Keychain
@@ -163,6 +214,7 @@ Adversaries may gather user credentials from Keychain storage/memory
 * `security dump-keychain –d`: Dumps all Login Keychain credentials from `~/Library/Keychains/login.keychain-db`
 * Adversaries may also directly read Login Keychain credentials from the `~/Library/Keychains/login.keychain` file
 * **NOTE::** Both methods require a password, where the default password for the Login Keychain is the current user’s password to login to the macOS host 
+
 <br>
 
 ## Securityd Memory
@@ -172,6 +224,7 @@ An adversary may obtain root access (allowing them to read **securityd’s** mem
 In OS X prior to El Capitan, users with root access can read plaintext keychain passwords of logged-in users because Apple’s keychain implementation allows these credentials to be cached so that users are not repeatedly prompted for passwords
 * Apple’s **securityd** utility takes the user’s logon password, encrypts it with PBKDF2, and stores this master key in memory
 * Apple also uses a set of keys and algorithms to encrypt the user’s password, but once the master key is found, an adversary need only iterate over the other values to unlock the final password
+
 <br>
 
 ## Credentials from Web Browsers
@@ -184,6 +237,7 @@ On Windows systems, encrypted credentials may be obtained from Google Chrome by 
 Windows stores Internet Explorer and Microsoft Edge credentials in Credential Lockers managed by the Windows Credential Manager
 
 Adversaries may also acquire credentials by searching web browser process memory for patterns that commonly match credentials 
+
 <br>
 
 ## Windows Credential Manager
@@ -203,6 +257,7 @@ Adversaries may list credentials managed by the Windows Credential Manager throu
 * Adversaries may also abuse Windows APIs such as `CredEnumerateA` to list credentials managed by the Credential Manager 
 
 Adversaries may use password recovery tools to obtain plain text passwords from the Credential Managers
+
 <br>
 
 ## Password Managers
@@ -214,6 +269,8 @@ Adversaries may use password recovery tools to obtain plain text passwords from 
 Adversaries may acquire user credentials from password managers by extracting the master password and/or plain-text credentials from memory
 * Adversaries may extract credentials from memory via **Exploitation for Credential Access**
 * Adversaries may also try brute forcing via Password Guessing to obtain the master password of a password manager 
+
+<br>
 <hr>
 
 # Exploitation for Credential Access
@@ -222,6 +279,8 @@ Exploitation of a software vulnerability occurs when an adversary takes advantag
 * Credentialing and authentication mechanisms may be targeted for exploitation by adversaries as a means to gain access to useful credentials or circumvent the process to gain access to systems
   * **MS14-068** Targets Kerberos and can be used to forge Kerberos tickets using domain user permissions
 * Exploitation for credential access may also result in **Privilege Escalation** depending on the process targeted or credentials obtained
+
+<br>
 <hr>
 
 # Forced Authentication
@@ -243,6 +302,8 @@ There are several different ways this can occur:
 * A spearphishing attachment containing a document with a resource that is automatically loaded when the document is opened (**Template Injection**)
   * The document can include a request similar to `file[:]//[remote address]/Normal.dotm` to trigger the SMB request
 * A modified **.LNK or .SCF** file with the icon filename pointing to an external reference such as `\[remote address]\pic.png` that will force the system to load the resource when the icon is rendered to repeatedly gather credentials
+
+<br>
 <hr>
 
 # Forge Web Credentials
@@ -255,12 +316,15 @@ Adversaries may generate these credential materials in order to gain access to w
 
 Once forged, adversaries may use these web credentials to access resources (ex: *Use Alternate Authentication Material*), which may bypass MFA and other mechanisms 
 
+<br>
+
 ## Web Cookies
 Adversaries may generate cookies in order to gain access to web resources
 * Most common web applications have standardized and documented cookie values that can be generated using provided tools or interfaces
 * The generation of web cookies often requires secret values, such as passwords, Private Keys, or other cryptographic seed values
 
 Once forged, adversaries may use these web cookies to access resources (Web Session Cookie), which may bypass multi-factor and other authentication protection mechanisms 
+
 <br>
 
 ## SAML Tokens
@@ -274,12 +338,16 @@ An adversary may utilize **Private Keys** to compromise an organization's token-
 * **NOTE::** This differs from *Steal Application Access Token* and other similar behaviors in that the tokens are new and forged by the adversary, rather than stolen or intercepted from legitimate users
 
 An adversary may gain administrative Azure AD privileges if a SAML token is forged which claims to represent a highly privileged account
+
+<br>
 <hr>
 
 # Input Capture
 Adversaries may use methods of capturing user input to obtain credentials or collect information
 * During normal system usage, users often provide credentials to various different locations, such as login pages/portals or system dialog boxes
 * Input capture mechanisms may be transparent to the user (e.g. **Credential API Hooking**) or rely on deceiving the user into providing input into what they believe to be a genuine service (e.g. **Web Portal Capture)**
+
+<br>
 
 ## Keylogging
 Adversaries may log user keystrokes to intercept credentials as the user types them
@@ -293,6 +361,7 @@ Keylogging is the most prevalent type of input capture, with many different ways
 * Windows Registry modifications
 * Custom drivers
 * **Modify System Image** may provide adversaries with hooks into the operating system of network devices to read raw keystrokes for login sessions
+
 <br>
 
 ## GUI Input Capture
@@ -301,6 +370,7 @@ When programs are executed that need additional privileges than are present in t
 Adversaries may mimic this functionality to prompt users for credentials with a seemingly legitimate prompt for a number of reasons that mimic normal usage, such as a fake installer requiring additional access or a fake malware removal suite
 * This type of prompt can be used to collect credentials via various languages such as AppleScript and PowerShell
 * On Linux systems adversaries may launch dialog boxes prompting users for credentials from malicious shell scripts or the command line 
+
 <br>
 
 ## Web Portal Capture
@@ -308,6 +378,7 @@ Adversaries may install code on externally facing portals, such as a VPN login p
 * A compromised login page may log provided user credentials before logging the user in to the service
 
 This variation on input capture may be conducted post-compromise using legitimate administrative access as a backup measure to maintain network access through *External Remote Services and Valid Accounts* or as part of the initial compromise by exploitation of the externally facing web service
+
 <br>
 
 ## Credential API Hooking
@@ -320,6 +391,7 @@ Adversaries may hook into Windows API functions to collect user credentials
 * **Import address table (IAT) hooking**, which use modifications to a process’s IAT, where pointers to imported API functions are stored
 * **Inline hooking**, which overwrites the first bytes in an API function to redirect code flow
 
+<br>
 <hr>
 
 # Modify Authentication Process
@@ -329,6 +401,7 @@ The authentication process is handled by mechanisms, such as the Local Security 
 Adversaries may modify authentication mechanisms and processes to access user credentials or enable otherwise unwarranted access to accounts
 * Maliciously modify a part of this process to either reveal credentials or bypass authentication mechanisms
 * Compromised credentials or access may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services
+
 <br>
 
 ## Domain Controller Authentication
@@ -338,6 +411,7 @@ Malware may be used to inject false credentials into the authentication process 
 * **Skeleton Key** works through a patch on an enterprise domain controller authentication process (LSASS) with credentials that adversaries may use to bypass the standard authentication system
   * Once patched, an adversary can use the injected password to successfully authenticate as any domain user account (until the the skeleton key is erased from memory by a reboot of the domain controller)
   * Authenticated access may enable unfettered access to hosts and/or resources within single-factor authentication environments
+
 <br>
 
 ## Password Filter DLL
@@ -350,6 +424,7 @@ Malware may be used to inject false credentials into the authentication process 
 Adversaries can register malicious password filters to harvest credentials from local computers and/or entire domains
 * To perform proper validation, filters must receive plain-text credentials from the LSA
 * A malicious password filter would receive these plain-text credentials every time a password request is made
+
 <br>
 
 ## Pluggable Authentication Modules
@@ -361,6 +436,7 @@ Adversaries may modify components of the PAM system to create backdoors
 
 Malicious modifications to the PAM system may also be abused to steal credentials
 * Adversaries may infect PAM resources with code to harvest user credentials, since the values exchanged with PAM components may be plain-text since PAM does not store passwords
+
 <br>
 
 ## Network Device Authentication
@@ -371,6 +447,7 @@ Adversaries may use *Patch System Image* to hard code a password in the OS, thus
 * Upon authentication attempts, the inserted code will first check to see if the user input is the password
 * If so, access is granted
   * Otherwise, the implanted code will pass the credentials on for verification of potentially valid credentials
+
 <br>
 
 ## Reversible Encryption
@@ -392,6 +469,8 @@ With this information, an adversary may be able to reproduce the encryption key 
 An adversary may set this property at various scopes through Local Group Policy Editor, user properties, Fine-Grained Password Policy (FGPP), or via the ActiveDirectory PowerShell module
 * An adversary may implement and apply a FGPP to users or groups if the Domain Functional Level is set to "Windows Server 2008" or higher
 * In PowerShell, an adversary may make associated changes to user settings using commands similar to `Set-ADUser -AllowReversiblePasswordEncryption $true`
+
+<br>
 <hr>
 
 # MFA Interception
@@ -404,6 +483,8 @@ Adversaries may also employ a keylogger to similarly target other hardware token
 * Capturing token input including PIN code may provide temporary access (i.e. replay the one-time passcode until the next value rollover) as well as possibly enabling adversaries to reliably predict future authentication values (given access to both the algorithm and any seed values used to generate appended temporary codes) 
 
 Other methods of MFA may be intercepted and used by an adversary to authenticate. It is common for one-time codes to be sent via out-of-band communications (email, SMS). If the device and/or service is not secured, then it may be vulnerable to interception. Although primarily focused on by cyber criminals, these authentication mechanisms have been targeted by advanced actors 
+
+<br>
 <hr>
 
 # MFA Request Generation
@@ -411,6 +492,8 @@ Adversaries in possession credentials to *Valid Accounts* may be unable to compl
 * To circumvent this, adversaries may abuse the automatic generation of push notifications to MFA services such as Duo Push, Microsoft Authenticator, Okta, or similar services to have the user grant access to their account
 
 Attackers may continuously repeat login attempts in order to bombard users with MFA push notifications, SMS messages, and phone calls, potentially resulting in the user finally accepting the authentication request in response to *MFA fatigue*
+
+<br>
 <hr>
 
 # Network Sniffing
@@ -426,10 +509,14 @@ In cloud-based environments, adversaries may still be able to use traffic mirror
 * AWS Traffic Mirroring, GCP Packet Mirroring, and Azure vTap allow users to define specified instances to collect traffic from and specified targets to send collected traffic to
   * Often, much of this traffic will be in cleartext due to the use of TLS termination at the load balancer level to reduce the strain of encrypting and decrypting traffic
   * The adversary can then use exfiltration techniques such as *Transfer Data to Cloud Account* in order to access the sniffed traffic
+
+<br>
 <hr>
 
 # OS Credential Dumping
 Adversaries may attempt to dump credentials to obtain account login and credential material, normally in the form of a hash or a clear text password, from the operating system and software
+
+<br>
 
 ## LSASS Memory
 Adversaries may attempt to access credential material stored in the process memory of the Local Security Authority Subsystem Service (LSASS)
@@ -464,6 +551,7 @@ Windows Security Support Provider (SSP) DLLs are loaded into LSSAS process at sy
 * **Wdigest:** The Digest Authentication protocol is designed for use with HTTP and Simple Authentication Security Layer (SASL) exchanges
 * **Kerberos:** Preferred for mutual client-server domain authentication in Windows 2000 and later
 * **CredSSP:** Provides SSO and Network Level Authentication for Remote Desktop Services
+
 <br>
 
 ## Security Account Manager (SAM)
@@ -488,6 +576,7 @@ Windows Security Support Provider (SSP) DLLs are loaded into LSSAS process at sy
 **NOTE::** `* RID 500` account is the local, built-in administrator 
 * `* RID 501` is the guest account
 * User accounts start with a RID of 1,000+
+
 <br>
 
 ## NTDS
@@ -501,6 +590,7 @@ Tools and techniques used to enumerate the NTDS file and the contents of the ent
 * secretsdump.py
 * Using the in-built Windows tool, ntdsutil.exe
 * Invoke-NinjaCopy
+
 <br>
 
 ## LSA Secrets
@@ -510,6 +600,7 @@ Adversaries with SYSTEM access to a host may attempt to access Local Security Au
 
 **Reg** can be used to extract from the Registry
 **Mimikatz** can be used to extract secrets from memory
+
 <br>
 
 ## Cached Domain Credentials
@@ -522,6 +613,7 @@ On Windows Vista and newer, the hash format is **DCC2** (Domain Cached Credentia
 With SYSTEM access, the tools/utilities such as Mimikatz, Reg, and secretsdump.py can be used to extract the cached credentials
 
 **NOTE::** Cached credentials for Windows Vista are derived using **PBKDF2** 
+
 <br>
 
 ## DCSync
@@ -532,6 +624,7 @@ Members of the Administrators, Domain Admins, and Enterprise Admin groups or com
 
 **DCSync** functionality has been included in the "lsadump" module in Mimikatz
 * Lsadump also includes *NetSync*, which performs DCSync over a legacy replication protocol
+
 <br>
 
 ## Proc Filesystem
@@ -540,6 +633,7 @@ Members of the Administrators, Domain Admins, and Enterprise Admin groups or com
 * If any of these programs store passwords in clear text or password hashes in memory, these values can then be harvested for either usage or brute force attacks, respectively
 
 **MimiPenguin:** An open source tool inspired by Mimikatz that dumps process memory, then harvests passwords and hashes by looking for text strings and regex patterns for how given applications such as Gnome Keyring, sshd, and Apache use memory to store such authentication artifacts
+
 <br>
 
 ## /etc/passwd and /etc/shadow
@@ -549,6 +643,7 @@ Modern Linux OSs use a combination of `/etc/passwd` and `/etc/shadow` to store u
 The Linux utility, `unshadow`, can be used to combine the two files in a format suited for password cracking utilities such as John the Ripper:
 * `/usr/bin/unshadow /etc/passwd /etc/shadow > /tmp/crack.password.db`
 
+<br>
 <hr>
 
 # Steal Application Access Token
@@ -571,6 +666,8 @@ Adversaries can leverage OAuth authorization by constructing a malicious applica
 
 Application access tokens may function within a limited lifetime, limiting how long an adversary can utilize the stolen token
 * Attackers can steal application refresh tokens, allowing them to obtain new access tokens without prompting the user
+
+<br>
 <hr>
 
 # Steal or Forge Kerberos Tickets
@@ -601,6 +698,8 @@ Kerberos tickets on macOS are stored in a standard ccache format, similar to Lin
 * Users can interact with ticket storage using `kinit`, `klist`, `ktutil`, and `kcc built-in binaries` or via Apple's native Kerberos framework
 * Adversaries can use open source tools to interact with the ccache files directly or to use the Kerberos framework to call lower-level APIs for extracting the user's TGT or Service Tickets
 
+<br>
+
 ## Golden Ticket
 Adversaries who have the KRBTGT account password hash may forge Kerberos ticket-granting tickets (TGT), aka **Golden Ticket**
 * Golden tickets enable adversaries to generate authentication material for any account in AD
@@ -611,6 +710,7 @@ Using a golden ticket, adversaries are then able to request Ticket Granting Serv
 The KDC service runs all on DCs that are part of an AD domain
 * **KRBTGT:** The Kerberos Key Distribution Center (KDC) service account and is responsible for encrypting and signing all Kerberos tickets
   * The KRBTGT password hash may be obtained using OS Credential Dumping and privileged access to a DC
+
 <br>
 
 ## Silver Ticket
@@ -631,6 +731,7 @@ Adversaries possessing a valid Kerberos TGT may request one or more Kerberos TGS
 * Portions of these tickets may be encrypted with the RC4 algorithm, meaning the *Kerberos 5 TGS-REP etype 23 hash* of the service account associated with the SPN is used as the private key and is thus vulnerable to offline **Brute Force** attacks that may expose plaintext credentials
 
 **NOTE::** This same behavior could be executed using service tickets captured from network traffic
+
 <br>
 
 ## AS-REP Roasting
@@ -646,6 +747,8 @@ For each account found without preauthentication, an adversary may send an AS-RE
 An account registered to a domain, with or without special privileges, can be abused to list all domain accounts that have preauthentication disabled by utilizing Windows tools like PowerShell with an LDAP filter
 * Alternatively, the adversary may send an AS-REQ message for each user
   * If the DC responds without errors, the account does not require preauthentication and the AS-REP message will already contain the encrypted data 
+
+<br>
 <hr>
 
 # Steal Web Session Cookie
@@ -660,11 +763,15 @@ Cookies are often valid for an extended period of time, even if the web applicat
 There are several examples of malware targeting cookies from web browsers on the local system
 * There are also open source frameworks such as Evilginx 2 and Muraena that can gather session cookies through a malicious proxy (ex: Adversary-in-the-Middle) that can be set up by an adversary and used in phishing campaigns 
 * After an adversary acquires a valid cookie, they can then perform a Web Session Cookie technique to login to the corresponding web application
+
+<br>
 <hr>
 
 # Unsecured Credentials
 Adversaries may search compromised systems to find and obtain insecurely stored credentials
 * These credentials can be stored and/or misplaced in many locations on a system, including plaintext files Bash History, operating system or application-specific repositories (e.g. Credentials in Registry), or other specialized files/artifacts (e.g. Private Keys)
+
+<br>
 
 ## Credentials In Files
 Adversaries may search local file systems and remote file shares for files containing insecurely stored credentials
@@ -676,6 +783,7 @@ It is possible to extract passwords from backups or saved virtual machines throu
 In cloud and/or containerized environments, authenticated user and service account credentials are often stored in local configuration and credential files
 * They may also be found as parameters to deployment commands in container logs
 * In some cases, these files can be copied and reused on another machine or the contents can be read and then used to authenticate without needing to copy any file
+
 <br>
 
 ## Credentials in Registry
@@ -685,6 +793,7 @@ The Windows Registry stores configuration information that can be used by the sy
 **Example commands to find Registry keys related to password information:**
 * Local Machine Hive: `reg query HKLM /f password /t REG_SZ /s`
 * Current User Hive: `reg query HKCU /f password /t REG_SZ /s`
+
 <br>
 
 ## Bash History
@@ -695,6 +804,7 @@ Adversaries may search the bash command history on compromised systems for insec
 * Typically, this file keeps track of the user’s last 500 commands
 * Users often type usernames and passwords on the command-line as parameters to programs, which then get saved to this file when they log out
 * Adversaries can abuse this by looking through the file for potential credentials
+
 <br>
 
 ## Private Keys
@@ -704,6 +814,7 @@ Private cryptographic keys and certificates are used for authentication, encrypt
 Adversaries may search for private key certificate files on compromised systems for insecurely stored credentials
 * Look in common key directories, such as `~/.ssh` for SSH keys on UNIX-based systems or `C:\Users\(username)\.ssh\` on Windows
 * These private keys can be used to authenticate to Remote Services like SSH or for use in decrypting other collected files such as email
+
 <br>
 
 ## Cloud Instance Metadata API
@@ -717,6 +828,7 @@ If adversaries have a presence on the running virtual instance, they may query t
 * Additionally, adversaries may exploit a Server-Side Request Forgery (SSRF) vulnerability in a public facing web proxy that allows them to gain access to the sensitive information via a request to the Instance Metadata API
 
 **NOTE::** The de facto standard across cloud service providers is to host the Instance Metadata API at `http[:]//169.254.169.254`
+
 <br>
 
 ## Group Policy Preferences
@@ -737,6 +849,7 @@ In cloud-based environments, adversaries may still be able to use traffic mirror
 * `gpprefdecrypt.py`
 
 **On the SYSVOL share, use the following command to enumerate potential GPP XML files:** `dir /s * .xml`
+
 <br>
 
 ## Container API
@@ -745,5 +858,3 @@ Adversaries may gather credentials via APIs within a containers environment. API
 An adversary may access the Docker API to collect logs that contain credentials to cloud, container, and various other resources in the environment
 * An adversary with sufficient permissions, such as via a pod's service account, may also use the Kubernetes API to retrieve credentials from the Kubernetes API server
   * These credentials may include those needed for Docker API authentication or secrets from Kubernetes cluster components
-<hr>
-

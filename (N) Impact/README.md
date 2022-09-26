@@ -1,8 +1,8 @@
 # Impact
 
 Impact consists of techniques that adversaries use to disrupt availability or compromise integrity by manipulating business and operational processes. Techniques used for impact can include destroying or tampering with data. In some cases, business processes can look fine, but may have been altered to benefit the adversaries’ goals. These techniques might be used by adversaries to follow through on their end goal or to provide cover for a confidentiality breach.
-<br>
 
+<br>
 <hr>
 
 # Table of Contents
@@ -32,8 +32,8 @@ Impact consists of techniques that adversaries use to disrupt availability or co
 - [Resource Hijacking](#resource-hijacking)
 - [Service Stop](#service-stop)
 - [System Shutdown/Reboot](#system-shutdownreboot)
-<br>
 
+<br>
 <hr>
 
 # Account Access Removal
@@ -45,6 +45,7 @@ Accounts may be deleted, locked, or manipulated to remove access to accounts
 * Accounts could also be disabled by Group Policy
 
 **NOTE::** Adversaries who use ransomware may first perform this and other *Impact* behaviors, such as *Data Destruction* and *Defacement*, before completing the *Data Encrypted for Impact* objective
+
 <br>
 <hr>
 
@@ -60,6 +61,7 @@ Adversaries may attempt to overwrite files and directories with randomly generat
 To maximize impact on the target organization in operations where network-wide availability interruption is the goal, malware designed for destroying data may have worm-like features to propagate across a network by leveraging additional techniques like *Valid Accounts, OS Credential Dumping, and SMB/Windows Admin Shares*
 
 * In cloud environments, adversaries may leverage access to delete cloud storage, cloud storage accounts, machine images, and other infrastructure crucial to operations to damage an organization or their customers
+
 <br>
 <hr>
 
@@ -82,11 +84,13 @@ Adversaries may insert, delete, or manipulate data in order to influence externa
 
 The type of modification and the impact it will have depends on the target application and process as well as the goals and objectives of the adversary
 * For complex systems, an adversary would likely need special expertise and possibly access to specialized software related to the system that would typically be gained through a prolonged information gathering campaign in order to have the desired impact
+
 <br>
 
 ## Stored Data Manipulation
 Stored data could include a variety of file formats, such as Office files, databases, stored emails, and custom file formats
 * The type of modification and the impact it will have depends on the type of data as well as the goals and objectives of the adversary
+
 <br>
 
 ## Transmitted Data Manipulation
@@ -95,6 +99,7 @@ Adversaries may alter data en route to storage or other systems in order to mani
 
 Manipulation may be possible over a network connection or between system processes where there is an opportunity deploy a tool that will intercept and change information
 * The type of modification and the impact it will have depends on the target transmission mechanism as well as the goals and objectives of the adversary
+
 <br>
 
 ## Runtime Data Manipulation
@@ -104,12 +109,14 @@ Adversaries may modify systems in order to manipulate the data as it is accessed
 Adversaries may alter application binaries used to display data in order to cause runtime manipulations
 * Adversaries may also conduct *Change Default File Association and Masquerading* to cause a similar effect
 * The type of modification and the impact it will have depends on the target application and process as well as the goals and objectives of the adversary
+
 <br>
 
 # Defacement
 Adversaries may modify visual content available internally or externally to an enterprise network; affecting the integrity of the original content
 * *Reasons for Defacement* include delivering messaging, intimidation, or claiming credit for an intrusion
 * Disturbing or offensive images may be used as a part of Defacement in order to cause user discomfort, or to pressure compliance with accompanying messages
+
 <br>
 
 ## Internal Defacement
@@ -117,6 +124,7 @@ An adversary may deface systems internal to an organization in an attempt to int
 * This may take the form of modifications to internal websites, or directly to user systems with the replacement of the desktop wallpaper
 * Disturbing or offensive images may be used as a part of *Internal Defacement* in order to cause user discomfort, or to pressure compliance with accompanying messages
 * Since internally defacing systems exposes an adversary's presence, it often takes place after other intrusion goals have been accomplished
+
 <br>
 
 ## External Defacement
@@ -125,6 +133,7 @@ An adversary may deface systems external to an organization in an attempt to del
 * Externally-facing websites are a common victim of defacement; often targeted by adversary and hacktivist groups in order to push a political message or spread propaganda
 * External Defacement may be used as a catalyst to trigger events, or as a response to actions taken by an organization or government
   * Similarly, website defacement may also be used as setup, or a precursor, for future attacks such as *Drive-by Compromise*
+
 <br>
 <hr>
 
@@ -134,6 +143,7 @@ Adversaries may wipe or corrupt raw disk data on specific systems or in large nu
 * Adversaries may opt to wipe arbitrary portions of disk data and/or wipe disk structures like the MBR; A complete wipe of all disk sectors may be attempted
 
 To maximize impact on the target organization in operations where network-wide availability interruption is the goal, malware used for wiping disks may have worm-like features to propagate across a network by leveraging additional techniques like *Valid Accounts, OS Credential Dumping, and SMB/Windows Admin Shares*
+
 <br>
 
 ## Disk Content Wipe
@@ -144,6 +154,7 @@ Adversaries may erase the contents of storage devices on specific systems or in 
   * To wipe disk content, adversaries may acquire direct access to the hard drive in order to overwrite arbitrarily sized portions of disk with random data
 * Adversaries have been observed leveraging third-party drivers like `RawDisk` to directly access disk content
 * **NOTE::** This behavior is distinct from *Data Destruction* because sections of the disk are erased instead of individual files
+
 <br>
 
 ## Disk Structure Wipe
@@ -152,6 +163,7 @@ Adversaries may corrupt or wipe the disk data structures on a hard drive necessa
 * The data contained in disk structures may include the initial executable code for loading an operating system or the location of the file system partitions on disk
   * If this information is not present, the computer will not be able to load an operating system during the boot process, leaving the computer unavailable
 * *Disk Structure Wipe* may be performed in isolation, or along with *Disk Content Wipe* if all sectors of a disk are wiped
+
 <br>
 <hr>
 
@@ -183,6 +195,7 @@ Where *Traffic Manipulation* is used, there may be points where packets can be a
     * A flood of ACK packets are sent to the target, forcing the OS to search its state table for a related TCP connection that has already been established
       * Because the ACK packets are for connections that do not exist, the OS will have to search the entire state table to confirm that no match exists
       * When it is necessary to do this for a large flood of packets, the computational requirements can cause the server to become sluggish and/or unresponsive, due to the work it must do to eliminate the rogue ACK packets
+
 <br>
 
 ## Service Exhaustion Flood
@@ -194,16 +207,19 @@ Adversaries may target the different network services provided by systems to con
     * The SSL/TLS protocol suite includes mechanisms for the client and server to agree on an encryption algorithm to use for subsequent secure connections
       * If SSL renegotiation is enabled, a request can be made for renegotiation of the crypto algorithm
       * In a renegotiation attack, the adversary establishes a SSL/TLS connection and then proceeds to make a series of renegotiation requests
+
 <br>
 
 ## Application Exhaustion Flood
 Adversaries may target resource intensive features of applications to cause a DoS attack, denying availability to those applications
 * Specific features in web applications may be highly resource intensive; Repeated requests to those features may be able to exhaust system resources and deny access to the application or the server itself
+
 <br>
 
 ## Application or System Exploitation
 Adversaries may exploit software vulnerabilities that can cause an application or system to crash and deny availability to users. Some systems may automatically restart critical applications and services when crashes occur, but they can likely be re-exploited to cause a persistent DoS condition
 * Crashed or restarted applications or systems may also have other effects such as *Data Destruction, Firmware Corruption, Service Stop* etc. which may further cause a DoS condition and deny availability to critical information, applications and/or systems
+
 <br>
 <hr>
 
@@ -211,6 +227,7 @@ Adversaries may exploit software vulnerabilities that can cause an application o
 **Firmware:** Software that is loaded and executed from non-volatile memory on hardware devices in order to initialize and manage device functionality (motherboard, hard drive, video cards, etc.)
 
 Adversaries may overwrite or corrupt the flash memory contents of system BIOS or other firmware in devices attached to a system in order to render them inoperable or unable to boot; denying the availability to use the devices and/or the system
+
 <br>
 <hr>
 
@@ -227,6 +244,7 @@ OS may contain features that can help fix corrupted systems, such as a backup ca
   * `wbadmin.exe delete catalog -quiet` -- Delete the Windows Backup Catalog
 * **bcdedit.exe** 
   * `bcdedit.exe /set {default} bootstatuspolicy ignoreallfailures & bcdedit /set {default}recoveryenabled no` -- Disable automatic Windows recovery features by modifying boot configuration data
+
 <br>
 <hr>
 
@@ -238,6 +256,7 @@ A Network DoS will occur when the bandwidth capacity of the network connection t
 To perform Network DoS attacks several aspects apply to multiple methods, including IP address spoofing, and botnets
 * Adversaries may use the original IP address of an attacking system
 * Spoof the source IP address to make the attack traffic more difficult to trace back to the attacking system or to enable reflection
+
 <br>
 
 ## Direct Network Flood
@@ -247,6 +266,7 @@ Direct Network Floods are when one or more systems are used to send a high-volum
 
 Botnets are commonly used to conduct network flooding attacks against networks and services
 * In such circumstances, distinguishing DDoS traffic from legitimate clients becomes exceedingly difficult
+
 <br>
 
 ## Reflection Amplification
@@ -257,6 +277,7 @@ Reflection attacks often take advantage of protocols with larger responses than 
 * Adversaries may be able to generate an increase in volume of attack traffic that is several orders of magnitude greater than the requests sent to the amplifiers
   * The extent of this increase will depending upon many variables, such as the protocol in question, the technique used, and the amplifying servers that actually produce the amplification in attack volume
   * Two prominent protocols that have enabled Reflection Amplification Floods are DNS and NTP
+
 <br>
 <hr>
 
@@ -267,6 +288,7 @@ One common purpose for Resource Hijacking is to validate transactions of cryptoc
 * Containerized environments may also be targeted due to the ease of deployment via exposed APIs and the potential for scaling mining activities by deploying or compromising multiple containers within an environment or cluster
 
 Additionally, some cryptocurrency mining malware identify then kill off processes for competing malware to ensure it’s not competing for resources
+
 <br>
 <hr>
 
@@ -277,6 +299,7 @@ Adversaries may accomplish this by disabling individual services of high importa
 * In some cases, adversaries may stop or disable many or all services to render systems unusable
 * Services or processes may not allow for modification of their data stores while running
 * Adversaries may stop services or processes in order to conduct *Data Destruction or Data Encrypted for Impact* on the data stores of services like Exchange and SQL Server
+
 <br>
 <hr>
 
@@ -287,5 +310,3 @@ Adversaries may shutdown/reboot systems to interrupt access to, or aid in the de
 * Shutting down or rebooting systems may disrupt access to computer resources for legitimate users
 
 Adversaries may attempt to shutdown/reboot a system after impacting it in other ways, such as *Disk Structure Wipe* or *Inhibit System Recovery*, to hasten the intended effects on system availability
-
-

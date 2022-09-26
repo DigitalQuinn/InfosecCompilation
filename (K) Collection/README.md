@@ -2,10 +2,10 @@
 
 Collection consists of techniques adversaries may use to gather information and the sources information is collected from that are relevant to following through on the adversary's objectives. Frequently, the next goal after collecting data is to steal (exfiltrate) the data. Common target sources include various drive types, browsers, audio, video, and email. Common collection methods include capturing screenshots and keyboard input
 
-
+<br>
 <hr>
-Table of Contents
 
+# Table of Contents
 - [Adversary in the Middle](#adversary-in-the-middle)
   - [LLMNR/NBT-NS Poisoning & SMB Relay](#llmnrnbt-ns-poisoning-and-smb-relay)
   - [ARP Cache Poisoning](#arp-cache-poisoning)
@@ -43,8 +43,8 @@ Table of Contents
   - [Credential API Hooking](#credential-api-hooking)
 - [Screen Capture](#screen-capture)
 - [Video Capture](#video-capture)
-<br>
 
+<br>
 <hr>
 
 # Adversary-in-the-Middle
@@ -55,6 +55,7 @@ Adversaries may AiTM technique to conduct *Network Sniffing* or *Transmitted Dat
 
 Adversaries may also leverage the AiTM position to attempt to monitor and/or modify traffic, such as in **Transmitted Data Manipulation**
 * Adversaries can setup a position similar to AiTM to prevent traffic from flowing to the appropriate destination, potentially to Impair Defenses and/or in support of DoS
+
 <br>
 
 ## LLMNR/NBT-NS Poisoning and SMB Relay
@@ -73,6 +74,7 @@ Adversaries can spoof an authoritative source for name resolution on a victim ne
 
 ### Tools
 Several tools exist that can be used to poison name services within local networks such as NBNSpoof, Metasploit, and Responder
+
 <br>
 
 ## ARP Cache Poisoning
@@ -89,6 +91,7 @@ An adversary may passively wait for an ARP request to poison the ARP cache of th
 The ARP protocol is stateless and does not require authentication; Therefore, devices may wrongly add or update the MAC address of the IP address in their ARP cache
 
 Adversaries may use ARP cache poisoning as a means to intercept network traffic; This activity may be used to collect and/or relay data such as credentials, especially those sent over an insecure, unencrypted protocol
+
 <br>
 
 ## DHCP Spoofing
@@ -110,14 +113,15 @@ Malware can act as a DHCP server and provide adversary-owned DNS servers to the 
 * Through the malicious network configurations, an adversary may achieve the AiTM position, route client traffic through adversary-controlled systems, and collect information from the client network
 
 Rather than establishing an AiTM position, adversaries may also abuse DHCP spoofing to perform a DHCP exhaustion attack (**Service Exhaustion Flood**) by generating many broadcast **DISCOVER** messages to exhaust a network’s DHCP allocation pool
-<br>
 
+<br>
 <hr>
 
 # Archive Collected Data
 An adversary may compress and/or encrypt data that is collected prior to exfiltration
 * Compressing the data can help to obfuscate the collected data and minimize the amount of data sent over the network
 * Encryption can be used to hide information that is being exfiltrated from detection or make exfiltration less conspicuous upon inspection by a defender
+
 <br>
 
 ## Archive via Utility
@@ -127,6 +131,7 @@ Adversaries may abuse various utilities to compress or encrypt data before exfil
   * Additionally, `xcopy` on Windows can copy files and directories with a variety of options
 
 Adversaries may use also third party utilities, such as `7-Zip`, `WinRAR`, and `WinZip`, to perform similar activities
+
 <br>
 
 ## Archive via Library
@@ -134,12 +139,13 @@ An adversary may compress or encrypt data that is collected prior to exfiltratio
 
 * Some archival libraries are preinstalled on systems, such as `bzip2` on macOS and Linux, and `zip` on Windows
 * Libraries can be linked against when compiling, while the utilities require spawning a subshell, or a similar execution mechanism
+
 <br>
 
 ## Archive via Custom Method
 An adversary may compress or encrypt data that is collected prior to exfiltration using a custom method. Adversaries may choose to use custom archival methods, such as encryption with *XOR* or *stream ciphers* implemented with no external library or utility references -- Custom implementations of well-known compression algorithms have also been used
-<br>
 
+<br>
 <hr>
 
 # Audio Capture
@@ -148,7 +154,6 @@ An adversary can leverage a computer's peripheral devices (e.g., microphones and
 Malware or scripts may be used to interact with the devices through an available API provided by the operating system or an application to capture audio. Audio files may be written to disk and exfiltrated later
 
 <br>
-
 <hr>
 
 # Automated Collection
@@ -158,8 +163,8 @@ Attackers may use automated techniques for collecting internal data
 * In cloud-based environments, adversaries may also use cloud APIs, CLIs, or extract, transform, and load (ETL) services to automatically collect data
 
 This technique may incorporate use of other techniques such as *File and Directory Discovery* and *Lateral Tool Transfer* to identify and move files, as well as *Cloud Service Dashboard* and *Cloud Storage Object Discovery* to identify resources in cloud environments
-<br>
 
+<br>
 <hr>
 
 # Browser Session Hijacking
@@ -174,8 +179,8 @@ Another example involves pivoting browser traffic from the adversary's browser t
 * Browsers typically create a new process for each tab that is opened and permissions and certificates are separated accordingly
   * With these permissions, an adversary could potentially browse to any resource on an intranet, such as Sharepoint or webmail, that is accessible through the browser and which the browser has sufficient permissions
   * Browser pivoting may also bypass security provided by 2-factor authentication
-<br>
 
+<br>
 <hr>
 
 # Clipboard Data
@@ -183,8 +188,8 @@ Adversaries may collect data stored in the clipboard from users copying informat
 
 * In Windows, *Applications* can access clipboard data by using the Windows API
 * OSX provides a native command, `pbpaste`, to grab clipboard contents
-<br>
 
+<br>
 <hr>
 
 # Data from Cloud Storage Object
@@ -195,14 +200,15 @@ Common misconfiguration scenarios by end users
 * Cloud storage has been improperly secured (Unintentionally allowing public access by unauthenticated users or overly-broad access by all users)
 * Allowing open access to sensitive information
 * Adversaries may also obtain leaked credentials in source repositories, logs, or other means as a way to gain access to cloud storage objects that have access permission controls
-<br>
 
+<br>
 <hr>
 
 # Data from Configuration Repository
 **Configuration repositories** are used by management systems in order to configure, manage, and control data on remote systems. Configuration repositories may also facilitate remote access and administration of devices
 * Adversaries may target these repositories in order to collect large quantities of sensitive system administration data
 * Data from configuration repositories may be exposed by various protocols and software and can store a wide variety of data, much of which may align with adversary *Discovery* objectives
+
 <br>
 
 ## SNMP (MIB Dump)
@@ -212,6 +218,7 @@ Common misconfiguration scenarios by end users
 * MIBs may also contain device operational information, including running configuration, routing table, and interface details
 
 Adversaries may use SNMP queries to collect MIB content directly from SNMP-managed devices in order to collect network information that allows the adversary to build network maps and facilitate future targeted exploitation
+
 <br>
 
 ## Network Device Configuration Dump
@@ -221,14 +228,15 @@ The **network configuration** is a file containing parameters that determine the
 Adversaries can inspect the configuration files to reveal information about the target network and its layout, the network device and its software, or identifying legitimate accounts and credentials for later use
 * Use common maanegement tools suchh as SNMP and Smart Install (SMI), to access network configuration files
   * These tools may be used to query specific data from a configuration repository or configure the device to export the configuration for later analysis
-<br>
 
+<br>
 <hr>
 
 # Data from Information Repositories
 **Information repositories** are tools that allow for storage of information, typically to facilitate collaboration or information sharing between users, and can store a wide variety of data that may aid adversaries in further objectives, or direct access to the target information
 
 Information stored in a repository may vary based on the specific instance or environment; Specific common information repositories include web-based platforms such as Sharepoint and Confluence, specific services such as Code Repositories, IaaS databases, enterprise databases, and other storage infrastructure such as SQL Server
+
 <br>
 
 ## Confluence
@@ -242,6 +250,7 @@ Confluence repositories often holds valuable information; Found in development e
 * Work / project schedules
 * Source code snippets
 * Links to network shares and other internal resources
+
 <br>
 
 ## Sharepoint
@@ -255,6 +264,7 @@ SharePoint will often contain useful information for an adversary to learn about
 * Work / project schedules
 * Source code snippets
 * Links to network shares and other internal resources
+
 <br>
 
 ## Code Repositories
@@ -263,8 +273,8 @@ SharePoint will often contain useful information for an adversary to learn about
 
 Once adversaries gain access to a victim network or a private code repository, they may collect sensitive information such as proprietary source code or credentials contained within software's source code
 * Having access to software's source code may allow adversaries to develop Exploits, while credentials may provide access to additional resources using *Valid Accounts*
-<br>
 
+<br>
 <hr>
 
 # Data from Local System
@@ -273,13 +283,12 @@ Adversaries may search local system sources, such as file systems and configurat
 Adversaries may do this using a *Command and Scripting Interpreter*, such as cmd as well as a Network Device CLI, which have functionality to interact with the file system to gather information. Adversaries may also use *Automated Collection* on the local system.
 
 <br>
-
 <hr>
 
 # Data from Network-Shared Drives
 Adversaries may search network shares on computers they have compromised to find files of interest. Sensitive data can be collected from remote systems via shared network drives (host shared directory, network file server, etc.) that are accessible from the current system prior to Exfiltration. Interactive command shells may be in use, and common functionality within cmd may be used to gather information
-<br>
 
+<br>
 <hr>
 
 # Data from Removable Media
@@ -287,8 +296,8 @@ Adversaries may search connected removable media on computers they have compromi
 * Interactive command shells may be in use, and common functionality within cmd may be used to gather information
 
 Some adversaries may also use *Automated Collection* on removable media
-<br>
 
+<br>
 <hr>
 
 # Data Staged
@@ -297,12 +306,14 @@ Data may be kept in separate files or combined into one file through techniques 
 In cloud environments, adversaries may stage data within a particular instance or virtual machine before exfiltration. An adversary may *Create Cloud Instance* and stage data in that instance 
 
 Adversaries may choose to stage data from a victim network in a centralized location prior to *Exfiltration* to minimize the number of connections made to their C2 server and better evade detection
+
 <br>
 
 ## Local Data Staging
 Adversaries may stage collected data in a central location or directory on the local system prior to Exfiltration. Data may be kept in separate files or combined into one file through techniques such as Archive Collected Data. Interactive command shells may be used, and common functionality within cmd and bash may be used to copy data into a staging location.
 
 Adversaries may also stage collected data in various available formats/locations of a system, including local storage databases/repositories or the Windows Registry
+
 <br>
 
 ## Remote Data Staging
@@ -311,8 +322,8 @@ Adversaries may stage data collected from multiple systems in a central location
 In cloud environments, adversaries may stage data within a particular instance or virtual machine before exfiltration. An adversary may Create Cloud Instance and stage data in that instance
 
 By staging data on one system prior to *Exfiltration*, adversaries can minimize the number of connections made to their C2 server and better evade detection
-<br>
 
+<br>
 <hr>
 
 # Email Collection
@@ -328,12 +339,14 @@ Files containing email data can be acquired from a user’s local system, such a
 * Both types of Outlook data files are typically stored in
   * `C:\Users\<username>\Documents\Outlook Files`
   * `C:\Users\<username>\AppData\Local\Microsoft\Outlook`
+
 <br>
 
 ## Remote Email Collection
 Adversaries may leverage a user's credentials and interact directly with the Exchange server to acquire information from within a network
 * Adversaries may also access externally facing Exchange services, Office 365, or Google Workspace to access email using credentials or access tokens
 * Tools such as **MailSniper** can be used to automate searches for specific keywords
+
 <br>
 
 ## Email Forwarding Rule
@@ -347,8 +360,8 @@ Adversaries may abuse email-forwarding rules to monitor the activities of a vict
 
 Any user or administrator within the organization (or adversary with valid credentials) can create rules to automatically forward all received messages to another recipient, forward emails to different locations based on the sender, and more
 * Adversaries may also hide the rule by making use of the Microsoft Messaging API (MAPI) to modify the rule properties, making it hidden and not visible from Outlook, OWA or most Exchange Administration tools
-<br>
 
+<br>
 <hr>
 
 # Input Capture
@@ -368,6 +381,7 @@ Keylogging is the most prevalent type of input capture, with many different ways
 * Windows Registry modifications
 * Custom drivers
 * *Modify System Image* may provide adversaries with hooks into the operating system of network devices to read raw keystrokes for login sessions
+
 <br>
 
 ## GUI Input Capture
@@ -376,12 +390,14 @@ When programs are executed that need additional privileges than are present in t
 Adversaries may mimic this functionality to prompt users for credentials with a seemingly legitimate prompt for a number of reasons that mimic normal usage, such as a fake installer requiring additional access or a fake malware removal suite
 * This type of prompt can be used to collect credentials via various languages such as AppleScript and PowerShell
 * On Linux systems adversaries may launch dialog boxes prompting users for credentials from malicious shell scripts or the CLI
+
 <br>
 
 ## Web Portal Capture
 Adversaries may install code on externally facing portals to capture and transmit credentials of users who attempt to log into the service
 
 This variation on input capture may be conducted post-compromise using legitimate administrative access as a backup measure to maintain network access through *External Remote Services* and *Valid Accounts* or as part of the initial compromise by exploitation of the externally facing web service
+
 <br>
 
 ## Credential API Hooking
@@ -392,15 +408,15 @@ Malicious hooking mechanisms may capture API calls that include parameters that 
 * **Hooks Procedures:** Intercepts and execute designated code in response to events such as messages, keystrokes, and mouse inputs.
 * **Import Address Table (IAT) Hooking:** Uses modifications to a process’s IAT, where pointers to imported API functions are stored
 * **Inline Hooking:** Overwrites the first bytes in an API function to redirect code flow
-<br>
 
+<br>
 <hr>
 
 # Screen Capture
 Adversaries may attempt to take screen captures of the desktop to gather information over the course of an operation. Screen capturing functionality may be included as a feature of a remote access tool used in post-compromise operations
 * Taking a screenshot is also typically possible through native utilities or API calls, such as `CopyFromScreen`, `xwd`, or `screencapture`
-<br>
 
+<br>
 <hr>
 
 # Video Capture
@@ -411,4 +427,3 @@ Malware or scripts may be used to interact with the devices through an available
   * This technique differs from *Screen Capture* due to use of specific devices or applications for video recording rather than capturing the victim's screen
 
 **In macOS**, there are a few different malware samples that record the user's webcam such as `FruitFly` and `Proton`
-

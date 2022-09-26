@@ -1,8 +1,8 @@
 # Command & Control (C2)
 
 Command and Control consists of techniques that adversaries may use to communicate with systems under their control within a victim network. Adversaries commonly attempt to mimic normal, expected traffic to avoid detection. There are many ways an adversary can establish command and control with various levels of stealth depending on the victim’s network structure and defenses.
-<br>
 
+<br>
 <hr>
 
 # Table of Contents
@@ -45,6 +45,7 @@ Command and Control consists of techniques that adversaries may use to communica
   - [Bidirectional Communication](#bidirectional-communication)
   - [One-Way Communication](#one-way-communication)
 
+<br>
 <hr>
 
 # Application Layer Protocol
@@ -54,6 +55,7 @@ Adversaries may communicate using application layer protocols to avoid detection
 * Packets produced from these protocols may have many fields and headers in which data can be concealed
 * Data could also be concealed within the transferred files
   * An adversary may abuse these protocols to communicate with systems under their control within a victim network while also mimicking normal, expected traffic
+
 <br>
 
 ## Web Protocols
@@ -75,8 +77,8 @@ SMTP(S), POP3(S), and IMAP that carry electronic mail may be abused to communica
 The DNS protocol serves an administrative function in computer networking and thus may be very common in environments
 * DNS traffic may also be allowed even before network authentication is completed
 * **DNS Tunneling:** Routes DNS requests to the attacker's server, providing attackers a covert C2 channel, and data exfiltration path
-<br>
 
+<br>
 <hr>
 
 # Communication Through Removable Media
@@ -86,7 +88,6 @@ Adversaries can perform command and control between compromised hosts on potenti
 * Commands and files would be relayed from the disconnected system to the Internet-connected system to which the adversary has direct access
 
 <br>
-
 <hr>
 
 # Data Encoding
@@ -108,7 +109,6 @@ C2 information can be encoded using a non-standard data encoding system that div
 * Non-standard data encoding schemes may be based on or related to standard data encoding schemes, such as a modified *Base64* encoding for the message body of an HTTP request
   
 <br>
-
 <hr>
 
 # Data Obfuscation
@@ -136,7 +136,6 @@ Adversaries may use steganographic techniques to hide C2 traffic to make detecti
 Adversaries may impersonate a fake SSL/TLS handshake to make it look like subsequent traffic is SSL/TLS encrypted, potentially interfering with some security tooling, or to make the traffic look like it is related with a trusted entity
 
 <br>
-
 <hr>
 
 # Dynamic Resolution
@@ -181,27 +180,30 @@ Adversaries may perform calculations on addresses returned in DNS results to det
 * One implementation of **DNS Calculation** is to take the first three octets of an IP address in a DNS response and use those values to calculate the port for C2 traffic
 
 <br>
-
 <hr>
 
 # Encrypted Channel
 Adversaries may employ a known encryption algorithm to conceal command and control traffic rather than relying on any inherent protections provided by a communication protocol
 * Despite the use of a secure algorithm, these implementations may be vulnerable to reverse engineering if secret keys are encoded and/or generated within malware samples/configuration files
+
 <br>
 
 ## Symmetric Cryptography
 Symmetric encryption algorithms use the same key for plaintext encryption and ciphertext decryption -- Common symmetric encryption algorithms include AES, DES, 3DES, Blowfish, and RC4
 * Adversaries may employ a known symmetric encryption algorithm to conceal C2 traffic rather than relying on any inherent protections provided by a communication protocol
+
 <br>
 
 ## Asymmetric Cryptography
 **Asymmetric cryptography / Public Key Cryptography:** Uses public and private pairs per party; Common public key encryption algorithms include *RSA and ElGamal*
 * Many protocols uses symmetric cryptography once a connection is established, but use asymmetric cryptography to establish or transmit a key
+
 <br>
 <hr>
 
 # Fallback Channels
 Attackers may use fallback or alternate communication channels if the primary channel is compromised or inaccessible in order to maintain reliable command and control and to avoid data transfer thresholds
+
 <br>
 <hr>
 
@@ -216,6 +218,7 @@ Adversaries may use various utilities to download tools, such as `copy`, `finger
 
 ## UNIX
 A variety of utilities exist, such as `curl`, `scp`, `sftp`, `tftp`, `rsync`, `finger`, and `wget`
+
 <br>
 <hr>
 
@@ -230,6 +233,7 @@ Adversaries may create multiple stages for command and control that are employed
 
 The different stages will likely be hosted separately with no overlapping infrastructure
 * The loader may also have backup first-stage callbacks or *Fallback Channels* in case the original first-stage communication path is discovered and blocked
+
 <br>
 <hr>
 
@@ -250,6 +254,7 @@ Adversaries may use a non-application layer protocol for communication between h
 Adversaries may communicate using a protocol and port paring that are typically not associated
 * HTTPS over port 8088 or port 587 as opposed to the traditional port 443
 * Adversaries may make changes to the standard port used by a protocol to bypass filtering or muddle analysis/parsing of network data
+
 <br>
 <hr>
 
@@ -266,6 +271,7 @@ There are various means to encapsulate a protocol within another protocol
 * **DNS over HTTPS (DoH):** Queries to resolve C2 infrastructure may be encapsulated within encrypted HTTPS packets
 
 Adversaries may also leverage Protocol Tunneling in conjunction with *Proxy* and/or *Protocol Impersonation* to further conceal C2 communications and infrastructure
+
 <br>
 <hr>
 
@@ -281,6 +287,7 @@ Adversaries may use a connection proxy to direct network traffic between systems
     * Chain together multiple proxies to further disguise the source of malicious traffic
 
 Adversaries can also take advantage of routing schemes in CDNs to proxy C2 traffic
+
 <br>
 
 ## Internal Proxy
@@ -295,6 +302,7 @@ Adversaries may use an internal proxy to direct C2 traffic between two or more s
 * Internal proxy connections may use common P2P networking protocols (SMB) to better blend in with the environment
 
 By using a compromised internal system as a proxy, adversaries may conceal the true destination of C2 traffic while reducing the need for numerous connections to external systems
+
 <br>
 
 ## External Proxy
@@ -302,6 +310,7 @@ External connection proxies are used to mask the destination of C2 traffic and a
 * Compromised systems outside of the victim environment may be used for these purposes, as well as purchased infrastructure such as cloud-based resources or virtual private servers
 * Proxies may be chosen based on the low likelihood that a connection to them from a compromised system would be investigated
 * Victim systems would communicate directly with the external proxy on the Internet and then the proxy would forward communications to the C2 server
+
 <br>
 
 ## Multi-hop Proxy
@@ -314,6 +323,7 @@ It's possible for attackers to leverage multiple compromised devices to create a
   * This custom onion routing network will transport the encrypted C2 traffic through the compromised population, allowing adversaries to communicate with any device within the onion routing network
   * This method is dependent upon the *Network Boundary Bridging* method in order to allow the adversaries to cross the protected network boundary of the Internet perimeter and into the organization’s WAN
   * Protocols such as ICMP may be used as a transport
+
 <br>
 
 ## Domain Fronting
@@ -325,6 +335,7 @@ It's possible for attackers to leverage multiple compromised devices to create a
 Adversaries may take advantage of routing schemes in CDNs and other services which host multiple domains to obfuscate the intended destination of HTTPS traffic or traffic tunneled through HTTPS
 * If domain-x and domain-y are customers of the same CDN, it is possible to place domain-x in the TLS header and domain-y in the HTTP header
   * Traffic will appear to be going to domain-x, however the CDN may route it to domain-y
+
 <br>
 <hr>
 
@@ -336,6 +347,7 @@ An adversary may use legitimate desktop support and remote access software, such
 Remote access tools may be installed and used post-compromise as alternate communications channel for redundant access or as a way to establish an interactive remote desktop session with the target system
 * They may also be used as a component of malware to establish a reverse connection or back-connect to a service or adversary controlled system
   * Installation of many remote access tools may also include persistence (ex: the tool's installation routine creates a Windows Service)
+
 <br>
 <hr>
 
@@ -359,6 +371,7 @@ On network devices, adversaries may use crafted packets to enable Network Device
 
 **Wake-on-LAN:** A hardware feature that allows a powered down system to be powered on, or woken up, by sending a magic packet to it. Once the system is powered on, it may become a target for lateral movement
 * Adversaries may also use the Wake-on-LAN feature to turn on powered off systems
+
 <br>
 
 ## Port Knocking
@@ -372,6 +385,7 @@ The observation of the signal packets to trigger the communication can be conduc
 * One means is to use the libpcap libraries to sniff for the packets in question
 * Another method leverages raw sockets, which enables the malware to use ports that 
 are already open for use by other programs
+
 <br>
 <hr>
 
@@ -381,6 +395,7 @@ Adversaries may use an existing, legitimate external Web service as a means for 
   * Using common services, such as those offered by Google or Twitter, makes it easier for adversaries to hide in expected noise. Web service providers commonly use SSL/TLS encryption, giving adversaries an added level of protection
 
 Use of Web services may also protect back-end C2 infrastructure from discovery through malware binary analysis while also enabling operational resiliency (since this infrastructure may be dynamically changed)
+
 <br>
 
 ## Dead Drop Resolver
@@ -389,6 +404,7 @@ Adversaries may use an existing, legitimate external Web service to host informa
   * Once infected, victims will reach out to and be redirected by these resolvers
 
 The use of a dead drop resolver may also protect back-end C2 infrastructure from discovery through malware binary analysis while also enabling operational resiliency (since this infrastructure may be dynamically changed)
+
 <br>
 
 ## Bidirectional Communication
@@ -399,6 +415,7 @@ Adversaries may use an existing, legitimate external Web service as a means for 
   * Issuing a pull request to development project
   * Updating a document hosted on a Web service
   * Sending a Tweet
+
 <br>
 
 ## One-Way Communication 

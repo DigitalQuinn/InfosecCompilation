@@ -2,36 +2,49 @@
 
 Lateral Movement consists of techniques that adversaries use to enter and control remote systems on a network. Following through on their primary objective often requires exploring the network to find their target and subsequently gaining access to it. Reaching their objective often involves pivoting through multiple systems and accounts to gain. Adversaries might install their own remote access tools to accomplish Lateral Movement or use legitimate credentials with native network and operating system tools, which may be stealthier.
 
-
+<br>
 <hr>
-Table of Contents
 
+# Table of Contents
 - [Exploitation of Remote Services](#exploitation-of-remote-services)
 - [Internal Spearphishing](#internal-spearphishing)
 - [Lateral Tool Transfer](#lateral-tool-transfer)
 - [Remote Service Session Hijacking](#remote-service-session-hijacking)
+  - [SSH Hijacking](#ssh-hijacking)
+  - [RDP Hijacking](#rdp-hijacking)
 - [Remote Services](#remote-services)
+  - [Remote Desktop Protocol](#remote-desktop-protocol)
+  - [SMB / Windows Admin Shares](#smbwindows-admin-shares)
+  - [Distributed Component Object Model](#distributed-component-object-model)
+  - [SSH](#ssh)
+  - [VNC](#vnc)
+  - [Windows Remote Management](#windows-remote-management)
 - [Replication Through Removable Media](#replication-through-removable-media)
 - [Software Deployment Tools](#software-deployment-tools)
 - [Taint Shared Content](#taint-shared-content)
 - [Use Alternate Authenication Material](#use-alternate-authentication-material)
+  - [Application Access Token](#application-access-token)
+  - [Pass the Hash](#pass-the-hash)
+  - [Pass the Ticket](#pass-the-ticket)
+  - [Web Session Cookie](#web-session-cookie)
 
+<br>
 <hr>
 
 # Exploitation of Remote Services
 **Exploitation:** Occurs when an adversary takes advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code
 
 An adversary may need to determine if the remote system is in a vulnerable state, which may be done through *Network Service Discovery* or other Discovery methods looking for common, vulnerable software that may be deployed in the network, the lack of certain patches that may indicate vulnerabilities, or security software that may be used to detect or contain remote exploitation
-<br>
 
+<br>
 <hr>
 
 # Internal Spearphishing
 **Internal Spearphishing:** A multi-staged campaign where an email account is owned either by controlling the user's device with previously installed malware or by compromising the account credentials of the user. Adversaries attempt to take advantage of a trusted internal account to increase the likelihood of tricking the target into falling for the phish attempt
 
 Adversaries may leverage *Spearphishing Attachment* or *Spearphishing Link* as part of internal spearphishing to deliver a payload or redirect to an external site to capture credentials through Input Capture on sites that mimic email login interfaces
-<br>
 
+<br>
 <hr>
 
 # Lateral Tool Transfer
@@ -40,8 +53,8 @@ Adversaries may transfer tools or other files between systems in a compromised e
 Adversaries may copy files between internal victim systems to support lateral movement using inherent file sharing protocols such as file sharing over SMB/Windows Admin Shares to connected network shares or with authenticated connections via RDP
 
 Files can also be transferred using native or otherwise present tools on the victim system, such as scp, rsync, curl, sftp, and ftp
-<br>
 
+<br>
 <hr>
 
 # Remote Service Session Hijacking
@@ -61,6 +74,7 @@ Adversaries may take advantage of trust relationships established with other sys
 * If an adversary is able to obtain root access, then hijacking SSH sessions is likely trivial
 
 **SSH Hijacking** differs from use of **SSH** because it hijacks an existing SSH session rather than creating a new session using Valid Accounts
+
 <br>
 
 ## RDP Hijacking
@@ -71,8 +85,8 @@ RDP: Allows a user to log into an interactive session with a system desktop grap
 * This can be done remotely or locally and with active or disconnected sessions
   * It can also lead to **Remote System Discovery** and **Privilege Escalation** by stealing a Domain Admin or higher privileged account session
 * All of this can be done by using native Windows commands, but it has also been added as a feature in red teaming tools
-<br>
 
+<br>
 <hr>
 
 # Remote Services
@@ -85,6 +99,7 @@ Legitimate applications (such as *Software Deployment Tools* and other administr
   * ARD leverages a blend of protocols, including VNC to send the screen and control buffers and SSH for secure file transfer
   * Adversaries can abuse applications such as ARD to gain remote code execution and perform lateral movement
     * In versions of macOS prior to 10.14, an adversary can escalate an SSH session to an ARD session which enables an adversary to accept TCC (Transparency, Consent, and Control) prompts without user interaction and gain access to data
+
 <br>
 
 ## Remote Desktop Protocol
@@ -93,6 +108,7 @@ Legitimate applications (such as *Software Deployment Tools* and other administr
 * Adversaries may connect to a remote system over RDP/RDS to expand access if the service is enabled and allows access to accounts with known credentials
 * Adversaries will likely use Credential Access techniques to acquire credentials to use with RDP
 * Adversaries may also use RDP in conjunction with the Accessibility Features or Terminal Services DLL for Persistence
+
 <br>
 
 ## SMB/Windows Admin Shares
@@ -104,6 +120,7 @@ Windows systems have hidden network shares that are accessible only to administr
   * Adversaries may use this technique in conjunction with administrator-level Valid Accounts to remotely access a networked system over SMB, to interact with systems using remote procedure calls (RPCs), transfer files, and run transferred binaries through remote Execution
   * Example execution techniques that rely on authenticated sessions over SMB/RPC are *Scheduled Task/Job*, *Service Execution*, and *Windows Management Instrumentation*
   * Adversaries can also use NTLM hashes to access administrator shares on systems with Pass the Hash and certain configuration and patch levels
+
 <br>
 
 ## Distributed Component Object Model
@@ -118,12 +135,14 @@ Through DCOM, adversaries operating in the context of an appropriately privilege
 
 * DCOM can also execute macros in existing documents and may also invoke **Dynamic Data Exchange (DDE)** execution directly through a COM created instance of a Microsoft Office application, bypassing the need for a malicious document
 * DCOM can be used as a method of remotely interacting with Windows Management Instrumentation
+
 <br>
 
 ## SSH
 **SSH:** Protocol that allows authorized users to open remote shells on other computers
 * SSH servers can be configured to use standard password authentication or public-private keypairs in lieu of or in addition to a password
   * The user’s public key must be in a special file on the computer running the server that lists which keypairs are allowed to login as that user
+
 <br>
 
 ## VNC
@@ -136,14 +155,15 @@ Adversaries may abuse VNC to perform malicious actions as the logged-on user suc
 
 * An adversary could use VNC to remotely control and monitor a system to collect data and information to pivot to other systems within the network
 * Specific VNC libraries/implementations have also been susceptible to brute force attacks and memory usage exploitation
+
 <br>
 
 ## Windows Remote Management
 **WinRM:** Windows service / protocol that allows a user to interact with a remote system (e.g., run an executable, modify the Registry, modify services)
 * It may be called with the `winrm` command or by any number of programs such as PowerShell
 * WinRM can be used as a method of remotely interacting with Windows Management Instrumentation
-<br>
 
+<br>
 <hr>
 
 # Replication Through Removable Media
@@ -152,6 +172,7 @@ Adversaries may move onto systems, possibly those on disconnected or air-gapped 
 * *Lateral Movement* may occur through modification of executable files stored on removable media or by copying malware and renaming it to look like a legitimate file to trick users into executing it on a separate system
   
 * *Initial Access* may occur through manual manipulation of the media, modification of systems used to initially format the media, or modification to the media's firmware itself
+
 <br>
 <hr>
 
@@ -160,8 +181,8 @@ Third-party applications and software deployment systems may be in use in the ne
 
 * Access to a third-party network-wide or enterprise-wide software system may enable an adversary to have remote code execution on all systems that are connected to such a system
 * The access may be used to laterally move to other systems, gather information, or cause a specific effect, such as wiping the hard drives on all endpoints
-<br>
 
+<br>
 <hr>
 
 # Taint Shared Content
@@ -180,6 +201,7 @@ Adversaries may also compromise shared network directories through binary infect
 * The malware may modify the **original entry point (OEP)** of the healthy binary to ensure that it is executed before the legitimate code
   * The infection could continue to spread via the newly infected file when it is executed by a remote system
   * These infections may target both binary and non-binary formats that end with extensions (.EXE, .DLL, .SCR, .BAT, .VBS, etc.)
+
 <br>
 <hr>
 
@@ -191,6 +213,7 @@ Authentication processes generally require a valid identity (e.g., username) alo
 Caching alternate authentication material allows the system to verify an identity has successfully authenticated without asking the user to reenter authentication factor(s)
 * Because the alternate authentication must be maintained by the system—either in memory or on disk—it may be at risk of being stolen through Credential Access techniques
 * By stealing alternate authentication material, adversaries are able to bypass system access controls and authenticate to systems without knowing the plaintext password or any additional authentication factors
+
 <br>
 
 ## Application Access Token
@@ -217,9 +240,10 @@ Compromised access tokens may be used as an initial step in compromising other s
 * If a token grants access to a victim’s primary email, the adversary may be able to extend access to all other services which the target subscribes by triggering forgotten password routines
 * Direct API access through a token negates the effectiveness of a second authentication factor and may be immune to intuitive countermeasures like changing passwords
 * Access abuse over an API channel can be difficult to detect even from the service provider end, as the access can still align well with a legitimate workflow
+
 <br>
 
-## Pass the Hash (PTH)
+## Pass the Hash
 **Pass the hash (PTH):** A method of authenticating as a user without having access to the user's cleartext password
 * This method bypasses standard authentication steps that require a cleartext password, moving directly into the portion of the authentication that uses the password hash
 
@@ -230,9 +254,10 @@ When performing PTH, valid password hashes for the account being used are captur
 Adversaries may also use stolen password hashes to "Overpass the Hash (OTH)"
 * Similar to PTH, this involves using a password hash to authenticate as a user but also uses the password hash to create a valid Kerberos ticket
   * This ticket can then be used to perform Pass the Ticket (PTT) attacks
+
 <br>
 
-## Pass the Ticket (PTT)
+## Pass the Ticket 
 **Pass the ticket (PTH):** A method of authenticating to a system using Kerberos tickets without having access to an account's password -- Kerberos authentication can be used as the first step to lateral movement to a remote system
 
 When preforming PTH, valid Kerberos tickets for Valid Accounts are captured by OS Credential Dumping
@@ -245,6 +270,7 @@ A **Golden Ticket** can be obtained for the domain using the Key Distribution Se
 
 Adversaries may also create a valid Kerberos ticket using other user information, such as stolen password hashes or AES keys
 * For example, OTH involves using a NTLM password hash to authenticate as a user (i.e. Pass the Hash) while also using the password hash to create a valid Kerberos ticket
+
 <br>
 
 ## Web Session Cookie
@@ -253,4 +279,3 @@ Adversaries can use stolen session cookies to authenticate to web applications a
 Authentication cookies are commonly used in web applications, including cloud-based services, after a user has authenticated to the service so credentials are not passed and re-authentication does not need to occur as frequently
 * Cookies are often valid for an extended period of time, even if the web application is not actively used
 * After the cookie is obtained through Steal Web Session Cookie or Web Cookies, the adversary may then import the cookie into a browser they control and is then able to use the site or application as the user for as long as the session cookie is active
-
