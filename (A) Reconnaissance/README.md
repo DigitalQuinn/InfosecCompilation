@@ -6,7 +6,6 @@ The adversary is trying to gather information they can use to plan future operat
 
 ---------------------
 # Tables of Content #
----------------------
 
 - [Active Scanning](#Active-Scanning)
 - [Gathering Host Information](#Gathering-Host-Information)
