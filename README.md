@@ -267,7 +267,9 @@
 - [Kitploit’s Popular Hacking Tools](https://www.kitploit.com/2021/12/top-20-most-popular-hacking-tools-in.html)
 - [Red Teaming Toolkit](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development)
 
+### Hardware
 
+- [Flipper Zero](https://flipperzero.one/) 
 
   - [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
   - [Dockerized Android](https://github.com/cybersecsi/dockerized-android) - A Container-Based framework to enable the integration of mobile components in security training platforms
@@ -336,7 +338,7 @@
 - [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
 - [https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/](https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/)
 
-### Active Directory
+#### Active Directory
 Resources for AD penetration testing
 - Build an AD homelab
   - https://lnkd.in/eN8V88kv
@@ -345,6 +347,14 @@ Resources for AD penetration testing
   - [AzureAD-Attack-Defense](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense) - Collection of various common attack scenarios on Azure AD
 - Document full of resources(https://lnkd.in/ePgnhbUk)
 - [AD Exploitation Cheat Sheet](https://github.com/Integration-IT/Active-Directory-Exploitation-Cheat-Sheet)
+
+#### Active Directory Pentesting
+
+- [Offensive AD 101](https://owasp.org/www-pdf-archive/OWASP_FFM_41_OffensiveActiveDirectory_101_MichaelRitter.pdf) - Offense AD Guide
+- [AD Exploitation Cheatsheet](https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet#active-directory-exploitation-cheat-sheet) - Common TTPs for pentesting AD
+- [IR Team](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse) — AD & Kerberos Abusing
+- [AD Kill Chain Attack & Defense](https://github.com/infosecn1nja/AD-Attack-Defense#discovery) - Specific TTPs to compromise AD and guidance to mitigation, detection, and prevention
+- [Vulnerable AD](https://github.com/WazeHell/vulnerable-AD) — Create a vulnerable AD allowing you to test most AD attacks in a local lab
 
 ### Evade AV/EDR  
 - [Inceptor](https://github.com/klezVirus/inceptor) — Automate common AV/EDR bypasses
@@ -358,124 +368,142 @@ Resources for AD penetration testing
 
 ### Hashes
 - Hash Database — Upload Hashes
-  - - [crackstation](https://crackstation.net/)
+  - [crackstation](https://crackstation.net/)
 
 <br>
 
 - [HostRecon](https://github.com/dafthack/HostRecon) — Provide situational awareness during reconnaissance of an engagement
 
-- https://github.com/cepxeo/dll4shell
-
 
 ### Wrappers
 - [dll4shell](https://github.com/cepxeo/dll4shell) - A collection of DLL wrappers around various shellcode injection and obfuscation techniques
 
-### **Auditing Tools**
 
-- lansweeper: Asset inventory management — Scans network hosts and compiles an asset information database
-- [Domain Password Audit Tool (DPAT)](https://github.com/clr2of8/DPAT) — Generate password statistics from hashes from a DC and a password crack file
-- [Ping Castle](https://github.com/vletoux/pingcastle) — Assess the security level of the AD based on risk assessment and a maturity framework
-- [Domain Audit](https://github.com/0xJs/domain_audit) — wrapper around PowerView, Impacket, PowerUpSQL and BloodHound to execute a lot of checks
-- [https://www.udemy.com/course/information-security-for-beginners/?couponCode=LINKEDIN09](https://www.udemy.com/course/information-security-for-beginners/?couponCode=LINKEDIN09)
 
-### GRC
+
+### Governance Risk & Compliance (GRC)
 
 - [Management Program](https://github.com/magoo/minimalist-risk-management)
 - [GRC Resource List](https://github.com/Arudjreis/awesome-security-GRC)
 - [Ultimate GRC](https://www.oceg.org/)
+- [ISO 27001 Implementation](https://www.udemy.com/course/information-security-for-beginners/?couponCode=LINKEDIN09)
+- [Windows Security Encyclopaedia](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/)
 
-### **Networking**
+### Device Hardening
+- Department of Defense Cyber Exchange: Provides STIGs w/ hardening guidelines for a variety of software and hardware solutions
+- National Checklist Program (NCP): Provided by the NIST, checklists and benchmarks for OSs and applications
+- [SimplyCyber](https://simplycyber.teachable.com/) — GRC
 
+#### Auditing Tools
+- [lansweeper](https://www.lansweeper.com/) — Scan hosts and compiles an asset information database (Asset inventory management)
+- [Domain Password Audit Tool (DPAT)](https://github.com/clr2of8/DPAT) — Generate password statistics from hashes from a DC and a password crack file
+- [Ping Castle](https://github.com/vletoux/pingcastle) — Assess the security level of the AD based on risk assessment and a maturity framework
+- [Domain Audit](https://github.com/0xJs/domain_audit) — Wrapper around PowerView, Impacket, PowerUpSQL and BloodHound to execute a lot of checks
+
+### Networking
 - [Tailscale](https://tailscale.com/)
 
-### **CLI Usability**
+### CLI Usability
 
 - [Bat](https://github.com/sharkdp/bat) — Advanced syntax highlighting
 - [fzf](https://github.com/junegunn/fzf) — General purpose command-line fuzzy finder
-- [exa](https://github.com/ogham/exa) — Advanced replacement for *ls* command
+- [exa](https://github.com/ogham/exa) — Advanced replacement for `ls`
+- [macOS Terminal (zsh) — The Beginner’s Guide](https://www.youtube.com/watch?v=ogWoUU2DXBU)
 
-### **Active Directory Pentesting**
 
-- [**Offensive AD 101**](https://owasp.org/www-pdf-archive/OWASP_FFM_41_OffensiveActiveDirectory_101_MichaelRitter.pdf)
-- [**AD Exploitation Cheatsheet**](https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet#active-directory-exploitation-cheat-sheet)
-- [**IR Team](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse) — AD & Kerberos Abusing**
-- [**AD Kill Chain Attack & Defense**](https://github.com/infosecn1nja/AD-Attack-Defense#discovery)
-- [Vulnerable AD](https://github.com/WazeHell/vulnerable-AD) — Create a vulnerable AD allowing you to test most AD attacks in a local lab
+### Compilation of Tools
+#### Python
+- [Python Tool List](https://hackersonlineclub.com/python-tools/) - Compilation of security Python tools
 
-### **Compilation of Tools**
 
-- Python
-    - [Python Tool List](https://hackersonlineclub.com/python-tools/)
-
-### **Hardware**
-
-- [Flipper Zero](https://flipperzero.one/)
 
 ### Reporting
 
 - [PeTeReport](https://hakin9.org/petereport-open-source-application-vulnerability-reporting-tool/)
 
-## **Books**
+<hr>
 
-### **Red Team**
+# InfoSec Books
 
-- RTFM
-- Pentesting
-    - Penetration Testing Essentials
-    - Advanced Penetration Testing: Hacking the World’s Most Secure Networks
-    - The Pentester BluePrint: Starting a Career as an Ethical Hacker
-    - Penetration Testing: A Hands-On Introduction to Hacking
-    - The Basics of Hacking & Penetration Testing: Ethical Hacking & Penetration Made Easy
-    - Hands On Hacking
-- Social Engineering
-    - Social Engineering: The Science of Human Hacking
-- Apps & Web
-    - A Bug Hunter's Diary (Klein)
-    - Exploiting Software: How to Break Code (Hoglund and McGraw)
-    - Hands-on Web Penetration Testing with Metasploit (Singh and Sharma)
-    - Hunting Security Bugs (Gallagher, Landauer, and Jeffries)
-    - Professional Pen Testing for Web Applications: Programmer to Programmer (Andreu)
-    - Read-World Bug Hunting: A Field Guide to Web Hacking (Yaworski)
-    - Seven Deadliest Web Application Attacks (Shema)
-    - SQL Injection Attacks and Defense (Clarke et al)
-    - The Art of Software Security Assessment (Dowd, McDonald, and Schuh)
-    - The Tangled Web: A Guide to Securing Modern Web Applications (Zalewski)
-    - Web Penetration Testing with Kali Linux (Najera-Gutierrez and Ansari)
-- Network
-    - Aggressive Network Self-Defense (Wyler, Potter, and Hurley)
-    - Hacking Exposed: Network Security Secrets & Solutions (McClure et al)
-    - The Hacker's Handbook: Breaking Into & Defending Networks (Young and Aitel)
-    - Silence on the Wire: A Field Guide to Passive Recon and Indirect Attacks (Zalewski)
-- Specialized
-    - Android Hacker's Handbook (Drake et al)
-    - Google Hacking for Penetration Testers (Long, Gardner, and Brown)
-    - Hacking Exposed Cisco Networks: Cisco Security (Vladimirov et al)
-    - iOS Hacker's Handbook (Miller et al)
-    - Practical IoT Hacking (Chantzis et al)
-    - Securing the Smart Grid: Next Generation Power Grid Security (Flick and Morehouse)
-    - Shellcoder's Handbook: Discovering and Exploiting Security Holes (Anley)
-    - Social Engineering: The Art of Human Hacking (Hadnagy et al)
-    - The Car Hacker's Handbook: A Guide for the Penetration Tester (Smith)
-    - The Database Hacker's Handbook: Defending Database Servers (Litchfield et al)
-    - The Hardware Hacker: Adventures in Making & Breaking Hardware (Huang)
-    - The Mac Hacker's Handbook (Miller and Zovi)
-    - The Mobile Application Hacker's Handbook (Chell)
-    - Unauthorized Access: Physical Penetration Testing for IT Security Teams (Allsopp)
-    - WarDriving and Wireless Penetration Testing (Hurley et al)
-- Digging Deep
-    - A Guide to Kernel Exploitation: Attacking the Core (Perla and Oldani)
-    - Advanced Penetration Testing: Hacking the World's Most Secure Networks (Allsopp)
-    - Advanced Penetration Testing for Highly-Secured Environments (Allen and Cardwell)
-    - Advanced Persistent Threat Hacking: The Art & Science of Hacking (Wrightson)
-    - Applied Machine Learning/Neural Networks: Offensive Security (Atkins)
-    - Managed Code Rootkits: Hooking into Runtime Environments (Metula)
-    - Ninja Hacking: Unconventional Penetration Testing (Wilhelm and Andress)
-    - Rootkits and Bootkits (Matrosov, Rodionov, and Bratus)
-    - Hacking: The Art of Exploitation , 1st or 2nd edition (Jon Erickson)
+<br>
 
-### **Cyber Intelligence**
+## Red Teaming
+- Red Team Field Manual
 
-- We Are  Bellingcat
+<br>  
+
+### Penetration Testing
+- Penetration Testing Essentials
+- Advanced Penetration Testing: Hacking the World’s Most Secure Networks
+- The Pentester BluePrint: Starting a Career as an Ethical Hacker
+- Penetration Testing: A Hands-On Introduction to Hacking
+- The Basics of Hacking & Penetration Testing: Ethical Hacking & Penetration Made Easy
+- Hands On Hacking
+  
+<br>
+
+### Social Engineering
+- Social Engineering: The Science of Human Hacking
+
+<br>
+
+### Web Applications
+- A Bug Hunter's Diary (Klein)
+- Exploiting Software: How to Break Code (Hoglund and McGraw)
+- Hands-on Web Penetration Testing with Metasploit (Singh and Sharma)
+- Hunting Security Bugs (Gallagher, Landauer, and Jeffries)
+- Professional Pen Testing for Web Applications: Programmer to Programmer (Andreu)
+- Read-World Bug Hunting: A Field Guide to Web Hacking (Yaworski)
+- Seven Deadliest Web Application Attacks (Shema)
+- SQL Injection Attacks and Defense (Clarke et al)
+- The Art of Software Security Assessment (Dowd, McDonald, and Schuh)
+- The Tangled Web: A Guide to Securing Modern Web Applications (Zalewski)
+- Web Penetration Testing with Kali Linux (Najera-Gutierrez and Ansari)
+
+<br>
+
+### Networking
+- Aggressive Network Self-Defense (Wyler, Potter, and Hurley)
+- Hacking Exposed: Network Security Secrets & Solutions (McClure et al)
+- The Hacker's Handbook: Breaking Into & Defending Networks (Young and Aitel)
+- Silence on the Wire: A Field Guide to Passive Recon and Indirect Attacks (Zalewski)
+
+<br>
+
+### Specialized
+- Android Hacker's Handbook (Drake et al)
+- Google Hacking for Penetration Testers (Long, Gardner, and Brown)
+- Hacking Exposed Cisco Networks: Cisco Security (Vladimirov et al)
+- iOS Hacker's Handbook (Miller et al)
+- Practical IoT Hacking (Chantzis et al)
+- Securing the Smart Grid: Next Generation Power Grid Security (Flick and Morehouse)
+- Shellcoder's Handbook: Discovering and Exploiting Security Holes (Anley)
+- Social Engineering: The Art of Human Hacking (Hadnagy et al)
+- The Car Hacker's Handbook: A Guide for the Penetration Tester (Smith)
+- The Database Hacker's Handbook: Defending Database Servers (Litchfield et al)
+- The Hardware Hacker: Adventures in Making & Breaking Hardware (Huang)
+- The Mac Hacker's Handbook (Miller and Zovi)
+- The Mobile Application Hacker's Handbook (Chell)
+- Unauthorized Access: Physical Penetration Testing for IT Security Teams (Allsopp)
+- WarDriving and Wireless Penetration Testing (Hurley et al)
+
+<br>
+
+### Digging Deep
+- A Guide to Kernel Exploitation: Attacking the Core (Perla and Oldani)
+- Advanced Penetration Testing: Hacking the World's Most Secure Networks (Allsopp)
+- Advanced Penetration Testing for Highly-Secured Environments (Allen and Cardwell)
+- Advanced Persistent Threat Hacking: The Art & Science of Hacking (Wrightson)
+- Applied Machine Learning/Neural Networks: Offensive Security (Atkins)
+- Managed Code Rootkits: Hooking into Runtime Environments (Metula)
+- Ninja Hacking: Unconventional Penetration Testing (Wilhelm and Andress)
+- Rootkits and Bootkits (Matrosov, Rodionov, and Bratus)
+- Hacking: The Art of Exploitation , 1st or 2nd edition (Jon Erickson)
+
+<br>
+
+## Cyber Intelligence
+- We Are Bellingcat
 - The Dark Net
 - Dark Territory
 - Cybersecurity & Cyberwar
@@ -489,8 +517,9 @@ Resources for AD penetration testing
 - Countdown to Zero
 - [Open Source Intelligence Techniques: Resources for Searching & Analyzing Online Information](https://inteltechniques.com/book1.html)
 
-### **Tool Guide**
+<br>
 
+## Tool Guide
 - Learning Nessus for Penetration Testing (Kumar)
 - Metasploit: The Penetration Tester's Guide (Kennedy)
 - Metasploit Penetration Testing Cookbook (Teixeira, Singh, and Agarwal)
@@ -498,8 +527,7 @@ Resources for AD penetration testing
 - Nmap 6 Cookbook: The Fat-Free Guide to Network Security Scanning (Marsh)
 - Penetration Tester's Open Source Toolkit (Faircloth)
 
-### **Kali Linux**
-
+## Kali Linux
 - Digital Forensics With Kali Linux
 - Linux Basics for Hackers: Getting Started with Networking, Scripting, & Security in Kali
 - Hacking Exposed Linux (ISECOM)
@@ -509,22 +537,9 @@ Resources for AD penetration testing
 - The Linux Command Line: A Complete Introduction (Shotts)
 - Wicked Cool Shell Scripts (Taylor and Perry)
 
-### **Finance**
+<br>
 
-- The Simple Path to Wealth
-- The Richest Man in Babylon
-- The Psychology of Money
-- I Will Teach You To Be Rich
-- Rich Dad Poor Dad
-- Your Money or Your Life
-- 
-
-### **Psychology**
-
-- Dark Pyschology & Manipulation: 10 In 1
-- Designing The Mind: The Principles of Psychitecture
-
-### **Real-World**
+## Real-World
 
 - The Shadow Factory
 - American Kingpin
@@ -532,27 +547,31 @@ Resources for AD penetration testing
 - Black Software
 - You Have A Very Soft Voice, Susan: A Shocking True Story of Internet Stalking
 
-### **Python**
+<br>
 
+## Python
 - Black Hat Python
 - Violent Python
 - Grey Hat Python
 - Cryptography With Python
 
-### **Dark Web**
+<br>
 
+## Dark Web
 - Tor & The Dark Web
 - Burners & Black Markets
 - Inside The Dark Web
 - Dark Web Investiagtions (Security Informatics & Law Enforcement)
 
-### **Fiction**
+<br>
 
+## Fiction
 - The cuckoos egg
 - CyberStorm: World War C
 
-### **Story Telling**
+<br>
 
+## Story Telling
 - Countdown to Zero Day: Stuxnet (Zetter)
 - Dark Territory: The Secret History of Cyber War (Kaplan)
 - Dissecting the Hack: The F0rb1dd3n Network (Street, Nabors, and Baskin)
@@ -572,40 +591,45 @@ Resources for AD penetration testing
 - The Lure (Schroeder)
 - Zero Day: The Threat in Cyberspace (The Washington Post and O'Harrow)
 
-### **Bug Hunting**
+<br>
 
+## Bug Hunting
 - A bug hunter’s diary
 - Real-World Bug Hunting
 
-### **IoT**
+<br>
 
+## IoT
 - Practical IoT Hacking
 
-### **Quantum**
+<br>
 
+## Quantum
 - Quantum Computing Fundamentals
 - Quantum Physics and The Power of the Mind: 5 BOOKS IN 1
 
-### **Cryptography**
+<br>
 
+## Cryptography
 - The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography
 - Cryptography Engineering: Design Principles and Practical Applications
 - Real-World cryptography
 
-### **Law**
+<br>
 
+## Law
 - Damage Control: Cyber Insurance and Compliance
 - The 2020 Cyber Security & Cyber Law Guide
 - Cyberlaw: Software and Computer Networks
 
-### **Cybersecurity**
+<br>
 
+## Cybersecurity
 - Cyber Mercenaries: The State, Hackers, and Power
 - The hackers playbook (series)
 - Stealing the network
 - Little brother
 - Find Me (series)
-- Cybersecurity book at px
 - Extreme Privacy: What It Takes to Disappear
 - Cyber Breach Response That Actually Works
 - We Are Anonymous
@@ -614,10 +638,19 @@ Resources for AD penetration testing
 - The Smartest Person in the Room
 - CyberStorm
 - CyberSpace
-- **The 8 Layers of the OSI Cake: A Forensic Taste of Each Layer (Cyber Secrets**
+- The 8 Layers of the OSI Cake: A Forensic Taste of Each Layer (Cyber Secrets)
 
-### **Recommended Books**
+<br>
 
+## Malware
+- Learning Malware Analysis
+- The Art of Memory Forensics: Detecting Malware & Threats in Windows, Linux & Mac Memory
+- Practical Malware Analysis
+- Antivirus Bypass Techniques
+
+<br>
+
+## Miscellaneous
 - Traction by Gino Wickman
 - Extreme Ownership by Jocko Willink / Leif Babin
 - How to Measure Anything in Cybersecurity
@@ -627,21 +660,28 @@ Resources for AD penetration testing
 - Adversarial Tradecraft in Cybersecurity
 - Hacker Disassembling Uncovered
 
-### **Malware**
+<br>
 
-- Learning Malware Analysis
-- The Art of Memory Forensics: Detecting Malware and Threats in Windows, Linux, and Mac Memory
-- Practical Malware Analysis
-- Antivirus Bypass Techniques
+## Finance
+- The Simple Path to Wealth
+- The Richest Man in Babylon
+- The Psychology of Money
+- I Will Teach You To Be Rich
+- Rich Dad Poor Dad
+- Your Money or Your Life
+- 
 
-### **Miscellaneous**
-
+## Psychology
+- Dark Pyschology & Manipulation: 10 In 1
+- Designing The Mind: The Principles of Psychitecture
 - 48 Laws of Power
 
-## **Education / Bootcamps / Programs / Certification Material**
+<br>
+<hr>
 
-### **Bootcamps & Programs**
+# Education / Bootcamps / Programs / Certification Material
 
+## Bootcamps & Programs
 - [Global Knowledge](https://www.globalknowledge.com/us-en/)
 - [Level Up In Tech](https://www.levelupintech.com/)
 - [DFIR Diva](https://training.dfirdiva.com/) — Compilation of Training Resources
@@ -650,7 +690,7 @@ Resources for AD penetration testing
 - [NetworkChuck](https://www.youtube.com/c/NetworkChuck)
 - [Whizlabs](https://www.whizlabs.com/pricing/?fbclid=IwAR3egmho_JrqqADw7QZ4CLah827tinr-M5ZB51Zc35pO49T9nXqxAo29nRY&fs=e&s=cl)
 
-### **Threat Intelligence Platforms**
+## Threat Intelligence Platforms
 
 - Closed / Propietary: Threat research and CTI data is made available as a paid subscription to a commerical CTI platform
     - [IBM-X Force Exchange](https://exchange.xforce.ibmcloud.com/)
@@ -666,133 +706,109 @@ Resources for AD penetration testing
 
 ### **Pentesting**
 
-- **Cloud Pentesting**
+#### Cloud Pentesting
     - [FlAWS Cloud](http://flaws.cloud/) — AWS Security Training
     - [FLAWS 2 Cloud](http://flaws2.cloud/) — AWS Security Training
     - AWS Vulnerable
-        - ‣
-        - ‣
-        - ‣
-        - ‣
-        - ‣
-        - ‣
-    - [DVCA](https://github.com/m6a-UdS/dvca) — Demo project to show how to do priv esc on AWS
-    
+    - [DVCA](https://github.com/m6a-UdS/dvca) — Demonstrate priv esc on AWS
     - [OWASP Serverless Goat](https://github.com/OWASP/Serverless-Goat) — Demonstrates common serverless security flaws
-- Training
-    - [Attack-Defense](https://attackdefense.com)
-    - [Crackmes](https://crackmes.one/)
-    - [Ring Zero Team](https://ringzer0ctf.com/)
-    - [Black Hills Information Security — Cyber Range](https://www.blackhillsinfosec.com/services/cyber-range/)
-    - [Alert To Win](https://alf.nu/alert1?world=alert&level=alert0)
-    - [CTF Komodo Security](https://ctf.komodosec.com)
-    - [CMD Challenge](https://cmdchallenge.com)
-    - [Explotation Education](https://exploit.education)
-    - [Google CTF](https://lnkd.in/e46drbz8)
-    - [HackTheBox](https://www.hackthebox.com)
-    - [Hackthis](https://defendtheweb.net/)
-    - [Hacksplaining](https://www.hacksplaining.com/lessons)
-    - [Hacker101](https://ctf.hacker101.com)
-    - [Hacker Security](https://hackersec.com/)
-    - [Hacking-Lab](https://hacking-lab.com/)
-    - [ImmersiveLabs](https://www.immersivelabs.com/)
-    - [OverTheWire](http://overthewire.org)
-    - [Practical Pentest Labs](https://lnkd.in/esq9Yuv5)
-    - [Pentestlab](https://pentesterlab.com)
-    - [Penetration Testing Practice Labs](https://lnkd.in/e6wVANYd)
-    - [PentestIT LAB](https://lab.pentestit.ru/)
-    - [PicoCTF](https://picoctf.com)
-    - [PWNABLE](https://lnkd.in/eMEwBJzn)
-    - [Root Me](https://www.root-me.org/?lang=en)
-    - [Root In Jail](https://rootinjail.com/)
-    - [SmashTheStack](http://www.smashthestack.org/wargames.html)
-    - [The Cryptopals Crypto Challenges](https://cryptopals.com/)
-    - [Try Hack Me](https://tryhackme.com/)
-    - [Vulnhub](https://www.vulnhub.com)
-    - [W3Challs](https://w3challs.com)
-    - [WeChall](http://www.wechall.net/)
-    - [Alerted Security](https://www.alteredsecurity.com/)
 
-https://github.com/cliffe/SecGen
+<br>
 
-- [Exploiting Tokens](https://jsecurity101.medium.com/exploring-token-members-part-1-48bce8004c6a)
+## Security Training Platforms
+- [Attack-Defense](https://attackdefense.com)
+- [Crackmes](https://crackmes.one/)
+- [Ring Zero Team](https://ringzer0ctf.com/)
+- [Black Hills Information Security — Cyber Range](https://www.blackhillsinfosec.com/services/cyber-range/)
+- [Alert To Win](https://alf.nu/alert1?world=alert&level=alert0)
+- [CTF Komodo Security](https://ctf.komodosec.com)
+- [CMD Challenge](https://cmdchallenge.com)
+- [Explotation Education](https://exploit.education)
+- [Google CTF](https://lnkd.in/e46drbz8)
+- [HackTheBox](https://www.hackthebox.com)
+- [Hackthis](https://defendtheweb.net/)
+- [Hacksplaining](https://www.hacksplaining.com/lessons)
+- [Hacker101](https://ctf.hacker101.com)
+- [Hacker Security](https://hackersec.com/)
+- [Hacking-Lab](https://hacking-lab.com/)
+- [ImmersiveLabs](https://www.immersivelabs.com/)
+- [OverTheWire](http://overthewire.org)
+- [Practical Pentest Labs](https://lnkd.in/esq9Yuv5)
+- [Pentestlab](https://pentesterlab.com)
+- [Penetration Testing Practice Labs](https://lnkd.in/e6wVANYd)
+- [PentestIT LAB](https://lab.pentestit.ru/)
+- [PicoCTF](https://picoctf.com)
+- [PWNABLE](https://lnkd.in/eMEwBJzn)
+- [Root Me](https://www.root-me.org/?lang=en)
+- [Root In Jail](https://rootinjail.com/)
+- [SmashTheStack](http://www.smashthestack.org/wargames.html)
+- [The Cryptopals Crypto Challenges](https://cryptopals.com/)
+- [Try Hack Me](https://tryhackme.com/)
+- [Vulnhub](https://www.vulnhub.com)
+- [W3Challs](https://w3challs.com)
+- [WeChall](http://www.wechall.net/)
+- [Alerted Security](https://www.alteredsecurity.com/)
+- [Security Scenario Generator (SecGen)](https://github.com/cliffe/SecGen) - Creates random vulnerable VMs, lab environments, and hacking challenges
+
+### Offensive Development
 - [Offensive Development](https://www.antisyphontraining.com/offensive-development-w-greg-hatcher-john-stigerwalt/)
-- [Offensive Development](https://www.antisyphontraining.com/offensive-development-w-greg-hatcher-john-stigerwalt/)
 
-### **Defense**
+- [Exploiting Tokens (Write-Up)](https://jsecurity101.medium.com/exploring-token-members-part-1-48bce8004c6a)
 
-- [Windows Security Encyclopaedia](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/)
 
-https://github.com/clong/DetectionLab
+### Defense
+#### Azure
+- [Detect Azure AD Backdoors: Identity Federation](https://www.inversecos.com/2021/11/how-to-detect-azure-active-directory.html)
 
-- Azure
-    - [Detect Azure AD Backdoors: Identity Federation](https://www.inversecos.com/2021/11/how-to-detect-azure-active-directory.html)
-- Device Hardening
-    - Department of Defense Cyber Exchange: Provides STIGs w/ hardening guidelines for a variety of software and hardware solutions
-    - National Checklist Program (NCP): Provided by the NIST, checklists and benchmarks for OSs and applications
-- [SimplyCyber](https://simplycyber.teachable.com/) — GRC
 
-### **Operating Systems**
 
-- [macOS Terminal (zsh) — The Beginner’s Guide](https://www.youtube.com/watch?v=ogWoUU2DXBU)
 
-### **Methodologies**
-
+### Methodologies
 - [Open Source Security Testing Methodology Manual (OSSTMM)](https://www.isecom.org/OSSTMM.3.pdf)
 
-### **Documentary**
-
+## Documentaries
 - [https://threadreaderapp.com/thread/1491830217471528962.html](https://threadreaderapp.com/thread/1491830217471528962.html)
-- 
+- Best Cyber Security and Hacking Documentary #1
+- We Are Legion – The Story Of The Hacktivists ([https://lnkd.in/dEihGfAg](https://lnkd.in/dEihGfAg))
+- The Internet’s Own Boy: The Story Of Aaron Swartz ([https://lnkd.in/d3hQVxqp](https://lnkd.in/d3hQVxqp))
+- [Hackers Wanted](https://www.youtube.com/watch?v=Mn3ooBnShtY)
+- [Secret History Of Hacking](https://www.youtube.com/watch?v=PUf1d-GuK0Q)
+- [Def Con: The Full Documentary](https://www.youtube.com/watch?v=3ctQOmjQyYg)
+- [Web Warriors (Documentary Over Cyber Warfare)](https://www.youtube.com/watch?v=0IY7DL0ihYI)
+- [Risk (2016)](https://www.imdb.com/title/tt4964772/)
+- [Zero Days (2016)](https://www.imdb.com/title/tt5446858/)
+- [Guardians Of The New World (Hacking Documentary) | Real Stories](https://www.youtube.com/watch?v=jUFEeuWqFPE)
+- [A Origem dos Hackers](https://www.youtube.com/watch?v=LPqXNGcwlxo&t=2s)
+- [The Great Hack](https://lnkd.in/dp-MsrQJ)
+- [The Networks Dilemma](https://lnkd.in/dB6rC2RD)
+- [21st Century Hackers](https://www.youtube.com/watch?v=nsKIADw7TEM)
+- [Cyber War - Dot of Documentary](https://www.youtube.com/watch?v=UaZw9mQu7xg)
+- [CyberWar Threat - Inside Worlds Deadliest Cyberattack](https://lnkd.in/drmzKJDu)
+- [The Future of Cyberwarfare: The Journey of Humankind](https://www.youtube.com/watch?v=L78r7YD-kNw)
+- [Dark Web Fighting Cybercrime Full Hacking](https://lnkd.in/dByEzTE9)
+- [Cyber Defense: Military Training for Cyber Warfare](https://lnkd.in/dhA8c52h)
+- [Hacker Hunter: WannaCry The History Marcus Hutchin](https://lnkd.in/dnPcnvSv)
+- [The Life Hacker Documentary](https://lnkd.in/djAqBhbw)
+- [Hacker The Realm and Electron - Hacker Group](https://lnkd.in/dx_uyTuT])
 
-Best Cyber Security and Hacking Documentary #1
-
-1. We Are Legion – The Story Of The Hacktivists ([https://lnkd.in/dEihGfAg](https://lnkd.in/dEihGfAg))
-2. The Internet’s Own Boy: The Story Of Aaron Swartz ([https://lnkd.in/d3hQVxqp](https://lnkd.in/d3hQVxqp))
-3. Hackers Wanted ([https://lnkd.in/du-pMY2R](https://lnkd.in/du-pMY2R))
-4. Secret History Of Hacking ([https://lnkd.in/dnCWU-hp](https://lnkd.in/dnCWU-hp))
-5. Def Con: The Documentary ([https://lnkd.in/dPE4jVVA](https://lnkd.in/dPE4jVVA))
-6. Web Warriors ([https://lnkd.in/dip22djp](https://lnkd.in/dip22djp))
-7. Risk (2016) ([https://lnkd.in/dMgWT-TN](https://lnkd.in/dMgWT-TN))
-8. Zero Days (2016) ([https://lnkd.in/dq_gZA8z](https://lnkd.in/dq_gZA8z))
-9. Guardians Of The New World (Hacking Documentary) | Real Stories  ([https://lnkd.in/dUPybtFd](https://lnkd.in/dUPybtFd))
-10. A Origem dos Hackers ([https://lnkd.in/dUJgG-6J](https://lnkd.in/dUJgG-6J))
-11. The Great Hack ([https://lnkd.in/dp-MsrQJ](https://lnkd.in/dp-MsrQJ))
-12. The Networks Dilemma ([https://lnkd.in/dB6rC2RD](https://lnkd.in/dB6rC2RD))
-13. 21st Century Hackers ([https://lnkd.in/dvdnZkg5](https://lnkd.in/dvdnZkg5))
-14. Cyber War - Dot of Documentary ([https://lnkd.in/dhNTBbbx](https://lnkd.in/dhNTBbbx))
-15. CyberWar Threat - Inside Worlds Deadliest Cyberattack ([https://lnkd.in/drmzKJDu](https://lnkd.in/drmzKJDu))
-16. The Future of Cyberwarfare ([https://lnkd.in/dE6_rD5x](https://lnkd.in/dE6_rD5x))
-17. Dark Web Fighting Cybercrime Full Hacking ([https://lnkd.in/dByEzTE9](https://lnkd.in/dByEzTE9))
-18. Cyber Defense: Military Training for Cyber Warfare ([https://lnkd.in/dhA8c52h](https://lnkd.in/dhA8c52h))
-19. Hacker Hunter: WannaCry The History Marcus Hutchin ([https://lnkd.in/dnPcnvSv](https://lnkd.in/dnPcnvSv))
-20. The Life Hacker Documentary ([https://lnkd.in/djAqBhbw](https://lnkd.in/djAqBhbw))
-21. Hacker The Realm and Electron - Hacker Group ([https://lnkd.in/dx_uyTuT](https://lnkd.in/dx_uyTuT))
-
-### **Compilations**
+## Resource Compilation
 
 - [Cybersecurity Documents, Certification Help, Books, etc.](https://drive.google.com/drive/u/0/folders/1xCCknZbUGhJQd8UKAwL_m9upJgmaQVBr?fbclid=IwAR2I99iLaHwgeyzEZeigh32gtrAIS1gUSC6Xo6ASaamJi3XRwip1zAtpH9k)
 - [S0cm0nkey’s Security Reference Guide](https://s0cm0nkey.gitbook.io/s0cm0nkeys-security-reference-guide/)
 - [Red Teaming Experiments](https://www.ired.team/) — Cheatsheets
 - [Darkstar](https://darkstar7471.com/resources.html) — Infosec Training Resources
-- **Offense Security**
-    - OSCE3
-        
-        [https://github.com/CyberSecurityUP/OSCE-Complete-Guide](https://github.com/CyberSecurityUP/OSCE-Complete-Guide)
+### Offense Security
+- [OSCE3](https://github.com/CyberSecurityUP/OSCE-Complete-Guide)
         
 
-## **Resource Compilation**
-
-### **Bug Hunting**
-
+### Bug Hunting
 - [Bug Hunter Handbook](https://gowthams.gitbook.io/bughunter-handbook/)
 
-### **Powershell Automation**
-
+### Powershell Automation
 - [PowerShell Intune Samples](https://github.com/microsoftgraph/powershell-intune-samples) — Make HTTPS RESTful API requests
 - [Mega Collection of PowerShell Scripts](https://github.com/fleschutz/PowerShell)
 
-### **Privacy**
+### Privacy
 
 - [https://www.privacytools.io/](https://www.privacytools.io/)
 - [S1ckB0y1337](https://github.com/S1ckB0y1337?tab=repositories)
@@ -807,13 +823,11 @@ Best Cyber Security and Hacking Documentary #1
 - [Malware Development Repo](https://lookbook.cyberjungles.com/random-research-area/malware-analysis-and-development/malware-development)
 - [Machine Learning](https://github.com/dair-ai/ML-Course-Notes)
 
-## **Cybersecurity Maps, Domains, etc.**
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/087527b0-f437-4255-8b00-0bc69c7dcd73/Untitled.png)
-
+## Cybersecurity Maps, Domains, etc
+(https://s3-us-west-2.amazonaws.com/secure.notion-static.com/087527b0-f437-4255-8b00-0bc69c7dcd73/Untitled.png)
 - [Paul Jerimy — Cyber Certification Roadmap](https://pauljerimy.com/security-certification-roadmap/)
 
-## **Security News — Stay Updated On Relevant Attacks & Other Infosec News**
+## Security News — Stay Updated On Relevant Attacks & Other Infosec News**
 
 - [Feedspot](https://blog.feedspot.com/cyber_security_rss_feeds/) — Top 100 Cybersecurity RSS Feeds
 - [GBHackers on Security](https://gbhackers.com/)
@@ -830,27 +844,24 @@ Best Cyber Security and Hacking Documentary #1
 - [ZDNet](https://www.zdnet.com/blog/security/)
 - [KrebsOnSecurity](https://krebsonsecurity.com/)
 - [Talos Intelligence](https://blog.talosintelligence.com/)
-- Specific Articles
-    - [BendyBear](https://x-phy.com/advanced-shell-code-a-use-case-of-blacktech-associated-bendybear/)
-- CVEs
-    - Apple
-        - [https://www.websecgeeks.com/2022/06/how-i-was-able-to-send-emails-on-behalf-of-any-apple-user-email.html](https://www.websecgeeks.com/2022/06/how-i-was-able-to-send-emails-on-behalf-of-any-apple-user-email.html)
+### Specific Articles
+- [BendyBear](https://x-phy.com/advanced-shell-code-a-use-case-of-blacktech-associated-bendybear/)
 
-## **Freelancing Sites**
+### CVEs
+#### Apple
+- [https://www.websecgeeks.com/2022/06/how-i-was-able-to-send-emails-on-behalf-of-any-apple-user-email.html](https://www.websecgeeks.com/2022/06/how-i-was-able-to-send-emails-on-behalf-of-any-apple-user-email.html)
 
+## Freelancing Sites
 - [Fiverr](https://www.fiverr.com/)
 - [UpWork](https://www.upwork.com/)
 
-## **Support Organizations**
+## Support Organizations
 
-### **Black Tech Organizations**
-
-- [https://www.cio.com/article/191321/10-professional-organizations-for-black-it-pros.html](https://www.cio.com/article/191321/10-professional-organizations-for-black-it-pros.html)
-
-[https://sites.temple.edu/care/dei/owl/](https://sites.temple.edu/care/dei/owl/)
+### Black Tech Organizations
+- [10 Professional Organizations for Black IT Professionals](https://www.cio.com/article/191321/10-professional-organizations-for-black-it-pros.html)
+- [Organizations We Love (OWL)](https://sites.temple.edu/care/dei/owl/)
 
 ## **Cybersecurity Apparel**
-
-- [https://www.teepublic.com/user/djax120](https://www.teepublic.com/user/djax120)
+- [Alpha Cyber Security](https://www.teepublic.com/user/djax120)
 
 ## Blogging
