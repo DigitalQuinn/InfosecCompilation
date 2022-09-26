@@ -62,7 +62,7 @@
 - [Docker Images](https://houdini.secsi.io/) - Hundreds of offensive and useful Docker images for penetration testing
 - [https://crackmes.one/](https://crackmes.one/) — Binaries for Reverse Engineering
 
-## Malware
+## Malware 
 
 - [VX-Underground](https://github.com/vxunderground/MalwareSourceCode) — Malware source code
     - [VX-Underground’s Samples](https://samples.vx-underground.org/samples/Families/)
@@ -100,6 +100,12 @@
 ### Malware Analysis Homelab Setup
 - [KVM Malware Lab](https://c3rb3ru5d3d53c.github.io/docs/kvm-malware-lab/)
 
+### Malware Tools
+- [Malware Analysis Tools](https://0x1.gitlab.io/security/Malware-Analysis-Tools-List/)
+- [MalAPI](https://malapi.io/) — Catalog of Windows APIs commonly used in malware
+- Wireless
+    
+    [https://youtu.be/f2BjFilLDqQ](https://youtu.be/f2BjFilLDqQ)
 ## EDR
 - [Intezer Protect](https://www.intezer.com/intezer-protect/) — EDR built for your cloud
 
@@ -120,55 +126,55 @@
 
 ## OSINT
 
-- OSINT Framework
-    - [ReconSpider](https://hakin9.org/reconspider-most-advanced-open-source-intelligence-osint-framework/)
-- Search Engines
-    - Shodan: Search for devices connected to the internet
-    - Wigle: Database of wireless networks, with statistics
-    - Grep App: Search across a half million git repos
-    - Binary Edge: Scans the internet for threat intelligence
-    - ONYPHE: Collects cyber-threat intelligence data
-    - GreyNoise: Search for devices connected to the internet
-    - Censys: Assessing attack surface for internet connected devices
-    - Hunter: Search for email addresses belonging to a website
-    - Fofa: Search for various threat intelligence
-    - ZoomEye: Gather information about targets
-    - LeakIX: Search publicly indexed information
-    - IntelligenceX: Search Tor, I2P, data leaks, domains, and emails
-    - Netlas: Search and monitor internet connected assets
-    - URL Scan: Free service to scan and analyse websites
-    - PublicWWW: Marketing and affiliate marketing research
-    - FullHunt: Search and discovery attack surfaces
-    - CRT sh: Search for certs that have been logged by CT
-    - Vulners: Search vulnerabilities in a large database
-    - Pulsedive: Search for threat intelligence
-    - Packet Storm Security: Browse latest vulnerabilities and exploits
-    - GrayHatWarefare: Search public S3 buckets
-    - Dehashed: search for anything like username, email, passwords, address, or phone number.
-    - Have I Been Pwned?
-    - Snusbase
-    - LeakBase
-    - LeakWatch
-    - Leaksify
-    - We Leak Info
-    - GhostProject.fr
-    - Nuclear Leaks
-    - SecurityTrails: Extensive DNS data
-    - DorkSearch: Really fast Google dorking
-    - ExploitDB: Archive of various exploits
-    - PolySwarm: Scan files and URLs for threats
-    - DNSDumpster: Search for DNS records quickly
-    - FullHunt: Search and discovery attack surfaces
-    - AlienVault: Extensive threat intelligence feed
-    - Vulners: Search vulnerabilities in a large database
-    - WayBackMachine: View content from deleted websites
-    - SearchCode: Search 75 billion lines of code from 40 million projects
+### OSINT Framework
+- [ReconSpider](https://hakin9.org/reconspider-most-advanced-open-source-intelligence-osint-framework/)
+
+### Search Engines
+- Shodan - Search for devices connected to the internet
+- Wigle - Database of wireless networks, with statistics
+- Grep App - Search across a half million git repos
+- Binary Edge - Scans the internet for threat intelligence
+- ONYPHE - Collects cyber-threat intelligence data
+- GreyNoise - Search for devices connected to the internet
+- Censys - Assessing attack surface for internet connected devices
+- Hunter - Search for email addresses belonging to a website
+- Fofa - Search for various threat intelligence
+- ZoomEye - Gather information about targets
+- LeakIX - Search publicly indexed information
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- Netlas - Search and monitor internet connected assets
+- URL Scan - Free service to scan and analyse websites
+- PublicWWW -  Marketing and affiliate marketing research
+- FullHunt - Search and discovery attack surfaces
+- CRT sh - Search for certs that have been logged by CT
+- Vulners - Search vulnerabilities in a large database
+- Pulsedive - Search for threat intelligence
+- Packet Storm Security - Browse latest vulnerabilities and exploits
+- GrayHatWarefare - Search public S3 buckets
+- Dehashed - Search for anything like username, email, passwords, address, or phone number.
+- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+- Snusbase - Indexes information from hacked websites and leaked databases
+- LeakBase - Forum of leaked databases
+- LeakWatch - Scans the Internet to detect exposed information
+- LeakCheck - Data breach search engine
+- GhostProject.fr - Smart search engine
+- SecurityTrails - Extensive DNS data
+- DorkSearch - Really fast Google dorking
+- ExploitDB - Archive of various exploits
+- PolySwarm - Scan files and URLs for threats
+- DNSDumpster - Search for DNS records quickly
+- FullHunt - Search and discovery attack surfaces
+- AlienVault - Extensive threat intelligence feed
+- Vulners - Search vulnerabilities in a large database
+- WayBackMachine - View content from deleted websites
+- SearchCode - Search 75 billion lines of code from 40 million projects
+
+### Tools
 - [Catana-DS](https://github.com/TebbaaX/Katana) — Automates Google Dorking
 - [Mitaka](https://hakin9.org/mitaka-a-browser-extension-for-osint/) — Browser extension for OSINT
 - [https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f](https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f)
-- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — tool to perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
-- [https://ipspy.net/](https://ipspy.net/)
-- ‣
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
 - [Fuxploiter](https://hakin9.org/fuxploider-a-file-upload-vulnerability-scanner/) — Detecting and exploiting file upload forms flaws
 - [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
 - [LinPeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) — Linux Privilege Escalation
@@ -206,151 +212,163 @@
 - [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
 - [securityheader.com](http://securityheader.com) — Reports headers that are missing; Exploitable
 - [breach-parse](https://github.com/hmaverickadams/breach-parse): Tool for parsing breached passwords
-    - `./breach-parse.sh @tesla.com tesla.txt`
 - [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
 - [OSINT Repository](https://cipher387.github.io/osint_stuff_tool_collection/)
 - [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
-- [SocialHunter](https://hakin9.org/socialhunter-crawls-the-website-and-finds-broken-social-media-links-that-can-be-hijacked/) — Crawls the website and finds broken social media links that can be hijacked
+- [SocialHunter](https://github.com/utkusen/socialhunter) — Crawls the given URL and finds broken social media links that can be hijacked
 - [IntelTechniques](https://inteltechniques.com/tools/index.html) — Resources hosted by IntelTechniques Podcast
-- [exitLooter](https://github.com/aydinnyunus/exifLooter): Find geolocation on image URL and directories
-- [AutoRecon](https://github.com/Tib3rius/AutoRecon): AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+- [AutoRecon](https://github.com/Tib3rius/AutoRecon) - Performs automated enumeration of services
 - [https://infosecwriteups.com/cool-recon-techniques-every-hacker-misses-1c5e0e294e89](https://infosecwriteups.com/cool-recon-techniques-every-hacker-misses-1c5e0e294e89)
-- [mip22](https://github.com/makdosx/mip22): Advanced phishing tool
-- [Recon Cloud](https://recon.cloud/): Cloud asset scanner
+  - [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks 
+  - [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+  - [Uncover](https://github.com/projectdiscovery/uncover) - Quickly discover exposed hosts on the internet using shodan, censys and fofa
+  - [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
+  - [Naabu]() - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
+- [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
+- [Recon Cloud](https://recon.cloud/) - Cloud asset scanner
+- - [MailSniper](https://github.com/dafthack/MailSniper) — Searches through email in a Microsoft Exchange environment for specific terms
 
-### **Defense**
+## Defense
+- [DarkTrace](https://www.darktrace.com/en/) - Cyber AI detection
+- [Active Countermeasures](https://www.activecountermeasures.com/free-tools/) - Open source tools for countermeasure
+- [The CredDefense Toolkit](https://github.com/CredDefense/CredDefense/) - Detect & Prevent Brute Force attacks
+- [DNS Blacklist](https://bitbucket.org/ethanr/dns-blacklists/src/master/) - Detect Blacklisted IPs from your traffic
+- [Spidertrap](https://bitbucket.org/ethanr/spidertrap/src/master/) - Trap web crawlers and spiders in dynamically generated webpages
+- [Live Forensicator](https://github.com/Johnng007/Live-Forensicator) - Powershell script to aid Incidence Response and Live Forensics
+- [https://threathunterplaybook.com/intro.html](https://threathunterplaybook.com/intro.html) - Open source project to share detection logic, adversary tradecraft and resources to make detection development more efficient
 
-- [DarkTrace](https://www.darktrace.com/en/): Cyber AI detection
-- [Active Countermeasures](https://www.activecountermeasures.com/free-tools/): Open source tools for countermeasure
-- [The CredDefense Toolkit](https://github.com/CredDefense/CredDefense): Detect & Prevent Credential ABuse Attacks
-- [DNS Blacklist](https://bitbucket.org/ethanr/dns-blacklists/src/master/): Detect Blacklisted IPs from your traffic
-- [Spidertrap](https://bitbucket.org/ethanr/spidertrap/src/master/): Trap web crawlers and spiders in dynamically generated webpages
-- [Live Forensicator](https://hakin9.org/live-forensicator-powershell-script-to-aid-incidence-response-and-live-forensics/): Powershell Script to aid Incidence Response and Live Forensics
-- [https://threathunterplaybook.com/intro.html](https://threathunterplaybook.com/intro.html)
+## Offense
+### Penetration Testing Frameworks
+- [Metasploit](https://www.metasploit.com/)
+- [Cobalt Strike](https://www.cobaltstrike.com/) — Adversary simulations & red team operations
+- [Brute Ratel](https://bruteratel.com/) - A customized C2 center for Red Team and Adversary Simulation
+- [Sn1per](https://github.com/1N3/Sn1per) — All in one pentesting framework
+- [Covenant](https://github.com/cobbr/Covenant) — .NET C2 framework
+- [Silver](https://github.com/BishopFox/sliver) — Open source cross-platform red team framework
+- [Octopus](https://www.kitploit.com/2022/05/octopus-open-source-pre-operation-c2.html) — Pre-operation C2 server
+- [SilentTrinity](https://github.com/byt3bl33d3r/SILENTTRINITY) — Asynchronous, multiplayer, & multiserver C2 framework
+- [Recon-ng](https://github.com/lanmaster53/recon-ng) — Full reconnaissance framework to conduct open source web-based recon
+- [Browser Exploitation Framework (BeEF)](https://beefproject.com/) — Recovering web session information and exploiting client-side scripting
+- [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/) — Scanning tools and scripts for web application and mobile app security testing
+- [Pacu](https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/) — Scanning and exploit tools for reconnaissance and exploitation of Amazon Web Service (AWS) accounts
+- [HazProne](https://securityonline.info/hazprone-cloud-pentesting-framework/) — Cloud Pentesting Framework
+- [Lockdoor Framework](https://github.com/SofianeHamlaoui/Lockdoor-Framework) — Framework that automates pentesting tools
+- [Emp3R0R](https://github.com/jm33-m0/emp3r0r) - Linux post-exploitation framework 
+- [GithubC2](https://github.com/D1rkMtr/githubC2/tree/main) - Using Github as a C2
 
-### **Offense**
+## Compilation of Tools
+- [Hacktricks](https://book.hacktricks.xyz/) - Hacking TTPs
+- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) - A list of useful payloads for bypassing systems
+- [Pentest-Tools](https://github.com/S3cur3Th1sSh1t/Pentest-Tools) — Cybersecurity repository
+- [EthHack](https://ethhack.com/category/security-tools/) — Repository security tool
+- [FSociety Hacking Tools](https://github.com/Manisso/fsociety) — Contains all the tools used in Mr. Robot series
+- [Red Team Resources](https://github.com/J0hnbX/RedTeam-Resources) - Compilation of Red Teaming resources
+- [Kitploit’s Popular Hacking Tools](https://www.kitploit.com/2021/12/top-20-most-popular-hacking-tools-in.html)
+- [Red Teaming Toolkit](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development)
 
-- Penetration Testing Frameworks
-    - [Metasploit](https://www.metasploit.com/)
-    - [Cobalt Strike](https://www.cobaltstrike.com/) — Adversary simulations & red team operations
-    - Brute Ratel
-    - [Sn1per](https://github.com/1N3/Sn1per) — All in one pentesting framework
-    - [Covenant](https://github.com/cobbr/Covenant) — .NET C2 framework
-    - [Silver](https://github.com/BishopFox/sliver) — Open source cross-platform red team framework
-    - [Octopus](https://www.kitploit.com/2022/05/octopus-open-source-pre-operation-c2.html) — Pre-operation C2 server
-    - [SilentTrinity](https://github.com/byt3bl33d3r/SILENTTRINITY) — Asynchronous, multiplayer, & multiserver C2 framework
-    - [Recon-ng](https://github.com/lanmaster53/recon-ng) — Full reconnaissance framework to conduct open source web-based recon
-    - [Browser Exploitation Framework (BeEF)](https://beefproject.com/) — Recovering web session information and exploiting client-side scripting
-    - [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/) — Scanning tools and scripts for web application and mobile app security testing
-    - [Pacu](https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/) — Scanning and exploit tools for reconnaissance and exploitation of Amazon Web Service (AWS) accounts
-    - [HazProne](https://securityonline.info/hazprone-cloud-pentesting-framework/) — Cloud Pentesting Framework
-    - [Lockdoor Framework](https://github.com/SofianeHamlaoui/Lockdoor-Framework) — Framework that automates pentesting tools
-- Compilation of Tools
-    - ‣
-    - [Hacktricks](https://book.hacktricks.xyz/)
-    - [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
-    - [Pentest-Tools](https://github.com/S3cur3Th1sSh1t/Pentest-Tools) — Cyber repository
-    - [EthHack](https://ethhack.com/category/security-tools/) — Repository security tool
-    - [FSociety Hacking Tools](https://github.com/Manisso/fsociety) — Contains all the tools used in Mr. Robot series
-    - [Red Team Resources](https://github.com/J0hnbX/RedTeam-Resources)
-    - [Kitploit’s Popular Hacking Tools](https://www.kitploit.com/2021/12/top-20-most-popular-hacking-tools-in.html)
-- IP Scanners
-    - [Nmap](https://nmap.org/)
-    - [AngryIP](https://angryip.org/)
-    - [PRTG](https://www.paessler.com/tools)
-    - [Pwndora](https://hakin9.org/pwndora-massive-ipv4-scanner-find-and-analyze-internet-connected-devices-in-minutes-create-your-own-iot-search-engine-at-home/) — Find Internet-connected devices
-- Vulnerability Scan
-    - Nessus
-    - OpenVas
-    - BurpSuite
-    - **[Trend Micro Hybrid Cloud Security](https://www.g2.com/products/trend-micro-hybrid-cloud-security/reviews)**
-    - Orca Security
-    - InsightVM
-    - Qualys
-    - Application Vulnerability Scanning
-        - Nikto
-- Packet Injection
-    - [Dsniff](https://monkey.org/~dugsong/dsniff/)
-    - [Ettercap](https://www.ettercap-project.org/)
-    - [Scapy](https://scapy.net/) — Packet manipulation program
-    - [hping](http://hping.org/) — TCP/IP packet assembler/analyzer
-- Password Attacks
-    - [CredKing](https://github.com/ustayready/CredKing) — Launch Password Spraying using AWS Lamba across multiple regions, rotating IPs w/ each request
-    - [DomainPasswordSpray](https://github.com/dafthack/DomainPasswordSpray) — Perform password spraying against users in a domain
-    
-    [https://github.com/lkarlslund/ldapnomnom](https://github.com/lkarlslund/ldapnomnom)
-    
-- Phishing
-    - [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
-    - [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
-    - [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
+
+
+  - [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
+  - [Dockerized Android](https://github.com/cybersecsi/dockerized-android) - A Container-Based framework to enable the integration of mobile components in security training platforms
+  - [CiLocks] - Android LockScreen Bypass
+  - [Viper] - Intranet pentesting tool with Webui
+  - [Forbidden] - Bypass 4Xx HTTP Response Status Codes
+  - [AzureHunter] - A Cloud Forensics Powershell Module To Run Threat Hunting Playbooks On Data From Azure And O365
+  - [403Bypasser] - Automates The Techniques Used To Circumvent Access Control Restrictions On Target Pages
+  - [Smuggler] - An HTTP Request Smuggling / Desync Testing Tool
+  - [Nginxpwner] - Tool to look for common Nginx misconfigurations and vulnerabilities
+  - [SharpML] - Machine Learning Network Share Password Hunting Toolkit
+  - [PeTeReport] - An Open-Source Application Vulnerability Reporting Tool
+  - [Byp4Xx] - Simple Bash Script To Bypass "403 Forbidden" Messages With Well-Known Methods Discussed In #Bugbountytips
+  - [SillyRAT] - A Cross Platform Multifunctional (Windows/Linux/Mac) RAT
+  - [Qu1cksc0pe] - All-in-One Static Malware Analysis Tool
+  - [Android-PIN-Bruteforce] - Unlock An Android Phone (Or Device) By Bruteforcing The Lockscreen PIN
+  - [Arbitrium-RAT] - A Cross-Platform, Fully Undetectable Remote Access Trojan, To Control Android, Windows And Linuxt
+  - [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
+  - [MOSINT] - OSINT Tool For Emails
+
+### 
+#### IP Scanners
+- [Nmap](https://nmap.org/)
+- [AngryIP](https://angryip.org/)
+- [PRTG](https://www.paessler.com/tools)
+- [Spidex](https://github.com/alechilczenko/spidex) — Find Internet-connected devices
+
+#### Extension
+- [AutoScanWithBurp](https://bitbucket.org/clr2of8/autoscanwithburp/src/master/) — Extension to perform automated & authenticated scans against URLS
+- - [OAuthScan](https://github.com/PortSwigger/oauth-scan) - Burp Suite Extension written in Java with the aim to provide some automatic security checks
+  
+#### Vulnerability Scanners
+- Nessus
+- OpenVas
+- BurpSuite
+- [Trend Micro Hybrid Cloud Security](https://www.g2.com/products/trend-micro-hybrid-cloud-security/reviews)
+- Orca Security
+- InsightVM
+- Qualys
+- Application Vulnerability Scanning
+  - Nikto
+
+### Packet Injection
+- [Dsniff](https://monkey.org/~dugsong/dsniff/)
+- [Ettercap](https://www.ettercap-project.org/)
+- [Scapy](https://scapy.net/) — Packet manipulation program
+- [hping](http://hping.org/) — TCP/IP packet assembler/analyzer
+
+### Password Attacks
+- [CredKing](https://github.com/ustayready/CredKing) — Launch Password Spraying using AWS Lamba across multiple regions, rotating IPs w/ each request
+- [DomainPasswordSpray](https://github.com/dafthack/DomainPasswordSpray) — Perform password spraying against users in a domain
+- [LDAP Nom Nom](https://github.com/lkarlslund/ldapnomnom) - Anonymously bruteforce Active Directory usernames from Domain Controllers by abusing LDAP Ping requests (cLDAP)
+
+### Phishing
+- [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
+- [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
+- [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
 - C2
     - [Tyk.io](https://shells.systems/oh-my-api-abusing-tyk-cloud-api-management-service-to-hide-your-malicious-c2-traffic/) — Route C2 traffic
-- Cloud Testing
-    - [AWS](https://github.com/RhinoSecurityLabs/pacu)
-    - [GCP](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation)
-    - [Azure](https://github.com/Azure/Stormspotter)
-    - [Multi Cloud](https://github.com/nccgroup/ScoutSuite)
-    - [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
-    - [https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/](https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/)
-    - ‣
-- Active Directory
-    
-    [𝐅𝐑𝐄𝐄 𝐑𝐄𝐒𝐎𝐔𝐑𝐂𝐄𝐒 - 𝐀𝐂𝐓𝐈𝐕𝐄 𝐃𝐈𝐑𝐄𝐂𝐓𝐎𝐑𝐘 𝐏𝐄𝐍𝐓𝐄𝐒𝐓]
-    
-    Whether you are preparing for a certification or need to sharpen your skills for your pentests.
-    
-    🤓Here is a list of resources 🤓:
-    
-    Need to practice?
-    👉Set up and AD home lab with this blog post from spookysec: [https://lnkd.in/eN8V88kv](https://lnkd.in/eN8V88kv)
-    👉You also have a script here to set up a Vulnerable AD lab by WazeHell
-    [https://lnkd.in/evJZM_yv](https://lnkd.in/evJZM_yv)
-    
-    👉Here is a collection of various common attack scenarios on Azure Active Directory by Cloud-Architekt:
-    [https://lnkd.in/eDb7JJAQ](https://lnkd.in/eDb7JJAQ)
-    
-    👉Julien Provenzano ☁  shared a great document full of resources here:
-    [https://lnkd.in/ePgnhbUk](https://lnkd.in/ePgnhbUk)
-    
-    👉Finally here is an Active Directory Exploitation Cheat Sheet by Integration-IT
-    [https://lnkd.in/eY2jD3nv](https://lnkd.in/eY2jD3nv)
-    
-    𝐒𝐇𝐀𝐑𝐄 - Do you know other resources? Please share them in the comment
-    
-    ➡️ 𝐅𝐎𝐋𝐋𝐎𝐖 𝐌𝐄 on github for more pentest tips: [https://github.com/CSbyGB](https://github.com/CSbyGB) ⬅️
-    
+- [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
+### Cloud Testing
+- [AWS](https://github.com/RhinoSecurityLabs/pacu)
+- [GCP](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation)
+- [Azure](https://github.com/Azure/Stormspotter)
+- [Multi Cloud](https://github.com/nccgroup/ScoutSuite)
+- [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
+- [https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/](https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/)
+
+### Active Directory
+Resources for AD penetration testing
+- Build an AD homelab
+  - https://lnkd.in/eN8V88kv
+- [Vulnerable-AD](https://github.com/WazeHell/vulnerable-AD) - Set up a Vulnerable AD lab 
+- Collection of various common attack scenarios on Azure AD by Cloud-Architekt
+  - [AzureAD-Attack-Defense](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense) - Collection of various common attack scenarios on Azure AD
+- Document full of resources(https://lnkd.in/ePgnhbUk)
+- [AD Exploitation Cheat Sheet](https://github.com/Integration-IT/Active-Directory-Exploitation-Cheat-Sheet)
+
+### Evade AV/EDR  
 - [Inceptor](https://github.com/klezVirus/inceptor) — Automate common AV/EDR bypasses
-- [AutoScanWithBurp](https://bitbucket.org/clr2of8/autoscanwithburp/src/master/) — Extension to perform automated & authenticated scans against URLS
-- [OAuthScan](https://github.com/PortSwigger/oauth-scan)
-- ‣
-- ‣
-- ‣
+
+### Malicious
 - [GPU Poisoning](https://gitlab.com/ORCA000/gp) — Hide payload inside GPU memory
-- [HostRecon](https://github.com/dafthack/HostRecon) — Provide situational awareness during reconnaissance of an engagement
-- [MailSniper](https://github.com/dafthack/MailSniper) — Searches through email in a Microsoft Exchange environment for specific terms
 - [fireELF](https://github.com/rek7/fireELF) — Inject fileless exploit payloads into a Linux host
 - [RouterSploit](https://github.com/threat9/routersploit) — Vulnerability scanning and exploit modules targeting embedded systems
-- https://github.com/JoelGMSec/EvilnoVNC
-- https://github.com/Z4kSec/Masky
-- [https://github.com/D1rkMtr/githubC2/tree/main](https://github.com/D1rkMtr/githubC2/tree/main)
-- Notion
-    - [Notion Term](https://github.com/ariary/notionterm) — Embed reverse shell in Notion pages
+- [Masky](https://github.com/Z4kSec/Masky) - Python library providing an alternative way to remotely dump domain users' credentials thanks to an ADCS
+- [Notion Term](https://github.com/ariary/notionterm) — Embed reverse shell in Notion pages
+
+### Hashes
 - Hash Database — Upload Hashes
-    - [crackstation](https://crackstation.net/)
-- [Red Teaming Toolkit](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development): Open-source security tools (OST) that will help you during adversary simulation
+  - - [crackstation](https://crackstation.net/)
+
+<br>
+
+- [HostRecon](https://github.com/dafthack/HostRecon) — Provide situational awareness during reconnaissance of an engagement
+
 - https://github.com/cepxeo/dll4shell
-- ‣
-- ‣
 
-### **Malware**
 
-- [Malware Analysis Tools](https://0x1.gitlab.io/security/Malware-Analysis-Tools-List/)
-- [MalAPI](https://malapi.io/) — Catalog of Windows APIs commonly used in malware
-- Wireless
-    
-    [https://youtu.be/f2BjFilLDqQ](https://youtu.be/f2BjFilLDqQ)
-    
+### Wrappers
+- [dll4shell](https://github.com/cepxeo/dll4shell) - A collection of DLL wrappers around various shellcode injection and obfuscation techniques
 
 ### **Auditing Tools**
 
