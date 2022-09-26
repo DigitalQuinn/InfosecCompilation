@@ -43,76 +43,70 @@
 # Homelab
 
 ## Repository
-
 - [Blue Team Homelab](https://github.com/aboutsecurity/blueteam_homelabs) — Blue Team Environment
 - [SecGen](https://github.com/cliffe/SecGen) — Creates vulnerable VMs, Lab Environments, & Hacking challenges
-- [DetectionLab](https://github.com/clong/DetectionLab)
+- [DetectionLab](https://github.com/clong/DetectionLab) - Quickly build a Windows domain with pre-loaded with security tooling and system logging configurations
 
-### **Sandbox**
-
-- [Cuckoo](https://cuckoosandbox.org/)
-- [DRAKVUF Sandbox](https://github.com/CERT-Polska/drakvuf-sandbox/)
+## Sandbox
+- [Cuckoo](https://cuckoosandbox.org/) - open source automated malware analysis system
+- [DRAKVUF Sandbox](https://github.com/CERT-Polska/drakvuf-sandbox/) - Automated black-box malware analysis system with DRAKVUF engine under the hood (Doesn't require an agent on guest OS)
 - [PacketTotal](https://packettotal.com/) — Online PCAP Analysis Engine
-- [Joe Sandbox Cloud](https://www.joesandbox.com/#windows)
-- [CAPE](https://github.com/kevoreilly/CAPEv2/)
+- [Joe Sandbox Cloud](https://www.joesandbox.com/#windows) - Automated malware sandbox (Live interaction capabilities)
+- [CAPE](https://github.com/kevoreilly/CAPEv2/) - Malware sandbox, derived from Cuckoo with the goal of adding automated malware unpacking and config extraction
 
-### **NAC**
-
+## Network Access Control (NAC)
 - [Packet Fence](https://www.packetfence.org/) — Open source NAC
 
-### **Vulnerable Images**
+## Vulnerable Images
+- [Exploit Education](https://exploit.education) - Variety of resources to learn about vulnerability analysis, exploit development, software debugging, binary analysis, and general cyber security issues
+- [Docker Images](https://houdini.secsi.io/) - Hundreds of offensive and useful Docker images for penetration testing
+- [https://crackmes.one/](https://crackmes.one/) — Binaries for Reverse Engineering
 
-- [Exploit Education](https://exploit.education)
-- [Docker Images](https://houdini.secsi.io/)
-- [https://crackmes.one/](https://crackmes.one/) — Reverse Engineering
-
-### **Malware**
+## Malware
 
 - [VX-Underground](https://github.com/vxunderground/MalwareSourceCode) — Malware source code
-- Malware Samples
     - [VX-Underground’s Samples](https://samples.vx-underground.org/samples/Families/)
     - [VXUnderground](https://github.com/vxunderground/MalwareSourceCode)
-    - [Zeltser Resources](https://zeltser.com/malware-sample-sources/)
-        - [ANY.RUN](https://app.any.run/submissions)
-        - [Contagio Malware Dump](http://contagiodump.blogspot.com/)
-        - [CAPE Sandbox](https://capesandbox.com/)
-        - [Das Malwerk](http://dasmalwerk.eu/)
-        - [Hatching Triage](https://tria.ge/)
-        - [Hybrid Analysis](https://www.hybrid-analysis.com/)
-        - [InQuest Labs](https://labs.inquest.net/)
-        - [InQuest Malware Samples](https://github.com/InQuest/malware-samples)
-        - [KernelMode.info](http://www.kernelmode.info/forum/viewforum.php?f=16)
-        - [MalShare](http://malshare.com/)
-        - [MalwareBazaar](https://bazaar.abuse.ch/browse/)
-        - [MalwareSamples Malware-Feed](https://github.com/MalwareSamples/Malware-Feed/)
-        - [Malware DB](http://ytisf.github.io/theZoo/)
-        - [Objective-See Collection](https://objective-see.com/malware.html)
-        - [PacketTotal](https://packettotal.com/malware-archive.html)
-        - [PhishingKitTracker](https://github.com/marcoramilli/PhishingKitTracker)
-        - [PolySwarm](https://polyswarm.network/)
-        - [SNDBOX](https://app.sndbox.com/)
-        - [SoReL-20M](https://github.com/sophos-ai/SOREL-20M)
-        - [URLhaus](https://urlhaus.abuse.ch/browse/)
-        - [VirusBay](https://beta.virusbay.io/)
-        - [VirusShare](https://virusshare.com/)
-        - [VirusSign](https://www.virussign.com/downloads.html)
-        - [Virus and Malware Samples](https://www.virussamples.com/)
-        - [Yomi](https://yomi.yoroi.company/)
-    - [theZoo](https://github.com/ytisf/theZoo)
-- Guides
-    - [https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/](https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/)
-- Malware Analysis Homelab Setup
-    - [KVM Malware Lab](https://c3rb3ru5d3d53c.github.io/docs/kvm-malware-lab/)
+- [Zeltser Resources](https://zeltser.com/malware-sample-sources/)
+- [ANY.RUN](https://app.any.run/submissions)
+- [Contagio Malware Dump](http://contagiodump.blogspot.com/)
+- [CAPE Sandbox](https://capesandbox.com/)
+- [Das Malwerk](http://dasmalwerk.eu/)
+- [Hatching Triage](https://tria.ge/)
+- [Hybrid Analysis](https://www.hybrid-analysis.com/)
+- [InQuest Labs](https://labs.inquest.net/)
+- [InQuest Malware Samples](https://github.com/InQuest/malware-samples)
+- [KernelMode.info](http://www.kernelmode.info/forum/viewforum.php?f=16)
+- [MalShare](http://malshare.com/)
+- [MalwareBazaar](https://bazaar.abuse.ch/browse/)
+- [MalwareSamples Malware-Feed](https://github.com/MalwareSamples/Malware-Feed/)
+- [Malware DB](http://ytisf.github.io/theZoo/)
+- [Objective-See Collection](https://objective-see.com/malware.html)
+- [PacketTotal](https://packettotal.com/malware-archive.html)
+- [PhishingKitTracker](https://github.com/marcoramilli/PhishingKitTracker)
+- [PolySwarm](https://polyswarm.network/)
+- [SNDBOX](https://app.sndbox.com/)
+- [SoReL-20M](https://github.com/sophos-ai/SOREL-20M)
+- [URLhaus](https://urlhaus.abuse.ch/browse/)
+- [VirusBay](https://beta.virusbay.io/)
+- [VirusShare](https://virusshare.com/)
+- [VirusSign](https://www.virussign.com/downloads.html)
+- [Virus and Malware Samples](https://www.virussamples.com/)
+- [Yomi](https://yomi.yoroi.company/)
+- [theZoo](https://github.com/ytisf/theZoo)
 
-### **EDR**
+### Reverse Engineering Guides
+- [https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/](https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/)
+### Malware Analysis Homelab Setup
+- [KVM Malware Lab](https://c3rb3ru5d3d53c.github.io/docs/kvm-malware-lab/)
 
+## EDR
 - [Intezer Protect](https://www.intezer.com/intezer-protect/) — EDR built for your cloud
 
-### **SIEM**
-
+## Security Incident Event Monitoring (SIEM)
 - [https://wazuh.com](https://wazuh.com/)
 
-## **Github Repositories (Need to Look Through)**
+# Github Repositories (Need to Look Through)
 
 - [Ethical Hacking Playground (Repo)](https://github.com/ethicalhackingplayground?tab=repositories)
 - [Saeid](https://github.com/saeidshirazi?tab=repositories)
@@ -120,27 +114,11 @@
 - [infosecn1nja](https://github.com/infosecn1nja?tab=repositories)
 - [https://github.com/13o-bbr-bbq/machine_learning_security/wiki](https://github.com/13o-bbr-bbq/machine_learning_security/wiki)
 
-## Penetration Testing
-
-**Methodology:** The steps taken during a penetration auditing, should consist of the follwing:
-
-[**Planning:** Assessment goals are defined](https://www.notion.so/Planning-Assessment-goals-are-defined-910ef0108d2a41eaa7c2e9babd58a679)
-
-[**Information Gathering:** Collect publicly-accessible information about the target](https://www.notion.so/Information-Gathering-Collect-publicly-accessible-information-about-the-target-d0f42d551cbe4c28aab7a20c3b2c46a6)
-
-[**Enumeration / Scanning:** Discovering applications and services running on target systems](https://www.notion.so/Enumeration-Scanning-Discovering-applications-and-services-running-on-target-systems-1c46c36cd05b4df0b2103852f4d6493f)
-
-[**Exploitation:** Leveraging vulnerabilities discovered on a system or application](https://www.notion.so/Exploitation-Leveraging-vulnerabilities-discovered-on-a-system-or-application-37376e5a2fe84640a7f1378b51069619)
-
-[**Privilege Escalation:** Attempt to expand your access to a system to another account or to an admin level](https://www.notion.so/Privilege-Escalation-Attempt-to-expand-your-access-to-a-system-to-another-account-or-to-an-admin-le-7b31f435c5b142f4a8959f9bf747aebb)
-
-[**Post-Exploitation:** Discover what hosts can be targeted, What additional information can be gathered from hosts, Covering your tracks, and Reporting](https://www.notion.so/Post-Exploitation-Discover-what-hosts-can-be-targeted-What-additional-information-can-be-gathered--d4c65921c77c466cb415aa6c1dd6951f)
-
 - https://github.com/CyberSecurityUP/PenTest-Consulting-Creator
 
-## **Tools**
+# Tools
 
-### **OSINT**
+## OSINT
 
 - OSINT Framework
     - [ReconSpider](https://hakin9.org/reconspider-most-advanced-open-source-intelligence-osint-framework/)
