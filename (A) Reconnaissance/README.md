@@ -9,14 +9,49 @@ The adversary is trying to gather information they can use to plan future operat
 # Tables of Content #
 
 - [Active Scanning](#Active-Scanning)
+  - [Scanning IP Blocks](#scanning-ip-blocks)
+  - [Vulnerability Scanning](#vulnerability-scanning)
+  - [Wordlist Scanning](#wordlist-scanning)
 - [Gathering Host Information](#Gathering-Host-Information)
+  - [Hardware](#hardware)
+  - [Software](#software)
+  - [Firmware](#firmware)
+  - [Client Configurations](#client-configuration)
+  - [Credentials](#credentials)
+  - [Email Addresses](#email-addressess)
+  - [Employee Names](#employee-names)
 - [Gathering Victim Identity Information](#Gathering-Victim-Identity-Information)
+  - [Credentials](#credentials)
+  - [Email Addresses](#email-addressess)
+  - [Employee Names](#employee-names)
+- [Gathering Vitcim Network Information](#gathering-victim-network-information)
+  - [DNS](#dns)
+  - [Network Trust Dependencies](#network-trust-dependencies)
+  - [Network Topology](#network-topology)
+  - [IP Addresses](#ip-addresses)
+  - [Network Security Appliances](#network-security-appliances)
 - [Gathering Victim Organization Information](#Gathering-Victim-Organization-Information)
+  - [Determine Physical Locations](#determine-physical-locations)
+  - [Business Relationships](#business-relationships)
+  - [Identify Business Tempo](#identify-business-tempo)
+  - [Identify Roles](#identify-roles)
 - [Phishing for Information](#Phishing-for-Information)
+  - [Spearphishing Service](#spearphishing-service)
+  - [Spearphishing Attachment](#spearphishing-attachment)
+  - [Spearphishing Link](#spearphishing-link)
 - [Searching Open Technical Databases](#Searching-Open-Technical-Databases)
+  - [DNS/Passive DNS](#dns--passive-dns)
+  - [WHOIS](#whois)
+  - [Digital Certificates](#digital-certificates)
+  - [CDNs](#cdns)
+  - [Scan Databases](#scan-databases)
 - [Searching Open Websites / Domains](#Searching-Open-Websites-/-Domains)
+  - [Social Media](#social-media)
+  - [Search Engines](#search-engines)
 - [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
 - [Searching Closed Sources](#Searching-Closed-Sources)
+  - [Threat Intelligence Vendors](#threat-intelligence-vendors)
+  - [Purchase Technical Data](#purchase-technical-data)
 <br>
 <hr>
 
@@ -92,6 +127,38 @@ Adversaries may gather email addresses that can be used during targeting. Even i
 
 ## Employee Names ##
 Adversaries may gather employee names that can be used during targeting. Employee names be used to derive email addresses as well as to help guide other reconnaissance efforts and/or craft more-believable lures.
+
+<br>
+<hr>
+
+# Gathering Victim Network Information
+Adversaries may gather information about the victim's networks that can be used during targeting. Information about networks may include a variety of details, including administrative data (ex: IP ranges, domain names, etc.) as well as specifics regarding its topology and operations.
+
+Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
+* Information about networks may also be exposed to adversaries via online or other accessible data sets 
+* Gathering this information may reveal opportunities for other forms of reconnaissance, establishing operational resources, and/or initial access (ex: Trusted Relationship)
+
+## Domain Properties
+
+<br>
+
+## DNS
+
+<br>
+
+## Network Trust Dependencies
+
+<br>
+
+## Network Topology
+
+<br>
+
+## IP Addresses
+
+<br>
+
+## Network Security Appliances
 
 <br>
 <hr>
