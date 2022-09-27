@@ -926,3 +926,27 @@
 - [Alpha Cyber Security](https://www.teepublic.com/user/djax120)
 
 ## Blogging
+
+
+
+
+
+
+
+
+
+
+Reconnaissance Tools -- Gathering information that can be used to support targeting
+Resource Development Tools -- Creating, purchasing, or compromising resources that can be used to support targeting
+Initial Access Tools -- Various entry vectors to gain your initial foothold within a network
+Execution Tools -- Attacker-controlled code running on a local or remote system
+Persistence Tools -- Maintaining access to systems across interruptions that could cut off adverdary's access
+Privilege Escalation Tools -- Gaining higher-level permissions on a system or network
+Defense Evasion Tools-- Avoiding detection throughout your compromise
+Credential Access Tools -- Stealing credentials like account names and passwords
+Discovery Tools Observing potential control and what’s around your entry point in order to discover how it could benefit your current objective
+* **Lateral Movement:** Pivoting through multiple systems and accounts to gain additional access
+* **Collection:** Gathering information relevant to following through on the adversary's objectives
+* **Command & Control (C2):** Communicating with systems under your control within a victim network
+* **Exfiltration:** Stealing data from victim's infrastructure
+* **Impact:** Disrupting availability, compromising integrity by manipulating business and operational processes
