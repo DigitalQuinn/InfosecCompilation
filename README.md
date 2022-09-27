@@ -735,14 +735,12 @@ Resources for AD penetration testing
 - **Threat Hunting Training**
     - [https://www.activecountermeasures.com/cyber-threat-hunting-training-course/](https://www.activecountermeasures.com/cyber-threat-hunting-training-course/)
 
-### **Pentesting**
-
 #### Cloud Pentesting
-    - [FlAWS Cloud](http://flaws.cloud/) — AWS Security Training
-    - [FLAWS 2 Cloud](http://flaws2.cloud/) — AWS Security Training
-    - AWS Vulnerable
-    - [DVCA](https://github.com/m6a-UdS/dvca) — Demonstrate priv esc on AWS
-    - [OWASP Serverless Goat](https://github.com/OWASP/Serverless-Goat) — Demonstrates common serverless security flaws
+- [FlAWS Cloud](http://flaws.cloud/) — AWS Security Training
+- [FLAWS 2 Cloud](http://flaws2.cloud/) — AWS Security Training
+- AWS Vulnerable
+- [DVCA](https://github.com/m6a-UdS/dvca) — Demonstrate priv esc on AWS
+- [OWASP Serverless Goat](https://github.com/OWASP/Serverless-Goat) — Demonstrates common serverless security flaws
 
 <br>
 
