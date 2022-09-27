@@ -1,5 +1,6 @@
 # Resource Development
 <br>
+
 **Resource Development** consists of techniques that involve Attackers creating, purchasing, or compromising/stealing resources that can be used to support targeting. Such resources include infrastructure, accounts, or capabilities. These resources can be leveraged by the adversary to aid in other phases of the adversary lifecycle, such as using purchased domains to support Command and Control, email accounts for phishing as a part of Initial Access, or stealing code signing certificates to help with Defense Evasion. 
 
 <br>
@@ -175,3 +176,46 @@ Adversaries may prepare an operational environment to infect systems that visit 
 Adversaries may rely upon a user clicking a malicious link in order to divulge information or to gain execution. Links can be used for spearphishing, such as sending an email accompanied by social engineering text to coax the user to actively click or copy and paste a URL into a browser
 * Prior to a phish for information or a phish to gain initial access to a system, an adversary must set up the resources for a link target for the spearphishing link
 *  Adversaries may clone legitimate sites to serve as the link target, this can include cloning of login pages of legitimate web services or organization login pages in an effort to harvest credentials 
+
+<br>
+<hr>
+
+# Tools 
+
+## Penetration Testing Frameworks
+- [Metasploit](https://www.metasploit.com/)
+- [Cobalt Strike](https://www.cobaltstrike.com/) — Adversary simulations & red team operations
+- [Brute Ratel](https://bruteratel.com/) - A customized C2 center for Red Team and Adversary Simulation
+- [Sn1per](https://github.com/1N3/Sn1per) — All in one pentesting framework
+- [Covenant](https://github.com/cobbr/Covenant) — .NET C2 framework
+- [Silver](https://github.com/BishopFox/sliver) — Open source cross-platform red team framework
+- [Octopus](https://www.kitploit.com/2022/05/octopus-open-source-pre-operation-c2.html) — Pre-operation C2 server
+- [SilentTrinity](https://github.com/byt3bl33d3r/SILENTTRINITY) — Asynchronous, multiplayer, & multiserver C2 framework
+- [Recon-ng](https://github.com/lanmaster53/recon-ng) — Full reconnaissance framework to conduct open source web-based recon
+- [Browser Exploitation Framework (BeEF)](https://beefproject.com/) — Recovering web session information and exploiting client-side scripting
+- [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/) — Scanning tools and scripts for web application and mobile app security testing
+- [Pacu](https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/) — Scanning and exploit tools for reconnaissance and exploitation of Amazon Web Service (AWS) accounts
+- [HazProne](https://securityonline.info/hazprone-cloud-pentesting-framework/) — Cloud Pentesting Framework
+- [Lockdoor Framework](https://github.com/SofianeHamlaoui/Lockdoor-Framework) — Framework that automates pentesting tools
+- [Emp3R0R](https://github.com/jm33-m0/emp3r0r) - Linux post-exploitation framework 
+- [GithubC2](https://github.com/D1rkMtr/githubC2/tree/main) - Using Github as a C2
+
+## Compilation of Tools
+- [Hacktricks](https://book.hacktricks.xyz/) - Hacking TTPs
+- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) - A list of useful payloads for bypassing systems
+- [Pentest-Tools](https://github.com/S3cur3Th1sSh1t/Pentest-Tools) — Cybersecurity repository
+- [EthHack](https://ethhack.com/category/security-tools/) — Repository security tool
+- [FSociety Hacking Tools](https://github.com/Manisso/fsociety) — Contains all the tools used in Mr. Robot series
+- [Red Team Resources](https://github.com/J0hnbX/RedTeam-Resources) - Compilation of Red Teaming resources
+- [Kitploit’s Popular Hacking Tools](https://www.kitploit.com/2021/12/top-20-most-popular-hacking-tools-in.html)
+- [Red Teaming Toolkit](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development)
+
+## Hardware
+
+- [Flipper Zero](https://flipperzero.one/) 
+
+## Packet Injection
+- [Dsniff](https://monkey.org/~dugsong/dsniff/)
+- [Ettercap](https://www.ettercap-project.org/)
+- [Scapy](https://scapy.net/) — Packet manipulation program
+- [hping](http://hping.org/) — TCP/IP packet assembler/analyzer

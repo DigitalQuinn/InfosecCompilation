@@ -14,6 +14,7 @@
   - [Spearphishing Attachment](#spearphishing-attachment)
   - [Spearphishing Link](#spearphishing-link)
   - [Spearphishing via Service](#spearphishing-via-service)
+  - [Phishing Tools](#phishing-tools)
 - [Replication Through Removable Media](#replication-through-removable-media)
 - [Supply Chain Compromise](#supply-chain-compromise)
   - [Compromise Software Dependencies and Development Tools](#compromise-software-dependencies--development-tools)
@@ -59,7 +60,7 @@ Exploited applications are often websites, but can include databases, standard s
 <hr>
 
 # External Remote Services #
-Remote services such as VPNs, Citrix, and other access mechanisms allow users to connect to internal enterprise network resources from external locations. There are often remote service gateways that manage connections and credential authentication for these services. Services such as Windows Remote Management and VNC can also be used externally.
+Remote services and other access mechanisms allow users to connect to internal enterprise network resources from external locations. There are often remote service gateways that manage connections and credential authentication for these services. Services such as Windows Remote Management and VNC can also be used externally.
 
 Access to valid accounts to use the service is often a requirement, which could be obtained through credential pharming or by obtaining the credentials from users after compromising the enterprise network.
 
@@ -99,6 +100,17 @@ Adversaries may send spearphishing messages via third-party services in an attem
 All forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this scenario, adversaries send messages through various social media services, personal webmail, and other non-enterprise controlled services. These services are more likely to have a less-strict security policy than an enterprise. As with most kinds of spearphishing, the goal is to generate rapport with the target or get the target's interest in some way. Adversaries will create fake social media accounts and message employees for potential job opportunities. Doing so allows a plausible reason for asking about services, policies, and software that's running in an environment. The adversary can then send malicious links or attachments through these services.
 
 A common example is to build rapport with a target via social media, then send content to a personal webmail service that the target uses on their work computer. This allows an adversary to bypass some email restrictions on the work account, and the target is more likely to open the file since it's something they were expecting. If the payload doesn't work as expected, the adversary can continue normal communications and troubleshoot with the target on how to get it working.
+
+## Phishing Tools
+- [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
+- [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
+- [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
+- [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
+- [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
+- [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
+- [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
+- [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
+- [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
 
 <br>
 <hr>

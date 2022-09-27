@@ -8,12 +8,9 @@
 # Table of Contents
 - [Active Scanning](#Active-Scanning)
   - [Scanning IP Blocks](#scanning-ip-blocks)
-    - [IP Scanning Tools](#ip-scanning-tools)
   - [Vulnerability Scanning](#vulnerability-scanning)
-    - [Vulnerability Scanning Tools](#vulnerability-scanning-tools)
-      - [Application Vulnerability Scanning](#application-vulnerability-scanning)
   - [Wordlist Scanning](#wordlist-scanning)
-    - [Crawling Tools](#crawling-tools)
+  - [Active Enumeration Tools](#active-enumeration-tools)
 - [Gathering Host Information](#Gathering-Host-Information)
   - [Hardware](#hardware)
   - [Software](#software)
@@ -75,6 +72,21 @@ Adversaries may execute active scans to gather information that can be used duri
 ## Scanning IP Blocks ##
 Adversaries may scan IP blocks in order to gather victim network information. Scans may range from simple pings to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
 
+<br>
+
+## Vulnerability Scanning ##
+Adversaries may scan victims for vulnerabilities that can be used during targeting. Vulnerability scans typically check if the configuration of a target host/application (ex: software and version) potentially aligns with the target of a specific exploit the adversary may seek to use.
+
+These scans may also include more broad attempts to identify more commonly known, exploitable vulnerabilities. Vulnerability scans typically harvest running software and version numbers via server banners, listening ports, or other network artifacts.
+
+<br>
+
+## Wordlist Scanning ##
+Adversaries may iteratively probe infrastructure using brute-forcing and crawling techniques. While this technique employs similar methods to Brute Force, its goal is the identification of content and infrastructure rather than the discovery of valid credentials. Wordlists used in these scans may contain generic, commonly used names and file extensions or terms specific to a particular software. Adversaries may also create custom, target-specific wordlists using data gathered from other reconnaissance techniques.
+
+<br>
+
+## Active Enumeration Tools
 ### IP Scanning Tools
 - [Nmap](https://nmap.org/) - Network discovery and security auditing
 - [AngryIP](https://angryip.org/) - Fast and simple network scanner
@@ -86,13 +98,6 @@ Adversaries may scan IP blocks in order to gather victim network information. Sc
 - [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
 - [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
 - [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
-
-<br>
-
-## Vulnerability Scanning ##
-Adversaries may scan victims for vulnerabilities that can be used during targeting. Vulnerability scans typically check if the configuration of a target host/application (ex: software and version) potentially aligns with the target of a specific exploit the adversary may seek to use.
-
-These scans may also include more broad attempts to identify more commonly known, exploitable vulnerabilities. Vulnerability scans typically harvest running software and version numbers via server banners, listening ports, or other network artifacts.
 
 ### Vulnerability Scanning Tools
 - [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
@@ -106,20 +111,13 @@ These scans may also include more broad attempts to identify more commonly known
 #### Application Vulnerability Scanning
   - Nikto
 
-<br>
-
-## Wordlist Scanning ##
-Adversaries may iteratively probe infrastructure using brute-forcing and crawling techniques. While this technique employs similar methods to Brute Force, its goal is the identification of content and infrastructure rather than the discovery of valid credentials. Wordlists used in these scans may contain generic, commonly used names and file extensions or terms specific to a particular software. Adversaries may also create custom, target-specific wordlists using data gathered from other reconnaissance techniques.
-
-<br>
-
 ### Crawling Tools
 - [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
 - [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
 - [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
 - [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
 - [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
-- [breach-parse](https://github.com/hmaverickadams/breach-parse): Tool for parsing breached passwords
+- [breach-parse](https://github.com/hmaverickadams/breach-parse) - Tool for parsing breached passwords
 - [SocialHunter](https://github.com/utkusen/socialhunter) — Crawls the given URL and finds broken social media links that can be hijacked
 - [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
 
@@ -394,6 +392,12 @@ Adversaries may send spearphishing messages with a malicious link to elicit sens
 - [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
 - [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
 - [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
+- [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
+- [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
+- [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
+- [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
+- [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
+- [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
 
 <br>
 <hr>
