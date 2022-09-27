@@ -9,6 +9,7 @@
 - [A Hacker's Methodology / å ˙å˚´®…ß µ´†˙ø∂ø¬ø©¥](#a-hackers-methodology--å-˙å˚´®ß-µ´†˙ø∂ø¬ø©¥)
 - [Homelab](#homelab)
   - [Repository](#repository)
+  - [AD Homelab](#ad-homelab)
   - [Sandbox](#sandbox)
   - [Network Access Control (NAC)](#network-access-control-nac)
   - [Vulnerable Images](#vulnerable-images)
@@ -27,17 +28,60 @@
   - [Offense](#offense)
     - [Penetration Testing Frameworks](#penetration-testing-frameworks)
     - [Compilation of Tools](#compilation-of-tools)
+      - [Python](#python)
+    - [Wireless Penetration Testing](#wireless-penetration-testing)
     - [Hardware](#hardware)
     - [IP Scanners](#ip-scanners)
     - [Extension](#extension)
     - [Vulnerability Scanners](#vulnerability-scanners)
+      - [Application Vulnerability Scanners](#application-vulnerability-scanners)
     - [Packet Injection](#packet-injection)
     - [Password Attacks](#password-attacks)
     - [Phishing](#phishing)
-    - [Cloud Testing](#cloud-testing)
+    - [Cloud Penetration Testing](#cloud-penetration-testing)
+      - [AWS](#aws)
+      - [GCP](#gcp)
+      - [Azure](#azure)
+      - [Misc](#misc)
     - [Active Directory](#active-directory)
     - [Evade AV / EDR](#evade-avedr)
-    - 
+    - [Hash Cracking](#hash-cracking)
+    - [Wrappers](#wrappers)
+  - [CLI Usability](#cli-usability)
+- [Governance Risk & Compliance (GRC)](#governance-risk--compliance-grc)
+  - [Device Hardening](#device-hardening)
+  - [Auditing Tools](#auditing-tools)
+- [Networking](#networking)
+- [Reporting](#reporting)
+- [Books](#books)
+  - [InfoSec Books](#infosec-books)
+    - [Red Teaming](#red-teaming)
+    - [Penetration Testing](#penetration-testing)
+    - [Social Engineering](#social-engineering)
+    - [Web Applications](#web-applications)
+    - [Networking](#networking)
+    - [Specialized / Digging Deep](#specialized--digging-deep)
+    - [Cyber Intelligence](#cyber-intelligence)
+    - [Tool Guide](#tool-guide)
+    - [Kali Linux](#kali-linux)
+    - [Real-World](#real-world)
+    - [Python](#python)
+    - [Dark Web](#dark-web)
+    - [Fiction](#fiction)
+    - [Story Telling](#story-telling)
+    - [Bug Hunting](#bug-hunting)
+    - [IoT](#iot)
+    - [Quantum](#quantum)
+    - [Cryptography](#cryptography)
+    - [Law](#law)
+    - [Cybersecurity](#cybersecurity)
+    - [Malware](#malware-1)
+  - [Finance Books](#finance-books)
+  - [Psychology Books](#psychology-books)
+  - [Miscellaneous Books](#miscellaneous-books)
+
+<br>
+<hr>
 
 # A Hacker's Methodology / å ˙å˚´®…ß µ´†˙ø∂ø¬ø©¥
 
@@ -69,6 +113,10 @@
 - [Blue Team Homelab](https://github.com/aboutsecurity/blueteam_homelabs) — Blue Team Environment
 - [SecGen](https://github.com/cliffe/SecGen) — Creates vulnerable VMs, Lab Environments, & Hacking challenges
 - [DetectionLab](https://github.com/clong/DetectionLab) - Quickly build a Windows domain with pre-loaded with security tooling and system logging configurations
+
+## AD Homelab
+- [SpookySec](https://lnkd.in/eN8V88kv)
+- [Vulnerable-AD](https://github.com/WazeHell/vulnerable-AD) - Set up a Vulnerable AD lab 
 
 ## Sandbox
 - [Cuckoo](https://cuckoosandbox.org/) - open source automated malware analysis system
@@ -127,9 +175,7 @@
 ## Malware Tools
 - [Malware Analysis Tools](https://0x1.gitlab.io/security/Malware-Analysis-Tools-List/)
 - [MalAPI](https://malapi.io/) — Catalog of Windows APIs commonly used in malware
-- Wireless
-    
-    [https://youtu.be/f2BjFilLDqQ](https://youtu.be/f2BjFilLDqQ)
+
 ## Endpoint Detection & Response (EDR)
 - [Intezer Protect](https://www.intezer.com/intezer-protect/) — EDR built for your cloud
 
@@ -280,7 +326,7 @@
 - [Emp3R0R](https://github.com/jm33-m0/emp3r0r) - Linux post-exploitation framework 
 - [GithubC2](https://github.com/D1rkMtr/githubC2/tree/main) - Using Github as a C2
 
-## Compilation of Tools
+### Compilation of Tools
 - [Hacktricks](https://book.hacktricks.xyz/) - Hacking TTPs
 - [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) - A list of useful payloads for bypassing systems
 - [Pentest-Tools](https://github.com/S3cur3Th1sSh1t/Pentest-Tools) — Cybersecurity repository
@@ -289,6 +335,9 @@
 - [Red Team Resources](https://github.com/J0hnbX/RedTeam-Resources) - Compilation of Red Teaming resources
 - [Kitploit’s Popular Hacking Tools](https://www.kitploit.com/2021/12/top-20-most-popular-hacking-tools-in.html)
 - [Red Teaming Toolkit](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development)
+
+#### Python
+- [Python Tool List](https://hackersonlineclub.com/python-tools/) - Compilation of security Python tools
 
 ### Hardware
 
@@ -313,27 +362,30 @@
   - [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
   - [MOSINT] - OSINT Tool For Emails
 
-### 
+### Wireless Penetration Testing
+- [Best Wifi Hacking Tools](https://youtu.be/f2BjFilLDqQ)
+
 #### IP Scanners
 - [Nmap](https://nmap.org/)
 - [AngryIP](https://angryip.org/)
 - [PRTG](https://www.paessler.com/tools)
 - [Spidex](https://github.com/alechilczenko/spidex) — Find Internet-connected devices
 
-#### Extension
+### Extensions
 - [AutoScanWithBurp](https://bitbucket.org/clr2of8/autoscanwithburp/src/master/) — Extension to perform automated & authenticated scans against URLS
-- - [OAuthScan](https://github.com/PortSwigger/oauth-scan) - Burp Suite Extension written in Java with the aim to provide some automatic security checks
+- [OAuthScan](https://github.com/PortSwigger/oauth-scan) - Burp Suite Extension written in Java with the aim to provide some automatic security checks
   
-#### Vulnerability Scanners
-- Nessus
-- OpenVas
-- BurpSuite
+### Vulnerability Scanners
+- [Nessus](https://www.tenable.com/products/nessus)
+- [OpenVas](https://www.openvas.org/)
+- [BurpSuite](https://portswigger.net/burp)
 - [Trend Micro Hybrid Cloud Security](https://www.g2.com/products/trend-micro-hybrid-cloud-security/reviews)
-- Orca Security
-- InsightVM
-- Qualys
-- Application Vulnerability Scanning
-  - Nikto
+- [Orca Security](https://orca.security/)
+- [InsightVM](https://www.rapid7.com/products/insightvm/?utm_source=google&utm_medium=cpc&utm_campaign=NA_Brand_BOF_GSN_EN&utm_term=insightvm&_bt=600185603260&_bm=e&_bn=g&gclid=CjwKCAjwvsqZBhAlEiwAqAHElXcGdtMkjJdBeeSLPL-Sox66izRyW1oy0EP3tYBAh7-Rgte3_yzQVRoCZhEQAvD_BwE)
+- [Qualys](https://www.qualys.com/)
+#### Application Vulnerability Scanners
+  - [Nikto](https://cirt.net/Nikto2)
+  - [BurpSuite](https://portswigger.net/burp)
 
 ### Packet Injection
 - [Dsniff](https://monkey.org/~dugsong/dsniff/)
@@ -353,40 +405,42 @@
 - C2
     - [Tyk.io](https://shells.systems/oh-my-api-abusing-tyk-cloud-api-management-service-to-hide-your-malicious-c2-traffic/) — Route C2 traffic
 - [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
-### Cloud Testing
-- [AWS](https://github.com/RhinoSecurityLabs/pacu)
-- [GCP](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation)
-- [Azure](https://github.com/Azure/Stormspotter)
-- [Multi Cloud](https://github.com/nccgroup/ScoutSuite)
-- [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
+### Cloud Penetration Testing
+
+#### AWS
+- [Pacu](https://github.com/RhinoSecurityLabs/pacu)
 - [https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/](https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/)
 
-#### Active Directory
-Resources for AD penetration testing
-- Build an AD homelab
-  - https://lnkd.in/eN8V88kv
-- [Vulnerable-AD](https://github.com/WazeHell/vulnerable-AD) - Set up a Vulnerable AD lab 
-- Collection of various common attack scenarios on Azure AD by Cloud-Architekt
-  - [AzureAD-Attack-Defense](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense) - Collection of various common attack scenarios on Azure AD
-- Document full of resources(https://lnkd.in/ePgnhbUk)
+#### GCP
+- [GCP IAM Privilege Escalation](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation)
+
+#### Azure
+- [Azure](https://github.com/Azure/Stormspotter)
+
+#### Misc
+- [Multi Cloud](https://github.com/nccgroup/ScoutSuite)
+- [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
+
+### Active Directory
+- [AzureAD-Attack-Defense](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense) - Various common attack scenarios on Azure AD
+- [AD-Attack-Defense](https://lnkd.in/ePgnhbUk)
 - [AD Exploitation Cheat Sheet](https://github.com/Integration-IT/Active-Directory-Exploitation-Cheat-Sheet)
 - [Offensive AD 101](https://owasp.org/www-pdf-archive/OWASP_FFM_41_OffensiveActiveDirectory_101_MichaelRitter.pdf) - Offense AD Guide
 - [AD Exploitation Cheatsheet](https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet#active-directory-exploitation-cheat-sheet) - Common TTPs for pentesting AD
 - [IR Team](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse) — AD & Kerberos Abusing
 - [AD Kill Chain Attack & Defense](https://github.com/infosecn1nja/AD-Attack-Defense#discovery) - Specific TTPs to compromise AD and guidance to mitigation, detection, and prevention
-- [Vulnerable AD](https://github.com/WazeHell/vulnerable-AD) — Create a vulnerable AD allowing you to test most AD attacks in a local lab
 
 ### Evade AV/EDR  
 - [Inceptor](https://github.com/klezVirus/inceptor) — Automate common AV/EDR bypasses
+- [GPU Poisoning](https://gitlab.com/ORCA000/gp) — Hide payload inside GPU memory
 
 ### Malicious
-- [GPU Poisoning](https://gitlab.com/ORCA000/gp) — Hide payload inside GPU memory
 - [fireELF](https://github.com/rek7/fireELF) — Inject fileless exploit payloads into a Linux host
 - [RouterSploit](https://github.com/threat9/routersploit) — Vulnerability scanning and exploit modules targeting embedded systems
 - [Masky](https://github.com/Z4kSec/Masky) - Python library providing an alternative way to remotely dump domain users' credentials thanks to an ADCS
 - [Notion Term](https://github.com/ariary/notionterm) — Embed reverse shell in Notion pages
 
-### Hashes
+### Hash Cracking
 - Hash Database — Upload Hashes
   - [crackstation](https://crackstation.net/)
 
@@ -398,52 +452,43 @@ Resources for AD penetration testing
 ### Wrappers
 - [dll4shell](https://github.com/cepxeo/dll4shell) - A collection of DLL wrappers around various shellcode injection and obfuscation techniques
 
-
-
-
-### Governance Risk & Compliance (GRC)
-
-- [Management Program](https://github.com/magoo/minimalist-risk-management)
-- [GRC Resource List](https://github.com/Arudjreis/awesome-security-GRC)
-- [Ultimate GRC](https://www.oceg.org/)
-- [ISO 27001 Implementation](https://www.udemy.com/course/information-security-for-beginners/?couponCode=LINKEDIN09)
-- [Windows Security Encyclopaedia](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/)
-
-### Device Hardening
-- Department of Defense Cyber Exchange: Provides STIGs w/ hardening guidelines for a variety of software and hardware solutions
-- National Checklist Program (NCP): Provided by the NIST, checklists and benchmarks for OSs and applications
-- [SimplyCyber](https://simplycyber.teachable.com/) — GRC
-
-#### Auditing Tools
-- [lansweeper](https://www.lansweeper.com/) — Scan hosts and compiles an asset information database (Asset inventory management)
-- [Domain Password Audit Tool (DPAT)](https://github.com/clr2of8/DPAT) — Generate password statistics from hashes from a DC and a password crack file
-- [Ping Castle](https://github.com/vletoux/pingcastle) — Assess the security level of the AD based on risk assessment and a maturity framework
-- [Domain Audit](https://github.com/0xJs/domain_audit) — Wrapper around PowerView, Impacket, PowerUpSQL and BloodHound to execute a lot of checks
-
-### Networking
-- [Tailscale](https://tailscale.com/)
-
-### CLI Usability
-
+## CLI Usability
 - [Bat](https://github.com/sharkdp/bat) — Advanced syntax highlighting
 - [fzf](https://github.com/junegunn/fzf) — General purpose command-line fuzzy finder
 - [exa](https://github.com/ogham/exa) — Advanced replacement for `ls`
 - [macOS Terminal (zsh) — The Beginner’s Guide](https://www.youtube.com/watch?v=ogWoUU2DXBU)
 
 
-### Compilation of Tools
-#### Python
-- [Python Tool List](https://hackersonlineclub.com/python-tools/) - Compilation of security Python tools
 
+# Governance Risk & Compliance (GRC)
+- [Management Program](https://github.com/magoo/minimalist-risk-management)
+- [GRC Resource List](https://github.com/Arudjreis/awesome-security-GRC)
+- [Ultimate GRC](https://www.oceg.org/)
+- [ISO 27001 Implementation](https://www.udemy.com/course/information-security-for-beginners/?couponCode=LINKEDIN09)
+- [Windows Security Encyclopaedia](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/)
 
+## Device Hardening
+- Department of Defense Cyber Exchange: Provides STIGs w/ hardening guidelines for a variety of software and hardware solutions
+- National Checklist Program (NCP): Provided by the NIST, checklists and benchmarks for OSs and applications
+- [SimplyCyber](https://simplycyber.teachable.com/) — GRC
 
-### Reporting
+## Auditing Tools
+- [lansweeper](https://www.lansweeper.com/) — Scan hosts and compiles an asset information database (Asset inventory management)
+- [Domain Password Audit Tool (DPAT)](https://github.com/clr2of8/DPAT) — Generate password statistics from hashes from a DC and a password crack file
+- [Ping Castle](https://github.com/vletoux/pingcastle) — Assess the security level of the AD based on risk assessment and a maturity framework
+- [Domain Audit](https://github.com/0xJs/domain_audit) — Wrapper around PowerView, Impacket, PowerUpSQL and BloodHound to execute a lot of checks
 
+# Networking
+- [Tailscale](https://tailscale.com/)
+
+# Reporting
 - [PeTeReport](https://hakin9.org/petereport-open-source-application-vulnerability-reporting-tool/)
 
 <hr>
 
-# InfoSec Books
+# Books 
+
+## InfoSec Books
 
 <br>
 
@@ -670,19 +715,7 @@ Resources for AD penetration testing
 
 <br>
 
-## Miscellaneous
-- Traction by Gino Wickman
-- Extreme Ownership by Jocko Willink / Leif Babin
-- How to Measure Anything in Cybersecurity
-- Shellcoders Handbook
-- Black Hat Go
-- Security Warrior
-- Adversarial Tradecraft in Cybersecurity
-- Hacker Disassembling Uncovered
-
-<br>
-
-## Finance
+## Finance Books
 - The Simple Path to Wealth
 - The Richest Man in Babylon
 - The Psychology of Money
@@ -691,10 +724,20 @@ Resources for AD penetration testing
 - Your Money or Your Life
 - 
 
-## Psychology
+## Psychology Books
 - Dark Pyschology & Manipulation: 10 In 1
 - Designing The Mind: The Principles of Psychitecture
 - 48 Laws of Power
+
+## Miscellaneous Books
+- Traction by Gino Wickman
+- Extreme Ownership by Jocko Willink / Leif Babin
+- How to Measure Anything in Cybersecurity
+- Shellcoders Handbook
+- Black Hat Go
+- Security Warrior
+- Adversarial Tradecraft in Cybersecurity
+- Hacker Disassembling Uncovered
 
 <br>
 <hr>
