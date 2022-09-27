@@ -5,6 +5,40 @@
 <br>
 <hr>
 
+# Table of Contents
+- [A Hacker's Methodology / å ˙å˚´®…ß µ´†˙ø∂ø¬ø©¥](#a-hackers-methodology--å-˙å˚´®ß-µ´†˙ø∂ø¬ø©¥)
+- [Homelab](#homelab)
+  - [Repository](#repository)
+  - [Sandbox](#sandbox)
+  - [Network Access Control (NAC)](#network-access-control-nac)
+  - [Vulnerable Images](#vulnerable-images)
+  - [Malware](#malware)
+  - [Reverse Engineering Guides](#reverse-engineering-guides)
+  - [Malware Analysis Homelab Setup](#malware-analysis-homelab-setup)
+  - [Malware Tools](#malware-tools)
+  - [Endpoint Detection & Response (EDR)](#endpoint-detection--response-edr)
+  - [Security Incident Event Monitoring (SIEM)](#security-incident-event-monitoring-siem)
+- [Tools](#tools)
+  - [Open Source Intelligence (OSINT)](#open-source-intelligence-osint)
+    - [OSINT Framework](#osint-framework)
+    - [Search Engines](#search-engines)
+    - [OSINT Tools](#osint-tools)
+  - [Defense](#defense)
+  - [Offense](#offense)
+    - [Penetration Testing Frameworks](#penetration-testing-frameworks)
+    - [Compilation of Tools](#compilation-of-tools)
+    - [Hardware](#hardware)
+    - [IP Scanners](#ip-scanners)
+    - [Extension](#extension)
+    - [Vulnerability Scanners](#vulnerability-scanners)
+    - [Packet Injection](#packet-injection)
+    - [Password Attacks](#password-attacks)
+    - [Phishing](#phishing)
+    - [Cloud Testing](#cloud-testing)
+    - [Active Directory](#active-directory)
+    - [Evade AV / EDR](#evade-avedr)
+    - 
+
 # A Hacker's Methodology / å ˙å˚´®…ß µ´†˙ø∂ø¬ø©¥
 
 <br>
@@ -95,18 +129,19 @@
 - [Yomi](https://yomi.yoroi.company/)
 - [theZoo](https://github.com/ytisf/theZoo)
 
-### Reverse Engineering Guides
+## Reverse Engineering Guides
 - [https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/](https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/)
-### Malware Analysis Homelab Setup
+
+## Malware Analysis Homelab Setup
 - [KVM Malware Lab](https://c3rb3ru5d3d53c.github.io/docs/kvm-malware-lab/)
 
-### Malware Tools
+## Malware Tools
 - [Malware Analysis Tools](https://0x1.gitlab.io/security/Malware-Analysis-Tools-List/)
 - [MalAPI](https://malapi.io/) — Catalog of Windows APIs commonly used in malware
 - Wireless
     
     [https://youtu.be/f2BjFilLDqQ](https://youtu.be/f2BjFilLDqQ)
-## EDR
+## Endpoint Detection & Response (EDR)
 - [Intezer Protect](https://www.intezer.com/intezer-protect/) — EDR built for your cloud
 
 ## Security Incident Event Monitoring (SIEM)
@@ -124,7 +159,7 @@
 
 # Tools
 
-## OSINT
+## Open Source Intelligence (OSINT)
 
 ### OSINT Framework
 - [ReconSpider](https://hakin9.org/reconspider-most-advanced-open-source-intelligence-osint-framework/)
@@ -169,7 +204,7 @@
 - WayBackMachine - View content from deleted websites
 - SearchCode - Search 75 billion lines of code from 40 million projects
 
-### Tools
+### OSINT Tools
 - [Catana-DS](https://github.com/TebbaaX/Katana) — Automates Google Dorking
 - [Mitaka](https://hakin9.org/mitaka-a-browser-extension-for-osint/) — Browser extension for OSINT
 - [https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f](https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f)
@@ -199,7 +234,7 @@
 - [reconFTW](https://github.com/six2dez/reconftw) — Automates the entire reconnaisance process
 - [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
 - [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
-- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain
+- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
 - [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
 - [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
 - [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
@@ -219,15 +254,14 @@
 - [IntelTechniques](https://inteltechniques.com/tools/index.html) — Resources hosted by IntelTechniques Podcast
 - [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
 - [AutoRecon](https://github.com/Tib3rius/AutoRecon) - Performs automated enumeration of services
-- [https://infosecwriteups.com/cool-recon-techniques-every-hacker-misses-1c5e0e294e89](https://infosecwriteups.com/cool-recon-techniques-every-hacker-misses-1c5e0e294e89)
   - [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks 
   - [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
   - [Uncover](https://github.com/projectdiscovery/uncover) - Quickly discover exposed hosts on the internet using shodan, censys and fofa
   - [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
-  - [Naabu]() - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
+  - [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
 - [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
 - [Recon Cloud](https://recon.cloud/) - Cloud asset scanner
-- - [MailSniper](https://github.com/dafthack/MailSniper) — Searches through email in a Microsoft Exchange environment for specific terms
+- [MailSniper](https://github.com/dafthack/MailSniper) — Searches through email in a Microsoft Exchange environment for specific terms
 
 ## Defense
 - [DarkTrace](https://www.darktrace.com/en/) - Cyber AI detection
@@ -347,9 +381,6 @@ Resources for AD penetration testing
   - [AzureAD-Attack-Defense](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense) - Collection of various common attack scenarios on Azure AD
 - Document full of resources(https://lnkd.in/ePgnhbUk)
 - [AD Exploitation Cheat Sheet](https://github.com/Integration-IT/Active-Directory-Exploitation-Cheat-Sheet)
-
-#### Active Directory Pentesting
-
 - [Offensive AD 101](https://owasp.org/www-pdf-archive/OWASP_FFM_41_OffensiveActiveDirectory_101_MichaelRitter.pdf) - Offense AD Guide
 - [AD Exploitation Cheatsheet](https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet#active-directory-exploitation-cheat-sheet) - Common TTPs for pentesting AD
 - [IR Team](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse) — AD & Kerberos Abusing

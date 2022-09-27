@@ -1,7 +1,5 @@
 # Reconnaissance
 
-The adversary is trying to gather information they can use to plan future operations.
-
 **Reconnaissance:** Consists of techniques that involve adversaries actively or passively gathering information that can be used to support targeting. Such information may include details of the victim organization, infrastructure, or staff/personnel. This information can be leveraged by the adversary to aid in other phases of the adversary lifecycle, such as using gathered information to plan and execute Initial Access, to scope and prioritize post-compromise objectives, or to drive and lead further Reconnaissance efforts.
 
 <br>
@@ -10,8 +8,12 @@ The adversary is trying to gather information they can use to plan future operat
 # Table of Contents
 - [Active Scanning](#Active-Scanning)
   - [Scanning IP Blocks](#scanning-ip-blocks)
+    - [IP Scanning Tools](#ip-scanning-tools)
   - [Vulnerability Scanning](#vulnerability-scanning)
+    - [Vulnerability Scanning Tools](#vulnerability-scanning-tools)
+      - [Application Vulnerability Scanning](#application-vulnerability-scanning)
   - [Wordlist Scanning](#wordlist-scanning)
+    - [Crawling Tools](#crawling-tools)
 - [Gathering Host Information](#Gathering-Host-Information)
   - [Hardware](#hardware)
   - [Software](#software)
@@ -20,50 +22,70 @@ The adversary is trying to gather information they can use to plan future operat
   - [Credentials](#credentials)
   - [Email Addresses](#email-addressess)
   - [Employee Names](#employee-names)
+  - [Tools](#host-enumeration-tools)
 - [Gathering Victim Identity Information](#Gathering-Victim-Identity-Information)
   - [Credentials](#credentials)
   - [Email Addresses](#email-addressess)
   - [Employee Names](#employee-names)
+  - [Tools](#identity-enumeration-tools)
 - [Gathering Vitcim Network Information](#gathering-victim-network-information)
   - [DNS](#dns)
   - [Network Trust Dependencies](#network-trust-dependencies)
   - [Network Topology](#network-topology)
   - [IP Addresses](#ip-addresses)
   - [Network Security Appliances](#network-security-appliances)
+  - [Network Enumeration Tools](#network-enumeration-tools)
 - [Gathering Victim Organization Information](#Gathering-Victim-Organization-Information)
   - [Determine Physical Locations](#determine-physical-locations)
   - [Business Relationships](#business-relationships)
   - [Identify Business Tempo](#identify-business-tempo)
   - [Identify Roles](#identify-roles)
+  - [Victim Enumeration Tools](#victim-enumeration-tools)
 - [Phishing for Information](#Phishing-for-Information)
   - [Spearphishing Service](#spearphishing-service)
   - [Spearphishing Attachment](#spearphishing-attachment)
   - [Spearphishing Link](#spearphishing-link)
+  - [Phishing Tools](#phishing-tools)
 - [Searching Open Technical Databases](#Searching-Open-Technical-Databases)
   - [DNS/Passive DNS](#dns--passive-dns)
   - [WHOIS](#whois)
   - [Digital Certificates](#digital-certificates)
   - [CDNs](#cdns)
   - [Scan Databases](#scan-databases)
+  - [Open Database Enumeration Tools](#open-database-enumeration-tools)
 - [Searching Open Websites / Domains](#Searching-Open-Websites-/-Domains)
   - [Social Media](#social-media)
   - [Search Engines](#search-engines)
+  - [Open Website / Domain Enumeration Tools](#open-website--domain-enumeration-tools)
 - [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
+  - [Vitcim-Owned Enumeration Tools](#vitcm-owned-enumeration-tools)
 - [Searching Closed Sources](#Searching-Closed-Sources)
   - [Threat Intelligence Vendors](#threat-intelligence-vendors)
   - [Purchase Technical Data](#purchase-technical-data)
+  - [Threat Intelligence Solutions](#threat-intelligence-solutions)
+
 <br>
 <hr>
 
-# Active Scanning ##
+# Active Scanning
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
-
-**Note:** These scans can also be performed in various ways. Information from these scans may reveal opportunities for other forms of reconnaissance.
 
 <br>
 
 ## Scanning IP Blocks ##
-Adversaries may scan IP blocks in order to gather victim network information, such as which IP addresses are actively in use as well as more detailed information about hosts assigned these addresses. Scans may range from simple pings (ICMP requests and responses) to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
+Adversaries may scan IP blocks in order to gather victim network information. Scans may range from simple pings to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
+
+### IP Scanning Tools
+- [Nmap](https://nmap.org/) - Network discovery and security auditing
+- [AngryIP](https://angryip.org/) - Fast and simple network scanner
+- [PRTG](https://www.paessler.com/tools)
+- [Spidex](https://github.com/alechilczenko/spidex) — Find Internet-connected devices
+- [IP Neighboring](https://www.ip-neighbors.com/) — Discover Neighboring IP Hosts
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
 
 <br>
 
@@ -72,10 +94,34 @@ Adversaries may scan victims for vulnerabilities that can be used during targeti
 
 These scans may also include more broad attempts to identify more commonly known, exploitable vulnerabilities. Vulnerability scans typically harvest running software and version numbers via server banners, listening ports, or other network artifacts.
 
+### Vulnerability Scanning Tools
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- Nessus
+- OpenVas
+- BurpSuite
+- [Trend Micro Hybrid Cloud Security](https://www.g2.com/products/trend-micro-hybrid-cloud-security/reviews)
+- Orca Security
+- InsightVM
+- Qualys
+#### Application Vulnerability Scanning
+  - Nikto
+
 <br>
 
 ## Wordlist Scanning ##
 Adversaries may iteratively probe infrastructure using brute-forcing and crawling techniques. While this technique employs similar methods to Brute Force, its goal is the identification of content and infrastructure rather than the discovery of valid credentials. Wordlists used in these scans may contain generic, commonly used names and file extensions or terms specific to a particular software. Adversaries may also create custom, target-specific wordlists using data gathered from other reconnaissance techniques.
+
+<br>
+
+### Crawling Tools
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [breach-parse](https://github.com/hmaverickadams/breach-parse): Tool for parsing breached passwords
+- [SocialHunter](https://github.com/utkusen/socialhunter) — Crawls the given URL and finds broken social media links that can be hijacked
+- [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
 
 <br>
 <hr>
@@ -103,6 +149,20 @@ Adversaries may gather information about the victim's host firmware that can be 
 ## Client Configuration ##
 Adversaries may gather information about the victim's client configurations that can be used during targeting. Information about client configurations may include a variety of details and settings, including operating system/version, virtualization, architecture (ex: 32 or 64 bit), language, and/or time zone.
 
+## Host Enumeration Tools
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
+- [Clickjacker](https://serene-agnesi-57a014.netlify.app/) — Discover secret API Keys
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [securityheader.com](http://securityheader.com) — Reports headers that are missing; Exploitable
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
+- LeakWatch - Scans the Internet to detect exposed information
+
 <br>
 <hr>
 
@@ -127,6 +187,20 @@ Adversaries may gather email addresses that can be used during targeting. Even i
 
 ## Employee Names ##
 Adversaries may gather employee names that can be used during targeting. Employee names be used to derive email addresses as well as to help guide other reconnaissance efforts and/or craft more-believable lures.
+
+## Identity Enumeration Tools
+- Binary Edge - Scans the internet for threat intelligence
+- Hunter - Search for email addresses belonging to a website
+- Fofa - Search for various threat intelligence
+- ZoomEye - Gather information about targets
+- LeakIX - Search publicly indexed information
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- PublicWWW -  Marketing and affiliate marketing research
+- Dehashed - Search for anything like username, email, passwords, address, or phone number.
+- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+- Snusbase - Indexes information from hacked websites and leaked databases
+- LeakBase - Forum of leaked databases
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
 
 <br>
 <hr>
@@ -194,6 +268,37 @@ Adversaries may gather information about the victim's network security appliance
 Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
 * Information about network security appliances may also be exposed to adversaries via online or other accessible data sets (ex: Search Victim-Owned Websites).
 
+## Network Enumeration Tools
+### Network / Port Scanners
+- [Nmap](https://nmap.org/) - Network discovery and security auditing
+- [AngryIP](https://angryip.org/) - Fast and simple network scanner
+- [PRTG](https://www.paessler.com/tools)
+- [Spidex](https://github.com/alechilczenko/spidex) — Find Internet-connected devices
+- [IP Neighboring](https://www.ip-neighbors.com/) — Discover Neighboring IP Hosts
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
+
+### Domain / DNS Scanners
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
+- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
+- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
+- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
+- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
+- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
+- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
+- [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
+
 <br>
 <hr>
 
@@ -220,6 +325,50 @@ Adversaries may gather information about the victim's business tempo that can be
 ## Identify Roles ##
 Adversaries may gather information about identities and roles within the victim organization that can be used during targeting. Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
 
+## Victim Enumeration Tools
+### Threat Intelligence
+- Wigle - Database of wireless networks, with statistics
+- Binary Edge - Scans the internet for threat intelligence
+- ONYPHE - Collects cyber-threat intelligence data
+- Fofa - Search for various threat intelligence
+- ZoomEye - Gather information about targets
+- LeakIX - Search publicly indexed information
+- URL Scan - Free service to scan and analyse websites
+- PublicWWW -  Marketing and affiliate marketing research
+- CRT sh - Search for certs that have been logged by CT
+- Pulsedive - Search for threat intelligence
+- Dehashed - Search for anything like username, email, passwords, address, or phone number
+- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+- Snusbase - Indexes information from hacked websites and leaked databases
+- LeakBase - Forum of leaked databases
+- LeakCheck - Data breach search engine
+- GhostProject.fr - Smart search engine
+- SecurityTrails - Extensive DNS data
+- DorkSearch - Really fast Google dorking
+- PolySwarm - Scan files and URLs for threats
+- DNSDumpster - Search for DNS records quickly
+- AlienVault - Extensive threat intelligence feed
+- Vulners - Search vulnerabilities in a large database
+- WayBackMachine - View content from deleted websites
+### Internet-Connected Devices / Attack Surfaces
+- GreyNoise - Search for devices connected to the internet
+- Censys - Assessing attack surface for internet connected devices
+- Hunter - Search for email addresses belonging to a website
+- Shodan - Search for devices connected to the internet
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- Netlas - Search and monitor internet connected assets
+- FullHunt - Search and discovery attack surfaces
+- GrayHatWarefare - Search public S3 buckets
+- LeakWatch - Scans the Internet to detect exposed information
+- FullHunt - Search and discovery attack surfaces
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+- [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
+
 <br>
 <hr>
 
@@ -240,6 +389,11 @@ Adversaries may send spearphishing messages with a malicious attachment to elici
 
 ## Spearphishing Link ##
 Adversaries may send spearphishing messages with a malicious link to elicit sensitive information that can be used during targeting. The malicious emails contain links generally accompanied by social engineering text to coax the user to actively click or copy and paste a URL into a browser. The given website may closely resemble a legitimate site in appearance and have a URL containing elements from the real site. From the fake website, information is gathered in web forms and sent to the adversary. 
+
+## Phishing Tools
+- [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
+- [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
+- [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
 
 <br>
 <hr>
@@ -280,10 +434,85 @@ Various online services continuously publish the results of Internet scans/surve
 
 Adversaries may search scan databases to gather actionable information. Threat actors can use online resources and lookup tools to harvest information from these services. Adversaries may seek information about their already identified targets, or use these datasets to discover opportunities for successful breaches.
 
+## Open Database Enumeration Tools
+### Threat Intelligence / Search Engines
+- Wigle - Database of wireless networks, with statistics
+- Binary Edge - Scans the internet for threat intelligence
+- ONYPHE - Collects cyber-threat intelligence data
+- Fofa - Search for various threat intelligence
+- ZoomEye - Gather information about targets
+- LeakIX - Search publicly indexed information
+- URL Scan - Free service to scan and analyse websites
+- PublicWWW -  Marketing and affiliate marketing research
+- Pulsedive - Search for threat intelligence
+- Dehashed - Search for anything like username, email, passwords, address, or phone number
+- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+- Snusbase - Indexes information from hacked websites and leaked databases
+- LeakBase - Forum of leaked databases
+- LeakCheck - Data breach search engine
+- GhostProject.fr - Smart search engine
+- SecurityTrails - Extensive DNS data
+- DorkSearch - Really fast Google dorking
+- PolySwarm - Scan files and URLs for threats
+- DNSDumpster - Search for DNS records quickly
+- AlienVault - Extensive threat intelligence feed
+- Vulners - Search vulnerabilities in a large database
+- WayBackMachine - View content from deleted websites
+
+#### Dorking
+- [Catana-DS](https://github.com/TebbaaX/Katana) — Automates Google Dorking
+### Internet-Connected Devices / Attack Surfaces
+- GreyNoise - Search for devices connected to the internet
+- Censys - Assessing attack surface for internet connected devices
+- Hunter - Search for email addresses belonging to a website
+- Shodan - Search for devices connected to the internet
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- Netlas - Search and monitor internet connected assets
+- FullHunt - Search and discovery attack surfaces
+- GrayHatWarefare - Search public S3 buckets
+- LeakWatch - Scans the Internet to detect exposed information
+- FullHunt - Search and discovery attack surfaces
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+- [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
+- [Dorksearch](https://dorksearch.com/) — Faster Google Dorking
+- [GitHub Dork Helper](https://vsec7.github.io/)
+
+### Domain / DNS / WHOIS
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
+- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
+- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
+- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
+
+
+
+### Digital Certificates
+- CRT sh - Search for certs that have been logged by CT
+
 <br>
 <hr>
 
-# Searching Open Websites / Domains #
+# Searching Open Websites / Domains 
 Information about victims may be available in various online sites, such as social media, new sites, or those hosting information about business operations such as hiring or requested/rewarded contracts. Adversaries may search in different online sites depending on what information they seek to gather.
 
 <br>
@@ -300,11 +529,63 @@ Search engine services typical crawl online sites to index context and may provi
 
 Adversaries may craft various search engine queries depending on what information they seek to gather. Threat actors may use search engines to harvest general information about victims, as well as use specialized queries to look for spillages/leaks of sensitive information such as network details or credentials.
 
+## Open Website / Domain Enumeration Tools
+### Domain / DNS / WHOIS
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
+- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
+- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
+- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- [IpSpy](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+
 <br>
 <hr>
 
 # Searching Victim-Owned Websites #
 Victim-owned websites may contain a variety of details, including names of departments/divisions, physical locations, and data about key employees such as names, roles, and contact info. These sites may also have details highlighting business operations and relationships. Adversaries may search victim-owned websites to gather actionable information.thats 
+
+## Vitcm-Owned Enumeration Tools
+### Domain / DNS / WHOIS
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
+- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
+- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
+- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- [IpSpy](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
 
 <br>
 <hr>
@@ -325,4 +606,28 @@ Adversaries may search in private threat intelligence vendor data to gather acti
 ## Purchase Technical Data ##
 Adversaries may purchase technical information about victims that can be used during targeting. Information about victims may be available for purchase within reputable private sources and databases, such as paid subscriptions to feeds of scan databases or other data aggregation services. Adversaries may also purchase information from less-reputable sources such as dark web or cybercrime blackmarkets.
 
-Adversaries may purchase information about their already identified targets, or use purchased data to discover opportunities for successful breaches. Threat actors may gather various technical details from purchased data, including but not limited to employee contact information, credentials, or specifics regarding a victim’s infrastructure.
+Adversaries may purchase information about their already identified targets, or use purchased data to discover opportunities for successful breaches. Threat actors may gather various technical details from purchased data, including but not limited to employee contact information, credentials, or specifics regarding a victim’s infrastructure
+
+## Threat Intelligence Solutions
+- Wigle - Database of wireless networks, with statistics
+- Binary Edge - Scans the internet for threat intelligence
+- ONYPHE - Collects cyber-threat intelligence data
+- Fofa - Search for various threat intelligence
+- ZoomEye - Gather information about targets
+- LeakIX - Search publicly indexed information
+- URL Scan - Free service to scan and analyse websites
+- PublicWWW -  Marketing and affiliate marketing research
+- CRT sh - Search for certs that have been logged by CT
+- Pulsedive - Search for threat intelligence
+- Dehashed - Search for anything like username, email, passwords, address, or phone number
+- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+- Snusbase - Indexes information from hacked websites and leaked databases
+- LeakBase - Forum of leaked databases
+- LeakCheck - Data breach search engine
+- GhostProject.fr - Smart search engine
+- SecurityTrails - Extensive DNS data
+- DorkSearch - Really fast Google dorking
+- PolySwarm - Scan files and URLs for threats
+- AlienVault - Extensive threat intelligence feed
+- Vulners - Search vulnerabilities in a large database
+- WayBackMachine - View content from deleted websites
