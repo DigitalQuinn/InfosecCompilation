@@ -107,7 +107,7 @@ Information about an organization’s business tempo may include a variety of de
 ### Identify Roles 
 Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
 
-#### Tools
+## Tools
 - [Open Corporates](https://opencorporates.com/) — Search for businesses
 - [AI HIT](https://www.aihitdata.com/)
 **Threat Intelligence**
