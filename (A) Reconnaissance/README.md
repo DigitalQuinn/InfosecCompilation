@@ -6,7 +6,19 @@
 <hr>
 
 # Table of Contents
-- [Sock Puppets](#Sock-Puppets)
+- [Sock Puppets](#sock-puppets)
+- [Passive Scanning](#passive-scanning)
+  - [Victim Organization Information](#victim-organization-information)
+    - [Business Relationships](#business-relationships)
+    - [Identify Business Tempo](#identify-business-tempo)
+    - [Identify Roles](#identify-roles)
+    - [Location Information](#location-information)
+  - [Social & Host Information](#physical-social--host-information)
+    - [Identity Information](#identity-information)
+    - [Credentials](#credentials)
+    - [Email Addressess](#email-addressess)
+    - [Employee Names](#employee-names)
+  - [Website / Host Information](#website--host-information)
 - [Active Scanning](#Active-Scanning)
   - [Scanning IP Blocks](#scanning-ip-blocks)
   - [Vulnerability Scanning](#vulnerability-scanning)
@@ -20,47 +32,38 @@
   - [Credentials](#credentials)
   - [Email Addresses](#email-addressess)
   - [Employee Names](#employee-names)
-  - [Tools](#host-enumeration-tools)
 - [Gathering Victim Identity Information](#Gathering-Victim-Identity-Information)
   - [Credentials](#credentials)
   - [Email Addresses](#email-addressess)
   - [Employee Names](#employee-names)
-  - [Tools](#identity-enumeration-tools)
 - [Gathering Vitcim Network Information](#gathering-victim-network-information)
   - [DNS](#dns)
   - [Network Trust Dependencies](#network-trust-dependencies)
   - [Network Topology](#network-topology)
   - [IP Addresses](#ip-addresses)
   - [Network Security Appliances](#network-security-appliances)
-  - [Network Enumeration Tools](#network-enumeration-tools)
 - [Gathering Victim Organization Information](#Gathering-Victim-Organization-Information)
   - [Determine Physical Locations](#determine-physical-locations)
   - [Business Relationships](#business-relationships)
   - [Identify Business Tempo](#identify-business-tempo)
   - [Identify Roles](#identify-roles)
-  - [Victim Enumeration Tools](#victim-enumeration-tools)
 - [Phishing for Information](#Phishing-for-Information)
   - [Spearphishing Service](#spearphishing-service)
   - [Spearphishing Attachment](#spearphishing-attachment)
   - [Spearphishing Link](#spearphishing-link)
-  - [Phishing Tools](#phishing-tools)
 - [Searching Open Technical Databases](#Searching-Open-Technical-Databases)
   - [DNS/Passive DNS](#dns--passive-dns)
   - [WHOIS](#whois)
   - [Digital Certificates](#digital-certificates)
   - [CDNs](#cdns)
   - [Scan Databases](#scan-databases)
-  - [Open Database Enumeration Tools](#open-database-enumeration-tools)
 - [Searching Open Websites / Domains](#Searching-Open-Websites-/-Domains)
   - [Social Media](#social-media)
   - [Search Engines](#search-engines)
-  - [Open Website / Domain Enumeration Tools](#open-website--domain-enumeration-tools)
 - [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
-  - [Vitcim-Owned Enumeration Tools](#vitcm-owned-enumeration-tools)
 - [Searching Closed Sources](#Searching-Closed-Sources)
   - [Threat Intelligence Vendors](#threat-intelligence-vendors)
   - [Purchase Technical Data](#purchase-technical-data)
-  - [Threat Intelligence Solutions](#threat-intelligence-solutions)
 
 <br>
 <hr>
@@ -86,12 +89,8 @@ Sock Puppets are aliases, fictitious persona profiles created by someone else wi
 # Passive Scanning
 Passive Scanning is the process of using OSINT to indirectly find information out about the target
 
-## Gathering Victim Organization Information 
+## Victim Organization Information 
 Information about an organization may include a variety of details, including the names of divisions/departments, specifics of business operations, as well as the roles and responsibilities of key employees.
-
-**Tools**
-- [Open Corporates](https://opencorporates.com/) — Search for businesses
-- [AI HIT](https://www.aihitdata.com/)
 
 <br>
 
@@ -108,7 +107,9 @@ Information about an organization’s business tempo may include a variety of de
 ### Identify Roles 
 Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
 
-### Tools
+#### Tools
+- [Open Corporates](https://opencorporates.com/) — Search for businesses
+- [AI HIT](https://www.aihitdata.com/)
 **Threat Intelligence**
 - Wigle - Database of wireless networks, with statistics
 - Binary Edge - Scans the internet for threat intelligence
@@ -155,30 +156,31 @@ Information about business roles may reveal a variety of targetable details, inc
 
 <br>
 
-## Gathering Physical / Social Information 
-
 ### Location Information
 Adversaries may gather the victim's physical location(s) that can be used during targeting. Information about physical locations of a target organization may include a variety of details, including where key resources and infrastructure are housed. Physical locations may also indicate what legal jurisdiction and/or authorities the victim operates within.
 * Satellite images
 * Drone reconnaissance
 * Building layout (Badge readers, break areas, security, fencing, etc.)
 
-### Tools
+#### Tools
 **Images**
 - EXIF Tool
   - `exiftool [img file]`
 **Wireless**
 - WiGLE - Find wireless networks
 
+## Social, & Host Information 
+
 <br>  
 
-## Gathering Victim Identity Information 
+## Identity Information 
 Information about identities may include a variety of details, including personal data (ex: employee names, email addresses, badge photos, etc.)
 
 
 ### Credentials 
 Adversaries may collect account credentials directly related with the intended victim organization or try to exploit users' inclination to reuse passwords across personal and commercial accounts. Credentials may also be leaked online or in other accessible data sets, or purchased on the dark web or other black-markets.
 
+#### Tools
 Search for hash to determine if its somewhere online 
 
 - [dehashed.com](http://dehashed.com) : Search email, username, IP, Phone, VIN, etc.
@@ -206,7 +208,7 @@ Search for hash to determine if its somewhere online
 ### Email Addressess
 Adversaries may gather email addresses that can be used during targeting. Even if internal instances exist, organizations may have public-facing email infrastructure and addresses for employees.
 
-### Tools
+#### Tools
 - [hunter.io](http://hunter.io) -  Discover email addresses based on domain name 
   - Take note to discover the email formats
 - [phonebook.cz](http://phonebook.cz) - Lists all domains, email addresses, or URLs for the given input domain
@@ -221,7 +223,7 @@ Adversaries may gather email addresses that can be used during targeting. Even i
 Adversaries may gather employee names that can be used during targeting. Employee names be used to derive email addresses as well as to help guide other reconnaissance efforts and/or craft more-believable lures.
 - Employees (Name, Job Title, Phone Number, etc.)
 
-### Tools
+#### Tools
 **Social Media**
 - LinkedIn
   - Search through images
@@ -268,14 +270,15 @@ Adversaries may gather employee names that can be used during targeting. Employe
 <br>
 <hr>
 
-### Website / Host Information
+## Website / Host Information
+
+
+#### Tools
 - Target Validation
-**Tools**
   - WHOIS
   - nslookup
   - dnsrecon
 - Finding Subdomains
-**Tools**
   - Google Fu
   - dig
   - Nmap
@@ -283,7 +286,6 @@ Adversaries may gather employee names that can be used during targeting. Employe
   - Bluto
   - crt.sh
 - Fingerprinting
-**Tools**
   - Nmap
   - Wappalyzer
   - BuiltWith
@@ -292,7 +294,6 @@ Adversaries may gather employee names that can be used during targeting. Employe
   - whatweb: CLI tool
     - Syntax: `whatweb [https://tesla.com](https://tesla.com)`
 - Data Breaches
-  **Tools**
   - HaveIBeenPwned
   - Breach-Parse
   - WeLeakInfo
@@ -320,12 +321,6 @@ Adversaries may gather employee names that can be used during targeting. Employe
 
 <br>
 <hr>
-
-
-
-
-
-
 
 
 - [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
@@ -496,7 +491,7 @@ Adversaries may gather information about the victim's network security appliance
 Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
 * Information about network security appliances may also be exposed to adversaries via online or other accessible data sets (ex: Search Victim-Owned Websites).
 
-## Network Enumeration Tools
+## Tools
 ### Network / Port Scanners
 - [Nmap](https://nmap.org/) - Network discovery and security auditing
 - [AngryIP](https://angryip.org/) - Fast and simple network scanner
@@ -548,7 +543,7 @@ Adversaries may send spearphishing messages with a malicious attachment to elici
 ## Spearphishing Link ##
 Adversaries may send spearphishing messages with a malicious link to elicit sensitive information that can be used during targeting. The malicious emails contain links generally accompanied by social engineering text to coax the user to actively click or copy and paste a URL into a browser. The given website may closely resemble a legitimate site in appearance and have a URL containing elements from the real site. From the fake website, information is gathered in web forms and sent to the adversary. 
 
-## Phishing Tools
+## Tools
 - [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
 - [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
 - [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
@@ -598,7 +593,7 @@ Various online services continuously publish the results of Internet scans/surve
 
 Adversaries may search scan databases to gather actionable information. Threat actors can use online resources and lookup tools to harvest information from these services. Adversaries may seek information about their already identified targets, or use these datasets to discover opportunities for successful breaches.
 
-## Open Database Enumeration Tools
+## Tools
 ### Threat Intelligence / Search Engines
 - Wigle - Database of wireless networks, with statistics
 - Binary Edge - Scans the internet for threat intelligence
@@ -693,7 +688,7 @@ Search engine services typical crawl online sites to index context and may provi
 
 Adversaries may craft various search engine queries depending on what information they seek to gather. Threat actors may use search engines to harvest general information about victims, as well as use specialized queries to look for spillages/leaks of sensitive information such as network details or credentials.
 
-## Open Website / Domain Enumeration Tools
+## Tools
 ### Domain / DNS / WHOIS
 - [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
 - [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
@@ -725,7 +720,7 @@ Adversaries may craft various search engine queries depending on what informatio
 # Searching Victim-Owned Websites #
 Victim-owned websites may contain a variety of details, including names of departments/divisions, physical locations, and data about key employees such as names, roles, and contact info. These sites may also have details highlighting business operations and relationships. Adversaries may search victim-owned websites to gather actionable information.thats 
 
-## Vitcm-Owned Enumeration Tools
+## Tools
 ### Domain / DNS / WHOIS
 - [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
 - [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
