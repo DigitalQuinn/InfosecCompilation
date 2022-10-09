@@ -6,6 +6,7 @@
 <hr>
 
 # Table of Contents
+- [Sock Puppets](#Sock-Puppets)
 - [Active Scanning](#Active-Scanning)
   - [Scanning IP Blocks](#scanning-ip-blocks)
   - [Vulnerability Scanning](#vulnerability-scanning)
@@ -60,6 +61,24 @@
   - [Threat Intelligence Vendors](#threat-intelligence-vendors)
   - [Purchase Technical Data](#purchase-technical-data)
   - [Threat Intelligence Solutions](#threat-intelligence-solutions)
+
+<br>
+<hr>
+
+# Sock Puppets
+Sock Puppets are aliases, fictitious persona profiles created by someone else with specific goals in mind and is part of an OSINT Social Engineering technique. Sock puppets have a real name, real phone numbers, address, photographs, credit card number, various social media accounts, friends, etc.
+
+## Creating Sock Puppets for OSINT Investigations
+* [The Art Of The Sock](https://www.secjuice.com/the-art-of-the-sock-osint-humint/)
+* [Process for Setting Up Anonymous Sockpuppet Accounts](https://www.reddit.com/r/OSINT/comments/dp70jr/my_process_for_setting_up_anonymous_sockpuppet/)
+* [Fake Name Generator](https://www.fakenamegenerator.com/)
+* [This Person Does not Exist](https://www.thispersondoesnotexist.com/)
+* [Privacy.com](https://privacy.com/join/LADFC) — Create virtual payment cards for one-time purchases or subscriptions, directly from your browser. Set spend limits, pause, unpause, and close cards any time you want.
+
+**NOTE::**
+- Don’t tie fake identity to personal accounts and devices
+- Buy burner devices
+- Don’t conduct purchases on personal IPs
 
 <br>
 <hr>
