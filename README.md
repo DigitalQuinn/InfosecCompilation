@@ -436,8 +436,12 @@
 
 ### Lateral Movement Tools
 - [Forbidden] - Bypass 4Xx HTTP Response Status Codes
+- [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg/blob/master/README-en.md) -- Used for HTTP(S) Tunneling
 
 ### Collection Tools 
+- [ICMPDoor](https://github.com/krabelize/icmpdoor) - Open-source reverse-shell written in Python3 and scapy
+- [iodined](https://github.com/yarrick/iodine) - DNS Tunneling
+
 
 ### C2 Tools 
 #### Penetration Testing / C2 Frameworks 
