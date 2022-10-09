@@ -286,17 +286,16 @@ Employee names be used to derive email addresses as well as to help guide other 
 - Find people; Take names and put them into the email formats
 
 **Top Social Media**
-- LinkedIn, Twitter, Facebook, Instagram, Snapchat, Reddit, TikTok, Reddit, Pinterest, Messenger
+- LinkedIn, Twitter, Facebook, Instagram, Snapchat, Reddit, TikTok, Reddit, Pinterest, Messenger, Ello
 - Medium, Quora, SoundCloud, Discord, YouTube, Whatsapp, WeChat, QQ, Qzone, Sina Weibo
 - Flickr, Baidu Tieba, Viber, Line, Telegram, Douyin, Douban, Discord, Foursquare, Badoo
 - Mix, Next Door, Deviantart, Meetup, VK, Kwai, Clubhouse, Hootsuite, Vimeo, BizSugar
 - Digg, Skype, YY, Taringa, Renren, Triller, Tagged, Academia, Myspace, Periscope
-- The-Dots, Valence, Kiwibox, Untappd, Skyrock, Alpha, Delicious, Yubo, Snapfish, Peanut
-- ReverbNation, Houseparty, Flixster, Caffeine, Care2, Steemit, CafeMom, 23snaps, Ravelry, Likee
-- Wayne, 8tracks, Cellufun, Amikumu, Upstream, aNobii, Classmates, ASMALLWORLD, MyHeritage, Athlinks
-- Viadeo, BAND, Xing, beBee, LiveJournal, Blind, Funny or Die, Diaspora, Gaia Online, Fark, We Heart It
+- The-Dots, Valence, Kiwibox, Untappd, Skyrock, Alpha, Delicious, Yubo, Snapfish, Peanut, WT Social
+- ReverbNation, Houseparty, Flixster, Caffeine, Care2, Steemit, CafeMom, 23snaps, Ravelry, Likee, Tout
+- Wayne, 8tracks, Cellufun, Amikumu, Upstream, aNobii, Classmates, ASMALLWORLD, MyHeritage, Athlinks, Vero
+- Viadeo, BAND, Xing, beBee, LiveJournal, Blind, Funny or Die, Diaspora, Gaia Online, Fark, We Heart It, Giphy
 - MeWe, Twitch, CaringBridge, Wattpad, Crunchyroll, Bubbly, Influenster, FilmAffinity, Tribe, Imgur
-- Giphy, Vero, Tout, WT Social, Ello
 
 **Searching for People**
 - [WhitePages](https://www.whitepages.com/)
@@ -307,7 +306,7 @@ Employee names be used to derive email addresses as well as to help guide other 
 - [PeekYou](https://peekyou.com/)
 - [411](https://www.411.com/)
 - [Spokeo](https://www.spokeo.com/)
-- [That'sThem](https://thatsthem.com/)
+- [That's Them](https://thatsthem.com/)
 - [People Auto-Search](http://consumer-sos.com/Generic-Auto/People-Search/public-records.htm#TheirTrailofPublicRecords) - Find Or Background People By Their: Criminal records, relationships, articles, assets, and much more
 - Pipl Search
 - Google
@@ -327,14 +326,17 @@ Employee names be used to derive email addresses as well as to help guide other 
 
 
 **Voter Records**
-  - [Voter Records](https://www.voterrecords.com/)
-- Hunting Phone Numbers
-  - [TrueCaller](https://www.truecaller.com/)
-  - [CallerID Test](https://calleridtest.com/)
-  - [Infobel](https://infobel.com/)
-  - `phoneinfoga scan -n 12408084535`
-  - `phoneinfoga serve -p 8080` — Spin up web server to see visual output
-      - `[http://localhost:8080](http://localhost:8080)` — View output
+- [Voter Records](https://www.voterrecords.com/)
+
+**Hunting Phone Numbers**
+- [TrueCaller](https://www.truecaller.com/)
+- [CallerID Test](https://calleridtest.com/)
+- [Infobel](https://infobel.com/)
+- `phoneinfoga scan -n 12408084535`
+- `phoneinfoga serve -p 8080` — Spin up web server to see visual output
+  - `[http://localhost:8080](http://localhost:8080)` — View output
+
+**Misc. Threat Intelligence**
 - Binary Edge - Scans the internet for threat intelligence
 - Hunter - Search for email addresses belonging to a website
 - Fofa - Search for various threat intelligence
@@ -352,7 +354,7 @@ Employee names be used to derive email addresses as well as to help guide other 
 <hr>
 
 ## Passive Website / Host Information
-Information about hosts may include a variety of details, including administrative data (ex: name, assigned IP, functionality, etc.) as well as specifics regarding its configuration (ex: operating system, language, etc.)
+Passively search for information on websites/hosts may including administrative data (ex: name, assigned IP, functionality, etc.) as well as specifics regarding its configuration (ex: operating system, language, etc)
 
 ### Passive Target Validation
 Target validation is the process of verifying that a scanned asset is actually "up/active", even though a specific tool may say its available or isn't really available. This should be a more hands-on, manual approach, but some of these tools are good at validating this;
@@ -413,14 +415,14 @@ Fingerprinting is the technique to gather as much of a system's configuration in
 DNS information may include a variety of details, including registered name servers as well as records that outline addressing for a target’s subdomains, mail servers, and other hosts. Threat actors can query nameservers for a target organization directly, or search through centralized repositories of logged DNS query responses (known as passive DNS). Adversaries may also seek and target DNS misconfigurations/leaks that reveal information about internal networks. 
 
 ### Passive WHOIS 
+WHOIS data is stored by Regional Internet Registries (RIR) responsible for allocating and assigning Internet resources such as domain names
 
-WHOIS data is stored by regional Internet registries (RIR) responsible for allocating and assigning Internet resources such as domain names. Anyone can query WHOIS servers for information about a registered domain, such as assigned IP blocks, contact information, and DNS nameservers. Adversaries may search WHOIS data to gather actionable information. Threat actors can use online resources or command-line utilities to pillage through WHOIS data for information about potential victims.
+* Query WHOIS servers for information about a registered domain, such as assigned IP blocks, contact information, and DNS nameservers
+* Use online resources or CLI utilities to pillage through WHOIS data for information about potential victims
 
 
 ### Passive Digital Certificates
-Digital certificates used for encrypted web traffic contain information about the registered organization such as name and location
-
-Adversaries may search digital certificate data to gather actionable information
+Search for digital certificate data to gather actionable information
 * Digital certificate data may also be available from artifacts signed by the organization (ex: certificates used from encrypted web traffic are served with content). 
 
 ## Tools
@@ -430,14 +432,17 @@ Adversaries may search digital certificate data to gather actionable information
 ### CDNs 
 CDNs allow an organization to host content from a distributed, load balanced array of servers. CDNs may also allow organizations to customize content delivery based on the requestor’s geographical region.
 
-Adversaries may search CDN data to gather actionable information. Threat actors can use online resources and lookup tools to harvest information about content servers within a CDN. Adversaries may also seek and target CDN misconfigurations that leak sensitive information not intended to be hosted and/or do not have the same protection mechanisms (ex: login portals) as the content hosted on the organization’s website.
+* Search CDN data to gather actionable information
+* Use online resources and lookup tools to harvest information about content servers within a CDN
+* Target CDN misconfigurations that leak sensitive information not intended to be hosted and/or do not have the same protection mechanisms (ex: login portals) as the content hosted on the organization’s website
 
 <br>
 
 ### Passively Scan Databases 
 Various online services continuously publish the results of Internet scans/surveys, often harvesting information such as active IP addresses, hostnames, open ports, certificates, and even server banners
 
-Adversaries may search scan databases to gather actionable information. Threat actors can use online resources and lookup tools to harvest information from these services. Adversaries may seek information about their already identified targets, or use these datasets to discover opportunities for successful breaches.
+* Use online resources and lookup tools to harvest information from these services
+* Seek information about their already identified targets; Use these datasets to discover opportunities for successful breaches
 
 ## Tools
 **Threat Intelligence**
@@ -509,6 +514,161 @@ Adversaries may search scan databases to gather actionable information. Threat a
 - [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
 
 ### Passive Digital Certificates
+Digital certificates are critical component of a PKI. It is an electronic document that associates the individual identity of a person to the public key associated with it. A certificate can then be associated with a natural person, a private company or a web service as a portal. 
+
+
+The structure of an X.509 digital certificate includes the following information:
+
+version
+serial number
+ID algorithm
+body emitter
+validity
+subject
+information on the public key of the subject
+signature algorithm of the certificate
+signature of certificate
+It is likely you’ll come across the extensions used for files containing X.509 certificates, the most common are:
+
+CER – Certified with DER encoded, sometimes sequences of certificates.
+DER – DER encoded certificate.
+PEM – Base64-encoded certificate to a file. PEM may contain certificates or private keys.
+P12 – PKCS # 12 certificates and may contain public and private keys (password protected).
+Another classification of digital certificates is the intended use. It is useful to distinguish authentication certificates and subscription certificates.
+
+A subscription Digital Certificate is used to define the correspondence between an individual applying for the certificate and its public key. These certificates are the ones used for the affixing of digital signatures that are legally valid.
+
+A Certificate of Authentication is mainly used for accessing web sites that implement authentication via certificate, or sign up for e-mail messages in order to ensure the identity of the sender. An authentication certificate is usually associated with an email address in a unique way.
+
+
+The principal malicious uses related to the digital certificates are:
+* Improve malware diffusion
+  * Steal a digital certificate associated with a trusted vendor and signing malicious code with it, it reduces the possibility that a malware will be detected as quickly
+* Economic frauds
+
+A digital signature gives a warranty on who signed a document and you can decide if you trust the person or company who signed the file and the organization who issued the certificate. If a digital certificate is stolen, victims will suffer an identity theft and related implications.
+
+Malware authors could design a specific malicious agent that could be spread to steal digital certificates. In the case of certificates associated with a web browser, it is possible to trick victims into thinking that a phishing site is legitimate.
+
+Cyber warfare
+
+Cyber espionage conducted by cyber criminals or state sponsored hackers are the activities most frequently carried out with stolen certificates. Digital certificates are used by attackers to conduct “man-in-the-middle” attacks over the secure connections, tricking users into thinking they were on a legitimate site when in fact their SSL/TLS traffic was being secretly tampered with and intercepted.
+
+One of the most blatant case was the DigiNotar one, when different companies like Facebook, Twitter, Skype, Google and also intelligence agencies like CIA, Mossad, and MI6 were targeted in the Dutch government certificate hack.
+
+In 2011, Fox-IT security firm discovered that the extent and duration of the breach were much more severe than had previously been disclosed. The attackers could have used the stolen certificates to spy on users of popular websites for weeks, without their being able to detect it.
+
+“It’s at least as bad as many of us thought … DigiNotar appears to have been totally owned for over a month without taking action, and they waited another month to take necessary steps to notify the public,” said Chester Wisniewski, a senior security advisor at Sophos Canada, in a blog post.
+
+Fox-IT was commissioned by Diginotar to conduct an audit, dubbed “Operation Black Tulip,” and discovered that the servers of the company were compromised.
+
+Another clamorous case was discovered in December 2013 by Google, which notices the use of digital certificates issued by an intermediate certificate authority linked to ANSSI for several Google domains.
+
+ANSSI is the French Cyber Security agency that operates with French intelligence agencies. The organization declares that an intermediate CA is generating fake certificates to conduct MITM attacks and inspect SSL traffic. Be aware that an intermediate CA certificate carries the full authority of the CA, and attackers can use it to create a certificate for any website they wish to hack.
+
+“ANSSI has found that the intermediate CA certificate was used in a commercial device, on a private network, to inspect encrypted traffic with the knowledge of the users on that network.”
+
+Google discovered the ongoing MITM attack and blocked it. Google also declared that ANSSI has requested to block an intermediate CA certificate.
+
+
+
+Figure – Digital certificate warning
+
+“As a result of a human error which was made during a process aimed at strengthening the overall IT security of the French Ministry of Finance, digital certificates related to third-party domains which do not belong to the French administration have been signed by a certification authority of the DGTrésor (Treasury) which is attached to the IGC/A.
+
+“The mistake has had no consequences on the overall network security, either for the French administration or the general public. The aforementioned branch of the IGC/A has been revoked preventively. The reinforcement of the whole IGC/A process is currently under supervision to make sure no incident of this kind will ever happen again,” stated the ANSSI advisory.
+
+The ANSSI attributed the incident to “Human Error” made by someone at the Finance Ministry, sustaining that the intermediate CA certificate was used in a commercial device, on a private network, to inspect encrypted traffic with the knowledge of the users on that network.
+
+Misusing digital certificates
+
+Digital certificates have been misused many times during recent years. Bad actors abused them to conduct cyber attacks against private entities, individuals and government organizations. The principal abuses of digital certificates observed by security experts:
+
+Man-in-the-middle (MITM) attacks
+
+Bad actors use digital certificates to eavesdrop on SSL/TLS traffic. Usually these attacks exploit the lack of strict controls by client applications when a server presents them with an SSL/TLS certificate signed by a trusted but unexpected Certification Authority.
+
+SSL certificates are the privileged mechanism for ensuring that secure web sites really are who they say they are. Typically, when we access a secure website, a padlock is displayed in the address bar. Before the icon appears, the site first presents a digital certificate, signed by a trusted “root” authority, that attests to its identity and encryption keys.
+
+Unfortunately web browsers, due to improper design and lack of efficient verification processes, accept the certificates issued by the trusted CA, even if it is an unexpected one.
+
+An attacker that is able to obtain a fake certificate from any certification authority and present it to the client during the connection phase can impersonate every encrypted web site the victim visits.
+
+“Most browsers will happily (and silently) accept new certificates from any valid authority, even for web sites for which certificates had already been obtained. An eavesdropper with fake certificates and access to a target’s internet connection can thus quietly interpose itself as a ‘man-in-the-middle’, observing and recording all encrypted web traffic traffic, with the user none the wiser.”
+
+
+
+Figure – MITM handshake
+
+Cyber attacks based on signed malware
+
+Another common cyber attack is based on malware signed with stolen code-signing certificates. The techniques allow attackers to improve avoidance techniques for their malicious codes. Once the private key associated with a trusted entity is compromised, it could be used to sign the malicious code of the malware. This trick allows an attacker to also install those software components (e.g. drivers, software updates) that require signed code for their installation/execution. One of the most popular cases was related to the data breach suffered by security firm Bit9. Attackers stole one of the company’s certs and used it to sign malware and serve it. The certificate was used to sign a malicious Java Applet that exploited a flaw in the browser of targeted browser.
+
+Malware installed illegitimate certificates
+
+Attackers could use also malware to install illegitimate certificates to trust them, avoiding security warnings. Malicious code could for example operate as a local proxy for SSL/TLS traffic, and the installed illegitimate digital certificates could allow attackers to eavesdrop on traffic without triggering any warning. The installation of a fake root CA certificate on the compromised system could allow attackers to arrange a phishing campaign. The bad actor just needs to set up a fake domain that uses SSL/TLS and passes certificate validation steps. Recently, Trend Micro has published a report on a hacking campaign dubbed “Operation Emmental”, which targeted Swiss bank accounts with a multi-faceted attack that is able to bypass two factor authentication implemented by the organization to secure its customers. The attackers, in order to improve the efficiency of their phishing schema, used a malware that installs a new root Secure Sockets Layer (SSL) certificate, which prevents the browser from warning victims when they land on these websites.
+
+
+
+Figure – Certificate installed by malware in MS store
+
+CAs issued improper certificates
+
+Improper certificates are issued by the CAs and hackers use them for cyber attacks. In one of the most blatant cases, DigiCert mistakenly sold a certificate to a non-existent company. the digital certificate was then used to sign malware used in cyber attacks.
+
+How to steal a digital certificate
+
+Malware is the privileged instrument for stealing a digital certificate and the private key associated with the victims. Experts at Symantec tracked different strains of malware which have the capability to steal both private keys and digital certificates from Windows certificate stores. This malicious code exploits the operating system’s functionality. Windows OS archives digital certificates in a certificate store.
+
+“Program code often uses the PFXExportCertStoreEx function to export certificate store information and save the information with a .pfx file extension (the actual file format it uses is PKCS#12).The PFXExportCertStoreEx function with the EXPORT_PRIVATE_KEYS option stores both digital certificates and the associated private keys, so the .pfx file is useful to the attacker,” states a blog post from Symantec.
+
+The CertOpenSystemStoreA function could be used to open certificates stored, meanwhile the PFXExportCertStoreEx function exports the content of the following certificate stores:
+
+MY: A certificate store that holds certificates with the associated private keys
+CA: Certificate authority certificates
+ROOT: Root certificates
+SPC: Software Publisher Certificates
+Invoking the PFXExportCertStoreEx function with the EXPORT_PRIVATE_KEYS option, it is possible to export both digital certificates and the associated private key.
+
+The code in the following image performs the following actions:
+
+Opens the MY certificate store
+Allocates 3C245h bytes of memory
+Calculates the actual data size
+Frees the allocated memory
+Allocates memory for the actual data size
+The PFXExportCertStoreEx function writes data to the CRYPT_DATA_BLOB area that pPFX points to
+Writes content of the certificate store.
+
+
+Figure – Malware code to access certificates info
+
+The experts noticed that a similar process is implemented by almost every malware used to steal digital certificates. Malicious code is used to steal certificate store information when the computer starts running.
+
+Once an an attacker has obtained the victim’s private key from a stolen certificate, it could use a tool like the Microsoft signing tool bundled with Windows DDK, Platform SDK, and Visual Studio. Running Sign Tool (signtool.exe), it is possible to digitally sign every code, including malware source code.
+
+Abuse prevention
+
+I desire to close this post introducing a couple of initiatives started to prevent the abuse of digital certificates. The first one is started by a security researcher at Abuse.ch, which has launched the SSL Black List, a project to create an archive of all the digital certificates used for illicit activities. Abuse.ch is a Swiss organization that was involved in the last years in many investigations on the principal major banker Trojan families and botnets.
+
+“The goal of SSLBL is to provide a list of bad SHA1 fingerprints of SSL certificates that are associated with malware and botnet activities. Currently, SSLBL provides an IP based and a SHA1 fingerprint based blacklist in CSV and Suricata rule format. SSLBL helps you in detecting potential botnet C&C traffic that relies on SSL, such as KINS (aka VMZeuS) and Shylock,” wrote the researcher in a blog post which introduces the initiative.
+
+The need to track abuse of certificates has emerged in recent years, after security experts discovered many cases in which bad actors abused digital certificates for illicit activities, ranging from malware distribution to Internet surveillance.
+
+Authors of malware are exploiting new methods to avoid detection by defense systems and security experts. For example, many attackers are using SSL to protect malicious traffic between C&C and infected machines.
+
+Each item in the list associates a certificate to the malicious operations in which attackers used it. The abuses include botnets, malware campaigns, and banking malware.
+
+The archive behind the SSL Black List, which actually includes more than 125 digital certificates, comprises SHA-1 fingerprints of each certificate with a description of the abuse. Many entries are associated with popular botnets and malware-based attacks, including Zeus, Shylock and Kins.
+
+
+
+The SSL Black List is another project that could help the security community to prevent cyber attacks. When the database matures, it will represent a precious resource for security experts dealing with malware and botnet operators that are using certificates in their operations.
+
+Abuse.ch isn’t the only entity active in the prevention of illicit activities of certificates. Google is very active in the prevention of any abuse of stolen or unauthorized digital certificates. Earlier this year, the company has its Certificate Transparency Project, a sort of a public register of digital certificates that have been issued.
+
+
+
 - [CRT.sh](https://crt.sh/) - Search for certs that have been logged by CT
 
 <br>
