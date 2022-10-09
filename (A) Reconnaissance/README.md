@@ -83,6 +83,256 @@ Sock Puppets are aliases, fictitious persona profiles created by someone else wi
 <br>
 <hr>
 
+# Passive Scanning
+Passive Scanning is the process of using OSINT to indirectly find information out about the target
+
+## Gathering Victim Organization Information 
+Information about an organization may include a variety of details, including the names of divisions/departments, specifics of business operations, as well as the roles and responsibilities of key employees.
+
+**Tools**
+- [Open Corporates](https://opencorporates.com/) — Search for businesses
+- [AI HIT](https://www.aihitdata.com/)
+
+<br>
+
+### Business Relationships 
+Information about an organization’s business relationships may include a variety of details, including second or third-party organizations/domains (ex: managed service providers, contractors, etc.) that have connected (and potentially elevated) network access. This information may also reveal supply chains and shipment paths for the victim’s hardware and software resources.
+
+<br>
+
+### Identify Business Tempo 
+Information about an organization’s business tempo may include a variety of details, including operational hours/days of the week. This information may also reveal times/dates of purchases and shipments of the victim’s hardware and software resources.
+
+<br>
+
+### Identify Roles 
+Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
+
+### Tools
+**Threat Intelligence**
+- Wigle - Database of wireless networks, with statistics
+- Binary Edge - Scans the internet for threat intelligence
+- ONYPHE - Collects cyber-threat intelligence data
+- Fofa - Search for various threat intelligence
+- ZoomEye - Gather information about targets
+- LeakIX - Search publicly indexed information
+- URL Scan - Free service to scan and analyse websites
+- PublicWWW -  Marketing and affiliate marketing research
+- CRT sh - Search for certs that have been logged by CT
+- Pulsedive - Search for threat intelligence
+- Dehashed - Search for anything like username, email, passwords, address, or phone number
+- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+- Snusbase - Indexes information from hacked websites and leaked databases
+- LeakBase - Forum of leaked databases
+- LeakCheck - Data breach search engine
+- GhostProject.fr - Smart search engine
+- SecurityTrails - Extensive DNS data
+- DorkSearch - Really fast Google dorking
+- PolySwarm - Scan files and URLs for threats
+- DNSDumpster - Search for DNS records quickly
+- AlienVault - Extensive threat intelligence feed
+- Vulners - Search vulnerabilities in a large database
+- WayBackMachine - View content from deleted websites
+
+**Internet-Connected Devices / Attack Surfaces**
+- GreyNoise - Search for devices connected to the internet
+- Censys - Assessing attack surface for internet connected devices
+- Hunter - Search for email addresses belonging to a website
+- Shodan - Search for devices connected to the internet
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- Netlas - Search and monitor internet connected assets
+- FullHunt - Search and discovery attack surfaces
+- GrayHatWarefare - Search public S3 buckets
+- LeakWatch - Scans the Internet to detect exposed information
+- FullHunt - Search and discovery attack surfaces
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+- [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
+
+<br>
+
+## Gathering Physical / Social Information 
+
+### Location Information
+Adversaries may gather the victim's physical location(s) that can be used during targeting. Information about physical locations of a target organization may include a variety of details, including where key resources and infrastructure are housed. Physical locations may also indicate what legal jurisdiction and/or authorities the victim operates within.
+* Satellite images
+* Drone reconnaissance
+* Building layout (Badge readers, break areas, security, fencing, etc.)
+
+### Tools
+**Images**
+- EXIF Tool
+  - `exiftool [img file]`
+**Wireless**
+- WiGLE - Find wireless networks
+
+<br>  
+
+## Gathering Victim Identity Information 
+Information about identities may include a variety of details, including personal data (ex: employee names, email addresses, badge photos, etc.)
+
+
+### Credentials 
+Adversaries may collect account credentials directly related with the intended victim organization or try to exploit users' inclination to reuse passwords across personal and commercial accounts. Credentials may also be leaked online or in other accessible data sets, or purchased on the dark web or other black-markets.
+
+Search for hash to determine if its somewhere online 
+
+- [dehashed.com](http://dehashed.com) : Search email, username, IP, Phone, VIN, etc.
+- [hashes.org](http://hashes.org) : Search for hashes — Determine if hashes has already been cracked
+- [LeakCheck](https://leakcheck.io/)
+- [SnusBase](https://snusbase.com/)
+- [Scylla.sh](https://scylla.sh/)
+- [HaveIBeenPwned](https://haveibeenpwned.com/)
+- [NameChk](https://namechk.com/)
+- [WhatsMyName](https://whatsmyname.app/)
+- [NameCheckup](https://namecheckup.com/)
+
+**CLI** 
+
+- `whatsmyname -u digitalquinn`
+- `sherlock digitalquinn`
+- `h8mail -t [shark@tesla.com](mailto:shark@tesla.com) -bc "/opt/breach-parse/BreachCompilation/" -sk`
+- `./breach-parse.sh @tesla.com tesla.txt`
+  - `github.com/hmaverickadams`
+- **theHarvester**
+  - `theHarvester -d [tesla.com](http://tesla.com/) -b google -l 500`
+  - `theHarvester -d [tesla.com](http://tesla.com/) -b all -l 500`
+<br>
+
+### Email Addressess
+Adversaries may gather email addresses that can be used during targeting. Even if internal instances exist, organizations may have public-facing email infrastructure and addresses for employees.
+
+### Tools
+- [hunter.io](http://hunter.io) -  Discover email addresses based on domain name 
+  - Take note to discover the email formats
+- [phonebook.cz](http://phonebook.cz) - Lists all domains, email addresses, or URLs for the given input domain
+- [https://www.voilanorbert.com/](https://www.voilanorbert.com/) - Find verified email addresses
+- Clearbit Connect (Extension) - Find email addresses; Has to be used in Google Chrome 
+- [emailhippo](https://tools.emailhippo.com/) — Ensure email addresses in real time
+- [email-checker.net/validate](http://email-checker.net/validate) — Ensure emails are valid
+
+<br>
+
+### Employee Names 
+Adversaries may gather employee names that can be used during targeting. Employee names be used to derive email addresses as well as to help guide other reconnaissance efforts and/or craft more-believable lures.
+- Employees (Name, Job Title, Phone Number, etc.)
+
+### Tools
+**Social Media**
+- LinkedIn
+  - Search through images
+  - Find people; Take names and put them into the email formats (first initial, last name email address)
+- Twitter
+- Facebook
+- Instagram
+- Snapchat 
+- Reddit
+- TikTok
+**Searching for People**
+  - [WhitePages](https://www.whitepages.com/)
+  - [TruePeopleSearch](https://www.truepeoplesearch.com/)
+  - [FastPeopleSearch](https://www.fastpeoplesearch.com/)
+  - [FastBackgroundCheck](https://www.fastbackgroundcheck.com/)
+  - [WebMii](https://webmii.com/)
+  - [PeekYou](https://peekyou.com/)
+  - [411](https://www.411.com/)
+  - [Spokeo](https://www.spokeo.com/)
+  - [That'sThem](https://thatsthem.com/)
+**Voter Records**
+  - [Voter Records](https://www.voterrecords.com/)
+- Hunting Phone Numbers
+  - [TrueCaller](https://www.truecaller.com/)
+  - [CallerID Test](https://calleridtest.com/)
+  - [Infobel](https://infobel.com/)
+  - `phoneinfoga scan -n 12408084535`
+  - `phoneinfoga serve -p 8080` — Spin up web server to see visual output
+      - `[http://localhost:8080](http://localhost:8080)` — View output
+- Binary Edge - Scans the internet for threat intelligence
+- Hunter - Search for email addresses belonging to a website
+- Fofa - Search for various threat intelligence
+- ZoomEye - Gather information about targets
+- LeakIX - Search publicly indexed information
+- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+- PublicWWW -  Marketing and affiliate marketing research
+- Dehashed - Search for anything like username, email, passwords, address, or phone number.
+- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+- Snusbase - Indexes information from hacked websites and leaked databases
+- LeakBase - Forum of leaked databases
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+
+
+<br>
+<hr>
+
+### Website / Host Information
+- Target Validation
+**Tools**
+  - WHOIS
+  - nslookup
+  - dnsrecon
+- Finding Subdomains
+**Tools**
+  - Google Fu
+  - dig
+  - Nmap
+  - Sublist3r
+  - Bluto
+  - crt.sh
+- Fingerprinting
+**Tools**
+  - Nmap
+  - Wappalyzer
+  - BuiltWith
+  - Netcat
+  - [Built With Technology Lookup](https://builtwith.com) — Determine the website’s framework
+  - whatweb: CLI tool
+    - Syntax: `whatweb [https://tesla.com](https://tesla.com)`
+- Data Breaches
+  **Tools**
+  - HaveIBeenPwned
+  - Breach-Parse
+  - WeLeakInfo
+- [BuiltWith](https://builtwith.com/) — Find what websites are built with
+- [Domain Dossier](https://centralops.net/co/) — Investigate domains / IPs
+    - Look at MX records to determine where email is being held
+- [DNSlytics](https://dnslytics.com/reverse-ip) — Find domains that use a specific IP
+- [SpyOnWeb](https://spyonweb.com/)
+- [Virus Total](https://www.virustotal.com/) — Put URL into website to find additonal info
+    - Take UA and put it into SpyOnWeb — look for analytic code for the website
+- [Visual Ping](https://visualping.io/) — Track a website to detect if anything on the site changes
+- [BackLink Watch](http://backlinkwatch.com/index.php) — Backlinks ; Find where else the website is posted at
+- [View DNS](https://viewdns.info/)
+- [Shodan](https://shodan.io) — Search Engine for the Internet of Everything
+    - `city:atlanta port:3389`
+- [Wayback Machine](https://web.archive.org/) — Archive websites
+- [Wappalyzer](https://www.wappalyzer.com/) — Find out what websites are built with
+- [Subfinder](https://github.com/projectdiscovery/subfinder) — Subdomain discovery tool that discovers valid subdomains for websites by using passive online source
+- [Assetfinder](https://github.com/tomnomnom/assetfinder) — Find domains and subdomains potentially related to a given domain
+- [httprobe](https://github.com/tomnomnom/httprobe) — Take a list of domains and probe for working http and https servers
+- [Amass](https://github.com/OWASP/Amass) — Performs network mapping of attack surfaces and external asset discovery using open source information gathering and active reconnaissance techniques.
+- [GoWitness](https://github.com/sensepost/gowitness/wiki/Installation) — Website screenshot utility written
+    
+
+
+<br>
+<hr>
+
+
+
+
+
+
+
+
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+
+<br>
+<hr>
+
 # Active Scanning
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
 
@@ -183,45 +433,6 @@ Adversaries may gather information about the victim's client configurations that
 <br>
 <hr>
 
-# Gathering Victim Identity Information #
-Adversaries may gather information about the victim's identity that can be used during targeting. Information about identities may include a variety of details, including personal data (ex: employee names, email addresses, etc.) as well as sensitive details such as credentials.
-
-<br>
-
-## Credentials ##
-Adversaries may gather credentials that can be used during targeting. Account credentials gathered by adversaries may be those directly associated with the target victim organization or attempt to take advantage of the tendency for users to use the same passwords across personal and business accounts.
-
-Adversaries may gather credentials from potential victims in various ways, such as direct elicitation via Phishing for Information. Adversaries may also compromise sites then include malicious content designed to collect website authentication cookies from visitors.
-
-Credential information may also be exposed to adversaries via leaks to online or other accessible data sets and may even purchase credentials from dark web or other black-markets. 
-
-<br>
-
-## Email Addressess ##
-Adversaries may gather email addresses that can be used during targeting. Even if internal instances exist, organizations may have public-facing email infrastructure and addresses for employees. Email addresses could also be enumerated via more active means (i.e. Active Scanning), such as probing and analyzing responses from authentication services that may reveal valid usernames in a system.
-
-<br>
-
-## Employee Names ##
-Adversaries may gather employee names that can be used during targeting. Employee names be used to derive email addresses as well as to help guide other reconnaissance efforts and/or craft more-believable lures.
-
-## Identity Enumeration Tools
-- Binary Edge - Scans the internet for threat intelligence
-- Hunter - Search for email addresses belonging to a website
-- Fofa - Search for various threat intelligence
-- ZoomEye - Gather information about targets
-- LeakIX - Search publicly indexed information
-- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
-- PublicWWW -  Marketing and affiliate marketing research
-- Dehashed - Search for anything like username, email, passwords, address, or phone number.
-- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
-- Snusbase - Indexes information from hacked websites and leaked databases
-- LeakBase - Forum of leaked databases
-- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
-
-<br>
-<hr>
-
 # Gathering Victim Network Information
 Adversaries may gather information about the victim's networks that can be used during targeting. Information about networks may include a variety of details, including administrative data (ex: IP ranges, domain names, etc.) as well as specifics regarding its topology and operations.
 
@@ -315,76 +526,6 @@ Adversaries may gather this information in various ways, such as direct collecti
 - [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
 - [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
 - [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
-
-<br>
-<hr>
-
-# Gathering Victim Organization Information #
-Adversaries may gather information about the victim's organization that can be used during targeting. Information about an organization may include a variety of details, including the names of divisions/departments, specifics of business operations, as well as the roles and responsibilities of key employees.
-
-<br>
-
-## Determine Physical Locations ##
-Adversaries may gather the victim's physical location(s) that can be used during targeting. Information about physical locations of a target organization may include a variety of details, including where key resources and infrastructure are housed. Physical locations may also indicate what legal jurisdiction and/or authorities the victim operates within.
-
-<br>
-
-## Business Relationships ##
-Adversaries may gather information about the victim's business relationships that can be used during targeting. Information about an organization’s business relationships may include a variety of details, including second or third-party organizations/domains (ex: managed service providers, contractors, etc.) that have connected (and potentially elevated) network access. This information may also reveal supply chains and shipment paths for the victim’s hardware and software resources.
-
-<br>
-
-## Identify Business Tempo ##
-Adversaries may gather information about the victim's business tempo that can be used during targeting. Information about an organization’s business tempo may include a variety of details, including operational hours/days of the week. This information may also reveal times/dates of purchases and shipments of the victim’s hardware and software resources.
-
-<br>
-
-## Identify Roles ##
-Adversaries may gather information about identities and roles within the victim organization that can be used during targeting. Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
-
-## Victim Enumeration Tools
-### Threat Intelligence
-- Wigle - Database of wireless networks, with statistics
-- Binary Edge - Scans the internet for threat intelligence
-- ONYPHE - Collects cyber-threat intelligence data
-- Fofa - Search for various threat intelligence
-- ZoomEye - Gather information about targets
-- LeakIX - Search publicly indexed information
-- URL Scan - Free service to scan and analyse websites
-- PublicWWW -  Marketing and affiliate marketing research
-- CRT sh - Search for certs that have been logged by CT
-- Pulsedive - Search for threat intelligence
-- Dehashed - Search for anything like username, email, passwords, address, or phone number
-- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
-- Snusbase - Indexes information from hacked websites and leaked databases
-- LeakBase - Forum of leaked databases
-- LeakCheck - Data breach search engine
-- GhostProject.fr - Smart search engine
-- SecurityTrails - Extensive DNS data
-- DorkSearch - Really fast Google dorking
-- PolySwarm - Scan files and URLs for threats
-- DNSDumpster - Search for DNS records quickly
-- AlienVault - Extensive threat intelligence feed
-- Vulners - Search vulnerabilities in a large database
-- WayBackMachine - View content from deleted websites
-### Internet-Connected Devices / Attack Surfaces
-- GreyNoise - Search for devices connected to the internet
-- Censys - Assessing attack surface for internet connected devices
-- Hunter - Search for email addresses belonging to a website
-- Shodan - Search for devices connected to the internet
-- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
-- Netlas - Search and monitor internet connected assets
-- FullHunt - Search and discovery attack surfaces
-- GrayHatWarefare - Search public S3 buckets
-- LeakWatch - Scans the Internet to detect exposed information
-- FullHunt - Search and discovery attack surfaces
-- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
-- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
-- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
-- [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
-- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
-- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
-- [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
 
 <br>
 <hr>
