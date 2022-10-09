@@ -112,6 +112,7 @@ Information about business roles may reveal a variety of targetable details, inc
 ## Tools
 - [Open Corporates](https://opencorporates.com/) — Search for businesses
 - [AI HIT](https://www.aihitdata.com/)
+
 **Threat Intelligence**
 - Wigle - Database of wireless networks, with statistics
 - Binary Edge - Scans the internet for threat intelligence
@@ -164,7 +165,7 @@ Adversaries may gather the victim's physical location(s) that can be used during
 * Drone reconnaissance
 * Building layout (Badge readers, break areas, security, fencing, etc.)
 
-#### Tools
+## Tools
 **Images**
 - EXIF Tool
   - `exiftool [img file]`
