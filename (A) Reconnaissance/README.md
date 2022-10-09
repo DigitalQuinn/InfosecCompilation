@@ -13,7 +13,7 @@
     - [Identify Business Tempo](#identify-business-tempo)
     - [Identify Roles](#identify-roles)
     - [Location Information](#location-information)
-  - [Social & Host Information](#physical-social--host-information)
+  - [Social Information](#social-information)
     - [Identity Information](#identity-information)
     - [Credentials](#credentials)
     - [Email Addressess](#email-addressess)
@@ -138,7 +138,7 @@ Information about business roles may reveal a variety of targetable details, inc
 - [Vulners](https://vulners.com/) - Search vulnerabilities in a large database
 - [WayBackMachine](https://archive.org/web/) - View content from deleted websites
 - [Hunter](https://hunter.io/) - Search for email addresses belonging to a website
-- 
+  
 **Internet-Connected Devices / Attack Surfaces**
 - [GreyNoise](https://www.greynoise.io/) - Search for devices connected to the internet
 - [Censys](https://censys.io/) - Assessing attack surface for internet connected devices
@@ -191,11 +191,12 @@ Adversaries may gather the victim's physical location(s) that can be used during
 - [VITO Vision](https://www.vito-eodata.be/PDF/portal/Application.html#Home)
 - [NOAA Digital Coast](https://coast.noaa.gov/digitalcoast/)
 
-## Social, & Host Information 
+<br>
+<hr>
 
-<br>  
+## Social Information 
 
-## Identity Information 
+### Identity Information 
 Information about identities may include a variety of details, including personal data (ex: employee names, email addresses, badge photos, etc.)
 
 
@@ -430,7 +431,7 @@ Target validation is the process of verifying that a scanned asset is actually "
 - [nslookup](https://www.nslookup.io/)
 - [dnsrecon](https://github.com/darkoperator/dnsrecon)
 
-## Finding Subdomains
+### Finding Subdomains
 Subdomains act as an extension of your domain name to help organize and navigate to different sections of your website. Subdomains are used to send visitors to a completely different web address or point to a specific IP address or directory 
 
 ## Tools
@@ -442,7 +443,7 @@ Subdomains act as an extension of your domain name to help organize and navigate
 - crt.sh
 - [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
 
-## Fingerprinting
+### Fingerprinting
 Fingerprinting is the technique to gather as much of a system's configuration information as possible. Some information in a fingerprint includes application software technology, network topology, cluster architecture, host OS platform, and database version.
 
 ## Tools
