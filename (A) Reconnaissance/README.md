@@ -89,6 +89,8 @@ Sock Puppets are aliases, fictitious persona profiles created by someone else wi
 # Passive Scanning
 A penetration testing technique where attackers extract information related to the target without interacting with the target. That means no request has been sent directly to the target. Generally, public resource is used to gather information. This is typically the first step in the pentesting process attackers use to try to get open source information (OSINT).
 
+<br>
+
 ## Victim Organization Information 
 Information about an organization may include a variety of details, including the names of divisions/departments, specifics of business operations, as well as the roles and responsibilities of key employees.
 
@@ -106,6 +108,8 @@ Information about an organization’s business tempo may include a variety of de
 
 ### Identify Roles 
 Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
+
+<br>
 
 ## Tools
 - [Open Corporates](https://opencorporates.com/) — Search for businesses
