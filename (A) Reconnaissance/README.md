@@ -8,62 +8,49 @@
 # Table of Contents
 - [Sock Puppets](#sock-puppets)
 - [Passive Scanning](#passive-scanning)
-  - [Victim Organization Information](#victim-organization-information)
-    - [Business Relationships](#business-relationships)
-    - [Identify Business Tempo](#identify-business-tempo)
-    - [Identify Roles](#identify-roles)
-    - [Location Information](#location-information)
-  - [Social Information](#social-information)
-    - [Identity Information](#identity-information)
-    - [Credentials](#credentials)
-    - [Email Addressess](#email-addressess)
-    - [Employee Names](#employee-names)
-  - [Website / Host Information](#website--host-information)
+  - [Passive Organization Information](#passive-organization-information)
+    - [Passive Business Relationships](#passive-business-relationships)
+    - [Passive Business Tempo](#passive-identify-business-tempo)
+    - [Passively Identify Roles](#passively-identify-roles)
+    - [Passive Location Information](#passive-location-information)
+    - [Passive Search Engines](#passive-search-engines)
+    - [Passive Threat Intelligence](#passive-threat-intelligence)
+  - [Passive Social Information](#passive-social-information)
+    - [Passively Identity Information](#passively-identity-information)
+    - [Passive Credentials](#passive-credentials)
+    - [Passive Email Addressess](#passive-email-addressess)
+    - [Passive Employee Names](#passive-employee-names)
+  - [Passive Website / Host Information](#passive-website--host-information)
+    - [Passive Target Validation](#passive-target-validation)
+    - [Passively Finding Subdomains](#passively-finding-subdomains)
+    - [Passive Fingerprinting](#passive-fingerprinting)
+    - [Passive DNS](#passive-dns)
+    - [Passive WHOIS](#passive-whois)
+    - [Passive Digital Certificates](#passive-digital-certificates)
+    - [Passive CDNs](#passive-cdns)
+    - [Passively Scan Databases](#passively-scan-databases)
 - [Active Scanning](#Active-Scanning)
-  - [Scanning IP Blocks](#scanning-ip-blocks)
-  - [Vulnerability Scanning](#vulnerability-scanning)
-  - [Wordlist Scanning](#wordlist-scanning)
-  - [Active Enumeration Tools](#active-enumeration-tools)
-- [Gathering Host Information](#Gathering-Host-Information)
-  - [Hardware](#hardware)
-  - [Software](#software)
-  - [Firmware](#firmware)
-  - [Client Configurations](#client-configuration)
-  - [Credentials](#credentials)
-  - [Email Addresses](#email-addressess)
-  - [Employee Names](#employee-names)
-- [Gathering Victim Identity Information](#Gathering-Victim-Identity-Information)
-  - [Credentials](#credentials)
-  - [Email Addresses](#email-addressess)
-  - [Employee Names](#employee-names)
-- [Gathering Vitcim Network Information](#gathering-victim-network-information)
-  - [DNS](#dns)
-  - [Network Trust Dependencies](#network-trust-dependencies)
-  - [Network Topology](#network-topology)
-  - [IP Addresses](#ip-addresses)
-  - [Network Security Appliances](#network-security-appliances)
-- [Gathering Victim Organization Information](#Gathering-Victim-Organization-Information)
-  - [Determine Physical Locations](#determine-physical-locations)
-  - [Business Relationships](#business-relationships)
-  - [Identify Business Tempo](#identify-business-tempo)
-  - [Identify Roles](#identify-roles)
-- [Phishing for Information](#Phishing-for-Information)
-  - [Spearphishing Service](#spearphishing-service)
-  - [Spearphishing Attachment](#spearphishing-attachment)
-  - [Spearphishing Link](#spearphishing-link)
-- [Searching Open Technical Databases](#Searching-Open-Technical-Databases)
-  - [DNS/Passive DNS](#dns--passive-dns)
-  - [WHOIS](#whois)
-  - [Digital Certificates](#digital-certificates)
-  - [CDNs](#cdns)
-  - [Scan Databases](#scan-databases)
-- [Searching Open Websites / Domains](#Searching-Open-Websites-/-Domains)
-  - [Social Media](#social-media)
-  - [Search Engines](#search-engines)
-- [Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
-- [Searching Closed Sources](#Searching-Closed-Sources)
-  - [Threat Intelligence Vendors](#threat-intelligence-vendors)
-  - [Purchase Technical Data](#purchase-technical-data)
+  - [Active Organization Information](#active-organization-information)
+    - [Active DNS](#dns)
+    - [Active Network Trust Dependencies](#network-trust-dependencies)
+    - [Active Network Topology](#network-topology)
+    - [Active IP Addresses](#ip-addresses)
+    - [Active Network Security Appliances](#network-security-appliances)
+    - [Actively Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
+    - [Actively Searching Closed Sources](#Searching-Closed-Sources)
+    - [Purchase Technical Data](#purchase-technical-data)
+  - [Active Social Information](#active-social-information)
+    - [Active Credentials](#credentials)
+    - [Active Email Addresses](#email-addressess)
+    - [Active Employee Names](#employee-names)
+  - [Host Information]
+    - [Scanning IP Blocks](#scanning-ip-blocks)
+    - [Vulnerability Scanning](#vulnerability-scanning)
+    - [Wordlist Scanning](#wordlist-scanning)
+    - [Active Enumeration Tools](#active-enumeration-tools)
+    - [Hardware](#hardware)
+    - [Software](#software)
+    - [Firmware](#firmware)
 
 <br>
 <hr>
@@ -87,24 +74,24 @@ Sock Puppets are aliases, fictitious persona profiles created by someone else wi
 <hr>
 
 # Passive Scanning
-A penetration testing technique where attackers extract information related to the target without interacting with the target. That means no request has been sent directly to the target. Generally, public resource is used to gather information. This is typically the first step in the pentesting process attackers use to try to get open source information (OSINT).
+Passive Scanning is the action of extract information related to the target without interacting with the target -- That means no request has been sent directly to the target. Generally, public resource is used to gather information. This is typically the first step in the pentesting process attackers use to try to get open source information (OSINT).
 
-## Victim Organization Information 
-Information about an organization may include a variety of details, including the names of divisions/departments, specifics of business operations, as well as the roles and responsibilities of key employees.
-
-<br>
-
-### Business Relationships 
-Information about an organization’s business relationships may include a variety of details, including second or third-party organizations/domains (ex: managed service providers, contractors, etc.) that have connected (and potentially elevated) network access. This information may also reveal supply chains and shipment paths for the victim’s hardware and software resources.
+## Passive Organization Information 
+Passively Scanning for Organization Information, you're looking for details about an organization, such as the names of its divisions and departments, the way it runs its business, where it is located, and etc.
 
 <br>
 
-### Identify Business Tempo 
-Information about an organization’s business tempo may include a variety of details, including operational hours/days of the week. This information may also reveal times/dates of purchases and shipments of the victim’s hardware and software resources.
+### Passive Business Relationships 
+Information on Business Relationships includes a variety of information, such as second or third-party organizations/domains (like managed service providers, contractors, etc.) that have connected (and possibly elevated) network access. This information could also show how the victim's hardware and software resources are made and shipped.
 
 <br>
 
-### Identify Roles 
+### Passively Identify Business Tempo 
+Information about an organization’s Business Tempo may include a variety of details, including operational hours/days of the week. This information may also reveal times/dates of purchases and shipments of the victim’s hardware and software resources.
+
+<br>
+
+### Passively Identify Roles 
 Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what data/resources they have access to.
 
 <br>
@@ -161,11 +148,13 @@ Information about business roles may reveal a variety of targetable details, inc
 
 <br>
 
-### Location Information
-Adversaries may gather the victim's physical location(s) that can be used during targeting. Information about physical locations of a target organization may include a variety of details, including where key resources and infrastructure are housed. Physical locations may also indicate what legal jurisdiction and/or authorities the victim operates within.
+### Passive Location Information
+Information about physical locations of a target may include a variety of details, including where key resources and infrastructure are housed. Physical locations may also indicate what legal jurisdiction and/or authorities the victim operates within.
+
+To assist with this, look for the following:
 * Satellite images
 * Drone reconnaissance
-* Building layout (Badge readers, break areas, security, fencing, etc.)
+* Building layout (Badge readers, break areas, security, fencing, etc)
 
 ## Tools
 **Images**
@@ -191,21 +180,57 @@ Adversaries may gather the victim's physical location(s) that can be used during
 - [VITO Vision](https://www.vito-eodata.be/PDF/portal/Application.html#Home)
 - [NOAA Digital Coast](https://coast.noaa.gov/digitalcoast/)
 
+### Passive Search Engines 
+Search engine services typical crawl online sites to index context and may provide users with specialized syntax to search for specific keywords or specific types of content
+
+**Goal:** Harvest general information about victims and use specialized queries to look for spillages/leaks of sensitive information such as network details or credentials
+
+### Passive Threat Intelligence 
+Threat intelligence vendors may offer paid feeds or portals that offer more data than what is publicly reported. Although sensitive details (such as customer names and other identifiers) may be redacted, this information may contain trends regarding breaches such as target industries, attribution claims, and successful TTPs/countermeasures.
+
+**Goal:** Seek information/indicators gathered about personal campaigns, as well as those conducted by other adversaries that may align with their target industries, capabilities/objectives, or other operational concerns
+
+**Threat Intelligence Solutions**
+- [Wigle](https://wigle.net/) - Database of wireless networks, with statistics
+- [Binary Edge](https://www.binaryedge.io) - Scans the internet for threat intelligence
+- [ONYPHE](https://www.onyphe.io) - Collects cyber-threat intelligence data
+- [Fofa](https://webintmaster.com/blog/webint-tool/fofa/) - Search for various threat intelligence
+- [ZoomEye](https://www.zoomeye.org/) - Gather information about targets
+- [LeakIX](https://leakix.net/) - Search publicly indexed information
+- [URL Scan](https://urlscan.io/) - Free service to scan and analyse websites
+- [PublicWWW](https://publicwww.com/) - Source code search engine
+- [CRT.sh](https://crt.sh/) - Search for certs that have been logged by CT
+- [Pulsedive](https://pulsedive.com/) - Search for threat intelligence
+- [Dehashed](https://www.dehashed.com/) - Search for usernames, emails, passwords, addresses, numbers, etc.
+- [Have I Been Pwned?](https://haveibeenpwned.com/) - Check whether personal data has been compromised by data breaches
+- [Snusbase](https://snusbase.com/) - Indexes information from breached websites and leaked databases
+- [LeakBase](https://leakbase.cc/) - Forum of leaked databases
+- [LeakCheck](https://leakcheck.net/) - Data breach search engine
+- [GhostProject.fr](https://ghostproject.fr/) - Smart search engine
+- [SecurityTrails](https://securitytrails.com/) - Attack surface and data intel
+- [DorkSearch](https://dorksearch.com/) - Really fast Google dorking
+- [PolySwarm](https://polyswarm.io/) - Scan files and URLs for threats
+- [DNSDumpster](https://dnsdumpster.com/) - Dns recon & research, find & lookup dns records
+- [AlienVault](https://otx.alienvault.com/) - Open source threat intelligence community
+- [Vulners](https://vulners.com/) - Search vulnerabilities in a large database
+- [WayBackMachine](https://archive.org/web/) - View content from deleted websites
+- [Hunter](https://hunter.io/) - Search for email addresses belonging to a website
+
 <br>
 <hr>
 
-## Social Information 
+## Passive Social Information 
 
-### Identity Information 
+### Passive Identity Information 
 Information about identities may include a variety of details, including personal data (ex: employee names, email addresses, badge photos, etc.)
 
 
-### Credentials 
-Adversaries may collect account credentials directly related with the intended victim organization or try to exploit users' inclination to reuse passwords across personal and commercial accounts. Credentials may also be leaked online or in other accessible data sets, or purchased on the dark web or other black-markets.
+### Passive Credentials 
+Passively collect account credentials directly related with the intended victim organization with the inclination to reuse passwords across personal and commercial accounts. Credentials may be leaked online or in other accessible data sets, or purchased on the dark web or other black-markets.
 
 ## Tools
-Search for hash to determine if its somewhere online 
 
+**Searching for Hashes**
 - [dehashed.com](http://dehashed.com) : Search email, username, IP, Phone, VIN, etc.
 - [hashes.org](http://hashes.org) : Search for hashes — Determine if hashes has already been cracked
 - [LeakCheck](https://leakcheck.io/)
@@ -216,7 +241,7 @@ Search for hash to determine if its somewhere online
 - [WhatsMyName](https://whatsmyname.app/)
 - [NameCheckup](https://namecheckup.com/)
   
-**CLI** 
+**CLI Methods** 
 
 - [What's My Name?](https://whatsmyname.app/) - Enumerate usernames across various websites
   - `whatsmyname -u digitalquinn`
@@ -229,10 +254,11 @@ Search for hash to determine if its somewhere online
 - [The Harvester](https://github.com/laramies/theHarvester) - Performs OSINT gathering to help determine a domain's external threat landscape by using multiple resources
   - `theHarvester -d [tesla.com](http://tesla.com/) -b google -l 500`
   - `theHarvester -d [tesla.com](http://tesla.com/) -b all -l 500`
+
 <br>
 
-### Email Addressess
-Adversaries may gather email addresses that can be used during targeting. Even if internal instances exist, organizations may have public-facing email infrastructure and addresses for employees.
+### Passive Email Addressess
+Remember to passively gather email addresses because organizations may have public-facing email infrastructure and addresses for employees.
 
 ## Tools
 - [phonebook.cz](http://phonebook.cz) - Lists all domains, email addresses, or URLs for the given input domain
@@ -250,7 +276,7 @@ Adversaries may gather email addresses that can be used during targeting. Even i
 
 <br>
 
-### Employee Names 
+### Passive Employee Names 
 Employee names be used to derive email addresses as well as to help guide other reconnaissance efforts and/or craft more-believable lures.
 
 ## Tools
@@ -259,113 +285,18 @@ Employee names be used to derive email addresses as well as to help guide other 
 - Search through images
 - Find people; Take names and put them into the email formats
 
-**Social Media**
-Social media are websites and applications that enable users to create and share content or to participate in social networking. You can use social media to find usernames, email, or other information that may be useful during an engagement.
-- LinkedIn
-- Twitter
-- Facebook
-- Instagram
-- Snapchat 
-- Reddit
-- TikTok
-- YouTube
-- Whatsapp
-- Reddit
-- Pinterest
-- Messenger
-- WeChat
-- QQ
-- Qzone
-- Sina Weibo
-- Flickr
-- Baidu Tieba
-- Viber
-- Line
-- Telegram
-- Medium
-- Douyin
-- Quora
-- Douban
-- Discord
-- Foursquare
-- Sound Cloud
-- Badoo
-- Mix
-- Next Door
-- Deviantart
-- Meetup
-- VK
-- Kwai
-- Clubhouse
-- Hootsuite
-- Vimeo
-- BizSugar
-- Digg
-- Skype
-- YY
-- Taringa
-- Renren
-- Triller
-- Tagged
-- Academia
-- Myspace
-- Periscope
-- The-Dots
-- Valence
-- Kiwibox
-- Untappd
-- Skyrock
-- Alpha
-- Delicious
-- Yubo
-- Snapfish
-- Peanut
-- ReverbNation
-- Houseparty
-- Flixster
-- Caffeine
-- Care2
-- Steemit
-- CafeMom
-- 23snaps
-- Ravelry
-- Likee
-- Wayne
-- 8tracks
-- Cellufun
-- Amikumu
-- Upstream
-- aNobii
-- Classmates
-- ASMALLWORLD
-- MyHeritage
-- Athlinks
-- Viadeo
-- BAND
-- Xing
-- beBee
-- LiveJournal
-- Blind
-- Funny or Die
-- Diaspora
-- Gaia Online
-- Fark
-- We Heart It
-- MeWe
-- Twitch
-- CaringBridge
-- Wattpad
-- Crunchyroll
-- Bubbly
-- Influenster
-- FilmAffinity
-- Tribe
-- Imgur
-- Giphy
-- Vero
-- Tout
-- WT Social
-- Ello
+**Top Social Media**
+- LinkedIn, Twitter, Facebook, Instagram, Snapchat, Reddit, TikTok, Reddit, Pinterest, Messenger
+- Medium, Quora, SoundCloud, Discord, YouTube, Whatsapp, WeChat, QQ, Qzone, Sina Weibo
+- Flickr, Baidu Tieba, Viber, Line, Telegram, Douyin, Douban, Discord, Foursquare, Badoo
+- Mix, Next Door, Deviantart, Meetup, VK, Kwai, Clubhouse, Hootsuite, Vimeo, BizSugar
+- Digg, Skype, YY, Taringa, Renren, Triller, Tagged, Academia, Myspace, Periscope
+- The-Dots, Valence, Kiwibox, Untappd, Skyrock, Alpha, Delicious, Yubo, Snapfish, Peanut
+- ReverbNation, Houseparty, Flixster, Caffeine, Care2, Steemit, CafeMom, 23snaps, Ravelry, Likee
+- Wayne, 8tracks, Cellufun, Amikumu, Upstream, aNobii, Classmates, ASMALLWORLD, MyHeritage, Athlinks
+- Viadeo, BAND, Xing, beBee, LiveJournal, Blind, Funny or Die, Diaspora, Gaia Online, Fark, We Heart It
+- MeWe, Twitch, CaringBridge, Wattpad, Crunchyroll, Bubbly, Influenster, FilmAffinity, Tribe, Imgur
+- Giphy, Vero, Tout, WT Social, Ello
 
 **Searching for People**
 - [WhitePages](https://www.whitepages.com/)
@@ -420,10 +351,10 @@ Social media are websites and applications that enable users to create and share
 <br>
 <hr>
 
-## Website / Host Information
+## Passive Website / Host Information
 Information about hosts may include a variety of details, including administrative data (ex: name, assigned IP, functionality, etc.) as well as specifics regarding its configuration (ex: operating system, language, etc.)
 
-### Target Validation
+### Passive Target Validation
 Target validation is the process of verifying that a scanned asset is actually "up/active", even though a specific tool may say its available or isn't really available. This should be a more hands-on, manual approach, but some of these tools are good at validating this;
  
 ## Tools
@@ -431,7 +362,7 @@ Target validation is the process of verifying that a scanned asset is actually "
 - [nslookup](https://www.nslookup.io/)
 - [dnsrecon](https://github.com/darkoperator/dnsrecon)
 
-### Finding Subdomains
+### Passively Finding Subdomains
 Subdomains act as an extension of your domain name to help organize and navigate to different sections of your website. Subdomains are used to send visitors to a completely different web address or point to a specific IP address or directory 
 
 ## Tools
@@ -478,15 +409,117 @@ Fingerprinting is the technique to gather as much of a system's configuration in
 - [Amass](https://github.com/OWASP/Amass) — Performs network mapping of attack surfaces and external asset discovery using open source information gathering and active reconnaissance techniques.
 - [GoWitness](https://github.com/sensepost/gowitness/wiki/Installation) — Website screenshot utility written
 
+### Passive DNS 
+DNS information may include a variety of details, including registered name servers as well as records that outline addressing for a target’s subdomains, mail servers, and other hosts. Threat actors can query nameservers for a target organization directly, or search through centralized repositories of logged DNS query responses (known as passive DNS). Adversaries may also seek and target DNS misconfigurations/leaks that reveal information about internal networks. 
+
+### Passive WHOIS 
+
+WHOIS data is stored by regional Internet registries (RIR) responsible for allocating and assigning Internet resources such as domain names. Anyone can query WHOIS servers for information about a registered domain, such as assigned IP blocks, contact information, and DNS nameservers. Adversaries may search WHOIS data to gather actionable information. Threat actors can use online resources or command-line utilities to pillage through WHOIS data for information about potential victims.
+
+
+### Passive Digital Certificates
+Digital certificates used for encrypted web traffic contain information about the registered organization such as name and location
+
+Adversaries may search digital certificate data to gather actionable information
+* Digital certificate data may also be available from artifacts signed by the organization (ex: certificates used from encrypted web traffic are served with content). 
+
+## Tools
+
+<br>
+
+### CDNs 
+CDNs allow an organization to host content from a distributed, load balanced array of servers. CDNs may also allow organizations to customize content delivery based on the requestor’s geographical region.
+
+Adversaries may search CDN data to gather actionable information. Threat actors can use online resources and lookup tools to harvest information about content servers within a CDN. Adversaries may also seek and target CDN misconfigurations that leak sensitive information not intended to be hosted and/or do not have the same protection mechanisms (ex: login portals) as the content hosted on the organization’s website.
+
+<br>
+
+### Passively Scan Databases 
+Various online services continuously publish the results of Internet scans/surveys, often harvesting information such as active IP addresses, hostnames, open ports, certificates, and even server banners
+
+Adversaries may search scan databases to gather actionable information. Threat actors can use online resources and lookup tools to harvest information from these services. Adversaries may seek information about their already identified targets, or use these datasets to discover opportunities for successful breaches.
+
+## Tools
+**Threat Intelligence**
+- [Wigle](https://wigle.net/) - Database of wireless networks, with statistics
+- [Binary Edge](https://www.binaryedge.io) - Scans the internet for threat intelligence
+- [ONYPHE](https://www.onyphe.io) - Collects cyber-threat intelligence data
+- [Fofa](https://webintmaster.com/blog/webint-tool/fofa/) - Search for various threat intelligence
+- [ZoomEye](https://www.zoomeye.org/) - Gather information about targets
+- [LeakIX](https://leakix.net/) - Search publicly indexed information
+- [URL Scan](https://urlscan.io/) - Free service to scan and analyse websites
+- [PublicWWW](https://publicwww.com/) - Source code search engine
+- [CRT.sh](https://crt.sh/) - Search for certs that have been logged by CT
+- [Pulsedive](https://pulsedive.com/) - Search for threat intelligence
+- [Dehashed](https://www.dehashed.com/) - Search for usernames, emails, passwords, addresses, numbers, etc.
+- [Have I Been Pwned?](https://haveibeenpwned.com/) - Check whether personal data has been compromised by data breaches
+- [Snusbase](https://snusbase.com/) - Indexes information from breached websites and leaked databases
+- [LeakBase](https://leakbase.cc/) - Forum of leaked databases
+- [LeakCheck](https://leakcheck.net/) - Data breach search engine
+- [GhostProject.fr](https://ghostproject.fr/) - Smart search engine
+- [SecurityTrails](https://securitytrails.com/) - Attack surface and data intel
+- [DorkSearch](https://dorksearch.com/) - Really fast Google dorking
+- [PolySwarm](https://polyswarm.io/) - Scan files and URLs for threats
+- [DNSDumpster](https://dnsdumpster.com/) - Dns recon & research, find & lookup dns records
+- [AlienVault](https://otx.alienvault.com/) - Open source threat intelligence community
+- [Vulners](https://vulners.com/) - Search vulnerabilities in a large database
+- [WayBackMachine](https://archive.org/web/) - View content from deleted websites
+- [Hunter](https://hunter.io/) - Search for email addresses belonging to a website
+  
+**Internet-Connected Devices / Attack Surfaces**
+- [GreyNoise](https://www.greynoise.io/) - Search for devices connected to the internet
+- [Censys](https://censys.io/) - Assessing attack surface for internet connected devices
+- [Shodan](https://www.shodan.io/) - Search for devices connected to the internet
+- [IntelligenceX](https://intelx.io/) - Search Tor, I2P, data leaks, domains, and emails
+- [Netlas](https://netlas.io/) - Search and monitor internet connected assets
+- [FullHunt](https://fullhunt.io/) - Search and discovery attack surfaces
+- [GrayHatWarfare](https://grayhatwarfare.com/) - Search public S3 buckets
+  - [GrayHatWarfare Buckets](https://buckets.grayhatwarfare.com/) - Search public S3 buckets
+  - [GrayHatWarfare Shorteners](https://shorteners.grayhatwarfare.com/) - Search for exposed URL shorteners
+- [LeakWatch](https://leak.watch/) - Scans the Internet to detect exposed information
+- FullHunt - Search and discovery attack surfaces
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
+- [Sarenka](https://github.com/pawlaczyk/sarenka) — Gathers data from Shodan, censys, etc.
+- [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+- [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
+
+**Domain / DNS**
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
+- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
+- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
+- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
+
+### Passive Digital Certificates
+- [CRT.sh](https://crt.sh/) - Search for certs that have been logged by CT
+
 <br>
 <hr>
 
 # Active Scanning
 Adversaries may execute active scans to gather information that can be used during targeting. The adversary probes victim infrastructure via network traffic
 
-<br>
+## Active Organization Information
 
-## Scanning IP Blocks ##
+### Scanning IP Blocks 
 Adversaries may scan IP blocks in order to gather victim network information. Scans may range from simple pings to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
 
 ## Tools
@@ -675,150 +708,8 @@ Adversaries may gather this information in various ways, such as direct collecti
 <br>
 <hr>
 
-# Phishing for Information #
-**Phishing for information** is an attempt to trick targets into divulging information, frequently credentials or other actionable information. All forms of phishing are electronically delivered social engineering. Adversaries may also try to obtain information directly through the exchange of emails, instant messages, or other electronic conversation means.
-
-## Spearphishing Service ##
-**Spearphishing for information** is an attempt to trick targets into divulging information, frequently credentials or other actionable information. Spearphishing for information frequently involves social engineering techniques, such as posing as a source with a reason to collect information (ex: Establish Accounts or Compromise Accounts) and/or sending multiple, seemingly urgent messages.
-
-Adversaries send messages through various social media services, personal webmail, and other non-enterprise controlled services. Adversaries may create fake social media accounts and message employees for potential job opportunities. Doing so allows a plausible reason for asking about services, policies, and information about their environment. 
-
-<br>
-
-## Spearphishing Attachment ##
-Adversaries may send spearphishing messages with a malicious attachment to elicit sensitive information that can be used during targeting. The text of the spearphishing email usually tries to give a plausible reason why the file should be filled-in, such as a request for information from a business associate.
-
-<br>
-
-## Spearphishing Link ##
-Adversaries may send spearphishing messages with a malicious link to elicit sensitive information that can be used during targeting. The malicious emails contain links generally accompanied by social engineering text to coax the user to actively click or copy and paste a URL into a browser. The given website may closely resemble a legitimate site in appearance and have a URL containing elements from the real site. From the fake website, information is gathered in web forms and sent to the adversary. 
-
-## Tools
-- [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
-- [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
-- [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
-- [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
-- [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
-- [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
-- [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
-- [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
-- [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
-
-<br>
-<hr>
-
 # Searching Open Technical Databases #
 Adversaries may search freely available technical databases for information about victims that can be used during targeting. Information about victims may be available in online databases and repositories, such as registrations of domains/certificates as well as public collections of network data/artifacts gathered from traffic and/or scans. Adversaries may search in different open databases depending on what information they seek to gather. 
-
-<br>
-
-## DNS / Passive DNS ##
-DNS information may include a variety of details, including registered name servers as well as records that outline addressing for a target’s subdomains, mail servers, and other hosts. Threat actors can query nameservers for a target organization directly, or search through centralized repositories of logged DNS query responses (known as passive DNS). Adversaries may also seek and target DNS misconfigurations/leaks that reveal information about internal networks. 
-
-<br>
-
-## WHOIS ##
-
-WHOIS data is stored by regional Internet registries (RIR) responsible for allocating and assigning Internet resources such as domain names. Anyone can query WHOIS servers for information about a registered domain, such as assigned IP blocks, contact information, and DNS nameservers. Adversaries may search WHOIS data to gather actionable information. Threat actors can use online resources or command-line utilities to pillage through WHOIS data for information about potential victims.
-
-<br>
-
-## Digital Certificates ##
-Digital certificates used for encrypted web traffic contain information about the registered organization such as name and location
-
-Adversaries may search digital certificate data to gather actionable information
-* Digital certificate data may also be available from artifacts signed by the organization (ex: certificates used from encrypted web traffic are served with content). 
-
-## Tools
-
-<br>
-
-## CDNs ##
-CDNs allow an organization to host content from a distributed, load balanced array of servers. CDNs may also allow organizations to customize content delivery based on the requestor’s geographical region.
-
-Adversaries may search CDN data to gather actionable information. Threat actors can use online resources and lookup tools to harvest information about content servers within a CDN. Adversaries may also seek and target CDN misconfigurations that leak sensitive information not intended to be hosted and/or do not have the same protection mechanisms (ex: login portals) as the content hosted on the organization’s website.
-
-<br>
-
-## Scan Databases ##
-Various online services continuously publish the results of Internet scans/surveys, often harvesting information such as active IP addresses, hostnames, open ports, certificates, and even server banners
-
-Adversaries may search scan databases to gather actionable information. Threat actors can use online resources and lookup tools to harvest information from these services. Adversaries may seek information about their already identified targets, or use these datasets to discover opportunities for successful breaches.
-
-## Tools
-### Threat Intelligence / Search Engines
-- Wigle - Database of wireless networks, with statistics
-- Binary Edge - Scans the internet for threat intelligence
-- ONYPHE - Collects cyber-threat intelligence data
-- Fofa - Search for various threat intelligence
-- ZoomEye - Gather information about targets
-- LeakIX - Search publicly indexed information
-- URL Scan - Free service to scan and analyse websites
-- PublicWWW -  Marketing and affiliate marketing research
-- Pulsedive - Search for threat intelligence
-- Dehashed - Search for anything like username, email, passwords, address, or phone number
-- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
-- Snusbase - Indexes information from hacked websites and leaked databases
-- LeakBase - Forum of leaked databases
-- LeakCheck - Data breach search engine
-- GhostProject.fr - Smart search engine
-- SecurityTrails - Extensive DNS data
-- DorkSearch - Really fast Google dorking
-- PolySwarm - Scan files and URLs for threats
-- DNSDumpster - Search for DNS records quickly
-- AlienVault - Extensive threat intelligence feed
-- Vulners - Search vulnerabilities in a large database
-- WayBackMachine - View content from deleted websites
-
-#### Dorking
-- [Catana-DS](https://github.com/TebbaaX/Katana) — Automates Google Dorking
-### Internet-Connected Devices / Attack Surfaces
-- GreyNoise - Search for devices connected to the internet
-- Censys - Assessing attack surface for internet connected devices
-- Hunter - Search for email addresses belonging to a website
-- Shodan - Search for devices connected to the internet
-- IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
-- Netlas - Search and monitor internet connected assets
-- FullHunt - Search and discovery attack surfaces
-- GrayHatWarefare - Search public S3 buckets
-- LeakWatch - Scans the Internet to detect exposed information
-- FullHunt - Search and discovery attack surfaces
-- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
-- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
-- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
-- [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
-- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
-- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
-- [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
-- [Dorksearch](https://dorksearch.com/) — Faster Google Dorking
-- [GitHub Dork Helper](https://vsec7.github.io/)
-
-### Domain / DNS / WHOIS
-- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
-- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
-- [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
-- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
-- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
-- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
-- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
-- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
-- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
-- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
-- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
-- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
-- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
-- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
-- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
-- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
-- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
-- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
-- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
-- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
-
-
-
-### Digital Certificates
-- CRT sh - Search for certs that have been logged by CT
 
 <br>
 <hr>
@@ -834,11 +725,6 @@ Social media sites may contain various information about a victim organization, 
 Adversaries may search in different social media sites depending on what information they seek to gather. Threat actors may passively harvest data from these sites, as well as use information gathered to create fake profiles/groups to elicit victim’s into revealing specific information
 
 <br>
-
-## Search Engines ##
-Search engine services typical crawl online sites to index context and may provide users with specialized syntax to search for specific keywords or specific types of content
-
-Adversaries may craft various search engine queries depending on what information they seek to gather. Threat actors may use search engines to harvest general information about victims, as well as use specialized queries to look for spillages/leaks of sensitive information such as network details or credentials.
 
 ## Tools
 ### Domain / DNS / WHOIS
@@ -907,38 +793,7 @@ Adversaries may search and gather information about victims from closed sources 
 
 <br>
 
-## Threat Intelligence Vendors ##
-Adversaries may search private data from threat intelligence vendors for information that can be used during targeting. Threat intelligence vendors may offer paid feeds or portals that offer more data than what is publicly reported. Although sensitive details (such as customer names and other identifiers) may be redacted, this information may contain trends regarding breaches such as target industries, attribution claims, and successful TTPs/countermeasures.
-
-Adversaries may search in private threat intelligence vendor data to gather actionable information. Threat actors may seek information/indicators gathered about their own campaigns, as well as those conducted by other adversaries that may align with their target industries, capabilities/objectives, or other operational concerns.
-
-<br>
-
 ## Purchase Technical Data ##
 Adversaries may purchase technical information about victims that can be used during targeting. Information about victims may be available for purchase within reputable private sources and databases, such as paid subscriptions to feeds of scan databases or other data aggregation services. Adversaries may also purchase information from less-reputable sources such as dark web or cybercrime blackmarkets.
 
 Adversaries may purchase information about their already identified targets, or use purchased data to discover opportunities for successful breaches. Threat actors may gather various technical details from purchased data, including but not limited to employee contact information, credentials, or specifics regarding a victim’s infrastructure
-
-## Threat Intelligence Solutions
-- Wigle - Database of wireless networks, with statistics
-- Binary Edge - Scans the internet for threat intelligence
-- ONYPHE - Collects cyber-threat intelligence data
-- Fofa - Search for various threat intelligence
-- ZoomEye - Gather information about targets
-- LeakIX - Search publicly indexed information
-- URL Scan - Free service to scan and analyse websites
-- PublicWWW -  Marketing and affiliate marketing research
-- CRT sh - Search for certs that have been logged by CT
-- Pulsedive - Search for threat intelligence
-- Dehashed - Search for anything like username, email, passwords, address, or phone number
-- Have I Been Pwned? - Check whether personal data has been compromised by data breaches
-- Snusbase - Indexes information from hacked websites and leaked databases
-- LeakBase - Forum of leaked databases
-- LeakCheck - Data breach search engine
-- GhostProject.fr - Smart search engine
-- SecurityTrails - Extensive DNS data
-- DorkSearch - Really fast Google dorking
-- PolySwarm - Scan files and URLs for threats
-- AlienVault - Extensive threat intelligence feed
-- Vulners - Search vulnerabilities in a large database
-- WayBackMachine - View content from deleted websites

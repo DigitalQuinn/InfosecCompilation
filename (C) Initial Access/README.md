@@ -75,7 +75,16 @@ Rather than just connecting and distributing payloads via removable storage, mor
 
 # Phishing #
 Adversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems. Phishing may also be conducted via third-party services, like social media platforms. Phishing may also involve social engineering techniques, such as posing as a trusted source.
-
+## Tools
+- [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
+- [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
+- [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
+- [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
+- [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
+- [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
+- [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
+- [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
+- [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
 <br>
 
 ## Spearphishing Attachment
