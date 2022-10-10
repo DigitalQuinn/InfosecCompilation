@@ -114,6 +114,31 @@ Building malicious software can include the development of payloads, droppers, p
 
 Prior to Code Signing, adversaries may purchase or steal code signing certificates for use in operations. The purchase of code signing certificates may be done using a front organization or using information stolen from a previously compromised entity that allows the adversary to validate to a certificate provider as that entity. Adversaries may also steal code signing materials directly from a compromised third-party.
 
+**Misusing digital certificates**
+* Man-in-the-middle (MITM) attacks
+  * Obtain a fake certificate from any CA and present it to the client during the connection phase to impersonate websites
+* Cyber attacks based on signed malware
+  * Sign the malicious code of the malware; Install those software components (ex: drivers, software updates) that require signed code for their installation
+* Install illegitimate certificates to trust them, avoiding security warnings
+* CAs issued improper certificates
+  * DigiCert mistakenly sold a certificate to a non-existent company allowing attackers to sign malware used in cyber attacks
+
+**How to steal a digital certificate**
+Program code often uses the `PFXExportCertStoreEx` function to export certificate store information and save the information with a .pfx file extension (the actual file format it uses is PKCS#12)
+* `PFXExportCertStoreEx` function with the `EXPORT_PRIVATE_KEYS` option stores both digital certificates and the associated private keys -- .pfx file is useful to the attacker
+* `CertOpenSystemStoreA` could be used to open certificates stored, meanwhile the `PFXExportCertStoreEx` function exports the content of the following certificate stores:
+  * MY: A certificate store that holds certificates with the associated private keys
+  * CA: Certificate authority certificates
+  * ROOT: Root certificates
+  * SPC: Software Publisher Certificates
+
+**Malware code to access certificates info**
+Malicious code is used to steal certificate store information when the computer starts running
+* After obtaining the victim’s private key from a stolen certificate, use a tool like the Microsoft signing tool bundled with Windows DDK, Platform SDK, and Visual Studio
+  * Running Sign Tool (signtool.exe), it is possible to digitally sign every code, including malware source code
+
+
+
 <br>
 
 ## Digital Certificates ##

@@ -31,11 +31,9 @@
     - [Passively Scan Databases](#passively-scan-databases)
 - [Active Scanning](#Active-Scanning)
   - [Active Organization Information](#active-organization-information)
-    - [Active DNS](#dns)
-    - [Active Network Trust Dependencies](#network-trust-dependencies)
-    - [Active Network Topology](#network-topology)
-    - [Active IP Addresses](#ip-addresses)
-    - [Active Network Security Appliances](#network-security-appliances)
+    - [Active DNS](#active-dns)
+    - [IP / Network Scanning](#ip--network-scanning)
+    - [Network Security Appliances](#network-security-appliances)
     - [Actively Searching Victim-Owned Websites](#Searching-Victim-Owned-Websites)
     - [Actively Searching Closed Sources](#Searching-Closed-Sources)
     - [Purchase Technical Data](#purchase-technical-data)
@@ -43,14 +41,20 @@
     - [Active Credentials](#credentials)
     - [Active Email Addresses](#email-addressess)
     - [Active Employee Names](#employee-names)
-  - [Host Information]
+- [Actively Find Host Information](#actively-find-host-information)
     - [Scanning IP Blocks](#scanning-ip-blocks)
     - [Vulnerability Scanning](#vulnerability-scanning)
     - [Wordlist Scanning](#wordlist-scanning)
-    - [Active Enumeration Tools](#active-enumeration-tools)
     - [Hardware](#hardware)
     - [Software](#software)
+      - [Digital Certificates](#digital-certificates)
     - [Firmware](#firmware)
+    - [Client Configuration](#client-configuration)
+
+
+
+
+
 
 <br>
 <hr>
@@ -514,161 +518,9 @@ Various online services continuously publish the results of Internet scans/surve
 - [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
 
 ### Passive Digital Certificates
-Digital certificates are critical component of a PKI. It is an electronic document that associates the individual identity of a person to the public key associated with it. A certificate can then be associated with a natural person, a private company or a web service as a portal. 
+Digital certificates are electronic documents that associates the individual identity of a person to the public key associated with it. A certificate can then be associated with a natural person, a private company or a web service as a portal. 
 
-
-The structure of an X.509 digital certificate includes the following information:
-
-version
-serial number
-ID algorithm
-body emitter
-validity
-subject
-information on the public key of the subject
-signature algorithm of the certificate
-signature of certificate
-It is likely you’ll come across the extensions used for files containing X.509 certificates, the most common are:
-
-CER – Certified with DER encoded, sometimes sequences of certificates.
-DER – DER encoded certificate.
-PEM – Base64-encoded certificate to a file. PEM may contain certificates or private keys.
-P12 – PKCS # 12 certificates and may contain public and private keys (password protected).
-Another classification of digital certificates is the intended use. It is useful to distinguish authentication certificates and subscription certificates.
-
-A subscription Digital Certificate is used to define the correspondence between an individual applying for the certificate and its public key. These certificates are the ones used for the affixing of digital signatures that are legally valid.
-
-A Certificate of Authentication is mainly used for accessing web sites that implement authentication via certificate, or sign up for e-mail messages in order to ensure the identity of the sender. An authentication certificate is usually associated with an email address in a unique way.
-
-
-The principal malicious uses related to the digital certificates are:
-* Improve malware diffusion
-  * Steal a digital certificate associated with a trusted vendor and signing malicious code with it, it reduces the possibility that a malware will be detected as quickly
-* Economic frauds
-
-A digital signature gives a warranty on who signed a document and you can decide if you trust the person or company who signed the file and the organization who issued the certificate. If a digital certificate is stolen, victims will suffer an identity theft and related implications.
-
-Malware authors could design a specific malicious agent that could be spread to steal digital certificates. In the case of certificates associated with a web browser, it is possible to trick victims into thinking that a phishing site is legitimate.
-
-Cyber warfare
-
-Cyber espionage conducted by cyber criminals or state sponsored hackers are the activities most frequently carried out with stolen certificates. Digital certificates are used by attackers to conduct “man-in-the-middle” attacks over the secure connections, tricking users into thinking they were on a legitimate site when in fact their SSL/TLS traffic was being secretly tampered with and intercepted.
-
-One of the most blatant case was the DigiNotar one, when different companies like Facebook, Twitter, Skype, Google and also intelligence agencies like CIA, Mossad, and MI6 were targeted in the Dutch government certificate hack.
-
-In 2011, Fox-IT security firm discovered that the extent and duration of the breach were much more severe than had previously been disclosed. The attackers could have used the stolen certificates to spy on users of popular websites for weeks, without their being able to detect it.
-
-“It’s at least as bad as many of us thought … DigiNotar appears to have been totally owned for over a month without taking action, and they waited another month to take necessary steps to notify the public,” said Chester Wisniewski, a senior security advisor at Sophos Canada, in a blog post.
-
-Fox-IT was commissioned by Diginotar to conduct an audit, dubbed “Operation Black Tulip,” and discovered that the servers of the company were compromised.
-
-Another clamorous case was discovered in December 2013 by Google, which notices the use of digital certificates issued by an intermediate certificate authority linked to ANSSI for several Google domains.
-
-ANSSI is the French Cyber Security agency that operates with French intelligence agencies. The organization declares that an intermediate CA is generating fake certificates to conduct MITM attacks and inspect SSL traffic. Be aware that an intermediate CA certificate carries the full authority of the CA, and attackers can use it to create a certificate for any website they wish to hack.
-
-“ANSSI has found that the intermediate CA certificate was used in a commercial device, on a private network, to inspect encrypted traffic with the knowledge of the users on that network.”
-
-Google discovered the ongoing MITM attack and blocked it. Google also declared that ANSSI has requested to block an intermediate CA certificate.
-
-
-
-Figure – Digital certificate warning
-
-“As a result of a human error which was made during a process aimed at strengthening the overall IT security of the French Ministry of Finance, digital certificates related to third-party domains which do not belong to the French administration have been signed by a certification authority of the DGTrésor (Treasury) which is attached to the IGC/A.
-
-“The mistake has had no consequences on the overall network security, either for the French administration or the general public. The aforementioned branch of the IGC/A has been revoked preventively. The reinforcement of the whole IGC/A process is currently under supervision to make sure no incident of this kind will ever happen again,” stated the ANSSI advisory.
-
-The ANSSI attributed the incident to “Human Error” made by someone at the Finance Ministry, sustaining that the intermediate CA certificate was used in a commercial device, on a private network, to inspect encrypted traffic with the knowledge of the users on that network.
-
-Misusing digital certificates
-
-Digital certificates have been misused many times during recent years. Bad actors abused them to conduct cyber attacks against private entities, individuals and government organizations. The principal abuses of digital certificates observed by security experts:
-
-Man-in-the-middle (MITM) attacks
-
-Bad actors use digital certificates to eavesdrop on SSL/TLS traffic. Usually these attacks exploit the lack of strict controls by client applications when a server presents them with an SSL/TLS certificate signed by a trusted but unexpected Certification Authority.
-
-SSL certificates are the privileged mechanism for ensuring that secure web sites really are who they say they are. Typically, when we access a secure website, a padlock is displayed in the address bar. Before the icon appears, the site first presents a digital certificate, signed by a trusted “root” authority, that attests to its identity and encryption keys.
-
-Unfortunately web browsers, due to improper design and lack of efficient verification processes, accept the certificates issued by the trusted CA, even if it is an unexpected one.
-
-An attacker that is able to obtain a fake certificate from any certification authority and present it to the client during the connection phase can impersonate every encrypted web site the victim visits.
-
-“Most browsers will happily (and silently) accept new certificates from any valid authority, even for web sites for which certificates had already been obtained. An eavesdropper with fake certificates and access to a target’s internet connection can thus quietly interpose itself as a ‘man-in-the-middle’, observing and recording all encrypted web traffic traffic, with the user none the wiser.”
-
-
-
-Figure – MITM handshake
-
-Cyber attacks based on signed malware
-
-Another common cyber attack is based on malware signed with stolen code-signing certificates. The techniques allow attackers to improve avoidance techniques for their malicious codes. Once the private key associated with a trusted entity is compromised, it could be used to sign the malicious code of the malware. This trick allows an attacker to also install those software components (e.g. drivers, software updates) that require signed code for their installation/execution. One of the most popular cases was related to the data breach suffered by security firm Bit9. Attackers stole one of the company’s certs and used it to sign malware and serve it. The certificate was used to sign a malicious Java Applet that exploited a flaw in the browser of targeted browser.
-
-Malware installed illegitimate certificates
-
-Attackers could use also malware to install illegitimate certificates to trust them, avoiding security warnings. Malicious code could for example operate as a local proxy for SSL/TLS traffic, and the installed illegitimate digital certificates could allow attackers to eavesdrop on traffic without triggering any warning. The installation of a fake root CA certificate on the compromised system could allow attackers to arrange a phishing campaign. The bad actor just needs to set up a fake domain that uses SSL/TLS and passes certificate validation steps. Recently, Trend Micro has published a report on a hacking campaign dubbed “Operation Emmental”, which targeted Swiss bank accounts with a multi-faceted attack that is able to bypass two factor authentication implemented by the organization to secure its customers. The attackers, in order to improve the efficiency of their phishing schema, used a malware that installs a new root Secure Sockets Layer (SSL) certificate, which prevents the browser from warning victims when they land on these websites.
-
-
-
-Figure – Certificate installed by malware in MS store
-
-CAs issued improper certificates
-
-Improper certificates are issued by the CAs and hackers use them for cyber attacks. In one of the most blatant cases, DigiCert mistakenly sold a certificate to a non-existent company. the digital certificate was then used to sign malware used in cyber attacks.
-
-How to steal a digital certificate
-
-Malware is the privileged instrument for stealing a digital certificate and the private key associated with the victims. Experts at Symantec tracked different strains of malware which have the capability to steal both private keys and digital certificates from Windows certificate stores. This malicious code exploits the operating system’s functionality. Windows OS archives digital certificates in a certificate store.
-
-“Program code often uses the PFXExportCertStoreEx function to export certificate store information and save the information with a .pfx file extension (the actual file format it uses is PKCS#12).The PFXExportCertStoreEx function with the EXPORT_PRIVATE_KEYS option stores both digital certificates and the associated private keys, so the .pfx file is useful to the attacker,” states a blog post from Symantec.
-
-The CertOpenSystemStoreA function could be used to open certificates stored, meanwhile the PFXExportCertStoreEx function exports the content of the following certificate stores:
-
-MY: A certificate store that holds certificates with the associated private keys
-CA: Certificate authority certificates
-ROOT: Root certificates
-SPC: Software Publisher Certificates
-Invoking the PFXExportCertStoreEx function with the EXPORT_PRIVATE_KEYS option, it is possible to export both digital certificates and the associated private key.
-
-The code in the following image performs the following actions:
-
-Opens the MY certificate store
-Allocates 3C245h bytes of memory
-Calculates the actual data size
-Frees the allocated memory
-Allocates memory for the actual data size
-The PFXExportCertStoreEx function writes data to the CRYPT_DATA_BLOB area that pPFX points to
-Writes content of the certificate store.
-
-
-Figure – Malware code to access certificates info
-
-The experts noticed that a similar process is implemented by almost every malware used to steal digital certificates. Malicious code is used to steal certificate store information when the computer starts running.
-
-Once an an attacker has obtained the victim’s private key from a stolen certificate, it could use a tool like the Microsoft signing tool bundled with Windows DDK, Platform SDK, and Visual Studio. Running Sign Tool (signtool.exe), it is possible to digitally sign every code, including malware source code.
-
-Abuse prevention
-
-I desire to close this post introducing a couple of initiatives started to prevent the abuse of digital certificates. The first one is started by a security researcher at Abuse.ch, which has launched the SSL Black List, a project to create an archive of all the digital certificates used for illicit activities. Abuse.ch is a Swiss organization that was involved in the last years in many investigations on the principal major banker Trojan families and botnets.
-
-“The goal of SSLBL is to provide a list of bad SHA1 fingerprints of SSL certificates that are associated with malware and botnet activities. Currently, SSLBL provides an IP based and a SHA1 fingerprint based blacklist in CSV and Suricata rule format. SSLBL helps you in detecting potential botnet C&C traffic that relies on SSL, such as KINS (aka VMZeuS) and Shylock,” wrote the researcher in a blog post which introduces the initiative.
-
-The need to track abuse of certificates has emerged in recent years, after security experts discovered many cases in which bad actors abused digital certificates for illicit activities, ranging from malware distribution to Internet surveillance.
-
-Authors of malware are exploiting new methods to avoid detection by defense systems and security experts. For example, many attackers are using SSL to protect malicious traffic between C&C and infected machines.
-
-Each item in the list associates a certificate to the malicious operations in which attackers used it. The abuses include botnets, malware campaigns, and banking malware.
-
-The archive behind the SSL Black List, which actually includes more than 125 digital certificates, comprises SHA-1 fingerprints of each certificate with a description of the abuse. Many entries are associated with popular botnets and malware-based attacks, including Zeus, Shylock and Kins.
-
-
-
-The SSL Black List is another project that could help the security community to prevent cyber attacks. When the database matures, it will represent a precious resource for security experts dealing with malware and botnet operators that are using certificates in their operations.
-
-Abuse.ch isn’t the only entity active in the prevention of illicit activities of certificates. Google is very active in the prevention of any abuse of stolen or unauthorized digital certificates. Earlier this year, the company has its Certificate Transparency Project, a sort of a public register of digital certificates that have been issued.
-
-
-
+## Tools
 - [CRT.sh](https://crt.sh/) - Search for certs that have been logged by CT
 
 <br>
@@ -679,94 +531,27 @@ Adversaries may execute active scans to gather information that can be used duri
 
 ## Active Organization Information
 
-### Scanning IP Blocks 
-Adversaries may scan IP blocks in order to gather victim network information. Scans may range from simple pings to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
+### Active DNS
+Adversaries may gather information about the victim's DNS that can be used during targeting
+* DNS information may include a variety of details, including registered name servers as well as records that outline addressing for a target’s subdomains, mail servers, and other hosts
 
-## Tools
-- [Nmap](https://nmap.org/) - Network discovery and security auditing
-- [AngryIP](https://angryip.org/) - Fast and simple network scanner
-- [PRTG](https://www.paessler.com/tools)
-- [Spidex](https://github.com/alechilczenko/spidex) — Find Internet-connected devices
-- [IP Neighboring](https://www.ip-neighbors.com/) — Discover Neighboring IP Hosts
-- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
-- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
-- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
-- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
-- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
+Adversaries may gather this information in various ways, such as querying or otherwise collecting details via *DNS/Passive DNS*
+* DNS information may also be exposed to adversaries via online or other accessible data sets (ex: Search Open Technical Databases)
 
-<br>
+### IP / Network Scanning
+The physical and/or logical layout of both external-facing and internal network environments can be included in network topology information. An adversary may be able to deduce further information about a target from IP addresses, such as organizational size, physical location(s), ISPs, and/or where/how their publicly-facing infrastructure is housed.
 
-## Vulnerability Scanning ##
-Vulnerability scans checks if the configuration of a target host potentially aligns with the target of a specific exploit. Vulnerability scans typically harvest running software and version numbers via server banners, listening ports, or other network artifacts.
+### Network Security Appliances
+Information about network security appliances may include a variety of details, such as the existence and specifics of deployed firewalls, content filters, and proxies/bastion hosts
+* Adversaries may also target information about NIDs or other appliances related to defensive cybersecurity operations
 
-## Tools
-- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
-- Nessus
-- OpenVas
-- BurpSuite
-- [Trend Micro Hybrid Cloud Security](https://www.g2.com/products/trend-micro-hybrid-cloud-security/reviews)
-- Orca Security
-- InsightVM
-- Qualys
+### Actively Searching Victim-Owned Websites
 
-<br>
 
-## Wordlist Scanning ##
-Adversaries may iteratively probe infrastructure using brute-forcing and crawling techniques. While this technique employs similar methods to Brute Force, its goal is the identification of content and infrastructure rather than the discovery of valid credentials. Wordlists used in these scans may contain generic, commonly used names and file extensions or terms specific to a particular software. Adversaries may also create custom, target-specific wordlists using data gathered from other reconnaissance techniques.
+### Actively Searching Closed Sources
 
-## Tools
-**Application Vulnerability Scanning**
-- [Nikto](https://github.com/sullo/nikto)
 
-**Crawling Tools**
-- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
-- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
-- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
-- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
-- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
-- [Breach Parse](https://github.com/hmaverickadams/breach-parse) - Tool for parsing breached passwords
-- [SocialHunter](https://github.com/utkusen/socialhunter) — Crawls the given URL and finds broken social media links that can be hijacked
-- [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
-
-<br>
-<hr>
-
-# Gathering Host Information 
-Adversaries may gather information about the victim's hosts that can be used during targeting. Information about hosts may include a variety of details, including administrative data (ex: name, assigned IP, functionality, etc.) as well as specifics regarding its configuration (ex: operating system, language, etc.).
-
-<br>
-
-## Hardware 
-Adversaries may gather information about the victim's host hardware that can be used during targeting. Information about hardware infrastructure may include a variety of details such as types and versions on specific hosts, as well as the presence of additional components that might be indicative of added defensive protections (ex: card/biometric readers, dedicated encryption hardware, etc.)
-
-<br>
-
-## Software 
-Adversaries may gather information about the victim's host software that can be used during targeting. Information about installed software may include a variety of details such as types and versions on specific hosts, as well as the presence of additional components that might be indicative of added defensive protections (ex: antivirus, SIEMs, etc.).
-
-<br>
-
-## Firmware ##
-Adversaries may gather information about the victim's host firmware that can be used during targeting. Information about host firmware may include a variety of details such as type and versions on specific hosts, which may be used to infer more information about hosts in the environment (ex: configuration, purpose, age/patch level, etc.)
-
-<br>
-
-## Client Configuration ##
-Adversaries may gather information about the victim's client configurations that can be used during targeting. Information about client configurations may include a variety of details and settings, including operating system/version, virtualization, architecture (ex: 32 or 64 bit), language, and/or time zone.
-
-## Tools
-- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
-- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
-- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
-- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
-- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
-- [Clickjacker](https://serene-agnesi-57a014.netlify.app/) — Discover secret API Keys
-- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
-- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
-- [securityheader.com](http://securityheader.com) — Reports headers that are missing; Exploitable
-- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
-- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
-- LeakWatch - Scans the Internet to detect exposed information
+### Purchasing Technical Data
 
 <br>
 <hr>
@@ -785,54 +570,6 @@ Adversaries may gather information about the victim's network domain that can be
 Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
 * Information about victim domains and their properties may also be exposed to adversaries via online or other accessible data sets (ex: WHOIS)
 
-<br>
-
-## DNS
-Adversaries may gather information about the victim's DNS that can be used during targeting
-* DNS information may include a variety of details, including registered name servers as well as records that outline addressing for a target’s subdomains, mail servers, and other hosts
-
-Adversaries may gather this information in various ways, such as querying or otherwise collecting details via *DNS/Passive DNS*
-* DNS information may also be exposed to adversaries via online or other accessible data sets (ex: Search Open Technical Databases)
-
-<br>
-
-## Network Trust Dependencies
-Adversaries may gather information about the victim's network trust dependencies that can be used during targeting
-* Information about network trusts may include a variety of details, including second or third-party organizations/domains (ex: managed service providers, contractors, etc.) that have connected (and potentially elevated) network access
-
-Adversaries may gather this information in various ways, such as direct elicitation via *Phishing for Information*
-* Information about network trusts may also be exposed to adversaries via online or other accessible data sets (ex: Search Open Technical Databases).
-
-<br>
-
-## Network Topology
-Adversaries may gather information about the victim's network topology that can be used during targeting
-* Information about network topologies may include a variety of details, including the physical and/or logical arrangement of both external-facing and internal network environments
-* This information may also include specifics regarding network devices and other infrastructure.
-
-Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
-* Information about network topologies may also be exposed to adversaries via online or other accessible data sets (ex: Search Victim-Owned Websites)
-
-<br>
-
-## IP Addresses
-Adversaries may gather the victim's IP addresses that can be used during targeting
-* Public IP addresses may be allocated to organizations by block, or a range of sequential addresses
-* Information about assigned IP addresses may include a variety of details, such as which IP addresses are in use
-* IP addresses may also enable an adversary to derive other details about a victim, such as organizational size, physical location(s), Internet service provider, and or where/how their publicly-facing infrastructure is hosted
-
-Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
-* Information about assigned IP addresses may also be exposed to adversaries via online or other accessible data sets (ex: Search Open Technical Databases)
-
-<br>
-
-## Network Security Appliances
-Adversaries may gather information about the victim's network security appliances that can be used during targeting
-* Information about network security appliances may include a variety of details, such as the existence and specifics of deployed firewalls, content filters, and proxies/bastion hosts
-* Adversaries may also target information about victim NIDS or other appliances related to defensive cybersecurity operations
-
-Adversaries may gather this information in various ways, such as direct collection actions via *Active Scanning or Phishing for Information*
-* Information about network security appliances may also be exposed to adversaries via online or other accessible data sets (ex: Search Victim-Owned Websites).
 
 ## Tools
 **Network / Port Scanners**
@@ -957,3 +694,134 @@ Adversaries may search and gather information about victims from closed sources 
 Adversaries may purchase technical information about victims that can be used during targeting. Information about victims may be available for purchase within reputable private sources and databases, such as paid subscriptions to feeds of scan databases or other data aggregation services. Adversaries may also purchase information from less-reputable sources such as dark web or cybercrime blackmarkets.
 
 Adversaries may purchase information about their already identified targets, or use purchased data to discover opportunities for successful breaches. Threat actors may gather various technical details from purchased data, including but not limited to employee contact information, credentials, or specifics regarding a victim’s infrastructure
+
+
+# Actively Find Host Information
+Adversaries may gather information about the victim's hosts that can be used during targeting. Information about hosts may include a variety of details, including administrative data (ex: name, assigned IP, functionality, etc.) as well as specifics regarding its configuration (ex: operating system, language, etc.)
+
+
+## Scanning IP Blocks 
+Adversaries may scan IP blocks in order to gather victim network information. Scans may range from simple pings to more nuanced scans that may reveal host software/versions via server banners or other network artifacts.
+
+## Tools
+- [Nmap](https://nmap.org/) - Network discovery and security auditing
+- [AngryIP](https://angryip.org/) - Fast and simple network scanner
+- [PRTG](https://www.paessler.com/tools)
+- [Spidex](https://github.com/alechilczenko/spidex) — Find Internet-connected devices
+- [IP Neighboring](https://www.ip-neighbors.com/) — Discover Neighboring IP Hosts
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
+
+<br>
+
+## Vulnerability Scanning
+Vulnerability scans checks if the configuration of a target host potentially aligns with the target of a specific exploit. Vulnerability scans typically harvest running software and version numbers via server banners, listening ports, or other network artifacts.
+
+## Tools
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- Nessus
+- OpenVas
+- BurpSuite
+- [Trend Micro Hybrid Cloud Security](https://www.g2.com/products/trend-micro-hybrid-cloud-security/reviews)
+- Orca Security
+- InsightVM
+- Qualys
+
+<br>
+
+## Wordlist Scanning
+Adversaries may iteratively probe infrastructure using brute-forcing and crawling techniques. While this technique employs similar methods to Brute Force, its goal is the identification of content and infrastructure rather than the discovery of valid credentials. Wordlists used in these scans may contain generic, commonly used names and file extensions or terms specific to a particular software. Adversaries may also create custom, target-specific wordlists using data gathered from other reconnaissance techniques.
+
+## Tools
+**Application Vulnerability Scanning**
+- [Nikto](https://github.com/sullo/nikto)
+
+**Crawling Tools**
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [Breach Parse](https://github.com/hmaverickadams/breach-parse) - Tool for parsing breached passwords
+- [SocialHunter](https://github.com/utkusen/socialhunter) — Crawls the given URL and finds broken social media links that can be hijacked
+- [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
+
+<br>
+
+## Hardware 
+Adversaries may gather information about the victim's host hardware that can be used during targeting. Information about hardware infrastructure may include a variety of details such as types and versions on specific hosts, as well as the presence of additional components that might be indicative of added defensive protections (ex: card/biometric readers, dedicated encryption hardware, etc.)
+
+<br>
+
+## Software 
+Adversaries may gather information about the victim's host software that can be used during targeting. Information about installed software may include a variety of details such as types and versions on specific hosts, as well as the presence of additional components that might be indicative of added defensive protections (ex: antivirus, SIEMs, etc.).
+
+### Digital Certificates
+SSL Enumeration
+
+#### ssl-cert
+`Nmap –script ssl-cert [ip address]` -- Retrieves a server’s SSL certificate
+* The amount of information printed about the certificate depends on the verbosity level
+* With no extra verbosity, the script prints the validity period and the common name, organization Name, state Or Province Name, and country Name of the subject
+
+#### ssl-cert-intaddr
+`Nmap –script ssl-cert-intaddr` -- Reports any private IPv4 addresses found in the various fields of an SSL service’s certificate
+* These will only be reported if the target address itself is not private
+
+#### ssl-date
+`Nmap –script ssl-date` -- Retrieves a target host’s time and date from its `TLS ServerHello` response
+
+
+#### ssl-enum-ciphers
+`Nmap –script ssl-enum-ciphers` -- Repeatedly initiates SSLv3/TLS connections, each time trying a new cipher or compressor while recording whether a host accepts or rejects it
+* The end result is a list of all the ciphersuites and compressors that a server accepts
+* Each ciphersuite is shown with a letter grade (A through F) indicating the strength of the connection
+  * The grade is based on the cryptographic strength of the key exchange and of the stream cipher
+* SSLv3/TLSv1 requires more effort to determine which ciphers and compression methods a server supports than SSLv2
+* A client lists the ciphers and compressors that it is capable of supporting, and the server will respond with a single cipher and compressor chosen, or a rejection notice
+* Some servers use the client’s cipher suite
+
+
+#### ssl-known-key
+`Nmap –script ssl-known-key` -- Checks whether the SSL certificate used by a host has a fingerprint that matches an included database of problematic keys
+
+#### sslv2
+`Nmap –script sslv2` -- Determines whether the server supports obsolete and less secure SSLv2, and discovers which ciphers it supports
+
+
+#### tls-alpn
+`Nmap –script tls-alpn` -- Enumerates a TLS server’s supported application-layer protocols using the ALPN protocol
+
+#### tls-nextprotoneg
+`Nmap –script tls-nextprotoneg` -- Enumerates a TLS server’s supported protocols by using the next protocol negotiation extension
+* This works by adding the next protocol negotiation extension in the client Hello packet and parsing the returned server hello’s NPN extension data
+
+## Tools 
+- [Digicert](https://www.digicert.com/support/tools/certificate-utility-for-windows) - Install, inspect, renew and delegate digital certificates
+
+<br>
+
+## Firmware ##
+Adversaries may gather information about the victim's host firmware that can be used during targeting. Information about host firmware may include a variety of details such as type and versions on specific hosts, which may be used to infer more information about hosts in the environment (ex: configuration, purpose, age/patch level, etc.)
+
+<br>
+
+## Client Configuration ##
+Adversaries may gather information about the victim's client configurations that can be used during targeting. Information about client configurations may include a variety of details and settings, including operating system/version, virtualization, architecture (ex: 32 or 64 bit), language, and/or time zone.
+
+## Tools
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
+- [Clickjacker](https://serene-agnesi-57a014.netlify.app/) — Discover secret API Keys
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [securityheader.com](http://securityheader.com) — Reports headers that are missing; Exploitable
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
+- LeakWatch - Scans the Internet to detect exposed information
