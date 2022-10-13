@@ -64,24 +64,16 @@ Sock Puppets are aliases, fictitious persona profiles created by someone else wi
 <hr>
 
 # Organization Information 
-Scanning for Organization Information, you're looking for details about an organization, such as the names of its divisions and departments, the way it runs its business, where it is located, and etc.
-
-<br>
+Scanning for Organization Information, you're looking for details about an organization, such as the names of its divisions and departments, the way it runs its business, where it is located, and etc. This information may give insight to various attack surfaces such as attacking the target by specific delivery days, location vulnerabilities, etc.
 
 ## Business Relationships 
 Information on Business Relationships includes a variety of information, such as second or third-party organizations/domains (like managed service providers, contractors, etc.) that have connected (and possibly elevated) network access. This information could also show how the victim's hardware and software resources are made and shipped.
 
-<br>
-
 ## Identify Business Tempo 
 Information about an organization’s Business Tempo may include a variety of details, including operational hours/days of the week. This information may also reveal times/dates of purchases and shipments of the victim’s hardware and software resources.
 
-<br>
-
 ## Identify Roles 
 Information about business roles may reveal a variety of targetable details, including identifiable information for key personnel as well as what resources they have access to.
-
-<br>
 
 ## Tools
 - [Open Corporates](https://opencorporates.com/) — Largest open database of companies in the world
