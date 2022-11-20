@@ -268,6 +268,7 @@
 - [https://github.com/13o-bbr-bbq/machine_learning_security/wiki](https://github.com/13o-bbr-bbq/machine_learning_security/wiki)
 
 - https://github.com/CyberSecurityUP/PenTest-Consulting-Creator
+- [Red Team Infrastructure](https://github.com/bluscreenofjeff/Red-Team-Infrastructure-Wiki)
 
 # Tools
 ## Offensive Security
