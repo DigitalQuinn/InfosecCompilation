@@ -20,6 +20,7 @@
 - [Hacking References & Cheatsheets](#hacking-references--cheatsheets)
 - [Offensive Security Tools](#offensive-security-tools)
   - [Reconnaissance Tools](#reconnaissance-tools)
+    - [Anonymity Tools](#anonymity-tools)
     - [OSINT Frameworks](#osint-frameworks)
     - [Search Engines](#search-engines)
     - [OSINT Tools](#osint-tools)
@@ -415,13 +416,14 @@
 # Offensive Security Tools 
 
 ## Reconnaissance Tools 
+Gathering information that can be used to support targeting
 
 ### Anonymity Tools
-  * [Freenet](https://freenetproject.org/) - Freenet is a peer-to-peer platform for censorship-resistant communication and publishing.
-  * [I2P](https://geti2p.net/en/) - The Invisible Internet Project.
-  * [OnionScan](https://onionscan.org/) - Tool for investigating the Dark Web by finding operational security issues introduced by Tor hidden service operators.
-  * [Tor](https://www.torproject.org/) - Free software and onion routed overlay network that helps you defend against traffic analysis.
-  * [What Every Browser Knows About You](http://webkay.robinlinus.com/) - Comprehensive detection page to test your own Web browser's configuration for privacy and identity leaks.
+* [Freenet](https://freenetproject.org/) - Freenet is a peer-to-peer platform for censorship-resistant communication and publishing.
+* [I2P](https://geti2p.net/en/) - The Invisible Internet Project.
+* [OnionScan](https://onionscan.org/) - Tool for investigating the Dark Web by finding operational security issues introduced by Tor hidden service operators.
+* [Tor](https://www.torproject.org/) - Free software and onion routed overlay network that helps you defend against traffic analysis.
+* [What Every Browser Knows About You](http://webkay.robinlinus.com/) - Comprehensive detection page to test your own Web browser's configuration for privacy and identity leaks.
 
 ### OSINT Frameworks
 - [ReconSpider](https://hakin9.org/reconspider-most-advanced-open-source-intelligence-osint-framework/)
@@ -1103,8 +1105,6 @@ Perform various OSINT on Russian social media site VKontakte
 * [Visual Investigative Scenarios](https://vis.occrp.org)
 * [Wynyard Group](https://www.wynyardgroup.com/)
 
-#### DNS Enumeration
-* [Amass](https://github.com/caffix/amass) - The amass tool searches Internet data sources, performs brute force subdomain enumeration, searches web archives, and uses machine learning to generate additional subdomain name guesses. DNS name resolution is performed across many public servers so the authoritative server will see the traffic coming from different locations. Written in Go.
 
 #### Network Reconnaissance Tools
 
@@ -1128,6 +1128,8 @@ Perform various OSINT on Russian social media site VKontakte
 * [zmap](https://zmap.io/) - Open source network scanner that enables researchers to easily perform Internet-wide network studies.
   
 
+#### DNS Enumeration
+* [Amass](https://github.com/caffix/amass) - The amass tool searches Internet data sources, performs brute force subdomain enumeration, searches web archives, and uses machine learning to generate additional subdomain name guesses. DNS name resolution is performed across many public servers so the authoritative server will see the traffic coming from different locations. Written in Go.
 
 
 
@@ -1161,10 +1163,6 @@ Perform various OSINT on Russian social media site VKontakte
   * [SQLmate](https://github.com/s0md3v/sqlmate) - A friend of sqlmap that identifies sqli vulnerabilities based on a given dork and website (optional).
   * [WPScan](https://wpscan.com/wordpress-security-scanner) - Black box WordPress vulnerability scanner.
 
-#### Extensions
-- [AutoScanWithBurp](https://bitbucket.org/clr2of8/autoscanwithburp/src/master/) — Extension to perform automated & authenticated scans against URLS
-- [OAuthScan](https://github.com/PortSwigger/oauth-scan) - Burp Suite Extension written in Java with the aim to provide some automatic security checks
-
 
 #### Web Exploitation
   * [Browser Exploitation Framework (BeEF)](https://github.com/beefproject/beef) - Command and control server for delivering exploits to commandeered Web browsers.
@@ -1193,10 +1191,17 @@ Perform various OSINT on Russian social media site VKontakte
   * [Wordpress Exploit Framework](https://github.com/rastating/wordpress-exploit-framework) - Ruby framework for developing and using modules which aid in the penetration testing of WordPress powered websites and systems.
   * [WPSploit](https://github.com/espreto/wpsploit) - Exploit WordPress-powered websites with Metasploit.
 
+#### Extensions
+- [AutoScanWithBurp](https://bitbucket.org/clr2of8/autoscanwithburp/src/master/) — Extension to perform automated & authenticated scans against URLS
+- [OAuthScan](https://github.com/PortSwigger/oauth-scan) - Burp Suite Extension written in Java with the aim to provide some automatic security checks
+
+
+
+
 
 
 ## Resource Development Tools
-
+Creating, purchasing, or compromising resources that can be used to support targeting
 
 ### Pentesting OS Distributions
 * [ArchStrike](https://archstrike.org/) - Arch GNU/Linux repository for security professionals and enthusiasts.
@@ -1244,6 +1249,7 @@ Perform various OSINT on Russian social media site VKontakte
 
 
 ## Initial Access Tools
+Various entry vectors to gain your initial foothold within a network
 
 ### Phishing
 - [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
@@ -1273,6 +1279,7 @@ Perform various OSINT on Russian social media site VKontakte
 
 
 ## Execution Tools
+Attacker-controlled code running on a local or remote system
 
 #### Side-channel Tools
 * [ChipWhisperer](https://rtfm.newae.com/) - Complete open-source toolchain for side-channel power analysis and glitching attacks
@@ -1284,6 +1291,7 @@ Perform various OSINT on Russian social media site VKontakte
 
 
 ## Privilege Escalation Tools
+Gaining higher-level permissions on a system or network
 
 #### Windows Utilities
 * [Bloodhound](https://github.com/BloodHoundAD/BloodHound/wiki) - Graphical Active Directory trust relationship explorer.
@@ -1316,7 +1324,7 @@ Perform various OSINT on Russian social media site VKontakte
   * [Linus](https://cisofy.com/lynis/) - Security auditing tool for Linux and macOS.
 
 ## Defense Evasion Tools
-
+Avoiding detection throughout your compromise
 
 ### Evade AV/EDR  
 - [Inceptor](https://github.com/klezVirus/inceptor) — Automate common AV/EDR bypasses
@@ -1340,6 +1348,7 @@ Perform various OSINT on Russian social media site VKontakte
 - [dll4shell](https://github.com/cepxeo/dll4shell) - A collection of DLL wrappers around various shellcode injection and obfuscation techniques
 
 ## Credential Access Tools
+Stealing credentials like account names and passwords
 
 ### Password Attacks
 - [CredKing](https://github.com/ustayready/CredKing) — Launch Password Spraying using AWS Lamba across multiple regions, rotating IPs w/ each request
@@ -1361,7 +1370,7 @@ Perform various OSINT on Russian social media site VKontakte
 
   
 ## Discovery Tools
-
+Observing potential control and what’s around your entry point in order to discover how it could benefit your current objective
 
 
 
@@ -1448,10 +1457,14 @@ Perform various OSINT on Russian social media site VKontakte
   * [xortool](https://github.com/hellman/xortool/) - XOR cipher analysis tool.
 
 ## Lateral Movement Tools
+Pivoting through multiple systems and accounts to gain additional access
+
 - [Forbidden] - Bypass 4Xx HTTP Response Status Codes
 - [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg/blob/master/README-en.md) -- Used for HTTP(S) Tunneling
 
-## Collection Tools 
+## Collection Tools
+Gathering information relevant to following through on the adversary's objectives
+
 - [ICMPDoor](https://github.com/krabelize/icmpdoor) - Open-source reverse-shell written in Python3 and scapy
 - [iodined](https://github.com/yarrick/iodine) - DNS Tunneling
   * [Data Exfiltration Toolkit (DET)](https://github.com/PaulSec/DET) - Proof of concept to perform data exfiltration using either single or multiple channel(s) at the same time.
@@ -1469,7 +1482,10 @@ Perform various OSINT on Russian social media site VKontakte
   * [spYDyishai](https://github.com/Night46/spYDyishai/) - Local Google credentials exfiltration tool, written in Python.
   * [tgcd](http://tgcd.sourceforge.net/) - Simple Unix network utility to extend the accessibility of TCP/IP based network services beyond firewalls.
 
-## C2 Frameworks 
+
+## C2 Frameworks
+Communicating with systems under your control within a victim network
+
 - [Metasploit](https://www.metasploit.com/)
 - [Cobalt Strike](https://www.cobaltstrike.com/) — Adversary simulations & red team operations
 - [Brute Ratel](https://bruteratel.com/) - A customized C2 center for Red Team and Adversary Simulation
@@ -1520,6 +1536,7 @@ Exfiltration Tools -- Stealing data from victim's infrastructure
 * [poet](https://github.com/offlinemark/poet) - Simple but multipurpose post-exploitation tool.
 
 ## Impact 
+Disrupting availability, compromising integrity by manipulating business and operational processes
 
 ## Remediation / Reporting
 - [PeTeReport] - An Open-Source Application Vulnerability Reporting Tool
