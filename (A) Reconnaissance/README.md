@@ -162,6 +162,9 @@ To assist with this, look for the following:
 - [Open Wifi Map](openwifimap.net)
 - [Mozilla Stumbler](https://location.services.mozilla.com/)
 
+ghjk
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+
 **Satellite Images**
 - [USGS Earth Explorer](https://earthexplorer.usgs.gov/)
 - [Sentinel Open Access Hub](https://scihub.copernicus.eu/dhus/#/home)

@@ -47,7 +47,6 @@ Infosec Compilation is an information security repository for offensive, defensi
     - [Protocol Analyzers & Sniffers](#protocol-analyzers--sniffers)
   - [Lateral Movement Tools](#lateral-movement-tools)
   - [Collection Tools](#collection-tools)
-  - [C2 Frameworks](#c2-frameworks)
   - [Impact](#impact)
   - [Remediation / Reporting](#remediation--reporting)
   - [Cloud Pentesting](#cloud-pentesting)
@@ -176,7 +175,19 @@ Infosec Compilation is an information security repository for offensive, defensi
 * [x64dbg](https://x64dbg.com/#start) - Open source x64/x32 debugger for windows.
 * [xortool](https://github.com/hellman/xortool) - Tool for guessing XOR keys.
 
+### Blacklisting Domains
+* [Malware Domain List](http://www.malwaredomainlist.com/) - Search and share malicious URLs.
+* [malc0de DNSSinkhole](http://malc0de.com/bl/) - List of domains that have been identified as distributing malware during the past 30 days.
+* [AbuseIPDB](https://www.abuseipdb.com/) - Search engine for blacklisted IPs or domains.
+* [AutoShun](https://riskanalytics.com/community/) - Public repository of malicious IPs and other resources.
+* [BadIPs](https://www.badips.com/) - Online blacklist lookup.
+* [Binary Defense IP Ban List](https://www.binarydefense.com/banlist.txt) - Public IP blacklist.
+* [Blocklist Ipsets](https://github.com/firehol/blocklist-ipsets) - Public IP blacklist.
+* [Spamcop](https://www.spamcop.net/bl.shtml) - IP based blacklist.
+* [Spamhaus](https://www.spamhaus.org/lookup/) - Online blacklist lookup.
+* [malc0de DNSSinkhole](http://malc0de.com/bl/) - List of domains that have been identified as distributing malware during the past 30 days.
 
+  
 ### Sandbox
 - [Cuckoo](https://cuckoosandbox.org/) - open source automated malware analysis system
 - [DRAKVUF Sandbox](https://github.com/CERT-Polska/drakvuf-sandbox/) - Automated black-box malware analysis system with DRAKVUF engine under the hood (Doesn't require an agent on guest OS)
@@ -429,6 +440,16 @@ Gathering information that can be used to support targeting
 ### OSINT Frameworks
 - [ReconSpider](https://hakin9.org/reconspider-most-advanced-open-source-intelligence-osint-framework/)
 - [HostRecon](https://github.com/dafthack/HostRecon) — Provide situational awareness during reconnaissance of an engagement
+- [reconFTW](https://github.com/six2dez/reconftw) — Automates the entire reconnaisance process
+- [OSINT Repository](https://cipher387.github.io/osint_stuff_tool_collection/)
+- [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
+- [AutoRecon](https://github.com/Tib3rius/AutoRecon) - Performs automated enumeration of services
+* [Belati](https://github.com/aancw/Belati) - The Traditional Swiss Army Knife For OSINT. Belati is tool for Collecting Public Data & Public Document from Website and other service for OSINT purpose.
+* [Intrigue Core](https://github.com/intrigueio/intrigue-core) - Framework for attack surface discovery.
+* [NetBootcamp OSINT Tools](https://netbootcamp.org/osinttools/)
+* [OSINT Framework](https://osintframework.com/)
+* [Recon-ng](https://github.com/lanmaster53/recon-ng) - Full-featured Web Reconnaissance framework written in Python.
+* [sn0int](https://github.com/kpcyrd/sn0int) - Semi-automatic OSINT framework and package manager.
   
 ### Search Engines
 - [Shodan](https://www.shodan.io/) - Database containing information on all accessible domains on the internet obtained from passive scanning
@@ -466,171 +487,12 @@ Gathering information that can be used to support targeting
 - [Vulners](https://vulners.com/) - Search vulnerabilities in a large database
 - [WayBackMachine](https://web.archive.org/) - View content from deleted websites
 - [SearchCode](https://searchcode.com/) - Search 75 billion lines of code from 40 million projects
-
-### OSINT Tools
-- [Catana-DS](https://github.com/TebbaaX/Katana) — Automates Google Dorking
-- [Mitaka](https://hakin9.org/mitaka-a-browser-extension-for-osint/) — Browser extension for OSINT
-- [https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f](https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f)
-- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
-- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
-- [Fuxploiter](https://hakin9.org/fuxploider-a-file-upload-vulnerability-scanner/) — Detecting and exploiting file upload forms flaws
-- [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
-- [LinPeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) — Linux Privilege Escalation
-- [LinEnum](https://github.com/rebootuser/LinEnum) — Linux Enumeration
-- [Linux Exploit Suggester](https://github.com/mzet-/linux-exploit-suggester) — Assist in detecting security deficiencies for given Linux kernel/Linux-based machine
-- [Linux Smart Enumeration](https://github.com/diego-treitos/linux-smart-enumeration) — Shows relevant information about the security of the local Linux system, helping to escalate privileges, etc.
-- [Linux Priv Checker](https://github.com/linted/linuxprivchecker) — Enumerate basic system info and search for common privilege escalation vectors
-- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
-- [Dorksearch](https://dorksearch.com/) — Faster Google Dorking
-- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
-- [GitHub Dork Helper](https://vsec7.github.io/)
-- [IP Neighboring](https://www.ip-neighbors.com/) — Discover Neighboring IP Hosts
-- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
-- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
-- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
-- [Clickjacker](https://serene-agnesi-57a014.netlify.app/) — Discover secret API Keys
-- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
-- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
-- [CookieServe](https://www.cookieserve.com/) — Cookie Checker Tool for Websites
-- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
-- [Sherloq](https://github.com/GuidoBartoli/sherloq) — Open source forensic image analysis
-- [reconFTW](https://github.com/six2dez/reconftw) — Automates the entire reconnaisance process
 - [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
-- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
-- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain 
-- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
-- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
-- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
-- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
-- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
-- [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
-- Octosuite — Gather OSINT on GitHub users
-- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
-- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
-- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
-- [securityheader.com](http://securityheader.com) — Reports headers that are missing; Exploitable
-- [breach-parse](https://github.com/hmaverickadams/breach-parse): Tool for parsing breached passwords
-- [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
-- [OSINT Repository](https://cipher387.github.io/osint_stuff_tool_collection/)
-- [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
-- [SocialHunter](https://github.com/utkusen/socialhunter) — Crawls the given URL and finds broken social media links that can be hijacked
-- [IntelTechniques](https://inteltechniques.com/tools/index.html) — Resources hosted by IntelTechniques Podcast
-- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
-- [AutoRecon](https://github.com/Tib3rius/AutoRecon) - Performs automated enumeration of services
-  - [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks 
-  - [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
-  - [Uncover](https://github.com/projectdiscovery/uncover) - Quickly discover exposed hosts on the internet using shodan, censys and fofa
-  - [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
-  - [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
-- [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
-- [Recon Cloud](https://recon.cloud/) - Cloud asset scanner
-- [MailSniper](https://github.com/dafthack/MailSniper) — Searches through email in a Microsoft Exchange environment for specific terms
-- [MOSINT] - OSINT Tool For Emails
-- [SharpML] - Machine Learning Network Share Password Hunting Toolkit
-* [AbuseIPDB](https://www.abuseipdb.com/) - Search engine for blacklisted IPs or domains.
-* [AutoShun](https://riskanalytics.com/community/) - Public repository of malicious IPs and other resources.
-* [BadIPs](https://www.badips.com/) - Online blacklist lookup.
-* [Barcode Reader](https://online-barcode-reader.inliteresearch.com/) - Decode barcodes in C#, VB, Java, C\C++, Delphi, PHP and other languages.
-* [Belati](https://github.com/aancw/Belati) - The Traditional Swiss Army Knife For OSINT. Belati is tool for Collecting Public Data & Public Document from Website and other service for OSINT purpose.
-* [Binary Defense IP Ban List](https://www.binarydefense.com/banlist.txt) - Public IP blacklist.
-* [Blocklist Ipsets](https://github.com/firehol/blocklist-ipsets) - Public IP blacklist.
-* [Censys](https://censys.io/) - Collects data on hosts and websites through daily ZMap and ZGrab scans.
-* [CloudFrunt](https://github.com/MindPointGroup/cloudfrunt) - Tool for identifying misconfigured CloudFront domains.
-* [Combine](https://github.com/mlsecproject/combine) - Open source threat intelligence feed gathering tool.
-* [Creepy](https://github.com/ilektrojohn/creepy) - Geolocation OSINT tool.
-* [Datasploit](https://github.com/DataSploit/datasploit) - Tool to perform various OSINT techniques on usernames, emails addresses, and domains.
-* [Dnsenum](https://github.com/fwaeytens/dnsenum/) - Perl script that enumerates DNS information from a domain, attempts zone transfers, performs a brute force dictionary style attack, and then performs reverse look-ups on the results.
-* [Dnsmap](https://github.com/makefu/dnsmap/) - Passive DNS network mapper.
-* [Dnsrecon](https://github.com/darkoperator/dnsrecon/) - DNS enumeration script.
-* [Dnstracer](http://www.mavetju.org/unix/dnstracer.php) - Determines where a given DNS server gets its information from, and follows the chain of DNS servers.
-* [Dork-cli](https://github.com/jgor/dork-cli) - Command line Google dork tool.
-* [emagnet](https://github.com/wuseman/EMAGNET) - Automated hacking tool that will find leaked databases.
-* [FindFrontableDomains](https://github.com/rvrsh3ll/FindFrontableDomains) - Multithreaded tool for finding frontable domains.
-* [GOSINT](https://github.com/Nhoya/gOSINT) - OSINT tool with multiple modules and a telegram scraper.
-* [Github-dorks](https://github.com/techgaun/github-dorks) - CLI tool to scan github repos/organizations for potential sensitive information leak.
-* [GooDork](https://github.com/k3170makan/GooDork) - Command line Google dorking tool.
-* [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - Database of Google dorks; can be used for recon.
-* [InfoByIp](https://www.infobyip.com/ipbulklookup.php) - Domain and IP bulk lookup tool.
-* [Intrigue Core](https://github.com/intrigueio/intrigue-core) - Framework for attack surface discovery.
-* [Machinae](https://github.com/hurricanelabs/machinae) - Multipurpose OSINT tool using threat intelligence feeds.
-* [Maltego](https://www.maltego.com/) - Proprietary software for open source intelligence and forensics, from Paterva.
-* [Malware Domain List](http://www.malwaredomainlist.com/) - Search and share malicious URLs.
-* [NetBootcamp OSINT Tools](https://netbootcamp.org/osinttools/)
-* [OSINT Framework](https://osintframework.com/)
-* [OpenRefine](https://github.com/OpenRefine) - Free & open source power tool for working with messy data and improving it.
-* [Orbit](https://github.com/s0md3v/Orbit) - Draws relationships between crypto wallets with recursive crawling of transaction history.
-* [OsintStalker](https://github.com/milo2012/osintstalker) - Python script for Facebook and geolocation OSINT.
-* [Outwit](http://www.outwit.com) - Find, grab and organize all kinds of data and media from online sources.
-* [PaGoDo](https://github.com/opsdisk/pagodo) - Passive, automated Google dorking tool.
-* [Passivedns-client](https://github.com/chrislee35/passivedns-client) - Library and query tool for querying several passive DNS providers.
-* [Passivedns](https://github.com/gamelinux/passivedns) - Network sniffer that logs all DNS server replies for use in a passive DNS setup.
-* [Photon](https://github.com/s0md3v/Photon) - Crawler designed for OSINT.
-* [Pown Recon](https://github.com/pownjs/recon) - Target reconnaissance framework powered by graph theory.
-* [QuickCode](https://quickcode.io/) - Python and R data analysis environment.
-* [Raven](https://github.com/0x09AL/raven) - LinkedIn information gathering tool.
-* [Recon-ng](https://github.com/lanmaster53/recon-ng) - Full-featured Web Reconnaissance framework written in Python.
-* [SecApps Recon](https://secapps.com/tools/recon/) - Information gathering and target reconnaissance tool and UI.
-* [Spamcop](https://www.spamcop.net/bl.shtml) - IP based blacklist.
-* [Spamhaus](https://www.spamhaus.org/lookup/) - Online blacklist lookup.
-* [Spiderfoot](https://www.spiderfoot.net/) - Open source OSINT automation tool with a Web UI and report visualizations
-* [ThreatCrowd](https://www.threatcrowd.org/) - Threat search engine.
-* [ThreatTracker](https://github.com/michael-yip/ThreatTracker) - Python based IOC tracker.
-* [Vcsmap](https://github.com/melvinsh/vcsmap) - Plugin-based tool to scan public version control systems for sensitive information.
-* [XRay](https://github.com/evilsocket/xray) - XRay is a tool for recon, mapping and OSINT gathering from public networks.
-* [Zen](https://github.com/s0md3v/Zen) - Find email addresses of Github users.
-* [malc0de DNSSinkhole](http://malc0de.com/bl/) - List of domains that have been identified as distributing malware during the past 30 days.
-* [malc0de Database](http://malc0de.com/database/) - Searchable incident database.
-* [pygreynoise](https://github.com/GreyNoise-Intelligence/pygreynoise) - Greynoise Python Library
-* [sn0int](https://github.com/kpcyrd/sn0int) - Semi-automatic OSINT framework and package manager.
-* [theHarvester](https://github.com/laramies/theHarvester) - E-mail, subdomain and people names harvester.
-* [All-in-One](https://all-io.net/)
-* [AllTheInternet](https://www.alltheinternet.com/)
-* [Etools](https://www.etools.ch/)
-* [FaganFinder](https://www.faganfinder.com/)
-* [Goofram](http://www.goofram.com)
-* [Myallsearch](http://www.myallsearch.com)
-* [Qwant](https://www.qwant.com/)
-* [Sputtr](http://www.sputtr.com)
-* [Trovando](http://www.trovando.it)
-* [WebOasis](https://weboas.is/)
-* [Zapmeta](https://www.zapmeta.com/)
-* [iZito](https://www.izito.com/)
-  
-### Document & Slides Search
-Search for data located on PDFs, Word documents, presentation slides, and more
 
-* [Authorstream](http://www.authorstream.com)
-* [Find-pdf-doc](http://www.findpdfdoc.com)
-* [Free Full PDF](http://www.freefullpdf.com)
-* [Offshore Leak Database](https://offshoreleaks.icij.org)
-* [PDF Search Engine](http://www.pdfsearchengine.info)
-* [RECAP](https://www.courtlistener.com/recap/)
-* [Scribd](https://www.scribd.com/)
-* [SlideShare](https://www.slideshare.net/)
-* [Slideworld](http://www.slideworld.com)
-* [soPDF.com](http://www.sopdf.com)
 
-### Source Code Search
-Search by website source code
 
-* [NerdyData](https://www.nerdydata.com/) - Search engine for source code.
-* [SearchCode](https://searchcode.com) - Help find real world examples of functions, API's and libraries across 10+ sources
-* [Grep App](https://grep.app/) - Search for source code across a half million git repos
 
-### Crypto OSINT Search
-* [Bitcoin Abuse](https://www.bitcoinabuse.com/) - Database of wallets associated with ransomware, blackmailers and fraud.
-* [Bitcoin Who's Who](https://bitcoinwhoswho.com/) - Database of known ID information from bitcoin addresses.
-* [Blockchair](https://blockchair.com/) - Multiple blockchain explorer.
-* [Wallet Explorer](https://www.walletexplorer.com/) - Finds all known associated bitcoin addresses from a single known address.
-
-### Government Record Search
-* [Blackbook](https://www.blackbookonline.info/index.html) - Public Records Starting Point.
-* [FOIA Search](https://www.foia.gov/search.html) - Government information request portal.
-* [PACER](https://pacer.uscourts.gov/) - Public Access to Federal Court Records.
-* [RECAP](https://www.courtlistener.com/recap/) - Free version of PACER. Includes browser extensions for Chrome & Firefox.
-* [SSN Validator](https://www.ssnvalidator.com/index.aspx) - Confirms valid Social Security Numbers.
-  
-### National Search Engines
+#### National Search Engines
 Localized search engines by country
 
 * [Alleba (Philippines)](https://www.alleba.com/)
@@ -646,9 +508,31 @@ Localized search engines by country
 * [Search.ch (Switzerland)](https://www.search.ch/)
 * [Walla (Israel)](https://www.walla.co.il/)
 * [Yandex (Russia)](https://yandex.com/)
+
+
+### Source Code Search
+Search by website source code
+
+* [NerdyData](https://www.nerdydata.com/) - Search engine for source code.
+* [SearchCode](https://searchcode.com) - Help find real world examples of functions, API's and libraries across 10+ sources
+* [Grep App](https://grep.app/) - Search for source code across a half million git repos
+
+### Crypto OSINT Search
+* [Bitcoin Abuse](https://www.bitcoinabuse.com/) - Database of wallets associated with ransomware, blackmailers and fraud.
+* [Bitcoin Who's Who](https://bitcoinwhoswho.com/) - Database of known ID information from bitcoin addresses.
+* [Blockchair](https://blockchair.com/) - Multiple blockchain explorer.
+* [Wallet Explorer](https://www.walletexplorer.com/) - Finds all known associated bitcoin addresses from a single known address.
+* [Orbit](https://github.com/s0md3v/Orbit) - Draws relationships between crypto wallets with recursive crawling of transaction history.
+
+### Government Record Search
+* [Blackbook](https://www.blackbookonline.info/index.html) - Public Records Starting Point.
+* [FOIA Search](https://www.foia.gov/search.html) - Government information request portal.
+* [PACER](https://pacer.uscourts.gov/) - Public Access to Federal Court Records.
+* [RECAP](https://www.courtlistener.com/recap/) - Free version of PACER. Includes browser extensions for Chrome & Firefox.
+* [SSN Validator](https://www.ssnvalidator.com/index.aspx) - Confirms valid Social Security Numbers.
   
 
-### Real-Time, Social Media Search
+### Social Media Search
 
 * [Audiense](https://audiense.com/)
 * [Blazent](https://www.blazent.com/)
@@ -673,8 +557,9 @@ Localized search engines by country
 * [Tagboard](https://tagboard.com)
 * [Reputation Refinery](https://reputationrefinery.com/)
 * [UVRX](http://www.uvrx.com/social.html)
+* [Pushpin](https://github.com/DakotaNelson/pushpin-web) — Provides a web interface to keep track of geotagged social media activity
 
-#### Twitter Search
+#### Twitter
 
 * [Backtweets](http://backtweets.com)
 * [Fake Follower Check](https://fakers.statuspeople.com)
@@ -735,7 +620,7 @@ Localized search engines by country
 * [burrrd.](https://burrrd.com)
 * [doesfollow](https://doesfollow.com)
 
-#### Facebook Search
+#### Facebook
 
 * [Agora Pulse](https://barometer.agorapulse.com/home)
 * [Commun.it](https://commun.it/)
@@ -751,8 +636,9 @@ Localized search engines by country
 * [Wallfux](https://clearinghouse.wallflux.com/)
 * [Wolfram Alpha Facebook Report](https://www.wolframalpha.com/input/?i=facebook+report)
 * [Zesty Facebook Search](http://zesty.ca/facebook/)
+* [OsintStalker](https://github.com/milo2012/osintstalker) - Python script for Facebook and geolocation OSINT.
 
-#### Instagram Search
+#### Instagram
 
 * [Hashtagify](https://hashtagify.me/hashtag/wandavision)
 * [Iconosquare](https://pro.iconosquare.com/)
@@ -761,11 +647,11 @@ Localized search engines by country
 * [Social Rank](https://socialrank.com/)
 * [Worldcam](http://worldc.am)
 
-#### Pinterest Search
+#### Pinterest
 
 * [Pingroupie](https://pingroupie.com/)
 
-#### Reddit Search
+#### Reddit
 Tools to help discover more about a reddit user or subreddit
 
 * [Imgur](https://imgur.com/search) - The most popular image hosting website used by redditors.
@@ -777,7 +663,16 @@ Tools to help discover more about a reddit user or subreddit
 * [Reddit User Analyser](https://atomiks.github.io/reddit-user-analyser/) - reddit user account analyzer.
 * [Subreddits](http://subreddits.org) - Discover new subreddits.
 
-#### VKontakte Search
+
+#### GitHub
+- Octosuite — Gather OSINT on GitHub users
+- [Github-dorks](https://github.com/techgaun/github-dorks) - CLI tool to scan github repos/organizations for potential sensitive information leak.
+* [Zen](https://github.com/s0md3v/Zen) - Find email addresses of Github users.
+
+#### LinkedIn
+* [Raven](https://github.com/0x09AL/raven) - LinkedIn information gathering tool.
+
+#### VKontakte (Russian) Search
 Perform various OSINT on Russian social media site VKontakte
 
 * [Barkov.net](https://vk.barkov.net/)
@@ -793,14 +688,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [VK5](http://vk5.city4me.com)
 * [Дезертир](https://vk.com/app3046467)
 
-#### Blog Search
-
-* [BlogSearchEngine](http://www.blogsearchengine.org)
-* [Notey](https://www.notey.com/) - Blog post search engine.
-* [Outbrain](https://www.outbrain.com/publishers/)
-* [Twingly](https://www.twingly.com/)
-
-#### Username Check
+### Username Check
 
 * [Check User Names](https://checkusernames.com/)
 * [Knowem](https://knowem.com/) - Search for a username on over 500 popular social networks.
@@ -809,6 +697,31 @@ Perform various OSINT on Russian social media site VKontakte
 * [Name Checkup](https://namecheckup.com)
 * [Name Chk](https://www.namechk.com/)
 * [User Search](https://usersearch.org/index.php)
+
+### Email Search
+* [BriteVerify Email Verification](https://www.validity.com/products/briteverify/email-list-verification/)
+* [Email Address Validator](https://www.email-validator.net/)
+* [Email Format](https://www.email-format.com/)
+* [Email Permutator+](http://metricsparrow.com/toolkit/email-permutator)
+* [EmailHippo](https://tools.verifyemailaddress.io)
+* [EmailSearch.net](http://www.email-search.org/search-emails/)
+* [Have I Been Pwned](https://haveibeenpwned.com) - Search across multiple data breaches to see if your email address has been compromised.
+* [Hunter](https://hunter.io) - Hunter lets you find email addresses in seconds and connect with the people that matter for your business.
+* [MailTester](https://mailtester.com/en/single-email-verification)
+* [MyCleanList](https://www.mycleanlist.com/)
+* [Peepmail](http://www.samy.pl/peepmail)
+* [Pipl](https://pipl.com)
+* [ReversePhoneCheck](https://www.reversephonecheck.com/)
+* [ThatsThem](https://thatsthem.com/reverse-email-lookup)
+* [theHarvester](https://github.com/laramies/theHarvester) - E-mail, subdomain and people names harvester.
+* [FindEmails.com](https://www.findemails.com/)
+* [Verify Email](https://verify-email.org/)
+* [VoilaNorbert](https://www.voilanorbert.com) - Find anyone's contact information for lead research or talent acquisition.
+* [h8mail](https://github.com/khast3x/h8mail) - Password Breach Hunting and Email OSINT, locally or using premium services. Supports chasing down related email
+- [MailSniper](https://github.com/dafthack/MailSniper) — Searches through email in a Microsoft Exchange environment for specific terms
+- [MOSINT] - OSINT Tool For Emails
+* [Datasploit](https://github.com/DataSploit/datasploit) - Tool to perform various OSINT techniques on usernames, emails addresses, and domains.
+* [Zen](https://github.com/s0md3v/Zen) - Find email addresses of Github users.
 
 
 
@@ -828,7 +741,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [Data 24-7](https://www.data247.com/)
 * [Family Search](https://www.familysearch.org/en/)
 * [Family Tree Now](https://www.familytreenow.com/)
-* [Federal Bureau of Prisons Inmate Locator (US)](https://www.bop.gov/inmateloc/) - Find an inmate that is in the Federal Bureau of Prisons system.
+* [Federal Bureau of Prisons Inmate Locator (US)](https://www.bop.gov/inmateloc/) - Find an inmate that's in Federal prisons
 * [Fold3 (US Military Records)](https://www.fold3.com/) - Browse records of US Military members.
 * [Genealogy Bank](https://www.genealogybank.com/)
 * [Genealogy Links](https://www.genealogylinks.net/)
@@ -871,28 +784,9 @@ Perform various OSINT on Russian social media site VKontakte
 * [Zoominfo](https://www.zoominfo.com/)
 * [facesearch](http://facesaerch.com) - Search for images of a person by name.
 * [snitch.name](http://www.snitch.name)
+* [theHarvester](https://github.com/laramies/theHarvester) - E-mail, subdomain and people names harvester.
 
-#### Email Search
-* [BriteVerify Email Verification](https://www.validity.com/products/briteverify/email-list-verification/)
-* [Email Address Validator](https://www.email-validator.net/)
-* [Email Format](https://www.email-format.com/)
-* [Email Permutator+](http://metricsparrow.com/toolkit/email-permutator)
-* [EmailHippo](https://tools.verifyemailaddress.io)
-* [EmailSearch.net](http://www.email-search.org/search-emails/)
-* [Have I Been Pwned](https://haveibeenpwned.com) - Search across multiple data breaches to see if your email address has been compromised.
-* [Hunter](https://hunter.io) - Hunter lets you find email addresses in seconds and connect with the people that matter for your business.
-* [MailTester](https://mailtester.com/en/single-email-verification)
-* [MyCleanList](https://www.mycleanlist.com/)
-* [Peepmail](http://www.samy.pl/peepmail)
-* [Pipl](https://pipl.com)
-* [ReversePhoneCheck](https://www.reversephonecheck.com/)
-* [ThatsThem](https://thatsthem.com/reverse-email-lookup)
-* [FindEmails.com](https://www.findemails.com/)
-* [Verify Email](https://verify-email.org/)
-* [VoilaNorbert](https://www.voilanorbert.com) - Find anyone's contact information for lead research or talent acquisition.
-* [h8mail](https://github.com/khast3x/h8mail) - Password Breach Hunting and Email OSINT, locally or using premium services. Supports chasing down related email
-
-#### Phone Number Research
+### Phone Number Research
 
 * [National Cellular Directory](https://www.nationalcellulardirectory.com/) - Cell phone lookups. The lookup products including billions of records
 * [Reverse Phone Lookup](https://www.reversephonelookup.com/) - Detailed information about phone carrier, region, service provider, and switch information.
@@ -901,7 +795,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [Phone Validator](https://www.phonevalidator.com/index.aspx) - Pretty accurate phone lookup service, particularly good against Google Voice numbers.
 
 
-#### Company Research
+### Company Research
 
 * [AllStocksLinks](http://www.allstocks.com/links)
 * [Battle of the Internet Giants](https://influencermarketinghub.com/battle-of-internet-giants)
@@ -950,7 +844,234 @@ Perform various OSINT on Russian social media site VKontakte
 * [Vault](https://www.vault.com/)
 * [Xing](https://www.xing.com/)
 
-#### Domain and IP Research
+## Geolocation
+* [Creepy](https://github.com/ilektrojohn/creepy) - Geolocation OSINT tool.
+* [OsintStalker](https://github.com/milo2012/osintstalker) - Python script for Facebook and geolocation OSINT.
+
+### Image Search
+- [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
+- [Sherloq](https://github.com/GuidoBartoli/sherloq) — Open source forensic image analysis
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+
+
+### Document & Slides Search
+
+Search for data located on PDFs, Word documents, presentation slides, and more
+
+* [Authorstream](http://www.authorstream.com)
+* [Find-pdf-doc](http://www.findpdfdoc.com)
+* [Free Full PDF](http://www.freefullpdf.com)
+* [Offshore Leak Database](https://offshoreleaks.icij.org)
+* [PDF Search Engine](http://www.pdfsearchengine.info)
+* [RECAP](https://www.courtlistener.com/recap/)
+* [Scribd](https://www.scribd.com/)
+* [SlideShare](https://www.slideshare.net/)
+* [Slideworld](http://www.slideworld.com)
+* [soPDF.com](http://www.sopdf.com)
+
+### Dorking
+
+* [BlogSearchEngine](http://www.blogsearchengine.org)
+* [Catana-DS](https://github.com/TebbaaX/Katana) — Automates Google Dorking
+* [GooDork](https://github.com/k3170makan/GooDork) - Command line Google dorking tool.
+* [Google Adwords](https://ads.google.com/home/#!/) - Get monthly keyword volume data and stats.
+* [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - Database of Google dorks; can be used for recon.
+* [Google Trends](https://trends.google.com/trends/?geo=US) - See how many users are searching for specific keywords.
+* [Keyword Discovery](https://www.keyworddiscovery.com/)
+* [KeywordTool](https://keywordtool.io/)
+* [Keyword Spy](https://www.keywordspy.com/)
+* [Notey](https://www.notey.com/) - Blog post search engine.
+* [Outbrain](https://www.outbrain.com/publishers/)
+* [One Look Reverse Dictionary](https://www.onelook.com/reverse-dictionary.shtml)
+* [Soovle](https://soovle.com/)
+* [Twingly](https://www.twingly.com/)
+* [Ubersuggest](https://neilpatel.com/ubersuggest/)
+* [Dorksearch](https://dorksearch.com/) — Faster Google Dorking
+- [GitHub Dork Helper](https://vsec7.github.io/)
+- [Dork-cli](https://github.com/jgor/dork-cli) - Command line Google dork tool.
+* [PaGoDo](https://github.com/opsdisk/pagodo) - Passive, automated Google dorking tool.
+* [Word Tracker](https://www.wordtracker.com/)
+
+
+
+### Web History
+* [Archive.is](https://archive.is/)
+* [BlackWidow](https://softbytelabs.com/wp/blackwidow/)
+* [CashedPages](http://www.cachedpages.com)
+* [CachedView](https://cachedview.com/)
+* [DomainTools](https://account.domaintools.com/log-in/)
+* [Wayback Machine](https://archive.org/web/web.php) - Explore the history of a website.
+* [Wayback Machine Archiver](https://github.com/jsvine/waybackpack)
+
+
+#### Web Monitoring
+* [Alltop](https://alltop.com/)
+* [Awasu](https://awasu.com/)
+* [Bridge.Leslibres](https://bridge.leslibres.org/)
+* [Bridge.Suumitsu](https://bridge.suumitsu.eu/)
+* [ChangeDetect](https://www.changedetect.com/)
+* [Deltafeed](https://bitreading.com/deltafeed/)
+* [Feed43](https://feed43.com/)
+* [FeedBooster](https://www.qsensei.com/)
+* [Feed Exileed](http://feed.exileed.com/)
+* [Feed Filter Maker](https://feed.janicek.co/)
+* [Feedly](https://feedly.com/)
+* [FeedReader](https://www.feedreader.com/)
+* [FetchRSS](https://fetchrss.com/)
+* [Flipboard](https://flipboard.com/)
+* [FollowThatPage](https://www.followthatpage.com/)
+* [Google Alerts](https://www.google.com/alerts) - A content change detection and notification service.
+* [InfoMinder](https://app.infominder.com/webminder/)
+* [Mention](https://mention.com/en/)
+* [Netvibes](https://www.netvibes.com/en)
+* [Newsblur](https://newsblur.com/)
+* [OmeaReader](https://www.jetbrains.com/omea/reader/)
+* [OnWebChange](https://onwebchange.com/)
+* [Reeder](https://reederapp.com/)
+* [RSS Bridge](https://bridge.suumitsu.eu)
+* [RSS Feed Reader](https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp)
+* [RSS Micro](http://www.rssmicro.com/)
+* [RSS Search Engine](https://ctrlq.org/rss/)
+* [RSS Search Hub](https://www.rsssearchhub.com/)
+* [RSSOwl](https://www.rssowl.org/)
+* [Selfoss](https://selfoss.aditu.de/)
+* [Silobreaker](https://www.silobreaker.com/)
+* [Talkwalker](https://www.talkwalker.com/)
+* [The Old Reader](https://theoldreader.com/home)
+* [versionista](https://versionista.com/)
+* [visualping](https://visualping.io)
+* [WebSite Watcher](https://www.aignes.com/index.htm)
+* [Winds](https://winds.getstream.io/create-account)
+
+#### Image Search
+* [Baidu Images](https://image.baidu.com/)
+* [Bing Images](https://www.bing.com/images/)
+* [Flickr](https://flickr.com/)
+* [Google Image](https://images.google.com)
+* [Gramfeed](http://www.gramfeed.com/)
+* [Image Identification Project](https://www.imageidentify.com/)
+* [Image Raider](https://infringement.report/api/raider-reverse-image-search/)
+* [KarmaDecay](http://karmadecay.com/)
+* [Lycos Image Search](https://search.lycos.com/)
+* [PhotoBucket](https://app.photobucket.com/explore)
+* [Picsearch](https://www.picsearch.com/)
+* [PicTriev](http://www.pictriev.com/)
+* [TinEye](https://tineye.com) - Reverse image search engine.
+* [Websta](https://websta.me/)
+* [Worldcam](http://www.worldc.am)
+* [Yahoo Image Search](https://images.search.yahoo.com)
+* [Yandex Images](https://www.yandex.com/images)
+
+
+
+#### Social Network Analysis
+
+* [Gephi](https://gephi.org)
+* [ORA](http://www.casos.cs.cmu.edu/projects/ora/software.php)
+* [Sentinel Visualizer](https://fmsasg.com/)
+* [Visual Investigative Scenarios](https://vis.occrp.org)
+* [Wynyard Group](https://www.wynyardgroup.com/)
+
+
+#### Network Reconnaissance Tools
+
+* [ACLight](https://github.com/cyberark/ACLight) - Script for advanced discovery of sensitive Privileged Accounts - includes Shadow Admins.
+* [BuiltWith](https://builtwith.com/) - Technology lookup tool for websites.
+* [CloudFail](https://github.com/m0rtem/CloudFail) - Unmask server IP addresses hidden behind Cloudflare by searching old database records and detecting misconfigured DNS.
+* [LdapMiner](https://sourceforge.net/projects/ldapminer/) - Multiplatform LDAP enumeration utility.
+* [Mass Scan](https://github.com/robertdavidgraham/masscan) - TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes.
+* [Netdiscover](https://github.com/alexxy/netdiscover) - Simple and quick network scanning tool.
+* [Pentest-Tools](https://pentest-tools.com/home) - Online suite of various different pentest related tools.
+* [Ruler](https://github.com/sensepost/ruler) - Tool for remotely interacting with Exchange servers.
+* [Shodan](https://www.shodan.io/) - Database containing information on all accessible domains on the internet obtained from passive scanning.
+* [Spyse](https://spyse.com/) - Web research services that scan the entire internet using OSINT, to simplify the investigation of infrastructure and attack surfaces.
+* [Spyse.py](https://github.com/zeropwn/spyse.py) - Python API wrapper and command-line client for the tools hosted on spyse.com.
+* [Sublist3r](https://github.com/aboul3la/Sublist3r) - Subdomain enumeration tool for penetration testers.
+* [ldapsearch](https://linux.die.net/man/1/ldapsearch) - Linux command line utility for querying LDAP servers.
+* [nmap](https://nmap.org/) - Free security scanner for network exploration & security audits.
+* [pyShodan](https://github.com/GoVanguard/pyShodan) - Python 3 script for interacting with Shodan API (requires valid API key).
+* [smbmap](https://github.com/ShawnDEvans/smbmap) - Handy SMB enumeration tool.
+* [xprobe2](https://linux.die.net/man/1/xprobe2) - Open source operating system fingerprinting tool.
+* [zmap](https://zmap.io/) - Open source network scanner that enables researchers to easily perform Internet-wide network studies.
+  
+
+#### DNS Enumeration
+* [Amass](https://github.com/caffix/amass) - The amass tool searches Internet data sources, performs brute force subdomain enumeration, searches web archives, and uses machine learning to generate additional subdomain name guesses. DNS name resolution is performed across many public servers so the authoritative server will see the traffic coming from different locations. Written in Go.
+
+
+### OSINT Tools
+- [https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f](https://infosecwriteups.com/osint-and-top-15-open-source-intelligence-tools-f5132bf9e40f)
+
+
+**Domain**
+
+
+- [GooFuzz](https://github.com/m3n0sd0n4ld/GooFuzz) — Perform fuzzing with an OSINT approach, managing to enumerate directories, files, subdomains or parameters without leaving evidence on the target's server and by means of advanced Google searches
+- [link-JS](https://github.com/ethicalhackingplayground/linkJS) — Fetch links from JS w/ Subfinder
+- [Investigator](https://abhijithb200.github.io/investigator/) — Quickly check & gather information about the target domain name
+- [Domain Investigation Toolbox](https://cipher387.github.io/domain_investigation_toolbox/) — Gather information about the target domain name
+- [Backlink Discovery](https://app.neilpatel.com/en/seo_analyzer/backlinks) — Find backlinks, Referring domains, Link history, etc.
+- [HaxUnit](https://github.com/Bandit-HaxUnit/haxunit) — Combines multiple active/passive subdomain enumeration tools and port scanning
+- [Meg](https://github.com/tomnomnom/meg) - Quickly find hidden paths/directories without flooding traffic
+* [Datasploit](https://github.com/DataSploit/datasploit) - Tool to perform various OSINT techniques on usernames, emails addresses, and domains.
+* [FindFrontableDomains](https://github.com/rvrsh3ll/FindFrontableDomains) - Multithreaded tool for finding frontable domains.
+* [InfoByIp](https://www.infobyip.com/ipbulklookup.php) - Domain and IP bulk lookup tool.
+
+
+**Blacklisting**
+* [AbuseIPDB](https://www.abuseipdb.com/) - Search engine for blacklisted IPs or domains.
+* [AutoShun](https://riskanalytics.com/community/) - Public repository of malicious IPs and other resources.
+* [BadIPs](https://www.badips.com/) - Online blacklist lookup.
+* [Binary Defense IP Ban List](https://www.binarydefense.com/banlist.txt) - Public IP blacklist.
+* [Blocklist Ipsets](https://github.com/firehol/blocklist-ipsets) - Public IP blacklist.
+* [Spamcop](https://www.spamcop.net/bl.shtml) - IP based blacklist.
+* [Spamhaus](https://www.spamhaus.org/lookup/) - Online blacklist lookup.
+* [malc0de DNSSinkhole](http://malc0de.com/bl/) - List of domains that have been identified as distributing malware during the past 30 days.
+  
+
+
+**URL**
+- [WhereGoes](https://wheregoes.com/) — URL Redirect Checker
+- [Grey Noise](https://www.greynoise.io/) — Trace IPs, URLs, etc.
+- [Phonebook](https://phonebook.cz/) — Lists all domains, email addresses, URL for the target domain
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [PowerMeta](https://github.com/dafthack/PowerMeta) — Searches for publicly available files hosted on webpages for a particular domain
+- [Awesome Hacker Search Engines](https://github.com/edoardottt/awesome-hacker-search-engines) — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+- [assetfinder](https://github.com/tomnomnom/assetfinder): Find domains and subdomains potentially related to a given domain
+- [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+* [Censys](https://censys.io/) - Collects data on hosts and websites through daily ZMap and ZGrab scans.
+
+
+**Finding Broken Links**
+
+- [SocialHunter](https://github.com/utkusen/socialhunter) — Crawls the given URL and finds broken social media links that can be hijacked
+
+**DNS / WHOIS**
+- [https://ipspy.net/](https://ipspy.net/) - IP Lookup, WHOIS, and DNS resolver
+- [IQ WHOIS](https://iqwhois.com/advanced-search) — Advanced WHOIS Search
+- [WhoisFreaks](https://whoisfreaks.com/) — WHOIS Discovery
+- [dnsenum](https://github.com/fwaeytens/dnsenum) — Script that enumerates DNS information
+- [DNSrr](https://github.com/A3h1nt/Dnsrr) — Enumerate all information from DNS records
+* [Dnsenum](https://github.com/fwaeytens/dnsenum/) - Perl script that enumerates DNS information from a domain, attempts zone transfers, performs a brute force dictionary style attack, and then performs reverse look-ups on the results.
+* [Dnsmap](https://github.com/makefu/dnsmap/) - Passive DNS network mapper.
+* [Dnsrecon](https://github.com/darkoperator/dnsrecon/) - DNS enumeration script.
+* [Dnstracer](http://www.mavetju.org/unix/dnstracer.php) - Determines where a given DNS server gets its information from, and follows the chain of DNS servers.
+* [Passivedns-client](https://github.com/chrislee35/passivedns-client) - Library and query tool for querying several passive DNS providers.
+* [Passivedns](https://github.com/gamelinux/passivedns) - Network sniffer that logs all DNS server replies for use in a passive DNS setup.
+
+**Favicon**
+- [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
+
+**Cloud**
+* [CloudFrunt](https://github.com/MindPointGroup/cloudfrunt) - Tool for identifying misconfigured CloudFront domains.
+  
+
+### Breached Credentials
+- [breach-parse](https://github.com/hmaverickadams/breach-parse): Tool for parsing breached passwords
+* [emagnet](https://github.com/wuseman/EMAGNET) - Automated hacking tool that will find leaked databases.
+
+#### Domain & IP Research
 
 * [Accuranker](https://www.accuranker.com)
 * [ahrefs](https://ahrefs.com) - A tool for backlink research, organic traffic research, keyword research, content marketing & more.
@@ -1020,124 +1141,9 @@ Perform various OSINT on Russian social media site VKontakte
 * [ViewDNS.info](https://viewdns.info/)
 * [You Get Signal](https://www.yougetsignal.com/)
 
-#### Keywords Research
-* [Google Adwords](https://ads.google.com/home/#!/) - Get monthly keyword volume data and stats.
-* [Google Trends](https://trends.google.com/trends/?geo=US) - See how many users are searching for specific keywords.
-* [Keyword Discovery](https://www.keyworddiscovery.com/)
-* [Keyword Spy](https://www.keywordspy.com/)
-* [KeywordTool](https://keywordtool.io/)
-* [One Look Reverse Dictionary](https://www.onelook.com/reverse-dictionary.shtml)
-* [Soovle](https://soovle.com/)
-* [Ubersuggest](https://neilpatel.com/ubersuggest/)
-* [Word Tracker](https://www.wordtracker.com/)
-
-#### Web History
-  * [Archive.is](https://archive.is/)
-  * [BlackWidow](https://softbytelabs.com/wp/blackwidow/)
-  * [CashedPages](http://www.cachedpages.com)
-  * [CachedView](https://cachedview.com/)
-  * [DomainTools](https://account.domaintools.com/log-in/)
-  * [Wayback Machine](https://archive.org/web/web.php) - Explore the history of a website.
-  * [Wayback Machine Archiver](https://github.com/jsvine/waybackpack)
-
-#### Image Search
-* [Baidu Images](https://image.baidu.com/)
-* [Bing Images](https://www.bing.com/images/)
-* [Flickr](https://flickr.com/)
-* [Google Image](https://images.google.com)
-* [Gramfeed](http://www.gramfeed.com/)
-* [Image Identification Project](https://www.imageidentify.com/)
-* [Image Raider](https://infringement.report/api/raider-reverse-image-search/)
-* [KarmaDecay](http://karmadecay.com/)
-* [Lycos Image Search](https://search.lycos.com/)
-* [PhotoBucket](https://app.photobucket.com/explore)
-* [Picsearch](https://www.picsearch.com/)
-* [PicTriev](http://www.pictriev.com/)
-* [TinEye](https://tineye.com) - Reverse image search engine.
-* [Websta](https://websta.me/)
-* [Worldcam](http://www.worldc.am)
-* [Yahoo Image Search](https://images.search.yahoo.com)
-* [Yandex Images](https://www.yandex.com/images)
-
-#### Web Monitoring
-* [Alltop](https://alltop.com/)
-* [Awasu](https://awasu.com/)
-* [Bridge.Leslibres](https://bridge.leslibres.org/)
-* [Bridge.Suumitsu](https://bridge.suumitsu.eu/)
-* [ChangeDetect](https://www.changedetect.com/)
-* [Deltafeed](https://bitreading.com/deltafeed/)
-* [Feed43](https://feed43.com/)
-* [FeedBooster](https://www.qsensei.com/)
-* [Feed Exileed](http://feed.exileed.com/)
-* [Feed Filter Maker](https://feed.janicek.co/)
-* [Feedly](https://feedly.com/)
-* [FeedReader](https://www.feedreader.com/)
-* [FetchRSS](https://fetchrss.com/)
-* [Flipboard](https://flipboard.com/)
-* [FollowThatPage](https://www.followthatpage.com/)
-* [Google Alerts](https://www.google.com/alerts) - A content change detection and notification service.
-* [InfoMinder](https://app.infominder.com/webminder/)
-* [Mention](https://mention.com/en/)
-* [Netvibes](https://www.netvibes.com/en)
-* [Newsblur](https://newsblur.com/)
-* [OmeaReader](https://www.jetbrains.com/omea/reader/)
-* [OnWebChange](https://onwebchange.com/)
-* [Reeder](https://reederapp.com/)
-* [RSS Bridge](https://bridge.suumitsu.eu)
-* [RSS Feed Reader](https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp)
-* [RSS Micro](http://www.rssmicro.com/)
-* [RSS Search Engine](https://ctrlq.org/rss/)
-* [RSS Search Hub](https://www.rsssearchhub.com/)
-* [RSSOwl](https://www.rssowl.org/)
-* [Selfoss](https://selfoss.aditu.de/)
-* [Silobreaker](https://www.silobreaker.com/)
-* [Talkwalker](https://www.talkwalker.com/)
-* [The Old Reader](https://theoldreader.com/home)
-* [versionista](https://versionista.com/)
-* [visualping](https://visualping.io)
-* [WebSite Watcher](https://www.aignes.com/index.htm)
-* [Winds](https://winds.getstream.io/create-account)
-
-#### Social Network Analysis
-
-* [Gephi](https://gephi.org)
-* [ORA](http://www.casos.cs.cmu.edu/projects/ora/software.php)
-* [Sentinel Visualizer](https://fmsasg.com/)
-* [Visual Investigative Scenarios](https://vis.occrp.org)
-* [Wynyard Group](https://www.wynyardgroup.com/)
 
 
-#### Network Reconnaissance Tools
-
-* [ACLight](https://github.com/cyberark/ACLight) - Script for advanced discovery of sensitive Privileged Accounts - includes Shadow Admins.
-* [BuiltWith](https://builtwith.com/) - Technology lookup tool for websites.
-* [CloudFail](https://github.com/m0rtem/CloudFail) - Unmask server IP addresses hidden behind Cloudflare by searching old database records and detecting misconfigured DNS.
-* [LdapMiner](https://sourceforge.net/projects/ldapminer/) - Multiplatform LDAP enumeration utility.
-* [Mass Scan](https://github.com/robertdavidgraham/masscan) - TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes.
-* [Netdiscover](https://github.com/alexxy/netdiscover) - Simple and quick network scanning tool.
-* [Pentest-Tools](https://pentest-tools.com/home) - Online suite of various different pentest related tools.
-* [Ruler](https://github.com/sensepost/ruler) - Tool for remotely interacting with Exchange servers.
-* [Shodan](https://www.shodan.io/) - Database containing information on all accessible domains on the internet obtained from passive scanning.
-* [Spyse](https://spyse.com/) - Web research services that scan the entire internet using OSINT, to simplify the investigation of infrastructure and attack surfaces.
-* [Spyse.py](https://github.com/zeropwn/spyse.py) - Python API wrapper and command-line client for the tools hosted on spyse.com.
-* [Sublist3r](https://github.com/aboul3la/Sublist3r) - Subdomain enumeration tool for penetration testers.
-* [ldapsearch](https://linux.die.net/man/1/ldapsearch) - Linux command line utility for querying LDAP servers.
-* [nmap](https://nmap.org/) - Free security scanner for network exploration & security audits.
-* [pyShodan](https://github.com/GoVanguard/pyShodan) - Python 3 script for interacting with Shodan API (requires valid API key).
-* [smbmap](https://github.com/ShawnDEvans/smbmap) - Handy SMB enumeration tool.
-* [xprobe2](https://linux.die.net/man/1/xprobe2) - Open source operating system fingerprinting tool.
-* [zmap](https://zmap.io/) - Open source network scanner that enables researchers to easily perform Internet-wide network studies.
-  
-
-#### DNS Enumeration
-* [Amass](https://github.com/caffix/amass) - The amass tool searches Internet data sources, performs brute force subdomain enumeration, searches web archives, and uses machine learning to generate additional subdomain name guesses. DNS name resolution is performed across many public servers so the authoritative server will see the traffic coming from different locations. Written in Go.
-
-
-
-
-
-
-### Vulnerability / IP Scanners
+### Vulnerability Scanners
 - [Nmap](https://nmap.org/)
 - [AngryIP](https://angryip.org/)
 - [PRTG](https://www.paessler.com/tools)
@@ -1149,7 +1155,10 @@ Perform various OSINT on Russian social media site VKontakte
 - [Qualys](https://www.qualys.com/)
 - [Nginxpwner] - Tool to look for common Nginx misconfigurations and vulnerabilities
 - [Nikto](https://cirt.net/Nikto2)
-
+- [Nrich](https://gitlab.com/shodan-public/nrich) - Quickly analyze IPs and determines open ports / vulnerabilities
+- [Uncover](https://github.com/projectdiscovery/uncover) - Quickly discover exposed hosts on the internet using shodan, censys and fofa
+- [scanless](https://github.com/vesche/scanless) — Websites that performs port scans on your behalf
+- [Naabu](https://github.com/projectdiscovery/naabu) - Enumerate valid ports conducting a SYN/CONNECT scans on the host(s) ports that return a reply
 
 #### Web Scanners
 - [BurpSuite](https://portswigger.net/burp)
@@ -1165,36 +1174,55 @@ Perform various OSINT on Russian social media site VKontakte
   * [WPScan](https://wpscan.com/wordpress-security-scanner) - Black box WordPress vulnerability scanner.
 
 
+**API Keys**
+- [Clickjacker](https://serene-agnesi-57a014.netlify.app/) — Discover secret API Keys
+- [js-parse](https://github.com/l4yton/js-parse) — Looks through javascript files in a given directory and finds subdomains, URLs, parameters, custom headers, and API keys
+- [Astra](https://github.com/Sachin-v3rma/Astra) — Finds API keys, URLs, AWS Buckets, etc.
+
+
+
+**Web Cookies**
+- [CookieServe](https://www.cookieserve.com/) — Cookie Checker Tool for Websites
+
+
+**Missing Headers**
+- [securityheader.com](http://securityheader.com) — Reports headers that are missing; Exploitable
+
+
+
 #### Web Exploitation
-  * [Browser Exploitation Framework (BeEF)](https://github.com/beefproject/beef) - Command and control server for delivering exploits to commandeered Web browsers.
-  * [Commix](https://github.com/commixproject/commix) - Automated all-in-one operating system command injection and exploitation tool.
-  * [Drupwn](https://github.com/immunIT/drupwn/) - Drupal web application exploitation tool.
-  * [EyeWitness](https://github.com/FortyNorthSecurity/EyeWitness) - Tool to take screenshots of websites, provide some server header info, and identify default credentials if possible.
-  * [fimap](https://github.com/kurobeats/fimap) - Find, prepare, audit, exploit and even Google automatically for LFI/RFI bugs.
-  * [FuzzDB](https://github.com/fuzzdb-project/fuzzdb) - Dictionary of attack patterns and primitives for black-box application fault injection and resource discovery.
-  * [IIS-Shortname-Scanner](https://github.com/irsdl/IIS-ShortName-Scanner) - Command line tool to exploit the Windows IIS tilde information disclosure vulnerability.
-  * [Kadabra](https://github.com/D35m0nd142/Kadabra) - Automatic LFI exploiter and scanner.
-  * [Kadimus](https://github.com/P0cL4bs/Kadimus) - LFI scan and exploit tool.
-  * [LFISuite](https://github.com/D35m0nd142/LFISuite) - A tool designed to exploit Local File Include vulnerabilities.
-  * [libformatstr](https://github.com/hellman/libformatstr) - Python script designed to simplify format string exploits.
-  * [liffy](https://github.com/hvqzao/liffy) - LFI exploitation tool.
-  * [lyncsmash](https://github.com/nyxgeek/lyncsmash) - A collection of tools to enumerate and attack self-hosted Skype for Business and Microsoft Lync installations
-  * [NoSQLmap](https://github.com/codingo/NoSQLMap) - Automatic NoSQL injection and database takeover tool.
-  * [SQLmap](http://sqlmap.org/) - Automated SQL injection and database takeover tool.
-  * [sqlninja](http://sqlninja.sourceforge.net/) - Automated SQL injection and database takeover tool.
-  * [sslstrip2](https://github.com/LeonardoNve/sslstrip2) - SSLStrip version to defeat HSTS.
-  * [sslstrip](https://github.com/moxie0/sslstrip) - Demonstration of the HTTPS stripping attacks.
-  * [tplmap](https://github.com/epinna/tplmap) - Automatic server-side template injection and Web server takeover tool.
-  * [VHostScan](https://github.com/codingo/VHostScan) - A virtual host scanner that performs reverse lookups, can be used with pivot tools, detect catch-all scenarios, aliases and dynamic default pages.
-  * [wafw00f](https://github.com/EnableSecurity/wafw00f) - Identifies and fingerprints Web Application Firewall (WAF) products.
-  * [webscreenshot](https://github.com/maaaaz/webscreenshot) - A simple script to take screenshots from a list of websites.
-  * [weevely3](https://github.com/epinna/weevely3) - Weaponized web shell.
-  * [Wordpress Exploit Framework](https://github.com/rastating/wordpress-exploit-framework) - Ruby framework for developing and using modules which aid in the penetration testing of WordPress powered websites and systems.
-  * [WPSploit](https://github.com/espreto/wpsploit) - Exploit WordPress-powered websites with Metasploit.
+* [Browser Exploitation Framework (BeEF)](https://github.com/beefproject/beef) - Command and control server for delivering exploits to commandeered Web browsers.
+* [Commix](https://github.com/commixproject/commix) - Automated all-in-one operating system command injection and exploitation tool.
+* [Drupwn](https://github.com/immunIT/drupwn/) - Drupal web application exploitation tool.
+* [EyeWitness](https://github.com/FortyNorthSecurity/EyeWitness) - Tool to take screenshots of websites, provide some server header info, and identify default credentials if possible.
+* [fimap](https://github.com/kurobeats/fimap) - Find, prepare, audit, exploit and even Google automatically for LFI/RFI bugs.
+* [FuzzDB](https://github.com/fuzzdb-project/fuzzdb) - Dictionary of attack patterns and primitives for black-box application fault injection and resource discovery.
+* [IIS-Shortname-Scanner](https://github.com/irsdl/IIS-ShortName-Scanner) - Command line tool to exploit the Windows IIS tilde information disclosure vulnerability.
+* [Kadabra](https://github.com/D35m0nd142/Kadabra) - Automatic LFI exploiter and scanner.
+* [Kadimus](https://github.com/P0cL4bs/Kadimus) - LFI scan and exploit tool.
+* [LFISuite](https://github.com/D35m0nd142/LFISuite) - A tool designed to exploit Local File Include vulnerabilities.
+* [libformatstr](https://github.com/hellman/libformatstr) - Python script designed to simplify format string exploits.
+* [liffy](https://github.com/hvqzao/liffy) - LFI exploitation tool.
+* [lyncsmash](https://github.com/nyxgeek/lyncsmash) - A collection of tools to enumerate and attack self-hosted Skype for Business and Microsoft Lync installations
+* [NoSQLmap](https://github.com/codingo/NoSQLMap) - Automatic NoSQL injection and database takeover tool.
+* [SQLmap](http://sqlmap.org/) - Automated SQL injection and database takeover tool.
+* [sqlninja](http://sqlninja.sourceforge.net/) - Automated SQL injection and database takeover tool.
+* [sslstrip2](https://github.com/LeonardoNve/sslstrip2) - SSLStrip version to defeat HSTS.
+* [sslstrip](https://github.com/moxie0/sslstrip) - Demonstration of the HTTPS stripping attacks.
+* [tplmap](https://github.com/epinna/tplmap) - Automatic server-side template injection and Web server takeover tool.
+* [VHostScan](https://github.com/codingo/VHostScan) - A virtual host scanner that performs reverse lookups, can be used with pivot tools, detect catch-all scenarios, aliases and dynamic default pages.
+* [wafw00f](https://github.com/EnableSecurity/wafw00f) - Identifies and fingerprints Web Application Firewall (WAF) products.
+* [webscreenshot](https://github.com/maaaaz/webscreenshot) - A simple script to take screenshots from a list of websites.
+* [weevely3](https://github.com/epinna/weevely3) - Weaponized web shell.
+* [Wordpress Exploit Framework](https://github.com/rastating/wordpress-exploit-framework) - Ruby framework for developing and using modules which aid in the penetration testing of WordPress powered websites and systems.
+* [WPSploit](https://github.com/espreto/wpsploit) - Exploit WordPress-powered websites with Metasploit.
+- [Fuxploiter](https://hakin9.org/fuxploider-a-file-upload-vulnerability-scanner/) — Detecting and exploiting file upload forms flaws
+
 
 #### Extensions
 - [AutoScanWithBurp](https://bitbucket.org/clr2of8/autoscanwithburp/src/master/) — Extension to perform automated & authenticated scans against URLS
 - [OAuthScan](https://github.com/PortSwigger/oauth-scan) - Burp Suite Extension written in Java with the aim to provide some automatic security checks
+- [Mitaka](https://hakin9.org/mitaka-a-browser-extension-for-osint/) — Browser extension for OSINT
 
 
 
@@ -1217,7 +1245,7 @@ Creating, purchasing, or compromising resources that can be used to support targ
 * [The Pentesters Framework](https://github.com/trustedsec/ptf) - Distro organized around the Penetration Testing Execution Standard (PTES), providing a curated collection of utilities that eliminates often unused toolchains.
 
 
-
+- [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
 
 
 
@@ -1261,6 +1289,8 @@ Various entry vectors to gain your initial foothold within a network
 - [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
 - [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
 - [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
+- [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
+- [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
 
 
 - [CiLocks] - Android LockScreen Bypass
@@ -1282,10 +1312,62 @@ Various entry vectors to gain your initial foothold within a network
 ## Execution Tools
 Attacker-controlled code running on a local or remote system
 
+### C2 Frameworks
+Communicating with systems under your control within a victim network
+
+- [Metasploit](https://www.metasploit.com/)
+- [Cobalt Strike](https://www.cobaltstrike.com/) — Adversary simulations & red team operations
+- [Brute Ratel](https://bruteratel.com/) - A customized C2 center for Red Team and Adversary Simulation
+- [Sn1per](https://github.com/1N3/Sn1per) — All in one pentesting framework
+- [Covenant](https://github.com/cobbr/Covenant) — .NET C2 framework
+- [Silver](https://github.com/BishopFox/sliver) — Open source cross-platform red team framework
+- [Octopus](https://www.kitploit.com/2022/05/octopus-open-source-pre-operation-c2.html) — Pre-operation C2 server
+- [SilentTrinity](https://github.com/byt3bl33d3r/SILENTTRINITY) — Asynchronous, multiplayer, & multiserver C2 framework
+- [HazProne](https://securityonline.info/hazprone-cloud-pentesting-framework/) — Cloud Pentesting Framework
+- [Lockdoor Framework](https://github.com/SofianeHamlaoui/Lockdoor-Framework) — Framework that automates pentesting tools
+- [Emp3R0R](https://github.com/jm33-m0/emp3r0r) - Linux post-exploitation framework 
+- [GithubC2](https://github.com/D1rkMtr/githubC2/tree/main) - Using Github as a C2
+- [Recon-ng](https://github.com/lanmaster53/recon-ng) — Full reconnaissance framework to conduct open source web-based recon
+- [Browser Exploitation Framework (BeEF)](https://beefproject.com/) — Recovering web session information and exploiting client-side scripting
+- [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/) — Scanning tools and scripts for web application and mobile app security testing
+- [Pacu](https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/) — Scanning and exploit tools for reconnaissance and exploitation of Amazon Web Service (AWS) accounts
+Exfiltration Tools -- Stealing data from victim's infrastructure
+- [Notion Term](https://github.com/ariary/notionterm) — Embed reverse shell in Notion pages
+
+
+### Multi-Paradigm Frameworks
+  * [Armitage](http://www.fastandeasyhacking.com/) - Java-based GUI front-end for the Metasploit Framework.
+  * [AutoSploit](https://github.com/NullArray/AutoSploit) - Automated mass exploiter, which collects target by employing the Shodan.io API and programmatically chooses Metasploit exploit modules based on the Shodan query.
+  * [Faraday](https://github.com/infobyte/faraday) - Multiuser integrated pentesting environment for red teams performing cooperative penetration tests, security audits, and risk assessments.
+  * [Habu Hacking Toolkit](https://github.com/fportantier/habu) - Unified set of tools spanning passive reconnaissance, network attacks, social media monitoring, and website fingerprinting.
+  * [Mad-Metasploit](https://www.hahwul.com/p/mad-metasploit.html) - Additional scripts for Metasploit.
+  * [Metasploit](https://www.metasploit.com/) - Software for offensive security teams to help verify vulnerabilities and manage security assessments.
+  * [Mobile Security Framework (MobSF)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/) - Automated mobile application pentesting framework capable of static analysis, dynamic analysis, malware analysis, and web API testing.
+  * [Pupy](https://github.com/n1nj4sec/pupy) - Cross-platform (Windows, Linux, macOS, Android) remote administration and post-exploitation tool.
+  * [Rupture](https://github.com/dionyziz/rupture) - Multipurpose tool capable of man-in-the-middle attacks, BREACH attacks and other compression-based crypto attacks.
+
+
+### Post-Exploitation
+* [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec/) - Multipurpose post-exploitation suite containing many plugins.
+* [DBC2](https://github.com/Arno0x/DBC2/) - Multipurpose post-exploitation tool.
+* [Empire](https://github.com/EmpireProject/Empire/) - PowerShell based (Windows) and Python based (Linux/OS X) post-exploitation framework.
+* [EvilOSX](https://github.com/Marten4n6/EvilOSX/) - macOS backdoor with docker support.
+* [Fathomless](https://github.com/xor-function/fathomless) - A collection of post-exploitation tools for both Linux and Windows systems.
+* [FruityC2](https://github.com/xtr4nge/FruityC2/) - Open source, agent-based post-exploitation framework with a web UI for management.
+* [Koadic](https://github.com/zerosum0x0/koadic) - Windows post-exploitation rootkit, primarily utilizing Windows Script Host.
+* [PlugBot](https://www.redteamsecure.com/research/plugbot-hardware-botnet-research) - Can be installed onto an ARM device for Command & Control use and more.
+* [Portia](https://github.com/milo2012/portia) - Automated post-exploitation tool for lateral movement and privilege escalation.
+* [ProcessHider](https://github.com/M00nRise/ProcessHider/) - Post-exploitation tool for hiding processes.
+* [Pupy](https://github.com/n1nj4sec/pupy/) - Open source cross-platform post-exploitation tool, mostly written in Python.
+* [RemoteRecon](https://github.com/xorrior/RemoteRecon/) - Post-exploitation utility making use of multiple agents to perform different tasks.
+* [TheFatRat](https://github.com/Exploit-install/TheFatRat) - Tool designed to generate remote access trojans (backdoors) with msfvenom.arch-project/) - Can be installed onto an ARM device for Command & Control use and more.
+* [p0wnedShell](https://github.com/Cn33liz/p0wnedShell) - PowerShell based post-exploitation utility utilizing .NET.
+* [poet](https://github.com/offlinemark/poet) - Simple but multipurpose post-exploitation tool.
+
 #### Side-channel Tools
 * [ChipWhisperer](https://rtfm.newae.com/) - Complete open-source toolchain for side-channel power analysis and glitching attacks
 
-## Persistence Tools
+### Persistence Tools
 - [SillyRAT] - A Cross Platform Multifunctional (Windows/Linux/Mac) RAT
 - [Byp4Xx] - Simple Bash Script To Bypass "403 Forbidden" Messages With Well-Known Methods 
 - [Arbitrium-RAT] - A Cross-Platform, Fully Undetectable Remote Access Trojan, To Control Android, Windows And Linux
@@ -1314,18 +1396,21 @@ Gaining higher-level permissions on a system or network
 * [Windows Credentials Editor](https://www.ampliasecurity.com/research/windows-credentials-editor/) - Inspect logon sessions and add, change, list, and delete associated credentials, including Kerberos tickets.
 * [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) - Suggests Windows exploits based on patch levels.
 
-#### GNU Linux Utilities
-  * [Linus](https://cisofy.com/lynis/) - Security auditing tool for Linux and macOS.
-  * [Linux Exploit Suggester](https://github.com/InteliSecureLabs/Linux_Exploit_Suggester) - Heuristic reporting on potentially viable exploits for a given GNU/Linux system.
-  * [Mempodipper](https://www.exploit-db.com/exploits/18411/) - Linux Kernel 2.6.39 < 3.2.2 local privilege escalation script.
-  * [vuls](https://github.com/future-architect/vuls) - Linux/FreeBSD agentless vulnerability scanner.
-
+#### Linux Utilities
+* [Linus](https://cisofy.com/lynis/) - Security auditing tool for Linux and macOS.
+* [Linux Exploit Suggester](https://github.com/InteliSecureLabs/Linux_Exploit_Suggester) - Heuristic reporting on potentially viable exploits for a given GNU/Linux system.
+* [LinPeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) — Linux Privilege Escalation
+* [Mempodipper](https://www.exploit-db.com/exploits/18411/) - Linux Kernel 2.6.39 < 3.2.2 local privilege escalation script.
+* [vuls](https://github.com/future-architect/vuls) - Linux/FreeBSD agentless vulnerability scanner.
+- [Linux Priv Checker](https://github.com/linted/linuxprivchecker) — Enumerate basic system info and search for common privilege escalation vectors
 #### macOS Utilities
   * [Bella](https://github.com/khaleds-brain/Bella) - Bella is a pure python post-exploitation data mining tool & remote administration tool for macOS.
   * [Linus](https://cisofy.com/lynis/) - Security auditing tool for Linux and macOS.
 
 ## Defense Evasion Tools
 Avoiding detection throughout your compromise
+
+- [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
 
 ### Evade AV/EDR  
 - [Inceptor](https://github.com/klezVirus/inceptor) — Automate common AV/EDR bypasses
@@ -1356,7 +1441,11 @@ Stealing credentials like account names and passwords
 - [DomainPasswordSpray](https://github.com/dafthack/DomainPasswordSpray) — Perform password spraying against users in a domain
 - [LDAP Nom Nom](https://github.com/lkarlslund/ldapnomnom) - Anonymously bruteforce Active Directory usernames from Domain Controllers by abusing LDAP Ping requests (cLDAP)
 - [Masky](https://github.com/Z4kSec/Masky) - Python library providing an alternative way to remotely dump domain users' credentials thanks to an ADCS
-  
+- [SharpML] - Machine Learning Network Share Password Hunting Toolkit  
+
+
+
+
 ### Hash Cracking
 - Hash Database — Upload Hashes
   - [crackstation](https://crackstation.net/)
@@ -1373,8 +1462,9 @@ Stealing credentials like account names and passwords
 ## Discovery Tools
 Observing potential control and what’s around your entry point in order to discover how it could benefit your current objective
 
-
-
+* [Barcode Reader](https://online-barcode-reader.inliteresearch.com/) - Decode barcodes in C#, VB, Java, C\C++, Delphi, PHP and other languages.
+- [LinEnum](https://github.com/rebootuser/LinEnum) — Linux Enumeration
+- [Linux Exploit Suggester](https://github.com/mzet-/linux-exploit-suggester) — Assist in detecting security deficiencies for given Linux kernel/Linux-based machine
 ### Network Tools
   * [dnstwist](https://github.com/elceef/dnstwist) - Domain name permutation engine for detecting typo squatting, phishing and corporate espionage.
   * [dsniff](https://www.monkey.org/~dugsong/dsniff/) - Collection of tools for network auditing and pentesting.
@@ -1484,57 +1574,7 @@ Gathering information relevant to following through on the adversary's objective
   * [tgcd](http://tgcd.sourceforge.net/) - Simple Unix network utility to extend the accessibility of TCP/IP based network services beyond firewalls.
 
 
-## C2 Frameworks
-Communicating with systems under your control within a victim network
 
-- [Metasploit](https://www.metasploit.com/)
-- [Cobalt Strike](https://www.cobaltstrike.com/) — Adversary simulations & red team operations
-- [Brute Ratel](https://bruteratel.com/) - A customized C2 center for Red Team and Adversary Simulation
-- [Sn1per](https://github.com/1N3/Sn1per) — All in one pentesting framework
-- [Covenant](https://github.com/cobbr/Covenant) — .NET C2 framework
-- [Silver](https://github.com/BishopFox/sliver) — Open source cross-platform red team framework
-- [Octopus](https://www.kitploit.com/2022/05/octopus-open-source-pre-operation-c2.html) — Pre-operation C2 server
-- [SilentTrinity](https://github.com/byt3bl33d3r/SILENTTRINITY) — Asynchronous, multiplayer, & multiserver C2 framework
-- [HazProne](https://securityonline.info/hazprone-cloud-pentesting-framework/) — Cloud Pentesting Framework
-- [Lockdoor Framework](https://github.com/SofianeHamlaoui/Lockdoor-Framework) — Framework that automates pentesting tools
-- [Emp3R0R](https://github.com/jm33-m0/emp3r0r) - Linux post-exploitation framework 
-- [GithubC2](https://github.com/D1rkMtr/githubC2/tree/main) - Using Github as a C2
-- [Recon-ng](https://github.com/lanmaster53/recon-ng) — Full reconnaissance framework to conduct open source web-based recon
-- [Browser Exploitation Framework (BeEF)](https://beefproject.com/) — Recovering web session information and exploiting client-side scripting
-- [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/) — Scanning tools and scripts for web application and mobile app security testing
-- [Pacu](https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/) — Scanning and exploit tools for reconnaissance and exploitation of Amazon Web Service (AWS) accounts
-Exfiltration Tools -- Stealing data from victim's infrastructure
-- [Notion Term](https://github.com/ariary/notionterm) — Embed reverse shell in Notion pages
-
-
-### Multi-Paradigm Frameworks
-  * [Armitage](http://www.fastandeasyhacking.com/) - Java-based GUI front-end for the Metasploit Framework.
-  * [AutoSploit](https://github.com/NullArray/AutoSploit) - Automated mass exploiter, which collects target by employing the Shodan.io API and programmatically chooses Metasploit exploit modules based on the Shodan query.
-  * [Faraday](https://github.com/infobyte/faraday) - Multiuser integrated pentesting environment for red teams performing cooperative penetration tests, security audits, and risk assessments.
-  * [Habu Hacking Toolkit](https://github.com/fportantier/habu) - Unified set of tools spanning passive reconnaissance, network attacks, social media monitoring, and website fingerprinting.
-  * [Mad-Metasploit](https://www.hahwul.com/p/mad-metasploit.html) - Additional scripts for Metasploit.
-  * [Metasploit](https://www.metasploit.com/) - Software for offensive security teams to help verify vulnerabilities and manage security assessments.
-  * [Mobile Security Framework (MobSF)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/) - Automated mobile application pentesting framework capable of static analysis, dynamic analysis, malware analysis, and web API testing.
-  * [Pupy](https://github.com/n1nj4sec/pupy) - Cross-platform (Windows, Linux, macOS, Android) remote administration and post-exploitation tool.
-  * [Rupture](https://github.com/dionyziz/rupture) - Multipurpose tool capable of man-in-the-middle attacks, BREACH attacks and other compression-based crypto attacks.
-
-
-### Post-Exploitation
-* [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec/) - Multipurpose post-exploitation suite containing many plugins.
-* [DBC2](https://github.com/Arno0x/DBC2/) - Multipurpose post-exploitation tool.
-* [Empire](https://github.com/EmpireProject/Empire/) - PowerShell based (Windows) and Python based (Linux/OS X) post-exploitation framework.
-* [EvilOSX](https://github.com/Marten4n6/EvilOSX/) - macOS backdoor with docker support.
-* [Fathomless](https://github.com/xor-function/fathomless) - A collection of post-exploitation tools for both Linux and Windows systems.
-* [FruityC2](https://github.com/xtr4nge/FruityC2/) - Open source, agent-based post-exploitation framework with a web UI for management.
-* [Koadic](https://github.com/zerosum0x0/koadic) - Windows post-exploitation rootkit, primarily utilizing Windows Script Host.
-* [PlugBot](https://www.redteamsecure.com/research/plugbot-hardware-botnet-research) - Can be installed onto an ARM device for Command & Control use and more.
-* [Portia](https://github.com/milo2012/portia) - Automated post-exploitation tool for lateral movement and privilege escalation.
-* [ProcessHider](https://github.com/M00nRise/ProcessHider/) - Post-exploitation tool for hiding processes.
-* [Pupy](https://github.com/n1nj4sec/pupy/) - Open source cross-platform post-exploitation tool, mostly written in Python.
-* [RemoteRecon](https://github.com/xorrior/RemoteRecon/) - Post-exploitation utility making use of multiple agents to perform different tasks.
-* [TheFatRat](https://github.com/Exploit-install/TheFatRat) - Tool designed to generate remote access trojans (backdoors) with msfvenom.arch-project/) - Can be installed onto an ARM device for Command & Control use and more.
-* [p0wnedShell](https://github.com/Cn33liz/p0wnedShell) - PowerShell based post-exploitation utility utilizing .NET.
-* [poet](https://github.com/offlinemark/poet) - Simple but multipurpose post-exploitation tool.
 
 ## Impact 
 Disrupting availability, compromising integrity by manipulating business and operational processes
@@ -1560,6 +1600,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
 ### AWS
 - [Pacu](https://github.com/RhinoSecurityLabs/pacu)
 - [https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/](https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/)
+- [CloudFrunt](https://github.com/MindPointGroup/cloudfrunt) - Tool for identifying misconfigured CloudFront domains.
 
 ### GCP
 - [GCP IAM Privilege Escalation](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation)
@@ -1570,6 +1611,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
 ### Misc.
 - [Multi Cloud](https://github.com/nccgroup/ScoutSuite)
 - [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
+- [Recon Cloud](https://recon.cloud/) - Cloud asset scanner
 
 ## Active Directory
 - [AzureAD-Attack-Defense](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense) - Various common attack scenarios on Azure AD
@@ -1958,6 +2000,9 @@ Disrupting availability, compromising integrity by manipulating business and ope
 - [Domain Password Audit Tool (DPAT)](https://github.com/clr2of8/DPAT) — Generate password statistics from hashes from a DC and a password crack file
 - [Ping Castle](https://github.com/vletoux/pingcastle) — Assess the security level of the AD based on risk assessment and a maturity framework
 - [Domain Audit](https://github.com/0xJs/domain_audit) — Wrapper around PowerView, Impacket, PowerUpSQL and BloodHound to execute a lot of checks
+
+**Cloud**
+- [Recon Cloud](https://recon.cloud/) - Cloud asset scanner
 
 # Networking
 - [Tailscale](https://tailscale.com/)
