@@ -3,14 +3,15 @@
 
 
 # Table of Contents
-- [A Hacker's Methodology / å ˙å˚´®…ß µ´†˙ø∂ø¬ø©¥](#a-hackers-methodology--å-˙å˚´®ß-µ´†˙ø∂ø¬ø©¥)
+- [A Hacker's Methodology](#a-hackers-methodology)
 - [Homelab](#homelab)
   - [Repository](#repository)
-  - [AD Homelab](#ad-homelab)
+  - [Active Directory](#active-directory)
+  - [Reverse Engineering](#reverse-engineering)
   - [Sandbox](#sandbox)
   - [Network Access Control (NAC)](#network-access-control-nac)
   - [Vulnerable Images](#vulnerable-images)
-  - [Malware](#malware)
+  - [Malware Binaries](#malware-binaries)
   - [Reverse Engineering Guides](#reverse-engineering-guides)
   - [Malware Analysis Homelab Setup](#malware-analysis-homelab-setup)
   - [Malware Tools](#malware-tools)
@@ -18,7 +19,6 @@
   - [Security Incident Event Monitoring (SIEM)](#security-incident-event-monitoring-siem)
 - [Hacking References & Cheatsheets](#hacking-references--cheatsheets)
 - [Offensive Security Tools](#offensive-security-tools)
-  - [Planning](#planning)
   - [Reconnaissance Tools](#reconnaissance-tools)
     - [OSINT Frameworks](#osint-frameworks)
     - [Search Engines](#search-engines)
@@ -125,7 +125,7 @@
 <br>
 <hr>
 
-# A Hacker's Methodology / å ˙å˚´®…ß µ´†˙ø∂ø¬ø©¥
+# A Hacker's Methodology
 
 <br>
 
@@ -156,11 +156,12 @@
 - [SecGen](https://github.com/cliffe/SecGen) — Creates vulnerable VMs, Lab Environments, & Hacking challenges
 - [DetectionLab](https://github.com/clong/DetectionLab) - Quickly build a Windows domain with pre-loaded with security tooling and system logging configurations
 
-## AD Homelab
+## Active Directory
 - [SpookySec](https://lnkd.in/eN8V88kv)
 - [Vulnerable-AD](https://github.com/WazeHell/vulnerable-AD) - Set up a Vulnerable AD lab 
+
 ## Reverse Engineering
-#### Reverse Engineering Tools
+- [https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/](https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/) - Reverse Engineering Guide
 * [Balbuzard](https://github.com/decalage2/balbuzard) - Malware analysis tool with reverse obfuscation.
 * [binwalk](https://github.com/ReFirmLabs/binwalk) - Fast, easy to use tool for analyzing, reverse engineering, and extracting firmware images.
 * [Capstone](https://www.capstone-engine.org/) - Lightweight multi-platform, multi-architecture disassembly framework.
@@ -225,15 +226,15 @@
 ## Vulnerable Images
 - [Exploit Education](https://exploit.education) - Variety of resources to learn about vulnerability analysis, exploit development, software debugging, binary analysis, and general cyber security issues
 - [Docker Images](https://houdini.secsi.io/) - Hundreds of offensive and useful Docker images for penetration testing
-- [https://crackmes.one/](https://crackmes.one/) — Binaries for Reverse Engineering
 
-## Malware 
+## Malware Binaries
 
 - [VX-Underground](https://github.com/vxunderground/MalwareSourceCode) — Malware source code
     - [VX-Underground’s Samples](https://samples.vx-underground.org/samples/Families/)
     - [VXUnderground](https://github.com/vxunderground/MalwareSourceCode)
 - [Zeltser Resources](https://zeltser.com/malware-sample-sources/)
 - [ANY.RUN](https://app.any.run/submissions)
+- [https://crackmes.one/](https://crackmes.one/) — Binaries for Reverse Engineering
 - [Contagio Malware Dump](http://contagiodump.blogspot.com/)
 - [CAPE Sandbox](https://capesandbox.com/)
 - [Das Malwerk](http://dasmalwerk.eu/)
@@ -260,8 +261,6 @@
 - [Yomi](https://yomi.yoroi.company/)
 - [theZoo](https://github.com/ytisf/theZoo)
 
-## Reverse Engineering Guides
-- [https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/](https://c3rb3ru5d3d53c.github.io/docs/malware-analysis-beginner-guide/)
 
 ## Malware Analysis Homelab Setup
 - [KVM Malware Lab](https://c3rb3ru5d3d53c.github.io/docs/kvm-malware-lab/)
@@ -438,12 +437,12 @@
 - [ustayready](https://github.com/ustayready?tab=repositories)
 - [infosecn1nja](https://github.com/infosecn1nja?tab=repositories)
 - [https://github.com/13o-bbr-bbq/machine_learning_security/wiki](https://github.com/13o-bbr-bbq/machine_learning_security/wiki)
-
 - https://github.com/CyberSecurityUP/PenTest-Consulting-Creator
 - [Red Team Infrastructure](https://github.com/bluscreenofjeff/Red-Team-Infrastructure-Wiki)
 
 # Offensive Security Tools 
-## Planning 
+
+## Reconnaissance Tools 
 
 ### Anonymity Tools
   * [Freenet](https://freenetproject.org/) - Freenet is a peer-to-peer platform for censorship-resistant communication and publishing.
@@ -451,8 +450,6 @@
   * [OnionScan](https://onionscan.org/) - Tool for investigating the Dark Web by finding operational security issues introduced by Tor hidden service operators.
   * [Tor](https://www.torproject.org/) - Free software and onion routed overlay network that helps you defend against traffic analysis.
   * [What Every Browser Knows About You](http://webkay.robinlinus.com/) - Comprehensive detection page to test your own Web browser's configuration for privacy and identity leaks.
-
-## Reconnaissance Tools 
 
 ### OSINT Frameworks
 - [ReconSpider](https://hakin9.org/reconspider-most-advanced-open-source-intelligence-osint-framework/)
