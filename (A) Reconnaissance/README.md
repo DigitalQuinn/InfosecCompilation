@@ -66,6 +66,17 @@ Sock Puppets are aliases, fictitious persona profiles created by someone else wi
 <br>
 <hr>
 
+# Anonymity
+## Tools
+* [Freenet](https://freenetproject.org/) - Freenet is a peer-to-peer platform for censorship-resistant communication and publishing.
+* [I2P](https://geti2p.net/en/) - The Invisible Internet Project.
+* [OnionScan](https://onionscan.org/) - Tool for investigating the Dark Web by finding operational security issues introduced by Tor hidden service operators.
+* [Tor](https://www.torproject.org/) - Free software and onion routed overlay network that helps you defend against traffic analysis.
+* [What Every Browser Knows About You](http://webkay.robinlinus.com/) - Comprehensive detection page to test your own Web browser's configuration for privacy and identity leaks.
+
+<br>
+<hr>
+
 # Organization Information 
 Scanning for Organization Information, you're looking for details about an organization, such as the names of its divisions and departments, the way it runs its business, where it is located, and etc. This information may give insight to various attack surfaces such as attacking the target by specific delivery days, location vulnerabilities, etc.
 

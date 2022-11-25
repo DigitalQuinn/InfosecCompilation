@@ -1658,7 +1658,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
   * [Crits](https://crits.github.io/) - a web-based tool which combines an analytic engine with a cyber threat database .
   * [Diffy](https://github.com/Netflix-Skunkworks/diffy) - a DFIR tool developed by Netflix's SIRT that allows an investigator to quickly scope a compromise across cloud instances (Linux instances on AWS, currently) during an incident and efficiently triaging those instances for followup actions by showing differences against a baseline. 
   * [domfind](https://github.com/diogo-fernan/domfind) - domfind is a Python DNS crawler for finding identical domain names under different TLDs.
-  * [Fenrir](https://github.com/Neo23x0/Fenrir) - Fenrir is a simple IOC scanner. It allows scanning any Linux/Unix/OSX system for IOCs in plain bash. Created by the creators of THOR and LOKI.
+  * [Fenrir](https://github.com/Neo23x0/Fenrir) - Fenrir is a simple IOC scanner. It allows scanning any UNIX system for IOCs in plain bash. Created by the creators of THOR and LOKI.
   * [Fileintel](https://github.com/keithjjones/fileintel) - Pull intelligence per file hash.
   * [fuzzbox](https://github.com/iSECPartners/fuzzbox/) - Multi-codec media fuzzing tool.
   * [Google Hacking Master List](https://gist.github.com/cmartinbaughman/5877945)
