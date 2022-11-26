@@ -471,6 +471,7 @@ Gathering information that can be used to support targeting
 * [Recon-ng](https://github.com/lanmaster53/recon-ng) - Full-featured Web Reconnaissance framework written in Python.
 * [sn0int](https://github.com/kpcyrd/sn0int) - Semi-automatic OSINT framework and package manager.
 
+<hr>
 <br>
 
 ### Search Engines
@@ -529,6 +530,7 @@ Localized search engines by country
 * [Walla (Israel)](https://www.walla.co.il/)
 * [Yandex (Russia)](https://yandex.com/)
 
+<hr>
 <br>
 
 ### Source Code Search
@@ -538,6 +540,7 @@ Search by website source code
 * [SearchCode](https://searchcode.com) - Help find real world examples of functions, API's and libraries across 10+ sources
 * [Grep App](https://grep.app/) - Search for source code across a half million git repos
 
+<hr>
 <br>
 
 ### Crypto OSINT
@@ -547,6 +550,7 @@ Search by website source code
 * [Wallet Explorer](https://www.walletexplorer.com/) - Finds all known associated bitcoin addresses from a single known address.
 * [Orbit](https://github.com/s0md3v/Orbit) - Draws relationships between crypto wallets with recursive crawling of transaction history.
 
+<hr>
 <br>
 
 ### Government Record Search
@@ -556,6 +560,7 @@ Search by website source code
 * [RECAP](https://www.courtlistener.com/recap/) - Free version of PACER. Includes browser extensions for Chrome & Firefox.
 * [SSN Validator](https://www.ssnvalidator.com/index.aspx) - Confirms valid Social Security Numbers.
   
+<hr>
 <br>
 
 ### Social Media
@@ -714,6 +719,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [VK5](http://vk5.city4me.com)
 * [Дезертир](https://vk.com/app3046467)
 
+<hr>
 <br>
 
 ### Credentials 
@@ -731,6 +737,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [emagnet](https://github.com/wuseman/EMAGNET) - Automated hacking tool that will find leaked databases.
 
 
+<hr>
 <br>
 
 ### Email
@@ -758,6 +765,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [h8mail](https://github.com/khast3x/h8mail) - Password Breach Hunting and Email OSINT, locally or using premium services. Supports chasing down related email
 * [theHarvester](https://github.com/laramies/theHarvester) - E-mail, subdomain and people names harvester.
 
+<hr>
 <br>
 
 ### Personal Investigations
@@ -821,6 +829,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [snitch.name](http://www.snitch.name)
 * [theHarvester](https://github.com/laramies/theHarvester) - E-mail, subdomain and people names harvester.
 
+<hr>
 <br>
 
 ### Phone Number Research
@@ -831,6 +840,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [Twilio](https://www.twilio.com/lookup) - Look up a phone numbers carrier type, location, etc.
 * [Phone Validator](https://www.phonevalidator.com/index.aspx) - Pretty accurate phone lookup service, particularly good against Google Voice numbers.
 
+<hr>
 <br>
 
 ### Company Research
@@ -916,6 +926,7 @@ Perform various OSINT on Russian social media site VKontakte
 - [USGS Earth Explorer](https://earthexplorer.usgs.gov/)
 - [VITO Vision](https://www.vito-eodata.be/PDF/portal/Application.html#Home)
 
+<hr>
 <br>
 
 ### Image Search
@@ -940,6 +951,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [Yahoo Image Search](https://images.search.yahoo.com)
 * [Yandex Images](https://www.yandex.com/images)
 
+<hr>
 <br>
 
 ### Dorking
@@ -980,6 +992,7 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [Slideworld](http://www.slideworld.com)
 * [soPDF.com](http://www.sopdf.com)
 
+<hr>
 <br>
 
 ### Web History
@@ -991,6 +1004,8 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [DomainTools](https://account.domaintools.com/log-in/)
 * [Wayback Machine Archiver](https://github.com/jsvine/waybackpack)
 * [Wayback Machine](https://archive.org/web/web.php) - Explore the history of a website.
+
+<hr>
 <br>
 
 ### Web Monitoring
@@ -1032,10 +1047,11 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [WebSite Watcher](https://www.aignes.com/index.htm)
 * [Winds](https://winds.getstream.io/create-account)
 
+<hr>
+<br>
 
 
-
-#### Social Network Analysis
+### Social Network Analysis
 
 * [Gephi](https://gephi.org)
 * [ORA](http://www.casos.cs.cmu.edu/projects/ora/software.php)
@@ -1043,8 +1059,10 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [Visual Investigative Scenarios](https://vis.occrp.org)
 * [Wynyard Group](https://www.wynyardgroup.com/)
 
+<hr>
+<br>
 
-#### Network Reconnaissance Tools
+### Network Reconnaissance Tools
 
 * [ACLight](https://github.com/cyberark/ACLight) - Script for advanced discovery of sensitive Privileged Accounts - includes Shadow Admins.
 * [BuiltWith](https://builtwith.com/) - Technology lookup tool for websites.
@@ -1065,8 +1083,8 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [xprobe2](https://linux.die.net/man/1/xprobe2) - Open source operating system fingerprinting tool.
 * [zmap](https://zmap.io/) - Open source network scanner that enables researchers to easily perform Internet-wide network studies.
   
-
-
+<hr>
+<br>
 
 ### Domain
 * [Ahrefs](https://ahrefs.com) - A tool for backlink research, organic traffic research, keyword research, content marketing & more.
@@ -1171,6 +1189,7 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 #### Cloud
 * [CloudFrunt](https://github.com/MindPointGroup/cloudfrunt) - Tool for identifying misconfigured CloudFront domains.
   
+<hr>
 <br>
 
 ### Vulnerability Scanners
@@ -1261,7 +1280,8 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [Mitaka](https://hakin9.org/mitaka-a-browser-extension-for-osint/) — Browser extension for OSINT
 
 
-
+<hr>
+<br>
 
 
 
