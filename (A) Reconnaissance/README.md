@@ -173,7 +173,7 @@ To assist with this, look for the following:
 - [Open Wifi Map](openwifimap.net)
 - [Mozilla Stumbler](https://location.services.mozilla.com/)
 
-ghjk
+
 - [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
 
 **Satellite Images**
@@ -230,7 +230,7 @@ Threat intelligence vendors may offer paid feeds or portals that offer more data
 - [Vulners](https://vulners.com/) - Search vulnerabilities in a large database
 - [WayBackMachine](https://archive.org/web/) - View content from deleted websites
 - [Hunter](https://hunter.io/) - Search for email addresses belonging to a website
-
+- [Combine](https://github.com/mlsecproject/combine) - Open source threat intelligence feed gathering tool.
 <br>
 
 ## Searching Closed Sources 
