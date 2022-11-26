@@ -445,6 +445,8 @@ Infosec Compilation is an information security repository for offensive, defensi
 ## Reconnaissance Tools 
 Gathering information that can be used to support targeting
 
+<br>
+
 ### Anonymity Tools
 * [Freenet](https://freenetproject.org/) - Freenet is a peer-to-peer platform for censorship-resistant communication and publishing.
 * [I2P](https://geti2p.net/en/) - The Invisible Internet Project.
