@@ -880,6 +880,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [Xing](https://www.xing.com/)
 
 <br>
+<hr>
 
 ### Location
 * [Creepy](https://github.com/ilektrojohn/creepy) - Geolocation OSINT tool.
@@ -918,6 +919,23 @@ Perform various OSINT on Russian social media site VKontakte
 * [GeoTag](https://vsudo.net/tools/geotag) — Discover location of pictures
 * [Sherloq](https://github.com/GuidoBartoli/sherloq) — Open source forensic image analysis
 * [exitLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+* [Baidu Images](https://image.baidu.com/)
+* [Bing Images](https://www.bing.com/images/)
+* [Flickr](https://flickr.com/)
+* [Google Image](https://images.google.com)
+* [Gramfeed](http://www.gramfeed.com/)
+* [Image Identification Project](https://www.imageidentify.com/)
+* [Image Raider](https://infringement.report/api/raider-reverse-image-search/)
+* [KarmaDecay](http://karmadecay.com/)
+* [Lycos Image Search](https://search.lycos.com/)
+* [PhotoBucket](https://app.photobucket.com/explore)
+* [PicTriev](http://www.pictriev.com/)
+* [Picsearch](https://www.picsearch.com/)
+* [TinEye](https://tineye.com) - Reverse image search engine.
+* [Websta](https://websta.me/)
+* [Worldcam](http://www.worldc.am)
+* [Yahoo Image Search](https://images.search.yahoo.com)
+* [Yandex Images](https://www.yandex.com/images)
 
 <br>
 
@@ -1011,26 +1029,6 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [WebSite Watcher](https://www.aignes.com/index.htm)
 * [Winds](https://winds.getstream.io/create-account)
 
-
-
-#### Image Search
-* [Baidu Images](https://image.baidu.com/)
-* [Bing Images](https://www.bing.com/images/)
-* [Flickr](https://flickr.com/)
-* [Google Image](https://images.google.com)
-* [Gramfeed](http://www.gramfeed.com/)
-* [Image Identification Project](https://www.imageidentify.com/)
-* [Image Raider](https://infringement.report/api/raider-reverse-image-search/)
-* [KarmaDecay](http://karmadecay.com/)
-* [Lycos Image Search](https://search.lycos.com/)
-* [PhotoBucket](https://app.photobucket.com/explore)
-* [PicTriev](http://www.pictriev.com/)
-* [Picsearch](https://www.picsearch.com/)
-* [TinEye](https://tineye.com) - Reverse image search engine.
-* [Websta](https://websta.me/)
-* [Worldcam](http://www.worldc.am)
-* [Yahoo Image Search](https://images.search.yahoo.com)
-* [Yandex Images](https://www.yandex.com/images)
 
 
 
