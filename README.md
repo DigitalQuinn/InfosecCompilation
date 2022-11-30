@@ -44,6 +44,7 @@ Infosec Compilation is an information security repository for offensive, defensi
     * [Breached Credentials](#breached-credentials)
     * [Vulnerability Scanners](#vulnerability-scanners)
     * [Misc OSINT Tools](#misc-osint-tools)
+    * [Threat Hunting / Intelligence](#threat-hunting--intelligence)
   * [Resource Development Tools](#resource-development-tools)
     * [Pentesting OS Distributions](#pentesting-os-distributions)
     * [Multi-Paradigm Frameworks](#multi-paradigm-frameworks)
@@ -88,8 +89,10 @@ Infosec Compilation is an information security repository for offensive, defensi
   * [Compilation of Tools](#compilation-of-tools)
     * [Python](#python)
   * [Wireless Pentesting](#wireless-pentesting)
+  * [Car Hacking](#car-hacking)
   * [Adversary Emulation](#adversary-emulation)
 * [Defensive Security Tools](#defensive-security-tools)
+* [Purple Teaming / Security Training](#purple-teaming--security-training)
   * [Static Analyzers](#static-analyzers)
   * [Dynamic Analyzers](#dynamic-analyzers)
   * [Hex Editors](#hex-editors)
@@ -1015,6 +1018,7 @@ Perform various OSINT on Russian social media site VKontakte
 * [GooDork](https://github.com/k3170makan/GooDork) - Command line Google dorking tool.
 * [Google Adwords](https://ads.google.com/home/#!/) - Get monthly keyword volume data and stats.
 * [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - Database of Google dorks; can be used for recon.
+* [Google Hacking Master List](https://gist.github.com/cmartinbaughman/5877945)
 * [Google Trends](https://trends.google.com/trends/?geo=US) - See how many users are searching for specific keywords.
 * [Keyword Discovery](https://www.keyworddiscovery.com/)
 * [KeywordTool](https://keywordtool.io/)
@@ -1235,7 +1239,7 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [WhoIsHostingThis](https://www.whoishostingthis.com/)
 * [Whoisology](https://whoisology.com)
 * [WhoIsRequest](https://whoisrequest.com/)
-
+* [Domfind](https://github.com/diogo-fernan/domfind) - domfind is a Python DNS crawler for finding identical domain names under different TLDs.
 
 #### Favicon
 * [FavFreak](https://github.com/devanshbatham/FavFreak) -  Fetches the favicon.ico and hash value and generates shodan dorks
@@ -1281,6 +1285,16 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [StatsCrop](https://www.statscrop.com/)
 * [Netcraft Site Report](https://sitereport.netcraft.com/)
 * [Wappalyzer](https://www.wappalyzer.com/)
+
+#### Additional Scanners
+* [Fenrir](https://github.com/Neo23x0/Fenrir) - Fenrir is a simple IOC scanner. It allows scanning any UNIX system for IOCs in plain bash. 
+
+#### Fuzzers
+* [fuzzbox](https://github.com/iSECPartners/fuzzbox/) - Multi-codec media fuzzing tool.
+* [honggfuzz](https://github.com/google/honggfuzz/) - Security orientated fuzzing tool.
+* [melkor-android](https://github.com/anestisb/melkor-android/) - Android fuzzing tool for ELF file formats.
+* [radamsa](https://gitlab.com/akihe/radamsa) - General purpose fuzzing tool.
+
 
 
 **API Keys**
@@ -1341,6 +1355,13 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [Spiderfoot](https://www.spiderfoot.net/) - Open source OSINT automation tool with a Web UI and report visualizations
 * [Vcsmap](https://github.com/melvinsh/vcsmap) - Plugin-based tool to scan public version control systems for sensitive information.
 * [XRay](https://github.com/evilsocket/xray) - XRay is a tool for recon, mapping and OSINT gathering from public networks.
+
+
+### Threat Hunting / Intelligence
+* [Crits](https://crits.github.io/) - a web-based tool which combines an analytic engine with a cyber threat database .
+* [Fileintel](https://github.com/keithjjones/fileintel) - Pull intelligence per file hash.
+* [HELK](https://github.com/Cyb3rWard0g/HELK) - Threat Hunting platform.
+* [Hostintel](https://github.com/keithjjones/hostintel) - Pull intelligence per host.
 
 <hr>
 <br>
@@ -1452,6 +1473,8 @@ Communicating with systems under your control within a victim network
 * [Sn1per](https://github.com/1N3/Sn1per) — All in one pentesting framework
 * [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/) — Scanning tools and scripts for web application and mobile app security testing
 
+<hr>
+<br>
 
 ### Multi-Paradigm Frameworks
 * [Armitage](http://www.fastandeasyhacking.com/) - Java-based GUI front-end for the Metasploit Framework.
@@ -1464,6 +1487,8 @@ Communicating with systems under your control within a victim network
 * [Pupy](https://github.com/n1nj4sec/pupy) - Cross-platform (Windows, Linux, macOS, Android) remote administration and post-exploitation tool.
 * [Rupture](https://github.com/dionyziz/rupture) - Multipurpose tool capable of man-in-the-middle attacks, BREACH attacks and other compression-based crypto attacks.
 
+<hr>
+<br>
 
 ### Post-Exploitation
 * [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec/) - Multipurpose post-exploitation suite containing many plugins.
@@ -1484,6 +1509,8 @@ Communicating with systems under your control within a victim network
 
 #### Side-channel Tools
 * [ChipWhisperer](https://rtfm.newae.com/) - Complete open-source toolchain for side-channel power analysis and glitching attacks
+
+<br>
 
 ## Persistence Tools
 * [SillyRAT] - A Cross Platform Multifunctional (Windows/Linux/Mac) RAT
@@ -1514,9 +1541,15 @@ Gaining higher-level permissions on a system or network
 * [Windows Credentials Editor](https://www.ampliasecurity.com/research/windows-credentials-editor/) - Inspect logon sessions and add, change, list, and delete associated credentials, including Kerberos tickets.
 * [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) - Suggests Windows exploits based on patch levels.
 
+<hr>
+<br>
+
 ### Linux Utilities
 * [Bella](https://github.com/khaleds-brain/Bella) - Bella is a pure python post-exploitation data mining tool & remote administration tool for macOS.
 * [Linus](https://cisofy.com/lynis/) - Security auditing tool for Linux and macOS.
+
+<hr>
+<br>
 
 ### macOS Utilities
 * [LinPeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) — Linux Privilege Escalation
@@ -1525,6 +1558,9 @@ Gaining higher-level permissions on a system or network
 * [Mempodipper](https://www.exploit-db.com/exploits/18411/) - Linux Kernel 2.6.39 < 3.2.2 local privilege escalation script.
 * [vuls](https://github.com/future-architect/vuls) - Linux/FreeBSD agentless vulnerability scanner.
 * [Linux Priv Checker](https://github.com/linted/linuxprivchecker) — Enumerate basic system info and search for common privilege escalation vectors
+
+<hr>
+<br>
 
 ## Defense Evasion Tools
 Avoiding detection throughout your compromise
@@ -1543,14 +1579,23 @@ Avoiding detection throughout your compromise
 * [UniByAv](https://github.com/Mr-Un1k0d3r/UniByAv) - Simple obfuscator that takes raw shellcode and generates Anti-Virus friendly executables by using a brute-forcable, 32-bit XOR key.
 * [Windows-SignedBinary](https://github.com/vysecurity/Windows-SignedBinary) - AV evasion tool for binary files.
 
+<hr>
+<br>
+
 ### Packet Injection
 * [Dsniff](https://monkey.org/~dugsong/dsniff/)
 * [Ettercap](https://www.ettercap-project.org/)
 * [hping](http://hping.org/) — TCP/IP packet assembler/analyzer
 * [Scapy](https://scapy.net/) — Packet manipulation program
 
+<hr>
+<br>
+
 ### Wrappers
 * [dll4shell](https://github.com/cepxeo/dll4shell) - A collection of DLL wrappers around various shellcode injection and obfuscation techniques
+
+<hr>
+<br>
 
 ## Credential Access Tools
 Stealing credentials like account names and passwords
@@ -1563,7 +1608,8 @@ Stealing credentials like account names and passwords
 * [SharpML] - Machine Learning Network Share Password Hunting Toolkit  
 
 
-
+<hr>
+<br>
 
 ### Hash Cracking
 * [CeWL](https://digi.ninja/projects/cewl.php) - Generates custom wordlists by spidering a target's website and collecting unique words.
@@ -1576,7 +1622,9 @@ Stealing credentials like account names and passwords
 * [Mentalist](https://github.com/sc0tfree/mentalist) - Unique GUI based password wordlist generator compatible with CeWL and John the Ripper.
 - Hash Database — Upload Hashes
 
-  
+<hr>
+<br>
+
 ## Discovery Tools
 Observing potential control and what’s around your entry point in order to discover how it could benefit your current objective
 
@@ -1610,12 +1658,8 @@ Observing potential control and what’s around your entry point in order to dis
 * [UFONet](https://github.com/epsylon/ufonet/) - Layer 7 DDoS/DoS tool.
 * [Zarp](https://github.com/hatRiot/zarp/) - Multipurpose network attack tool, both wired and wireless.
 
-
-
-
-
-
-
+<hr>
+<br>
 
 ### Protocol Analyzers & Sniffers
 * [Chaosreader](http://chaosreader.sourceforge.net/) - Universal TCP/UDP snarfing tool that dumps session data from various protocols.
@@ -1626,6 +1670,8 @@ Observing potential control and what’s around your entry point in order to dis
 * [Wireshark](https://www.wireshark.org/) - Widely-used graphical, cross-platform network protocol analyzer.
 * [Yersinia](https://tools.kali.org/vulnerability-analysis/yersinia) - Packet and protocol analyzer with MITM capability.
 
+<hr>
+<br>
 
 ### Proxies & MITM Tools
 * [BetterCAP](https://www.bettercap.org/) - Modular, portable and easily extensible MITM framework.
@@ -1640,6 +1686,9 @@ Observing potential control and what’s around your entry point in order to dis
 * [Responder](https://github.com/lgandx/Responder) - Open source NBT-NS, LLMNR, and MDNS poisoner.
 * [SSH MITM](https://github.com/jtesta/ssh-mitm) - Intercept SSH connections with a proxy; all plaintext passwords and sessions are logged to disk.
 
+<hr>
+<br>
+
 ### Wireless Network Tools
 * [Aircrack-ng](https://www.aircrack-ng.org/) - Set of tools for auditing wireless networks.
 * [BetterCAP](https://www.bettercap.org/) - Wifi, Bluetooth LE, and HID reconnaissance and MITM attack framework, written in Go.
@@ -1651,6 +1700,9 @@ Observing potential control and what’s around your entry point in order to dis
 * [wifi-pickle](https://github.com/GoVanguard/wifi-pickle) - Fake access point attacks.
 * [Wifite](https://github.com/derv82/wifite) - Automated wireless attack tool.
 
+<hr>
+<br>
+
 ### TLS Tools
 * [SMTP TLS Checker](https://luxsci.com/smtp-tls-checker) - Online TLS/SSL testing suite for SMTP servers.
 * [SSL Labs](https://www.ssllabs.com/ssltest/) - Online TLS/SSL testing suite for revealing supported TLS/SSL versions and ciphers.
@@ -1660,16 +1712,25 @@ Observing potential control and what’s around your entry point in order to dis
 * [spoodle](https://github.com/avicoder/spoodle) - Mass subdomain + POODLE vulnerability scanner.
 * [tlssled](https://tools.kali.org/information-gathering/tlssled) - Comprehensive TLS/SSL testing suite.
 
+<hr>
+<br>
+
 ### Cryptography
-  * [FeatherDuster](https://github.com/nccgroup/featherduster) - Analysis tool for discovering flaws in cryptography.
-  * [rsatool](https://github.com/ius/rsatool) - Tool for calculating RSA and RSA-CRT parameters.
-  * [xortool](https://github.com/hellman/xortool/) - XOR cipher analysis tool.
+* [FeatherDuster](https://github.com/nccgroup/featherduster) - Analysis tool for discovering flaws in cryptography.
+* [rsatool](https://github.com/ius/rsatool) - Tool for calculating RSA and RSA-CRT parameters.
+* [xortool](https://github.com/hellman/xortool/) - XOR cipher analysis tool.
+
+<hr>
+<br>
 
 ## Lateral Movement Tools
 Pivoting through multiple systems and accounts to gain additional access
 
 * [Forbidden] - Bypass 4Xx HTTP Response Status Codes
 * [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg/blob/master/README-en.md) -- Used for HTTP(S) Tunneling
+
+<hr>
+<br>
 
 ## Collection Tools
 Gathering information relevant to following through on the adversary's objectives
@@ -1692,13 +1753,20 @@ Gathering information relevant to following through on the adversary's objective
 * [tgcd](http://tgcd.sourceforge.net/) - Simple Unix network utility to extend the accessibility of TCP/IP based network services beyond firewalls.
 
 
-
+<hr>
+<br>
 
 ## Impact 
 Disrupting availability, compromising integrity by manipulating business and operational processes
 
+<hr>
+<br>
+
 ## Remediation / Reporting
 * [PeTeReport] - An Open-Source Application Vulnerability Reporting Tool
+
+<hr>
+<br>
 
 ## Cloud Pentesting
 
@@ -1707,16 +1775,25 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/](https://rhinosecuritylabs.com/aws/cloud-container-attack-tool/)
 * [CloudFrunt](https://github.com/MindPointGroup/cloudfrunt) - Tool for identifying misconfigured CloudFront domains.
 
+<br>
+
 ### GCP
 * [GCP IAM Privilege Escalation](https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation)
 
+<br>
+
 ### Azure
 * [Azure](https://github.com/Azure/Stormspotter)
+
+<br>
 
 ### Misc Cloud
 * [Multi Cloud](https://github.com/nccgroup/ScoutSuite)
 * [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
 * [Recon Cloud](https://recon.cloud/) - Cloud asset scanner
+
+<hr>
+<br>
 
 ## Active Directory
 * [AzureAD-Attack-Defense](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense) - Various common attack scenarios on Azure AD
@@ -1727,6 +1804,8 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [IR Team](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse) — AD & Kerberos Abusing
 * [AD Kill Chain Attack & Defense](https://github.com/infosecn1nja/AD-Attack-Defense#discovery) - Specific TTPs to compromise AD and guidance to mitigation, detection, and prevention
 
+<hr>
+<br>
 
 ## Compilation of Tools
 * [Hacktricks](https://book.hacktricks.xyz/) - Hacking TTPs
@@ -1738,11 +1817,26 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Kitploit’s Popular Hacking Tools](https://www.kitploit.com/2021/12/top-20-most-popular-hacking-tools-in.html)
 * [Red Teaming Toolkit](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development)
 
+<hr>
+<br>
+
 ### Python
 * [Python Tool List](https://hackersonlineclub.com/python-tools/) - Compilation of security Python tools
 
+<hr>
+<br>
+
 ## Wireless Pentesting
 * [Best Wifi Hacking Tools](https://youtu.be/f2BjFilLDqQ)
+
+<hr>
+<br>
+
+## Car Hacking
+* [Kayak Car Hacking Tool](https://github.com/ParrotSec/car-hacking-tools) - Tool for Kayak car hacking.
+
+<hr>
+<br>
 
 ## Adversary Emulation
 * [APTSimulator](https://github.com/NextronSystems/APTSimulator) - A Windows Batch script that uses a set of tools and output files to make a system look as if it was compromised.
@@ -1760,13 +1854,28 @@ Disrupting availability, compromising integrity by manipulating business and ope
 <br>
 
 # Defensive Security Tools
-* [DarkTrace](https://www.darktrace.com/en/) - Cyber AI detection
+### NEED TO GO THROUGH
 * [Active Countermeasures](https://www.activecountermeasures.com/free-tools/) - Open source tools for countermeasure
-* [The CredDefense Toolkit](https://github.com/CredDefense/CredDefense/) - Detect & Prevent Brute Force attacks
+* [Cortex](https://thehive-project.org) - Cortex allows you to analyze observables such as IP and email addresses, URLs, domain names, files or hashes one by one or in bulk mode using a Web interface. Analysts can also automate these operations using its REST API.
 * [DNS Blacklist](https://bitbucket.org/ethanr/dns-blacklists/src/master/) - Detect Blacklisted IPs from your traffic
-* [Spidertrap](https://bitbucket.org/ethanr/spidertrap/src/master/) - Trap web crawlers and spiders in dynamically generated webpages
+* [DarkTrace](https://www.darktrace.com/en/) - Cyber AI detection
+* [Diffy](https://github.com/Netflix-Skunkworks/diffy) - a DFIR tool developed by Netflix's SIRT that allows an investigator to quickly scope a compromise across cloud instances (Linux instances on AWS, currently) during an incident and efficiently triaging those instances for followup actions by showing differences against a baseline. 
+* [Fileintel](https://github.com/keithjjones/fileintel) - Pull intelligence per file hash.
+* [Hindsight](https://github.com/obsidianforensics/hindsight) - Internet history forensics for Google Chrome/Chromium.
+* [Imagemounter](https://github.com/ralphje/imagemounter) - Command line utility and Python package to ease the (un)mounting of forensic disk images.
+* [Kansa](https://github.com/davehull/Kansa/) - Kansa is a modular incident response framework in Powershell.
 * [Live Forensicator](https://github.com/Johnng007/Live-Forensicator) - Powershell script to aid Incidence Response and Live Forensics
-* [https://threathunterplaybook.com/intro.html](https://threathunterplaybook.com/intro.html) - Open source project to share detection logic, adversary tradecraft and resources to make detection development more efficient
+* [Netzob](https://github.com/netzob/netzob/) - Multipurpose tool for reverse engineering, modeling, and fuzzing communciation protocols.
+* [Spidertrap](https://bitbucket.org/ethanr/spidertrap/src/master/) - Trap web crawlers and spiders in dynamically generated webpages
+* [Stalk](https://www.percona.com/doc/percona-toolkit/2.2/pt-stalk.html) - Collect forensic data about MySQL when problems occur.
+* [Stenographer](https://github.com/google/stenographer) - Stenographer is a packet capture solution which aims to quickly spool all packets to disk, then provide simple, fast access to subsets of those packets. It stores as much history as it possible, managing disk usage, and deleting when disk limits are hit. It's ideal for capturing the traffic just before and during an incident, without the need explicit need to store all of the network traffic.
+* [The CredDefense Toolkit](https://github.com/CredDefense/CredDefense/) - Detect & Prevent Brute Force attacks
+* [Threat Hunter Playbook](https://threathunterplaybook.com/intro.html) - Open source project to share detection logic, adversary tradecraft and resources to make detection development more efficient
+* [traceroute-circl](https://github.com/CIRCL/traceroute-circl) - traceroute-circl is an extended traceroute to support the activities of CSIRT (or CERT) operators. Usually CSIRT team have to handle incidents based on IP addresses received. Created by Computer Emergency Responce Center Luxembourg.
+* [RaQet](https://www.raqet.org/) - RaQet is an unconventional remote acquisition and triaging tool that allows triage a disk of a remote computer (client) that is restarted with a purposely built forensic operating system.
+* [rastrea2r](https://github.com/aboutsecurity/rastrea2r) - allows one to scan disks and memory for IOCs using YARA on Windows, Linux and OS X.
+
+
 
 
 ## Static Analyzers
@@ -2047,6 +2156,13 @@ Disrupting availability, compromising integrity by manipulating business and ope
 <hr>
 <br>
 
+## Purple Teaming / Security Training
+* [Dockerized Android](https://github.com/cybersecsi/dockerized-android) - A Container-Based framework to enable the integration of mobile components in security training platforms
+* [AzureHunter] - A Cloud Forensics Powershell Module To Run Threat Hunting Playbooks On Data From Azure And O365
+
+
+<hr>
+<br>
 
 # Governance Risk & Compliance (GRC) Tools
 * [Management Program](https://github.com/magoo/minimalist-risk-management)
