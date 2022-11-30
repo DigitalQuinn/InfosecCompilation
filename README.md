@@ -31,16 +31,19 @@ Infosec Compilation is an information security repository for offensive, defensi
     * [Credentials](#credentials)
     * [Email](#email)
     * [Personal Investigations](#personal-investigations)
-    * [Phone Numbers](#phone-number)
+    * [Phone Numbers](#phone-numbers)
     * [Company Research](#company-research)
     * [Location](#location)
     * [Image Search](#image-search)
     * [Dorking](#dorking)
     * [Web History](#web-history)
     * [Web Monitoring](#web-monitoring)
+    * [Social Network Analysis](#social-network-analysis)
+    * [Network Recon Tools](#network-recon-tools)
     * [Domain](#domain)
     * [Breached Credentials](#breached-credentials)
-    * [Vulnerability / IP Scanners](#vulnerability--ip-scanners)
+    * [Vulnerability Scanners](#vulnerability-scanners)
+    * [Misc OSINT Tools](#misc-osint-tools)
   * [Resource Development Tools](#resource-development-tools)
     * [Pentesting OS Distributions](#pentesting-os-distributions)
     * [Multi-Paradigm Frameworks](#multi-paradigm-frameworks)
@@ -48,9 +51,16 @@ Infosec Compilation is an information security repository for offensive, defensi
     * [CLI Usability](#cli-usability)
   * [Initial Access Tools](#initial-access-tools)
     * [Phishing](#phishing)
+    * [Social Engineering Tools](#social-engineering-tools)
   * [Execution Tools](#execution-tools)
+    * [C2 Frameworks](#c2-frameworks)
+    * [Multi-Paradigm Frameworks](#multi-paradigm-frameworks)
+    * [Post=Exploitation](#post-exploitation)
   * [Persistence Tools](#persistence-tools)
   * [Privilege Escalation Tools](#privilege-escalation-tools)
+    * [Windows Utliities](#windows-utilities)
+    * [Linux Utilities](#linux-utilities)
+    * [macOS Utilities](#macos-utilities)
   * [Defense Evasion Tools](#defense-evasion-tools)
     * [Evade AV / EDR](#evade-avedr)
     * [Packet Injection](#packet-injection)
@@ -59,20 +69,47 @@ Infosec Compilation is an information security repository for offensive, defensi
     * [Password Attacks](#password-attacks)
     * [Hash Cracking](#hash-cracking)
   * [Discovery Tools](#discovery-tools)
+    * [Network Tools](#network-tools)
     * [Protocol Analyzers & Sniffers](#protocol-analyzers--sniffers)
+    * [Proxies & MITM Tools](#proxies--mitm-tools)
+    * [Wireless Network Tools](#wireless-network-tools)
+    * [TLS Tools](#tls-tools)
+    * [Cryptography](#cryptography)
   * [Lateral Movement Tools](#lateral-movement-tools)
   * [Collection Tools](#collection-tools)
   * [Impact](#impact)
   * [Remediation / Reporting](#remediation--reporting)
   * [Cloud Pentesting](#cloud-pentesting)
+    * [AWS](#aws)
+    * [GCP](#gcp)
+    * [Azure](#azure)
+    * [Misc Cloud](#misc-cloud)
   * [Active Directory](#active-directory)
   * [Compilation of Tools](#compilation-of-tools)
     * [Python](#python)
-    * [Wireless Pentesting](#wireless-pentesting)
+  * [Wireless Pentesting](#wireless-pentesting)
+  * [Adversary Emulation](#adversary-emulation)
 * [Defensive Security Tools](#defensive-security-tools)
-  * [Governance Risk & Compliance (GRC)](#governance-risk--compliance-grc-tools)
-    * [Device Hardening](#device-hardening)
-    * [Auditing Tools](#auditing-tools)
+  * [Static Analyzers](#static-analyzers)
+  * [Dynamic Analyzers](#dynamic-analyzers)
+  * [Hex Editors](#hex-editors)
+  * [File Format Analysis Tools](#file-format-analysis-tools)
+  * [Forensic Tools](#forensic-tools)
+  * [Incident Response](#incident-response)
+  * [Disk Image Creation Tools](#disk-image-creation-tools)
+  * [Evidence Collection Tools](#evidence-collection-tools)
+  * [Incident Management Tools](#incident-management-tools)
+  * [Linux Forensics Distributions](#linux-forensics-distributions)
+  * [OSX Evidence Collection](#osx-evidence-collection)
+  * [Log Analysis Tools](#log-analysis-tools)
+  * [Process Dump Tools](#process-dump-tools)
+  * [Honeypot Tools](#honeypot-tools)
+  * [IDS / IPS](#ids--ips)
+  * [Timeline Tools](#timeline-tools)
+  * [Windows Evidence Collection](#windows-evidence-collection)
+* [Governance Risk & Compliance (GRC)](#governance-risk--compliance-grc-tools)
+  * [Device Hardening](#device-hardening)
+  * [Auditing Tools](#auditing-tools)
 * [Networking](#networking)
 * [Books](#books)
   * [InfoSec Books](#infosec-books)
@@ -511,6 +548,15 @@ Gathering information that can be used to support targeting
 * [WayBackMachine](https://web.archive.org/) - View content from deleted websites
 * [SearchCode](https://searchcode.com/) - Search 75 billion lines of code from 40 million projects
 * [Sarenka](https://hakin9.org/sarenka-an-osint-tool-that-gets-data-from-services-like-shodan-censys-etc-in-one-app/) — Gathers data from Shodan, censys, etc.
+* [All-in-One](https://all-io.net/) - All search engines in one
+* [AllTheInternet](https://www.alltheinternet.com/) - All in one search engine
+* [Etools](https://www.etools.ch/) - Search information retrieved from several data sources simultaneously 
+* [FaganFinder](https://www.faganfinder.com/) - Collection of tools to help you find anything online
+* [Goofram](http://www.goofram.com) - Enhanced saerch engine
+* [Myallsearch](http://www.myallsearch.com) - Enhanced saerch engine
+* [Qwant](https://www.qwant.com/) - Enhanced saerch engine
+* [Zapmeta](https://www.zapmeta.com/) - All web results
+* [iZito](https://www.izito.com/) - Combine all search engines
 
 
 #### National Search Engines
@@ -529,6 +575,14 @@ Localized search engines by country
 * [Search.ch (Switzerland)](https://www.search.ch/)
 * [Walla (Israel)](https://www.walla.co.il/)
 * [Yandex (Russia)](https://yandex.com/)
+
+#### Data Analytics
+* [OpenRefine](https://github.com/OpenRefine) - Free & open source power tool for working with messy data and improving it.
+* [Outwit](http://www.outwit.com) - Find, grab and organize all kinds of data and media from online sources.
+* [Pown Recon](https://github.com/pownjs/recon) - Target reconnaissance framework powered by graph theory.
+* [QuickCode](https://quickcode.io/) - Python and R data analysis environment.
+* [ThreatCrowd](https://www.threatcrowd.org/) - Threat search engine
+* [ThreatTracker](https://github.com/michael-yip/ThreatTracker) - Python based IOC tracker.
 
 <hr>
 <br>
@@ -832,7 +886,7 @@ Perform various OSINT on Russian social media site VKontakte
 <hr>
 <br>
 
-### Phone Number Research
+### Phone Numbers
 
 * [National Cellular Directory](https://www.nationalcellulardirectory.com/) - Cell phone lookups. The lookup products including billions of records
 * [Reverse Phone Lookup](https://www.reversephonelookup.com/) - Detailed information about phone carrier, region, service provider, and switch information.
@@ -905,26 +959,26 @@ Perform various OSINT on Russian social media site VKontakte
 * [IP Fingerprints](https://www.ipfingerprints.com/)
 
 #### Wireless
-- [ExifLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
-- [Mozilla Stumbler](https://location.services.mozilla.com/)
-- [Open Wifi Map](openwifimap.net)
-- [WiGLE](https://wigle.net/) - Find wireless networks
+* [ExifLooter](https://github.com/aydinnyunus/exifLooter) - Find geolocation on image URL and directories
+* [Mozilla Stumbler](https://location.services.mozilla.com/)
+* [Open Wifi Map](openwifimap.net)
+* [WiGLE](https://wigle.net/) - Find wireless networks
 
 
 #### Satellite Images
-- [Bhuvan Indian Geo-Platform of ISRO](https://bhuvan-app3.nrsc.gov.in/data/download/index.php)
-- [DigitalGlobe Open Data Program](https://www.maxar.com/open-data)
-- [Geo-Airbus Defense](https://www.intelligence-airbusds.com/)
-- [JAXA’s Global ALOS 3D World](https://www.eorc.jaxa.jp/ALOS/en/dataset/aw3d_e.htm)
-- [NASA Earthdata Search](https://search.earthdata.nasa.gov/search)
-- [NASA Worldview](https://www.intelligence-airbusds.com/)
-- [NOAA CLASS](https://www.avl.class.noaa.gov/saa/products/welcome;jsessionid=17337A27F6C7E8333F05035A18C26DA6)
-- [NOAA Data Access Viewer](https://coast.noaa.gov/dataviewer/#/)
-- [NOAA Digital Coast](https://coast.noaa.gov/digitalcoast/)
-- [National Institute for Space Research (INPE)](https://landsat.usgs.gov/CUB)
-- [Sentinel Open Access Hub](https://scihub.copernicus.eu/dhus/#/home)
-- [USGS Earth Explorer](https://earthexplorer.usgs.gov/)
-- [VITO Vision](https://www.vito-eodata.be/PDF/portal/Application.html#Home)
+* [Bhuvan Indian Geo-Platform of ISRO](https://bhuvan-app3.nrsc.gov.in/data/download/index.php)
+* [DigitalGlobe Open Data Program](https://www.maxar.com/open-data)
+* [Geo-Airbus Defense](https://www.intelligence-airbusds.com/)
+* [JAXA’s Global ALOS 3D World](https://www.eorc.jaxa.jp/ALOS/en/dataset/aw3d_e.htm)
+* [NASA Earthdata Search](https://search.earthdata.nasa.gov/search)
+* [NASA Worldview](https://www.intelligence-airbusds.com/)
+* [NOAA CLASS](https://www.avl.class.noaa.gov/saa/products/welcome;jsessionid=17337A27F6C7E8333F05035A18C26DA6)
+* [NOAA Data Access Viewer](https://coast.noaa.gov/dataviewer/#/)
+* [NOAA Digital Coast](https://coast.noaa.gov/digitalcoast/)
+* [National Institute for Space Research (INPE)](https://landsat.usgs.gov/CUB)
+* [Sentinel Open Access Hub](https://scihub.copernicus.eu/dhus/#/home)
+* [USGS Earth Explorer](https://earthexplorer.usgs.gov/)
+* [VITO Vision](https://www.vito-eodata.be/PDF/portal/Application.html#Home)
 
 <hr>
 <br>
@@ -1062,7 +1116,7 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 <hr>
 <br>
 
-### Network Reconnaissance Tools
+### Network Recon Tools
 
 * [ACLight](https://github.com/cyberark/ACLight) - Script for advanced discovery of sensitive Privileged Accounts - includes Shadow Admins.
 * [BuiltWith](https://builtwith.com/) - Technology lookup tool for websites.
@@ -1279,6 +1333,14 @@ Search for data located on PDFs, Word documents, presentation slides, and more
 * [OAuthScan](https://github.com/PortSwigger/oauth-scan) - Burp Suite Extension written in Java with the aim to provide some automatic security checks
 * [Mitaka](https://hakin9.org/mitaka-a-browser-extension-for-osint/) — Browser extension for OSINT
 
+### Misc OSINT Tools
+* [Photon](https://github.com/s0md3v/Photon) - Crawler designed for OSINT.
+* [GOSINT](https://github.com/Nhoya/gOSINT) - OSINT tool with multiple modules and a telegram scraper.
+* [Maltego](https://www.maltego.com/) - Proprietary software for open source intelligence and forensics, from Paterva.
+* [SecApps Recon](https://secapps.com/tools/recon/) - Information gathering and target reconnaissance tool and UI.
+* [Spiderfoot](https://www.spiderfoot.net/) - Open source OSINT automation tool with a Web UI and report visualizations
+* [Vcsmap](https://github.com/melvinsh/vcsmap) - Plugin-based tool to scan public version control systems for sensitive information.
+* [XRay](https://github.com/evilsocket/xray) - XRay is a tool for recon, mapping and OSINT gathering from public networks.
 
 <hr>
 <br>
@@ -1389,18 +1451,18 @@ Communicating with systems under your control within a victim network
 * [Silver](https://github.com/BishopFox/sliver) — Open source cross-platform red team framework
 * [Sn1per](https://github.com/1N3/Sn1per) — All in one pentesting framework
 * [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/) — Scanning tools and scripts for web application and mobile app security testing
-Exfiltration Tools -- Stealing data from victim's infrastructure
+
 
 ### Multi-Paradigm Frameworks
-  * [Armitage](http://www.fastandeasyhacking.com/) - Java-based GUI front-end for the Metasploit Framework.
-  * [AutoSploit](https://github.com/NullArray/AutoSploit) - Automated mass exploiter, which collects target by employing the Shodan.io API and programmatically chooses Metasploit exploit modules based on the Shodan query.
-  * [Faraday](https://github.com/infobyte/faraday) - Multiuser integrated pentesting environment for red teams performing cooperative penetration tests, security audits, and risk assessments.
-  * [Habu Hacking Toolkit](https://github.com/fportantier/habu) - Unified set of tools spanning passive reconnaissance, network attacks, social media monitoring, and website fingerprinting.
-  * [Mad-Metasploit](https://www.hahwul.com/p/mad-metasploit.html) - Additional scripts for Metasploit.
-  * [Metasploit](https://www.metasploit.com/) - Software for offensive security teams to help verify vulnerabilities and manage security assessments.
-  * [Mobile Security Framework (MobSF)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/) - Automated mobile application pentesting framework capable of static analysis, dynamic analysis, malware analysis, and web API testing.
-  * [Pupy](https://github.com/n1nj4sec/pupy) - Cross-platform (Windows, Linux, macOS, Android) remote administration and post-exploitation tool.
-  * [Rupture](https://github.com/dionyziz/rupture) - Multipurpose tool capable of man-in-the-middle attacks, BREACH attacks and other compression-based crypto attacks.
+* [Armitage](http://www.fastandeasyhacking.com/) - Java-based GUI front-end for the Metasploit Framework.
+* [AutoSploit](https://github.com/NullArray/AutoSploit) - Automated mass exploiter, which collects target by employing the Shodan.io API and programmatically chooses Metasploit exploit modules based on the Shodan query.
+* [Faraday](https://github.com/infobyte/faraday) - Multiuser integrated pentesting environment for red teams performing cooperative penetration tests, security audits, and risk assessments.
+* [Habu Hacking Toolkit](https://github.com/fportantier/habu) - Unified set of tools spanning passive reconnaissance, network attacks, social media monitoring, and website fingerprinting.
+* [Mad-Metasploit](https://www.hahwul.com/p/mad-metasploit.html) - Additional scripts for Metasploit.
+* [Metasploit](https://www.metasploit.com/) - Software for offensive security teams to help verify vulnerabilities and manage security assessments.
+* [Mobile Security Framework (MobSF)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/) - Automated mobile application pentesting framework capable of static analysis, dynamic analysis, malware analysis, and web API testing.
+* [Pupy](https://github.com/n1nj4sec/pupy) - Cross-platform (Windows, Linux, macOS, Android) remote administration and post-exploitation tool.
+* [Rupture](https://github.com/dionyziz/rupture) - Multipurpose tool capable of man-in-the-middle attacks, BREACH attacks and other compression-based crypto attacks.
 
 
 ### Post-Exploitation
@@ -1423,7 +1485,7 @@ Exfiltration Tools -- Stealing data from victim's infrastructure
 #### Side-channel Tools
 * [ChipWhisperer](https://rtfm.newae.com/) - Complete open-source toolchain for side-channel power analysis and glitching attacks
 
-### Persistence Tools
+## Persistence Tools
 * [SillyRAT] - A Cross Platform Multifunctional (Windows/Linux/Mac) RAT
 * [Byp4Xx] - Simple Bash Script To Bypass "403 Forbidden" Messages With Well-Known Methods 
 * [Arbitrium-RAT] - A Cross-Platform, Fully Undetectable Remote Access Trojan, To Control Android, Windows And Linux
@@ -1432,7 +1494,7 @@ Exfiltration Tools -- Stealing data from victim's infrastructure
 ## Privilege Escalation Tools
 Gaining higher-level permissions on a system or network
 
-#### Windows Utilities
+### Windows Utilities
 * [Bloodhound](https://github.com/BloodHoundAD/BloodHound/wiki) - Graphical Active Directory trust relationship explorer.
 * [Commentator](https://github.com/clr2of8/Commentator) - PowerShell script for adding comments to MS Office documents, and these comments can contain code to be executed.
 * [DeathStar](https://github.com/byt3bl33d3r/DeathStar) - Python script that uses Empire's RESTful API to automate gaining Domain Admin rights in Active Directory environments.
@@ -1452,10 +1514,11 @@ Gaining higher-level permissions on a system or network
 * [Windows Credentials Editor](https://www.ampliasecurity.com/research/windows-credentials-editor/) - Inspect logon sessions and add, change, list, and delete associated credentials, including Kerberos tickets.
 * [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) - Suggests Windows exploits based on patch levels.
 
-#### Linux Utilities
+### Linux Utilities
 * [Bella](https://github.com/khaleds-brain/Bella) - Bella is a pure python post-exploitation data mining tool & remote administration tool for macOS.
 * [Linus](https://cisofy.com/lynis/) - Security auditing tool for Linux and macOS.
-#### macOS Utilities
+
+### macOS Utilities
 * [LinPeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS) — Linux Privilege Escalation
 * [Linus](https://cisofy.com/lynis/) - Security auditing tool for Linux and macOS.
 * [Linux Exploit Suggester](https://github.com/InteliSecureLabs/Linux_Exploit_Suggester) - Heuristic reporting on potentially viable exploits for a given GNU/Linux system.
@@ -1522,30 +1585,30 @@ Observing potential control and what’s around your entry point in order to dis
 * [Linux Exploit Suggester](https://github.com/mzet-/linux-exploit-suggester) — Assist in detecting security deficiencies for given Linux kernel/Linux-based machine
 
 ### Network Tools
-  * [dnstwist](https://github.com/elceef/dnstwist) - Domain name permutation engine for detecting typo squatting, phishing and corporate espionage.
-  * [dsniff](https://www.monkey.org/~dugsong/dsniff/) - Collection of tools for network auditing and pentesting.
-  * [enumdb](https://github.com/m8r0wn/enumdb) - MySQL and MSSQL bruteforce utility
-  * [FireAway](https://github.com/tcstool/Fireaway/) - Firewall audit and security bypass tool.
-  * [impacket](https://github.com/SecureAuthCorp/impacket) - Collection of Python classes for working with network protocols.
-  * [Intercepter-NG](http://sniff.su/) - Multifunctional network toolkit.
-  * [kerbrute](https://github.com/ropnop/kerbrute) - A tool to perform Kerberos pre-auth bruteforcing.
-  * [Low Orbit Ion Cannon (LOIC)](https://github.com/NewEraCracker/LOIC/) - Open source network stress testing tool.
-  * [Ncat](https://nmap.org/ncat/) - TCP/IP command line utility supporting multiple protocols.
-  * [netcut](https://arcai.com/netcut/) - ARP based utility for discovering and spoofing MAC addresses and enabling/disabling network connectivity on network devices.
-  * [Network-Tools.com](https://network-tools.com/) - Website offering an interface to numerous basic network utilities like `ping`, `traceroute`, `whois`, and more.
-  * [patator](https://github.com/lanjelot/patator) - Patator is a multi-purpose brute-forcer, with a modular design and a flexible usage.
-  * [pig](https://github.com/rafael-santiago/pig) - GNU/Linux packet crafting tool.
-  * [Praeda](http://h.foofus.net/?page_id=218) - Automated multi-function printer data harvester for gathering usable data during security assessments.
-  * [Printer Exploitation Toolkit (PRET)](https://github.com/RUB-NDS/PRET) - Tool for printer security testing capable of IP and USB connectivity, fuzzing, and exploitation of PostScript, PJL, and PCL printer language features.
-  * [routersploit](https://github.com/threat9/routersploit) - Open source exploitation framework similar to Metasploit but dedicated to embedded devices.
-  * [scapy](https://github.com/secdev/scapy) - Python-based interactive packet manipulation program & library.
-  * [Sockstress](https://github.com/defuse/sockstress) - TCP based DoS utility.
-  * [SPARTA](https://sparta.secforce.com/) - Graphical interface offering scriptable, configurable access to existing network infrastructure scanning and enumeration tools.
-  * [Spyse](https://spyse.com/) - Web research services that scan the entire internet using OSINT, to simplify the investigation of infrastructure and attack surfaces.
-  * [Spyse.py](https://github.com/zeropwn/spyse.py) - Python API wrapper and command-line client for the tools hosted on spyse.com.
-  * [THC Hydra](https://github.com/vanhauser-thc/thc-hydra) - Online password cracking tool with built-in support for many network protocols, including HTTP, SMB, FTP, telnet, ICQ, MySQL, LDAP, IMAP, VNC, and more.
-  * [UFONet](https://github.com/epsylon/ufonet/) - Layer 7 DDoS/DoS tool.
-  * [Zarp](https://github.com/hatRiot/zarp/) - Multipurpose network attack tool, both wired and wireless.
+* [dnstwist](https://github.com/elceef/dnstwist) - Domain name permutation engine for detecting typo squatting, phishing and corporate espionage.
+* [dsniff](https://www.monkey.org/~dugsong/dsniff/) - Collection of tools for network auditing and pentesting.
+* [enumdb](https://github.com/m8r0wn/enumdb) - MySQL and MSSQL bruteforce utility
+* [FireAway](https://github.com/tcstool/Fireaway/) - Firewall audit and security bypass tool.
+* [impacket](https://github.com/SecureAuthCorp/impacket) - Collection of Python classes for working with network protocols.
+* [Intercepter-NG](http://sniff.su/) - Multifunctional network toolkit.
+* [kerbrute](https://github.com/ropnop/kerbrute) - A tool to perform Kerberos pre-auth bruteforcing.
+* [Low Orbit Ion Cannon (LOIC)](https://github.com/NewEraCracker/LOIC/) - Open source network stress testing tool.
+* [Ncat](https://nmap.org/ncat/) - TCP/IP command line utility supporting multiple protocols.
+* [netcut](https://arcai.com/netcut/) - ARP based utility for discovering and spoofing MAC addresses and enabling/disabling network connectivity on network devices.
+* [Network-Tools.com](https://network-tools.com/) - Website offering an interface to numerous basic network utilities like `ping`, `traceroute`, `whois`, and more.
+* [patator](https://github.com/lanjelot/patator) - Patator is a multi-purpose brute-forcer, with a modular design and a flexible usage.
+* [pig](https://github.com/rafael-santiago/pig) - GNU/Linux packet crafting tool.
+* [Praeda](http://h.foofus.net/?page_id=218) - Automated multi-function printer data harvester for gathering usable data during security assessments.
+* [Printer Exploitation Toolkit (PRET)](https://github.com/RUB-NDS/PRET) - Tool for printer security testing capable of IP and USB connectivity, fuzzing, and exploitation of PostScript, PJL, and PCL printer language features.
+* [routersploit](https://github.com/threat9/routersploit) - Open source exploitation framework similar to Metasploit but dedicated to embedded devices.
+* [scapy](https://github.com/secdev/scapy) - Python-based interactive packet manipulation program & library.
+* [Sockstress](https://github.com/defuse/sockstress) - TCP based DoS utility.
+* [SPARTA](https://sparta.secforce.com/) - Graphical interface offering scriptable, configurable access to existing network infrastructure scanning and enumeration tools.
+* [Spyse](https://spyse.com/) - Web research services that scan the entire internet using OSINT, to simplify the investigation of infrastructure and attack surfaces.
+* [Spyse.py](https://github.com/zeropwn/spyse.py) - Python API wrapper and command-line client for the tools hosted on spyse.com.
+* [THC Hydra](https://github.com/vanhauser-thc/thc-hydra) - Online password cracking tool with built-in support for many network protocols, including HTTP, SMB, FTP, telnet, ICQ, MySQL, LDAP, IMAP, VNC, and more.
+* [UFONet](https://github.com/epsylon/ufonet/) - Layer 7 DDoS/DoS tool.
+* [Zarp](https://github.com/hatRiot/zarp/) - Multipurpose network attack tool, both wired and wireless.
 
 
 
@@ -1558,11 +1621,10 @@ Observing potential control and what’s around your entry point in order to dis
 * [Chaosreader](http://chaosreader.sourceforge.net/) - Universal TCP/UDP snarfing tool that dumps session data from various protocols.
 * [Dshell](https://github.com/USArmyResearchLab/Dshell) - Network forensic analysis framework.
 * [Fiddler](https://www.telerik.com/fiddler) - Cross platform packet capturing tool for capturing HTTP/HTTPS traffic.
-* [netsniff-ng](https://github.com/netsniff-ng/netsniff-ng) - Swiss army knife for Linux network sniffing.
-* [tcpdump/libpcap](https://www.tcpdump.org/) - Common packet analyzer that runs under the command line.
+* [Netsniff-ng](https://github.com/netsniff-ng/netsniff-ng) - Swiss army knife for Linux network sniffing.
+* [Tcpdump/libpcap](https://www.tcpdump.org/) - Common packet analyzer that runs under the command line.
 * [Wireshark](https://www.wireshark.org/) - Widely-used graphical, cross-platform network protocol analyzer.
 * [Yersinia](https://tools.kali.org/vulnerability-analysis/yersinia) - Packet and protocol analyzer with MITM capability.
-
 
 
 ### Proxies & MITM Tools
@@ -1614,20 +1676,20 @@ Gathering information relevant to following through on the adversary's objective
 
 * [ICMPDoor](https://github.com/krabelize/icmpdoor) - Open-source reverse-shell written in Python3 and scapy
 * [iodined](https://github.com/yarrick/iodine) - DNS Tunneling
-  * [Data Exfiltration Toolkit (DET)](https://github.com/PaulSec/DET) - Proof of concept to perform data exfiltration using either single or multiple channel(s) at the same time.
-  * [dnsteal](https://github.com/m57/dnsteal/) - Fake DNS server for stealthily extracting files.
-  * [HTTPTunnel](https://github.com/larsbrinkhoff/httptunnel) - Tunnel data over pure HTTP GET/POST requests.
-  * [Iodine](https://github.com/yarrick/iodine) - Tunnel IPv4 data through a DNS server; useful for exfiltration from networks where Internet access is firewalled, but DNS queries are allowed.
-  * [MailSniper](https://github.com/dafthack/MailSniper) - Search through email in a Microsoft Exchange environment for specific terms (passwords, insider intel, network architecture information, etc.).
-  * [mallory](https://github.com/justmao945/mallory) - HTTP/HTTPS proxy over SSH.
-  * [mimikatz](https://blog.gentilkiwi.com/mimikatz) - Credentials extraction tool for Windows operating system.
-  * [mimikittenz](https://github.com/orlyjamie/mimikittenz) - Post-exploitation PowerShell tool for extracting data from process memory.
-  * [PANHunt](https://github.com/Dionach/PANhunt) - Search file systems for credit cards.
-  * [PassHunt](https://github.com/Dionach/PassHunt) - Search file systems for passwords.
-  * [ptunnel-ng](https://github.com/lnslbrty/ptunnel-ng) - Tunnel IPv4 traffic through ICMP pings; slow but stealthy when normal IP exfiltration traffic is blocked.
-  * [pwnat](https://github.com/samyk/pwnat) - Punches holes in firewalls and NATs.
-  * [spYDyishai](https://github.com/Night46/spYDyishai/) - Local Google credentials exfiltration tool, written in Python.
-  * [tgcd](http://tgcd.sourceforge.net/) - Simple Unix network utility to extend the accessibility of TCP/IP based network services beyond firewalls.
+* [Data Exfiltration Toolkit (DET)](https://github.com/PaulSec/DET) - Proof of concept to perform data exfiltration using either single or multiple channel(s) at the same time.
+* [dnsteal](https://github.com/m57/dnsteal/) - Fake DNS server for stealthily extracting files.
+* [HTTPTunnel](https://github.com/larsbrinkhoff/httptunnel) - Tunnel data over pure HTTP GET/POST requests.
+* [Iodine](https://github.com/yarrick/iodine) - Tunnel IPv4 data through a DNS server; useful for exfiltration from networks where Internet access is firewalled, but DNS queries are allowed.
+* [MailSniper](https://github.com/dafthack/MailSniper) - Search through email in a Microsoft Exchange environment for specific terms (passwords, insider intel, network architecture information, etc.).
+* [mallory](https://github.com/justmao945/mallory) - HTTP/HTTPS proxy over SSH.
+* [mimikatz](https://blog.gentilkiwi.com/mimikatz) - Credentials extraction tool for Windows operating system.
+* [mimikittenz](https://github.com/orlyjamie/mimikittenz) - Post-exploitation PowerShell tool for extracting data from process memory.
+* [PANHunt](https://github.com/Dionach/PANhunt) - Search file systems for credit cards.
+* [PassHunt](https://github.com/Dionach/PassHunt) - Search file systems for passwords.
+* [ptunnel-ng](https://github.com/lnslbrty/ptunnel-ng) - Tunnel IPv4 traffic through ICMP pings; slow but stealthy when normal IP exfiltration traffic is blocked.
+* [pwnat](https://github.com/samyk/pwnat) - Punches holes in firewalls and NATs.
+* [spYDyishai](https://github.com/Night46/spYDyishai/) - Local Google credentials exfiltration tool, written in Python.
+* [tgcd](http://tgcd.sourceforge.net/) - Simple Unix network utility to extend the accessibility of TCP/IP based network services beyond firewalls.
 
 
 
@@ -1637,19 +1699,6 @@ Disrupting availability, compromising integrity by manipulating business and ope
 
 ## Remediation / Reporting
 * [PeTeReport] - An Open-Source Application Vulnerability Reporting Tool
-
-
-## Miscellaneous
-* [Dockerized Android](https://github.com/cybersecsi/dockerized-android) - A Container-Based framework to enable the integration of mobile components in security training platforms
-* [Viper] - Intranet pentesting tool with Webui
-* [AzureHunter] - A Cloud Forensics Powershell Module To Run Threat Hunting Playbooks On Data From Azure And O365
-* [403Bypasser] - Automates The Techniques Used To Circumvent Access Control Restrictions On Target Pages
-* [Smuggler] - An HTTP Request Smuggling / Desync Testing Tool
-
-## Malicious
-* [fireELF](https://github.com/rek7/fireELF) — Inject fileless exploit payloads into a Linux host
-* [RouterSploit](https://github.com/threat9/routersploit) — Vulnerability scanning and exploit modules targeting embedded systems
-
 
 ## Cloud Pentesting
 
@@ -1664,7 +1713,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
 ### Azure
 * [Azure](https://github.com/Azure/Stormspotter)
 
-### Misc.
+### Misc Cloud
 * [Multi Cloud](https://github.com/nccgroup/ScoutSuite)
 * [Multi Cloud](https://github.com/aquasecurity/cloudsploit)
 * [Recon Cloud](https://recon.cloud/) - Cloud asset scanner
@@ -1707,46 +1756,8 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Red Team Automation ](RTA)](https://github.com/endgameinc/RTA) - RTA provides a framework of scripts designed to allow blue teams to test their detection capabilities against malicious tradecraft, modeled after MITRE ATT&CK.
 * [RedHunt-OS](https://github.com/redhuntlabs/RedHunt-OS) - A virtual machine for adversary emulation and threat hunting.
 
-# Misc 
-#### Other
-  * [BruteX Wordlists](https://github.com/coreb1t/BruteX/tree/master/wordlists) - Wordlist repo.
-  * [Cortex](https://thehive-project.org) - Cortex allows you to analyze observables such as IP and email addresses, URLs, domain names, files or hashes one by one or in bulk mode using a Web interface. Analysts can also automate these operations using its REST API.
-  * [Crits](https://crits.github.io/) - a web-based tool which combines an analytic engine with a cyber threat database .
-  * [Diffy](https://github.com/Netflix-Skunkworks/diffy) - a DFIR tool developed by Netflix's SIRT that allows an investigator to quickly scope a compromise across cloud instances (Linux instances on AWS, currently) during an incident and efficiently triaging those instances for followup actions by showing differences against a baseline. 
-  * [domfind](https://github.com/diogo-fernan/domfind) - domfind is a Python DNS crawler for finding identical domain names under different TLDs.
-  * [Fenrir](https://github.com/Neo23x0/Fenrir) - Fenrir is a simple IOC scanner. It allows scanning any UNIX system for IOCs in plain bash. Created by the creators of THOR and LOKI.
-  * [Fileintel](https://github.com/keithjjones/fileintel) - Pull intelligence per file hash.
-  * [fuzzbox](https://github.com/iSECPartners/fuzzbox/) - Multi-codec media fuzzing tool.
-  * [Google Hacking Master List](https://gist.github.com/cmartinbaughman/5877945)
-  * [HELK](https://github.com/Cyb3rWard0g/HELK) - Threat Hunting platform.
-  * [Hindsight](https://github.com/obsidianforensics/hindsight) - Internet history forensics for Google Chrome/Chromium.
-  * [honggfuzz](https://github.com/google/honggfuzz/) - Security orientated fuzzing tool.
-  * [Hostintel](https://github.com/keithjjones/hostintel) - Pull intelligence per host.
-  * [imagemounter](https://github.com/ralphje/imagemounter) - Command line utility and Python package to ease the (un)mounting of forensic disk images.
-  * [Kansa](https://github.com/davehull/Kansa/) - Kansa is a modular incident response framework in Powershell.
-  * [Kayak Car Hacking Tool](https://github.com/ParrotSec/car-hacking-tools) - Tool for Kayak car hacking.
-  * [melkor-android](https://github.com/anestisb/melkor-android/) - Android fuzzing tool for ELF file formats.
-  * [Netzob](https://github.com/netzob/netzob/) - Multipurpose tool for reverse engineering, modeling, and fuzzing communciation protocols.
-  * [radamsa](https://gitlab.com/akihe/radamsa) - General purpose fuzzing tool.
-  * [RaQet](https://www.raqet.org/) - RaQet is an unconventional remote acquisition and triaging tool that allows triage a disk of a remote computer (client) that is restarted with a purposely built forensic operating system.
-  * [rastrea2r](https://github.com/aboutsecurity/rastrea2r) - allows one to scan disks and memory for IOCs using YARA on Windows, Linux and OS X.
-  * [ROPgadget](https://github.com/JonathanSalwan/ROPgadget/) - Python based tool to aid in ROP exploitation.
-  * [Shellen](https://github.com/merrychap/shellen) - Interactive shellcoding environment.
-  * [sqhunter](https://github.com/0x4d31/sqhunter) - a threat hunter based on osquery and Salt Open (SaltStack) that can issue ad-hoc or distributed queries without the need for osquery's tls plugin. sqhunter allows you to query open network sockets and check them against threat intelligence sources. 
-  * [Stalk](https://www.percona.com/doc/percona-toolkit/2.2/pt-stalk.html) - Collect forensic data about MySQL when problems occur.
-  * [Stenographer](https://github.com/google/stenographer) - Stenographer is a packet capture solution which aims to quickly spool all packets to disk, then provide simple, fast access to subsets of those packets. It stores as much history as it possible, managing disk usage, and deleting when disk limits are hit. It's ideal for capturing the traffic just before and during an incident, without the need explicit need to store all of the network traffic.
-  * [Sulley](https://github.com/OpenRCE/sulley/) - Fuzzing engine and framework.
-  * [traceroute-circl](https://github.com/CIRCL/traceroute-circl) - traceroute-circl is an extended traceroute to support the activities of CSIRT (or CERT) operators. Usually CSIRT team have to handle incidents based on IP addresses received. Created by Computer Emergency Responce Center Luxembourg.
-  * [Zulu](https://github.com/nccgroup/Zulu/) - Interactive fuzzer.
-  
-### Our Open Source Tools
-  * [Legion](https://github.com/GoVanguard/legion) - Legion is an open source, easy-to-use, super-extensible and semi-automated network penetration testing tool that aids in discovery, reconnaissance and exploitation of information systems.
-  * [SecretScanner](https://github.com/GoVanguard/SecretScanner) - Searches for common keys and secrets in a stupidly simple way.
-  * [SecretSearcher](https://github.com/GoVanguard/SecretSearcher) - Python re-implementation of the classic SecretScanner shell script.
-  * [log4jShell Scanner](https://github.com/GoVanguard/Log4jShell_Scanner) - This shell script scans a vulnerable web application that is using a version of apache-log4j < 2.15.0.
-  * [WinPrivHeadStart](https://github.com/GoVanguard/script-win-privescalate-headstart) - The lazy mans local Windows privilege escalation script.
-
- <br> 
+<hr>
+<br>
 
 # Defensive Security Tools
 * [DarkTrace](https://www.darktrace.com/en/) - Cyber AI detection
@@ -1863,7 +1874,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Magnet RAM Capture](https://www.magnetforensics.com/resources/magnet-ram-capture/) - Magnet RAM Capture is a free imaging tool designed to capture the physical memory of a suspect’s computer. Supports recent versions of Windows.
 * [OSForensics](https://www.osforensics.com/) - OSForensics can acquire live memory on 32bit and 64bit systems. A dump of an individual process’s memory space or physical memory dump can be done.
 
-#### Incident Response
+### Incident Response
 * [APT Simulator](https://github.com/NextronSystems/APTSimulator) - Windows Batch Script that makes a system appear compromised.
 * [Atomic Red Team](https://atomicredteam.io/) - Set of premade tests to evaluate security posture.
 * [AutoTTP](https://github.com/jymcheong/AutoTTP) - Automated Tactics Techniques & Procedures, for re-issuing complex tasks.
@@ -1915,72 +1926,67 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Zentral](https://github.com/zentralopensource/zentral) - combines osquery's powerful endpoint inventory features with a flexible notification and action framework. This enables one to identify and react to changes on OS X and Linux clients.
 
 
-#### Disk Image Creation Tools
+### Disk Image Creation Tools
+* [AccessData FTK Imager](https://accessdata.com/product-download/?/support/adownloads#FTKImager) - AccessData FTK Imager is a forensics tool whose main purpose is to preview recoverable data from a disk of any kind. FTK Imager can also acquire live memory and paging file on 32bit and 64bit systems.
+* [Bitscout](https://github.com/vitaly-kamluk/bitscout) - Bitscout by Vitaly Kamluk helps you build your fully-trusted customizable LiveCD/LiveUSB image to be used for remote digital forensics, or perhaps any other task of your choice. It is meant to be transparent and monitorable by the owner of the system, forensically sound, customizable and compact.
+* [GetData Forensic Imager](https://getdataforensics.com/product/fex-imager/) - GetData Forensic Imager is a Windows based program that will acquire, convert, or verify a forensic image in one of the following common forensic file formats.
+* [Guymager](https://guymager.sourceforge.io/) - Guymager is a free forensic imager for media acquisition on Linux.
+* [Magnet ACQUIRE](https://www.magnetforensics.com/resources/magnet-acquire/) - ACQUIRE by Magnet Forensics allows various types of disk acquisitions to be performed on Windows, Linux, and OS X as well as mobile operating systems.
 
-  * [AccessData FTK Imager](https://accessdata.com/product-download/?/support/adownloads#FTKImager) - AccessData FTK Imager is a forensics tool whose main purpose is to preview recoverable data from a disk of any kind. FTK Imager can also acquire live memory and paging file on 32bit and 64bit systems.
-  * [Bitscout](https://github.com/vitaly-kamluk/bitscout) - Bitscout by Vitaly Kamluk helps you build your fully-trusted customizable LiveCD/LiveUSB image to be used for remote digital forensics, or perhaps any other task of your choice. It is meant to be transparent and monitorable by the owner of the system, forensically sound, customizable and compact.
-  * [GetData Forensic Imager](https://getdataforensics.com/product/fex-imager/) - GetData Forensic Imager is a Windows based program that will acquire, convert, or verify a forensic image in one of the following common forensic file formats.
-  * [Guymager](https://guymager.sourceforge.io/) - Guymager is a free forensic imager for media acquisition on Linux.
-  * [Magnet ACQUIRE](https://www.magnetforensics.com/resources/magnet-acquire/) - ACQUIRE by Magnet Forensics allows various types of disk acquisitions to be performed on Windows, Linux, and OS X as well as mobile operating systems.
+### Evidence Collection Tools
+* [Bulk_extractor](https://github.com/simsong/bulk_extractor) - bulk_extractor is a computer forensics tool that scans a disk image, a file, or a directory of files and extracts useful information without parsing the file system or file system structures. Because of ignoring the file system structure, the program distinguishes itself in terms of speed and thoroughness.
+* [Cold Disk Quick Response](https://github.com/orlikoski/CDQR) - uses a streamlined list of parsers to quickly analyze a forenisic image file, dd, E01, .vmdk, etc, and output nine reports.
+* [Ir-rescue](https://github.com/diogo-fernan/ir-rescue) -   -ir-rescue - is a Windows Batch script and a Unix Bash script to comprehensively collect host forensic data during incident response.
+* [Live Response Collection](https://www.brimorlabs.com/tools/) - The Live Response collection by BriMor Labs is an automated tool that collects volatile data from Windows, OSX, and   -nix based operating systems.
 
-#### Evidence Collection Tools
-
-  * [Bulk_extractor](https://github.com/simsong/bulk_extractor) - bulk_extractor is a computer forensics tool that scans a disk image, a file, or a directory of files and extracts useful information without parsing the file system or file system structures. Because of ignoring the file system structure, the program distinguishes itself in terms of speed and thoroughness.
-  * [Cold Disk Quick Response](https://github.com/orlikoski/CDQR) - uses a streamlined list of parsers to quickly analyze a forenisic image file, dd, E01, .vmdk, etc, and output nine reports.
-  * [Ir-rescue](https://github.com/diogo-fernan/ir-rescue) -   -ir-rescue - is a Windows Batch script and a Unix Bash script to comprehensively collect host forensic data during incident response.
-  * [Live Response Collection](https://www.brimorlabs.com/tools/) - The Live Response collection by BriMor Labs is an automated tool that collects volatile data from Windows, OSX, and   -nix based operating systems.
-
-#### Incident Management Tools
-
-  * [Cortex XSOAR](https://www.paloaltonetworks.com/cortex/xsoar) - Security orchestration tool. Formerly Demisto community edition. Offers full Incident lifecycle management, Incident Closure Reports, team assignments and collaboration, and many integrations to enhance automations, like Active Directory, PagerDuty, Jira and much more.
-  * [CyberCPR](https://www.cybercpr.com) - A community and commercial incident management tool with Need-to-Know built in to support GDPR compliance while handling sensitive incidents.
-  * [Cyphon](https://www.cyphon.io/) - Cyphon eliminates the headaches of incident management by streamlining a multitude of related tasks through a single platform. It receives, processes and triages events to provide an all-encompassing solution for your analytic workflow — aggregating data, bundling and prioritizing alerts, and empowering analysts to investigate and document incidents.
-  * [FIR](https://github.com/certsocietegenerale/FIR/) - Fast Incident Response, FIR, is an cybersecurity incident management platform designed with agility and speed in mind. It allows for easy creation, tracking, and reporting of cybersecurity incidents and is useful for CSIRTs, CERTs and SOCs alike.
-  * [RTIR](https://bestpractical.com/rtir/) - Request Tracker for Incident Response, RTIR, is the premier open source incident handling system targeted for computer security teams. We worked with over a dozen CERT and CSIRT teams around the world to help you handle the ever-increasing volume of incident reports. RTIR builds on all the features of Request Tracker.
-  * [SCOT](https://getscot.sandia.gov/) - Sandia Cyber Omni Tracker, SCOT, is an Incident Response collaboration and knowledge capture tool focused on flexibility and ease of use. Our goal is to add value to the incident response process without burdening the user.
-  * [Threat_note](https://github.com/DefensePointSecurity/threat_note) - A lightweight investigation notebook that allows security researchers the ability to register and retrieve indicators related to their research.
-
-#### Linux Forensics Distributions
-
-  * [ADIA](https://forensics.cert.org/#ADIA) - The Appliance for Digital Investigation and Analysis, ADIA, is a VMware-based appliance used for digital investigation and acquisition and is built entirely from public domain software. Among the tools contained in ADIA are Autopsy, the Sleuth Kit, the Digital Forensics Framework, log2timeline, Xplico, and Wireshark. Most of the system maintenance uses Webmin. It is designed for small-to-medium sized digital investigations and acquisitions. The appliance runs under Linux, Windows, and Mac OS. Both i386 32-bit and x86_64 versions are available.
-  * [CAINE](https://www.caine-live.net/index.html) - The Computer Aided Investigative Environment, CAINE, contains numerous tools that help investigators during their analysis, including forensic evidence collection.
-  * [CCF-VM](https://github.com/orlikoski/Skadi) - CyLR CDQR Forensics Virtual Machine, CCF-VM: An all-in-one solution to parsing collected data, making it easily searchable with built-in common searches, enable searching of single and multiple hosts simultaneously.
-  * [DEFT](http://na.mirror.garr.it/mirrors/deft/) - The Digital Evidence & Forensics Toolkit, DEFT, is a Linux distribution made for computer forensic evidence collection. It comes bundled with the Digital Advanced Response Toolkit, DART, for Windows. A light version of DEFT, called DEFT Zero, is also available, which is focused primarily on forensically sound evidence collection.
-  * [NST - Network Security Toolkit](https://sourceforge.net/projects/nst/files/latest/download?source=files) - Linux distribution that includes a vast collection of best-of-breed open source network security applications useful to the network security professional.
-  * [PALADIN](https://sumuri.com/software/paladin/) - PALADIN is a modified Linux distribution to perform various forenics task in a forensically sound manner. It comes with many open source forensics tools included.
-  * [Security Onion](https://github.com/Security-Onion-Solutions/security-onion) - Security Onion is a special Linux distro aimed at network security monitoring featuring advanced analysis tools.
-  * [SIFT Workstation](http://digital-forensics.sans.org/community/downloads) - The SANS Investigative Forensic Toolkit, SIFT, Workstation demonstrates that advanced incident response capabilities and deep dive digital forensic techniques to intrusions can be accomplished using cutting-edge open-source tools that are freely available and frequently updated.
-
-#### Linux Evidence Collection
-
-  * [FastIR Collector Linux](https://github.com/SekoiaLab/Fastir_Collector_Linux) - FastIR for Linux collects different artefacts on live Linux and records the results in csv files.
-
-#### Log Analysis Tools
-
-  * [Logdissect](https://github.com/dogoncouch/logdissect) - A CLI utility and Python API for analyzing log files and other data.
-  * [Lorg](https://github.com/jensvoid/lorg) - a tool for advanced HTTPD logfile security analysis and forensics.
-
-#### OSX Evidence Collection
-
-  * [Knockknock](https://wiert.me/2020/02/10/github-synack-knockknock-whos-there/) - Displays persistent items, scripts, commands, binaries, etc., that are set to execute automatically on OSX.
-  * [Mac_apt - macOS Artifact Parsing Tool](https://github.com/ydkhatri/mac_apt) - Plugin based forensics framework for quick mac triage that works on live machines, disk images or individual artifact files.
-  * [OSX Auditor](https://github.com/jipegit/OSXAuditor) - OSX Auditor is a free Mac OS X computer forensics tool.
-  * [OSX Collector](https://github.com/yelp/osxcollector) - An OSX Auditor offshoot for live response.
+### Incident Management Tools
+* [Cortex XSOAR](https://www.paloaltonetworks.com/cortex/xsoar) - Security orchestration tool. Formerly Demisto community edition. Offers full Incident lifecycle management, Incident Closure Reports, team assignments and collaboration, and many integrations to enhance automations, like Active Directory, PagerDuty, Jira and much more.
+* [CyberCPR](https://www.cybercpr.com) - A community and commercial incident management tool with Need-to-Know built in to support GDPR compliance while handling sensitive incidents.
+* [Cyphon](https://www.cyphon.io/) - Cyphon eliminates the headaches of incident management by streamlining a multitude of related tasks through a single platform. It receives, processes and triages events to provide an all-encompassing solution for your analytic workflow — aggregating data, bundling and prioritizing alerts, and empowering analysts to investigate and document incidents.
+* [FIR](https://github.com/certsocietegenerale/FIR/) - Fast Incident Response, FIR, is an cybersecurity incident management platform designed with agility and speed in mind. It allows for easy creation, tracking, and reporting of cybersecurity incidents and is useful for CSIRTs, CERTs and SOCs alike.
+* [RTIR](https://bestpractical.com/rtir/) - Request Tracker for Incident Response, RTIR, is the premier open source incident handling system targeted for computer security teams. We worked with over a dozen CERT and CSIRT teams around the world to help you handle the ever-increasing volume of incident reports. RTIR builds on all the features of Request Tracker.
+* [SCOT](https://getscot.sandia.gov/) - Sandia Cyber Omni Tracker, SCOT, is an Incident Response collaboration and knowledge capture tool focused on flexibility and ease of use. Our goal is to add value to the incident response process without burdening the user.
+* [Threat_note](https://github.com/DefensePointSecurity/threat_note) - A lightweight investigation notebook that allows security researchers the ability to register and retrieve indicators related to their research.
 
 #### Incident Response Playbooks
-
-  * [IR Workflow Gallery](https://www.incidentresponse.com/playbooks/) - Different generic incident response workflows, e.g. for malware outbreak, data theft, unauthorized access,... Every workflow constists of seven steps: prepare, detect, analyze, contain, eradicate, recover, post-incident handling.
-  * [IRM](https://github.com/certsocietegenerale/IRM) - Incident Response Methodologies by CERT Societe Generale.
-  * [PagerDuty Incident Response Documentation](https://github.com/PagerDuty/incident-response-docs) - Documents that describe parts of the PagerDuty Incident Response process. It provides information not only on preparing for an incident, but also what to do during and after.
-
-#### Process Dump Tools
-
-  * [Microsoft User Mode Process Dumping](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/user-mode-dump-files) - User mode process dumping guide.
-  * [PMDump](https://vidstromlabs.com/freetools/pmdump/) - PMDump is a tool that lets you dump the memory contents of a process to a file without stopping the process.
+* [IR Workflow Gallery](https://www.incidentresponse.com/playbooks/) - Different generic incident response workflows, e.g. for malware outbreak, data theft, unauthorized access,... Every workflow constists of seven steps: prepare, detect, analyze, contain, eradicate, recover, post-incident handling.
+* [IRM](https://github.com/certsocietegenerale/IRM) - Incident Response Methodologies by CERT Societe Generale.
+* [PagerDuty Incident Response Documentation](https://github.com/PagerDuty/incident-response-docs) - Documents that describe parts of the PagerDuty Incident Response process. It provides information not only on preparing for an incident, but also what to do during and after.
 
 
 
-#### Honeypot Tools
+### Linux Forensics Distributions
+* [ADIA](https://forensics.cert.org/#ADIA) - The Appliance for Digital Investigation and Analysis, ADIA, is a VMware-based appliance used for digital investigation and acquisition and is built entirely from public domain software. Among the tools contained in ADIA are Autopsy, the Sleuth Kit, the Digital Forensics Framework, log2timeline, Xplico, and Wireshark. Most of the system maintenance uses Webmin. It is designed for small-to-medium sized digital investigations and acquisitions. The appliance runs under Linux, Windows, and Mac OS. Both i386 32-bit and x86_64 versions are available.
+* [CAINE](https://www.caine-live.net/index.html) - The Computer Aided Investigative Environment, CAINE, contains numerous tools that help investigators during their analysis, including forensic evidence collection.
+* [CCF-VM](https://github.com/orlikoski/Skadi) - CyLR CDQR Forensics Virtual Machine, CCF-VM: An all-in-one solution to parsing collected data, making it easily searchable with built-in common searches, enable searching of single and multiple hosts simultaneously.
+* [DEFT](http://na.mirror.garr.it/mirrors/deft/) - The Digital Evidence & Forensics Toolkit, DEFT, is a Linux distribution made for computer forensic evidence collection. It comes bundled with the Digital Advanced Response Toolkit, DART, for Windows. A light version of DEFT, called DEFT Zero, is also available, which is focused primarily on forensically sound evidence collection.
+* [NST - Network Security Toolkit](https://sourceforge.net/projects/nst/files/latest/download?source=files) - Linux distribution that includes a vast collection of best-of-breed open source network security applications useful to the network security professional.
+* [PALADIN](https://sumuri.com/software/paladin/) - PALADIN is a modified Linux distribution to perform various forenics task in a forensically sound manner. It comes with many open source forensics tools included.
+* [Security Onion](https://github.com/Security-Onion-Solutions/security-onion) - Security Onion is a special Linux distro aimed at network security monitoring featuring advanced analysis tools.
+* [SIFT Workstation](http://digital-forensics.sans.org/community/downloads) - The SANS Investigative Forensic Toolkit, SIFT, Workstation demonstrates that advanced incident response capabilities and deep dive digital forensic techniques to intrusions can be accomplished using cutting-edge open-source tools that are freely available and frequently updated.
+
+#### Linux Evidence Collection
+* [FastIR Collector Linux](https://github.com/SekoiaLab/Fastir_Collector_Linux) - FastIR for Linux collects different artefacts on live Linux and records the results in csv files.
+
+#### Log Analysis Tools
+* [Logdissect](https://github.com/dogoncouch/logdissect) - A CLI utility and Python API for analyzing log files and other data.
+* [Lorg](https://github.com/jensvoid/lorg) - a tool for advanced HTTPD logfile security analysis and forensics.
+
+
+### OSX Evidence Collection
+* [Knockknock](https://wiert.me/2020/02/10/github-synack-knockknock-whos-there/) - Displays persistent items, scripts, commands, binaries, etc., that are set to execute automatically on OSX.
+* [Mac_apt - macOS Artifact Parsing Tool](https://github.com/ydkhatri/mac_apt) - Plugin based forensics framework for quick mac triage that works on live machines, disk images or individual artifact files.
+* [OSX Auditor](https://github.com/jipegit/OSXAuditor) - OSX Auditor is a free Mac OS X computer forensics tool.
+* [OSX Collector](https://github.com/yelp/osxcollector) - An OSX Auditor offshoot for live response.
+
+
+### Process Dump Tools
+* [Microsoft User Mode Process Dumping](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/user-mode-dump-files) - User mode process dumping guide.
+* [PMDump](https://vidstromlabs.com/freetools/pmdump/) - PMDump is a tool that lets you dump the memory contents of a process to a file without stopping the process.
+
+
+
+### Honeypot Tools
 * [bap - Basic Authentication honeyPot](https://github.com/bjeborn/basic-auth-pot/) - HTTP basic authentication web service honeypot.
 * [conpot](https://github.com/mushorg/conpot/) - ICS/SCADA honeypot.
 * [Cowrie Docker](https://github.com/cowrie/docker-cowrie) - Docker version of Cowrie, SSH/Telnet honeypot.
@@ -2003,7 +2009,8 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Wordpot](https://github.com/gbrindisi/wordpot) - WordPress honeypot.
 * [wp-smart-honeypot](https://github.com/freak3dot/wp-smart-honeypot/) - WordPress plugin and honeypot designed to reduce comment spam.
 
-#### Monitoring and IDS-IPS
+
+### IDS / IPS
 * [AIEngine](https://bitbucket.org/camp0/aiengine/src/master/) - Very advanced NIDS.
 * [Elastic Stack](https://www.elastic.co/products/) - Also known as the ELK stack, the combination of Elasticsearch, Logstash, and Kibana, for monitoring and logging.
 * [OSSEC](https://www.ossec.net/) - Open source HIDS.
@@ -2014,31 +2021,30 @@ Disrupting availability, compromising integrity by manipulating business and ope
 
 
 
-#### Timeline tools
+### Timeline tools
+* [Highlighter](https://www.fireeye.com/services/freeware/highlighter.html) - Free Tool available from Fire/Mandiant that will depict log/text file that can highlight areas on the graphic, that corresponded to a key word or phrase. Good for time lining an infection and what was done post compromise.
+* [Morgue](https://github.com/etsy/morgue) - A PHP Web app by Etsy for managing postmortems.
+* [Plaso](https://github.com/log2timeline/plaso) -  a Python-based backend engine for the tool log2timeline.
+* [Timesketch](https://github.com/google/timesketch) - open source tool for collaborative forensic timeline analysis.
 
-  * [Highlighter](https://www.fireeye.com/services/freeware/highlighter.html) - Free Tool available from Fire/Mandiant that will depict log/text file that can highlight areas on the graphic, that corresponded to a key word or phrase. Good for time lining an infection and what was done post compromise.
-  * [Morgue](https://github.com/etsy/morgue) - A PHP Web app by Etsy for managing postmortems.
-  * [Plaso](https://github.com/log2timeline/plaso) -  a Python-based backend engine for the tool log2timeline.
-  * [Timesketch](https://github.com/google/timesketch) - open source tool for collaborative forensic timeline analysis.
-
-#### Windows Evidence Collection
-
-  * [AChoir](https://github.com/OMENScan/AChoir) - Achoir is a framework/scripting tool to standardize and simplify the process of scripting live acquisition utilities for Windows.
-  * [Binaryforay](https://binaryforay.blogspot.com/p/software.html) - list of free tools for win forensics.
-  * [Crowd Response](https://www.crowdstrike.com/resources/community-tools/) - Crowd Response by CrowdStrike is a lightweight Windows console application designed to aid in the gathering of system information for incident response and security engagements. It features numerous modules and output formats.
-  * [FastIR Collector](https://github.com/SekoiaLab/Fastir_Collector) - FastIR Collector is a tool that collects different artefacts on live Windows systems and records the results in csv files. With the analyses of these artefacts, an early compromise can be detected.
-  * [FECT](https://github.com/jipegit/FECT) - Fast Evidence Collector Toolkit, FECT, is a light incident response toolkit to collect evidences on a suspicious Windows computer. Basically it is intended to be used by non-tech savvy people working with a journeyman Incident Handler.
-  * [Fibratus](https://github.com/rabbitstack/fibratus) - tool for exploration and tracing of the Windows kernel.
-  * [IREC](https://binalyze.com/irec/) - All-in-one IR Evidence Collector which captures RAM Image, $MFT, EventLogs, WMI Scripts, Registry Hives, System Restore Points and much more. It is FREE, lightning fast and easy to use.
-  * [IOC Finder](https://www.fireeye.com/services/freeware/ioc-finder.html) - IOC Finder is a free tool from Mandiant for collecting host system data and reporting the presence of Indicators of Compromise. Support for Windows only.
-  * [LOKI](https://github.com/Neo23x0/Loki) - Loki is a free IR scanner for scanning endpoint with yara rules and other indicators.
-  * [Panorama](https://github.com/AlmCo/Panorama) - Fast incident overview on live Windows systems.
-  * [PowerForensics](https://github.com/Invoke-IR/PowerForensics) - Live disk forensics platform, using PowerShell.
-  * [PSRecon](https://github.com/gfoss/PSRecon/) - PSRecon gathers data from a remote Windows host using PowerShell](v2 or later), organizes the data into folders, hashes all extracted data, hashes PowerShell and various system properties, and sends the data off to the security team. The data can be pushed to a share, sent over email, or retained locally.
-  * [RegRipper](https://github.com/keydet89/RegRipper3.0) - Regripper is an open source tool, written in Perl, for extracting/parsing information, keys, values, and data from the Registry and presenting it for analysis.
-  * [TRIAGE-IR](https://code.google.com/archive/p/triage-ir/) - Triage-IR is a IR collector for Windows.
+### Windows Evidence Collection
+* [AChoir](https://github.com/OMENScan/AChoir) - Achoir is a framework/scripting tool to standardize and simplify the process of scripting live acquisition utilities for Windows.
+* [Binaryforay](https://binaryforay.blogspot.com/p/software.html) - list of free tools for win forensics.
+* [Crowd Response](https://www.crowdstrike.com/resources/community-tools/) - Crowd Response by CrowdStrike is a lightweight Windows console application designed to aid in the gathering of system information for incident response and security engagements. It features numerous modules and output formats.
+* [FastIR Collector](https://github.com/SekoiaLab/Fastir_Collector) - FastIR Collector is a tool that collects different artefacts on live Windows systems and records the results in csv files. With the analyses of these artefacts, an early compromise can be detected.
+* [FECT](https://github.com/jipegit/FECT) - Fast Evidence Collector Toolkit, FECT, is a light incident response toolkit to collect evidences on a suspicious Windows computer. Basically it is intended to be used by non-tech savvy people working with a journeyman Incident Handler.
+* [Fibratus](https://github.com/rabbitstack/fibratus) - tool for exploration and tracing of the Windows kernel.
+* [IREC](https://binalyze.com/irec/) - All-in-one IR Evidence Collector which captures RAM Image, $MFT, EventLogs, WMI Scripts, Registry Hives, System Restore Points and much more. It is FREE, lightning fast and easy to use.
+* [IOC Finder](https://www.fireeye.com/services/freeware/ioc-finder.html) - IOC Finder is a free tool from Mandiant for collecting host system data and reporting the presence of Indicators of Compromise. Support for Windows only.
+* [LOKI](https://github.com/Neo23x0/Loki) - Loki is a free IR scanner for scanning endpoint with yara rules and other indicators.
+* [Panorama](https://github.com/AlmCo/Panorama) - Fast incident overview on live Windows systems.
+* [PowerForensics](https://github.com/Invoke-IR/PowerForensics) - Live disk forensics platform, using PowerShell.
+* [PSRecon](https://github.com/gfoss/PSRecon/) - PSRecon gathers data from a remote Windows host using PowerShell](v2 or later), organizes the data into folders, hashes all extracted data, hashes PowerShell and various system properties, and sends the data off to the security team. The data can be pushed to a share, sent over email, or retained locally.
+* [RegRipper](https://github.com/keydet89/RegRipper3.0) - Regripper is an open source tool, written in Perl, for extracting/parsing information, keys, values, and data from the Registry and presenting it for analysis.
+* [TRIAGE-IR](https://code.google.com/archive/p/triage-ir/) - Triage-IR is a IR collector for Windows.
 
 
+<hr>
 <br>
 
 
@@ -2067,6 +2073,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Tailscale](https://tailscale.com/)
 
 <hr>
+<br>
 
 # Books 
 
@@ -2206,12 +2213,12 @@ Disrupting availability, compromising integrity by manipulating business and ope
 <br>  
 
 ### Penetration Testing
-- Penetration Testing Essentials
 - Advanced Penetration Testing: Hacking the World’s Most Secure Networks
-- The Pentester BluePrint: Starting a Career as an Ethical Hacker
+- Hands On Hacking
+- Penetration Testing Essentials
 - Penetration Testing: A Hands-On Introduction to Hacking
 - The Basics of Hacking & Penetration Testing: Ethical Hacking & Penetration Made Easy
-- Hands On Hacking
+- The Pentester BluePrint: Starting a Career as an Ethical Hacker
   
 <br>
 
@@ -2227,8 +2234,8 @@ Disrupting availability, compromising integrity by manipulating business and ope
 - Hunting Security Bugs (Gallagher, Landauer, and Jeffries)
 - Professional Pen Testing for Web Applications: Programmer to Programmer (Andreu)
 - Read-World Bug Hunting: A Field Guide to Web Hacking (Yaworski)
-- Seven Deadliest Web Application Attacks (Shema)
 - SQL Injection Attacks and Defense (Clarke et al)
+- Seven Deadliest Web Application Attacks (Shema)
 - The Art of Software Security Assessment (Dowd, McDonald, and Schuh)
 - The Tangled Web: A Guide to Securing Modern Web Applications (Zalewski)
 - Web Penetration Testing with Kali Linux (Najera-Gutierrez and Ansari)
@@ -2238,8 +2245,8 @@ Disrupting availability, compromising integrity by manipulating business and ope
 ### Networking
 - Aggressive Network Self-Defense (Wyler, Potter, and Hurley)
 - Hacking Exposed: Network Security Secrets & Solutions (McClure et al)
-- The Hacker's Handbook: Breaking Into & Defending Networks (Young and Aitel)
 - Silence on the Wire: A Field Guide to Passive Recon and Indirect Attacks (Zalewski)
+- The Hacker's Handbook: Breaking Into & Defending Networks (Young and Aitel)
 
 <br>
 
@@ -2264,47 +2271,47 @@ Disrupting availability, compromising integrity by manipulating business and ope
 
 ### Digging Deep
 - A Guide to Kernel Exploitation: Attacking the Core (Perla and Oldani)
-- Advanced Penetration Testing: Hacking the World's Most Secure Networks (Allsopp)
 - Advanced Penetration Testing for Highly-Secured Environments (Allen and Cardwell)
+- Advanced Penetration Testing: Hacking the World's Most Secure Networks (Allsopp)
 - Advanced Persistent Threat Hacking: The Art & Science of Hacking (Wrightson)
 - Applied Machine Learning/Neural Networks: Offensive Security (Atkins)
+- Hacking: The Art of Exploitation , 1st or 2nd edition (Jon Erickson)
 - Managed Code Rootkits: Hooking into Runtime Environments (Metula)
 - Ninja Hacking: Unconventional Penetration Testing (Wilhelm and Andress)
 - Rootkits and Bootkits (Matrosov, Rodionov, and Bratus)
-- Hacking: The Art of Exploitation , 1st or 2nd edition (Jon Erickson)
 
 <br>
 
 ## Cyber Intelligence
-- We Are Bellingcat
-- The Dark Net
-- Dark Territory
-- Cybersecurity & Cyberwar
-- Cyber Intelligence
-- Sandworm
-- The Internet of Us
-- The Cambridge Handbook of Surveillance Law
-- Surveillance Studies
-- Theorizing Surveillance
-- Routledge Handbook of Surveillance Studies
 - Countdown to Zero
-* [Open Source Intelligence Techniques: Resources for Searching & Analyzing Online Information](https://inteltechniques.com/book1.html)
+- Cyber Intelligence
+- Cybersecurity & Cyberwar
+- Dark Territory
+- Routledge Handbook of Surveillance Studies
+- Sandworm
+- Surveillance Studies
+- The Cambridge Handbook of Surveillance Law
+- The Dark Net
+- The Internet of Us
+- Theorizing Surveillance
+- We Are Bellingcat
+- [Open Source Intelligence Techniques: Resources for Searching & Analyzing Online Information](https://inteltechniques.com/book1.html)
 
 <br>
 
 ## Tool Guide
 - Learning Nessus for Penetration Testing (Kumar)
-- Metasploit: The Penetration Tester's Guide (Kennedy)
 - Metasploit Penetration Testing Cookbook (Teixeira, Singh, and Agarwal)
-- Nmap Network Scanning: The Official Nmap Project Guide (Fyodor)
+- Metasploit: The Penetration Tester's Guide (Kennedy)
 - Nmap 6 Cookbook: The Fat-Free Guide to Network Security Scanning (Marsh)
+- Nmap Network Scanning: The Official Nmap Project Guide (Fyodor)
 - Penetration Tester's Open Source Toolkit (Faircloth)
 
 ## Kali Linux
 - Digital Forensics With Kali Linux
-- Linux Basics for Hackers: Getting Started with Networking, Scripting, & Security in Kali
 - Hacking Exposed Linux (ISECOM)
 - Kali Linux Revealed: Mastering the Penetration Testing Distro (Hertzog and O'Gorman)
+- Linux Basics for Hackers: Getting Started with Networking, Scripting, & Security in Kali
 - Linux Command Line and Shell Scripting Bible (Blum and Bresnahan)
 - Linux Shell Scripting Cookbook (Flynt, Lakshman, and Tushar)
 - The Linux Command Line: A Complete Introduction (Shotts)
@@ -2313,28 +2320,27 @@ Disrupting availability, compromising integrity by manipulating business and ope
 <br>
 
 ## Real-World
-
-- The Shadow Factory
 - American Kingpin
-- The Hacked World Order
 - Black Software
+- The Hacked World Order
+- The Shadow Factory
 - You Have A Very Soft Voice, Susan: A Shocking True Story of Internet Stalking
 
 <br>
 
 ## Python
 - Black Hat Python
-- Violent Python
-- Grey Hat Python
 - Cryptography With Python
+- Grey Hat Python
+- Violent Python
 
 <br>
 
 ## Dark Web
-- Tor & The Dark Web
 - Burners & Black Markets
-- Inside The Dark Web
 - Dark Web Investiagtions (Security Informatics & Law Enforcement)
+- Inside The Dark Web
+- Tor & The Dark Web
 
 <br>
 
@@ -2384,51 +2390,51 @@ Disrupting availability, compromising integrity by manipulating business and ope
 <br>
 
 ## Cryptography
-- The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography
 - Cryptography Engineering: Design Principles and Practical Applications
 - Real-World cryptography
+- The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography
 
 <br>
 
 ## Law
+- Cyberlaw: Software and Computer Networks
 - Damage Control: Cyber Insurance and Compliance
 - The 2020 Cyber Security & Cyber Law Guide
-- Cyberlaw: Software and Computer Networks
 
 <br>
 
 ## Cybersecurity
-- Cyber Mercenaries: The State, Hackers, and Power
-- The hackers playbook (series)
-- Stealing the network
-- Little brother
-- Find Me (series)
-- Extreme Privacy: What It Takes to Disappear
 - Cyber Breach Response That Actually Works
-- We Are Anonymous
-- The Tribe of Hacker (Series)
-- Security Testing with Raspberry Pi
-- The Smartest Person in the Room
-- CyberStorm
+- Cyber Mercenaries: The State, Hackers, and Power
 - CyberSpace
+- CyberStorm
+- Extreme Privacy: What It Takes to Disappear
+- Find Me (series)
+- Little brother
+- Security Testing with Raspberry Pi
+- Stealing the network
 - The 8 Layers of the OSI Cake: A Forensic Taste of Each Layer (Cyber Secrets)
+- The Smartest Person in the Room
+- The Tribe of Hacker (Series)
+- The hackers playbook (series)
+- We Are Anonymous
 
 <br>
 
 ## Malware
-- Learning Malware Analysis
-- The Art of Memory Forensics: Detecting Malware & Threats in Windows, Linux & Mac Memory
-- Practical Malware Analysis
 - Antivirus Bypass Techniques
+- Learning Malware Analysis
+- Practical Malware Analysis
+- The Art of Memory Forensics: Detecting Malware & Threats in Windows, Linux & Mac Memory
 
 <br>
 
 ## Finance Books
-- The Simple Path to Wealth
-- The Richest Man in Babylon
-- The Psychology of Money
 - I Will Teach You To Be Rich
 - Rich Dad Poor Dad
+- The Psychology of Money
+- The Richest Man in Babylon
+- The Simple Path to Wealth
 - Your Money or Your Life
 - 
 
@@ -2438,14 +2444,14 @@ Disrupting availability, compromising integrity by manipulating business and ope
 - 48 Laws of Power
 
 ## Miscellaneous Books
-- Traction by Gino Wickman
-- Extreme Ownership by Jocko Willink / Leif Babin
-- How to Measure Anything in Cybersecurity
-- Shellcoders Handbook
-- Black Hat Go
-- Security Warrior
 - Adversarial Tradecraft in Cybersecurity
+- Black Hat Go
+- Extreme Ownership by Jocko Willink / Leif Babin
 - Hacker Disassembling Uncovered
+- How to Measure Anything in Cybersecurity
+- Security Warrior
+- Shellcoders Handbook
+- Traction by Gino Wickman
 
 <br>
 <hr>
@@ -2453,12 +2459,12 @@ Disrupting availability, compromising integrity by manipulating business and ope
 # Education / Bootcamps / Programs / Certification Material
 
 ## Bootcamps & Programs
+* [100Devs](https://www.youtube.com/playlist?list=PLBf-QcbaigsKwq3k2YEBQS17xUwfOA3O3)
+* [DFIR Diva](https://training.dfirdiva.com/) — Compilation of Training Resources
 * [Global Knowledge](https://www.globalknowledge.com/us-en/)
 * [Level Up In Tech](https://www.levelupintech.com/)
-* [DFIR Diva](https://training.dfirdiva.com/) — Compilation of Training Resources
-* [Perscholas](https://perscholas.org/courses/) — Misc IT Bootcamps
-* [100Devs](https://www.youtube.com/playlist?list=PLBf-QcbaigsKwq3k2YEBQS17xUwfOA3O3)
 * [NetworkChuck](https://www.youtube.com/c/NetworkChuck)
+* [Perscholas](https://perscholas.org/courses/) — Misc IT Bootcamps
 * [Whizlabs](https://www.whizlabs.com/pricing/?fbclid=IwAR3egmho_JrqqADw7QZ4CLah827tinr-M5ZB51Zc35pO49T9nXqxAo29nRY&fs=e&s=cl)
 
 ## Threat Intelligence Platforms
@@ -2476,21 +2482,21 @@ Disrupting availability, compromising integrity by manipulating business and ope
     * [https://www.activecountermeasures.com/cyber-threat-hunting-training-course/](https://www.activecountermeasures.com/cyber-threat-hunting-training-course/)
 
 #### Cloud Pentesting
-* [FlAWS Cloud](http://flaws.cloud/) — AWS Security Training
-* [FLAWS 2 Cloud](http://flaws2.cloud/) — AWS Security Training
-- AWS Vulnerable
 * [DVCA](https://github.com/m6a-UdS/dvca) — Demonstrate priv esc on AWS
+* [FLAWS 2 Cloud](http://flaws2.cloud/) — AWS Security Training
+* [FlAWS Cloud](http://flaws.cloud/) — AWS Security Training
 * [OWASP Serverless Goat](https://github.com/OWASP/Serverless-Goat) — Demonstrates common serverless security flaws
-
+- AWS Vulnerable
 <br>
 
 ## Information Security Certifications
-
 * [Certified Ethical Hacker](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)
 * [Certified Information Systems Security Professional (CISSP)](https://www.isc2.org/Certifications/CISSP)
 * [Certified Penetration Testing Engineer (CPTE)](https://www.mile2.com/penetration-testing-engineer-outline/)
 * [CompTIA Security+](https://www.comptia.org/certifications/security)
 * [GIAC Security Essentials (GSEC)](https://www.giac.org/certification/security-essentials-gsec)
+* [HTB Certified Bug Bounty Hunter (HTB BBH)](https://academy.hackthebox.com/preview/certifications/htb-certified-bug-bounty-hunter/)
+* [HTB Certified Penetration Testing Specialist (HTB CPTS)](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist/)
 * [Kali Linux Certified Professional (KLCP)](https://home.pearsonvue.com/kali)
 * [Offensive Security Certified Expert (OSCE)](https://www.offensive-security.com/ctp-osce/)
 * [Offensive Security Certified Professional (OSCP)](https://www.offensive-security.com/pwk-oscp/)
@@ -2498,10 +2504,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Offensive Security Web Expert (OSWE)](https://www.offensive-security.com/awae-oswe/)
 * [Offensive Security Wireless Professional (OSWP)](https://www.offensive-security.com/wifu-oswp/)
 * [Practical Network Penetration Tester (PNPT)](https://certifications.tcm-sec.com/pnpt/)
-* [HTB Certified Bug Bounty Hunter (HTB BBH)](https://academy.hackthebox.com/preview/certifications/htb-certified-bug-bounty-hunter/)
-* [HTB Certified Penetration Testing Specialist (HTB CPTS)](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist/)
 * [eLearnSecurity Junior Penetration Tester (eJPT)](https://elearnsecurity.com/product/ejpt-certification/)
-
 
 
 ## Security Training Platforms
@@ -2540,7 +2543,6 @@ Disrupting availability, compromising integrity by manipulating business and ope
 
 ### Offensive Development
 * [Offensive Development](https://www.antisyphontraining.com/offensive-development-w-greg-hatcher-john-stigerwalt/)
-
 * [Exploiting Tokens (Write-Up)](https://jsecurity101.medium.com/exploring-token-members-part-1-48bce8004c6a)
 
 
@@ -2608,41 +2610,40 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Mega Collection of PowerShell Scripts](https://github.com/fleschutz/PowerShell)
 
 ### Privacy
-
-* [https://www.privacytools.io/](https://www.privacytools.io/)
-* [S1ckB0y1337](https://github.com/S1ckB0y1337?tab=repositories)
-* [Build Your Own X](https://github.com/codecrafters-io/build-your-own-x) — Repository Compilation Projects for Hackers
-* [Cyber Security Repo](https://cyber-security.tk/categories/)
-* [Computer Science Video Courses](https://github.com/Developer-Y/cs-video-courses)
 * [Awesome Docker Security](https://github.com/myugan/awesome-docker-security) — Resources for Docker Security (Books, Blogs, Videos, Tools, etc.)
+* [Build Your Own X](https://github.com/codecrafters-io/build-your-own-x) — Repository Compilation Projects for Hackers
+* [Computer Science Video Courses](https://github.com/Developer-Y/cs-video-courses)
+* [Cyber Security Repo](https://cyber-security.tk/categories/)
+* [Hacker Arise](https://www.hackers-arise.com/post/the-cyberwar-vs-putin-what-we-are-doing-and-what-you-can-do-to-help)
+* [Machine Learning](https://github.com/dair-ai/ML-Course-Notes)
+* [Malware Development Repo](https://lookbook.cyberjungles.com/random-research-area/malware-analysis-and-development/malware-development)
 * [Microsoft Graph](https://github.com/microsoftgraph) — Access data, relationships and insights coming from the cloud
+* [Privacy Tools](https://www.privacytools.io/)
+* [S1ckB0y1337](https://github.com/S1ckB0y1337?tab=repositories)
 * [VX-Underground](https://github.com/vxunderground) — Collection of malware source code, amples, and PoCs
 * [W3BS3C](https://www.w3bs3c.com/) — Web3 searchable curable repository of tools, CTFs, 101s, videos, and bounties
-* [Hacker Arise](https://www.hackers-arise.com/post/the-cyberwar-vs-putin-what-we-are-doing-and-what-you-can-do-to-help)
-* [Malware Development Repo](https://lookbook.cyberjungles.com/random-research-area/malware-analysis-and-development/malware-development)
-* [Machine Learning](https://github.com/dair-ai/ML-Course-Notes)
 
 ## Cybersecurity Maps, Domains, etc
 (https://s3-us-west-2.amazonaws.com/secure.notion-static.com/087527b0-f437-4255-8b00-0bc69c7dcd73/Untitled.png)
 * [Paul Jerimy — Cyber Certification Roadmap](https://pauljerimy.com/security-certification-roadmap/)
 
-## Security News — Stay Updated On Relevant Attacks & Other Infosec News**
-
+## Security News — Stay Updated On Relevant Attacks & Other Infosec News
+* [DarkReading](https://www.darkreading.com/)
+* [EFF](https://www.eff.org/deeplinks)
 * [Feedspot](https://blog.feedspot.com/cyber_security_rss_feeds/) — Top 100 Cybersecurity RSS Feeds
 * [GBHackers on Security](https://gbhackers.com/)
 * [Isaca](https://www.isaca.org/)
-- Microsoft
-* [PenTest Magazine](https://pentestmag.com/)
-* [TDLR Magazine](https://tldr.tech/crypto)
-* [Tripwire](https://www.tripwire.com/state-of-security/contributors/graham-cluley/)
-* [Naked Security](https://nakedsecurity.sophos.com/)
-* [ThreatPost](https://threatpost.com/)
-* [Scheiner](https://www.schneier.com/)
-* [DarkReading](https://www.darkreading.com/)
-* [EFF](https://www.eff.org/deeplinks)
-* [ZDNet](https://www.zdnet.com/blog/security/)
 * [KrebsOnSecurity](https://krebsonsecurity.com/)
+* [Naked Security](https://nakedsecurity.sophos.com/)
+* [PenTest Magazine](https://pentestmag.com/)
+* [Scheiner](https://www.schneier.com/)
+* [TDLR Magazine](https://tldr.tech/crypto)
 * [Talos Intelligence](https://blog.talosintelligence.com/)
+* [ThreatPost](https://threatpost.com/)
+* [Tripwire](https://www.tripwire.com/state-of-security/contributors/graham-cluley/)
+* [ZDNet](https://www.zdnet.com/blog/security/)
+- Microsoft
+
 ### Specific Articles
 * [BendyBear](https://x-phy.com/advanced-shell-code-a-use-case-of-blacktech-associated-bendybear/)
 
@@ -2738,6 +2739,3 @@ Disrupting availability, compromising integrity by manipulating business and ope
 * [Alpha Cyber Security](https://www.teepublic.com/user/djax120)
 
 ## Blogging
-
-
-
