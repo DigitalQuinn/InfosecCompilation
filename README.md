@@ -1,6 +1,6 @@
 # Infosec Compilation
 
-Infosec Compilation is an information security repository for offensive, defensive, and purple-teaming resources, along with  designed for advanced penetration testing tactics, techniques, and procedures (TTPs) based on the MITRE framework
+Infosec Compilation is an information security repository for offensive, defensive, and purple-teaming resources, along with guides designed for advanced penetration testing tactics, techniques, and procedures (TTPs) based on the MITRE framework
 
 
 # Table of Contents
