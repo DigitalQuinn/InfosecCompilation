@@ -18,3 +18,51 @@
 * [Shells](https://github.com/4ndr34z/shells)
 * [Vechile OSINT](https://github.com/TheBurnsy/Vehicle-OSINT-Collection)
 * [WatchAD](https://github.com/Qianlitp/WatchAD)
+* Open Corporates — The largest open database of companies in the world
+* AI HIT - AI/ML system trained to build and update company information from the web
+
+# Threat Intelligence
+Wigle - Database of wireless networks, with statistics
+Binary Edge - Scans the internet for threat intelligence
+ONYPHE - Collects cyber-threat intelligence data
+Fofa - Search for various threat intelligence
+ZoomEye - Gather information about targets
+LeakIX - Search publicly indexed information
+URL Scan - Free service to scan and analyze websites
+PublicWWW - Source code search engine
+CRT.sh - Search for certs that have been logged by CT
+Pulsedive - Search for threat intelligence
+Dehashed - Search for usernames, emails, passwords, addresses, numbers, etc.
+Have I Been Pwned? - Check whether personal data has been compromised by data breaches
+Snusbase - Indexes information from breached websites and leaked databases
+LeakBase - Forum of leaked databases
+LeakCheck - Data breach search engine
+GhostProject.fr - Smart search engine
+SecurityTrails - Attack surface and data intel
+DorkSearch - Really fast Google Dorking
+PolySwarm - Scan files and URLs for threats
+DNSDumpster - Dns recon & research, find & lookup DNS records
+AlienVault - Open source threat intelligence community
+Vulners - Search vulnerabilities in a large database
+WayBackMachine - View content from deleted websites
+Hunter - Search for email addresses belonging to a website
+
+## Internet-Connected Devices / Attack Surfaces
+GreyNoise - Search for devices connected to the internet
+Censys - Assessing attack surface for internet-connected devices
+Shodan - Search for devices connected to the internet
+IntelligenceX - Search Tor, I2P, data leaks, domains, and emails
+Netlas - Search and monitor internet-connected assets
+FullHunt - Search and discovery attack surfaces
+GrayHatWarfare - Search public S3 buckets
+GrayHatWarfare Buckets - Search public S3 buckets
+GrayHatWarfare Shorteners - Search for exposed URL shorteners
+LeakWatch - Scans the Internet to detect exposed information
+FullHunt - Search and discovery attack surfaces
+https://ipspy.net/ - IP Lookup, WHOIS, and DNS resolver
+GeoTag — Discover the location of pictures
+Sarenka — Gathers data from Shodan, censys, etc.
+Pushpin — Provides a web interface to keep track of geotagged social media activity
+Awesome Hacker Search Engines — CVEs, Domains, Addresses, Certifications, Credentials, etc.
+exitLooter - Find geolocation on image URL and directories
+FavFreak - Fetches the favicon.ico and hash value and generates shodan dorks
