@@ -1,0 +1,17 @@
+# Table of contents
+
+* [README](README.md)
+* [(A) Reconnaissance](<(A) Reconnaissance/README.md>)
+* [(B) Resource Development](<(B) Resource Development/README.md>)
+* [(C) Initial Access](<(C) Initial Access/README.md>)
+* [(D) Execution](<(D) Execution/README.md>)
+* [(E) Persistence](<(E) Persistence/README.md>)
+* [(F) Privilege Escalation](<(F) Privilege Escalation/README.md>)
+* [(G) Defense Evasion](<(G) Defense Evasion/README.md>)
+* [(H) Credential Access](<(H) Credential Access/README.md>)
+* [(I) Discovery](<(I) Discovery/README.md>)
+* [(J) Lateral Movement](<(J) Lateral Movement/README.md>)
+* [(K) Collection](<(K) Collection/README.md>)
+* [(L) Command & Control (C2)](<(L) Command & Control (C2)/README.md>)
+* [(M) Exfiltration](<(M) Exfiltration/README.md>)
+* [(N) Impact](<(N) Impact/README.md>)
