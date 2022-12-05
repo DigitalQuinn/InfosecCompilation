@@ -66,3 +66,50 @@ Pushpin — Provides a web interface to keep track of geotagged social media act
 Awesome Hacker Search Engines — CVEs, Domains, Addresses, Certifications, Credentials, etc.
 exitLooter - Find geolocation on image URL and directories
 FavFreak - Fetches the favicon.ico and hash value and generates shodan dorks
+
+Network Recon Tools
+
+ACLight - Script for advanced discovery of sensitive Privileged Accounts - includes Shadow Admins.
+BuiltWith - Technology lookup tool for websites.
+CloudFail - Unmask server IP addresses hidden behind Cloudflare by searching old database records and detecting misconfigured DNS.
+LdapMiner - Multiplatform LDAP enumeration utility.
+Mass Scan - TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes.
+Netdiscover - Simple and quick network scanning tool.
+Pentest-Tools - Online suite of various different pentest related tools.
+Ruler - Tool for remotely interacting with Exchange servers.
+Shodan - Database containing information on all accessible domains on the internet obtained from passive scanning.
+Spyse - Web research services that scan the entire internet using OSINT, to simplify the investigation of infrastructure and attack surfaces.
+Spyse.py - Python API wrapper and command-line client for the tools hosted on spyse.com.
+Sublist3r - Subdomain enumeration tool for penetration testers.
+ldapsearch - Linux command line utility for querying LDAP servers.
+nmap - Free security scanner for network exploration & security audits.
+pyShodan - Python 3 script for interacting with Shodan API (requires valid API key).
+smbmap - Handy SMB enumeration tool.
+xprobe2 - Open source operating system fingerprinting tool.
+zmap - Open source network scanner that enables researchers to easily perform Internet-wide network studies.
+
+
+
+
+
+
+
+
+
+
+conveyor.cloud — Visual Studio extension to expose IIS Express to the local network or over a tunnel to a public URL.
+Hamachi — LogMeIn Hamachi is a hosted VPN service that lets you securely extend LAN-like networks to distributed teams with free plan allows unlimited networks with up to 5 peoples
+localhost.run — Expose locally running servers over a tunnel to a public URL.
+localtunnel — Expose locally running servers over a tunnel to a public URL. Free hosted version, and open source.
+ngrok.com — Expose locally running servers over a tunnel to a public URL.
+Radmin VPN — Connect multiple computers together via a VPN enabling LAN-like networks. Unlimited peers. (Hamachi alternative)
+segment.com — Hub to translate and route events to other third-party services. 100,000 events/month free
+STUN — Session Traversal of User Datagram Protocol [UDP] Through Network Address Translators [NATs])
+Google STUN — stun:stun.l.google.com:19302
+Twilio STUN — stun:global.stun.twilio.com:3478?transport=udp
+Tailscale — Zero config VPN, using the open source WireGuard protocol. Installs on MacOS, iOS, Windows, Linux, and Android devices. Free plan for personal use with 20 devices.
+webhookrelay.com — Manage, debug, fan-out and proxy all your webhooks to public or internal (ie: localhost) destinations. Also, expose servers running in a private network over a tunnel by getting a public HTTP endpoint (https://yoursubdomain.webrelay.io <----> http://localhost:8080).
+Hookdeck — Develop, test and monitor your webhooks from a single place. 100K requests and 100K attempts per month with 3 days retention.
+Xirsys — Global network of STUN / TURN servers with a generous free tier.
+ZeroTier — FOSS managed virtual Ethernet as a service. Unlimited end-to-end encrypted networks of 100 clients on free plan. Clients for desktop/mobile/NA; web interface for configuration of custom routing rules and approval of new client nodes on private networks
+LocalXpose — Reverse proxy

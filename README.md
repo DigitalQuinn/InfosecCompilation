@@ -4,7 +4,6 @@ Infosec Compilation is an information security repository for offensive, defensi
 
 
 # Table of Contents
-* [A Hacker's Methodology](#a-hackers-methodology)
 * [Homelab](#homelab)
   * [Repository](#repository)
   * [Active Directory](#active-directory)
@@ -152,30 +151,6 @@ Infosec Compilation is an information security repository for offensive, defensi
 
 <br>
 <hr>
-
-# A Hacker's Methodology
-
-<br>
-
-* **Reconnaissance:** Gathering information that can be used to support targeting
-* **Resource Development:** Creating, purchasing, or compromising resources that can be used to support targeting
-* **Initial Access:** Various entry vectors to gain your initial foothold within a network
-* **Execution:** Attacker-controlled code running on a local or remote system
-* **Persistence:** Maintaining access to systems across interruptions that could cut off adverdary's access
-* **Privilege Escalation:** Gaining higher-level permissions on a system or network
-* **Defense Evasion:** Avoiding detection throughout your compromise
-* **Credential Access:** Stealing credentials like account names and passwords
-* **Discovery:** Observing potential control and what’s around your entry point in order to discover how it could benefit your current objective
-* **Lateral Movement:** Pivoting through multiple systems and accounts to gain additional access
-* **Collection:** Gathering information relevant to following through on the adversary's objectives
-* **Command & Control (C2):** Communicating with systems under your control within a victim network
-* **Exfiltration:** Stealing data from victim's infrastructure
-* **Impact:** Disrupting availability, compromising integrity by manipulating business and operational processes
-
-
-
-
-
 
 # Homelab
 
