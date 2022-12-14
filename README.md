@@ -1466,23 +1466,23 @@ Creating, purchasing, or compromising resources that can be used to support targ
 Various entry vectors to gain your initial foothold within a network
 
 ### Phishing
-* [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
-* [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
-* [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
-- C2
-    * [Tyk.io](https://shells.systems/oh-my-api-abusing-tyk-cloud-api-management-service-to-hide-your-malicious-c2-traffic/) — Route C2 traffic
-* [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
-* [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
 * [AdvPhishing] - This Is Advance Phishing Tool! OTP PHISHING
+* [CredSniper](https://github.com/ustayready/CredSniper) — Launch phishing site
 * [DarkSide](https://hakin9.org/darkside-tool-information-gathering-social-engineering/) — OSINT & Social Engineering Tool
-* [mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
+* [EvilNoVNC](https://github.com/JoelGMSec/EvilnoVNC) - Ready to go Phishing Platform
+* [Fake-SMS](https://www-hackers--arise-com.cdn.ampproject.org/c/s/www.hackers-arise.com/amp/social-engineering-attacks-creating-a-fake-sms-message) — Create SMS messages
+* [Mip22](https://github.com/makdosx/mip22) - Advanced phishing tool
 * [PhishStats](https://phishstats.info/#) - gathering, enhancing and sharing phishing information with the infosec community.
+* [PyPhisher](https://hakin9.org/pyphisher-easy-to-use-phishing-tool-with-65-website-templates/) — Phishing website templates
+* [Zphishper](https://github.com/htr-tech/zphisher) - Automated phishing tool
+- C2
 
 * [CiLocks] - Android LockScreen Bypass
 * [Android-PIN-Bruteforce] - Unlock An Android Phone (Or Device) By Bruteforcing The Lockscreen PIN
 
 ### Social Engineering Tools
 * [Beelogger](https://github.com/4w4k3/BeeLogger) - Tool for generating keylooger.
+* [Canary Tokens](https://canarytokens.org/generate#) - Generate tokens to automatically alert users when triggered. 
 * [Catphish](https://github.com/ring0lab/catphish) - Tool for phishing and corporate espionage written in Ruby.
 * [Evilginx](https://github.com/kgretzky/evilginx2) - MITM attack framework used for phishing credentials and session cookies from any Web service
 * [Gophish](https://getgophish.com/) - Open-Source Phishing Framework
@@ -1490,8 +1490,7 @@ Various entry vectors to gain your initial foothold within a network
 * [Lucy Phishing Server](https://lucysecurity.com/) - (commercial) tool to perform security awareness trainings for employees including custom phishing campaigns, malware attacks etc. Includes many useful attack templates as well as training materials to raise security awareness.
 * [PhishingFrenzy](https://www.phishingfrenzy.com/) - Phishing Frenzy is an Open Source Ruby on Rails application that is leveraged by penetration testers to manage email phishing campaigns.
 * [SET](https://github.com/trustedsec/social-engineer-toolkit) - The Social-Engineer Toolkit from TrustedSec
-* [wifiphisher](https://github.com/wifiphisher/wifiphisher) - Automated phishing attacks against Wi-Fi networks
-* [Canary Tokens](https://canarytokens.org/generate#) - Generate tokens to automatically alert users when triggered. 
+* [Wifiphisher](https://github.com/wifiphisher/wifiphisher) - Automated phishing attacks against Wi-Fi networks
 
 
 ## Execution Tools
@@ -1614,12 +1613,12 @@ Avoiding detection throughout your compromise
 * [LOTS Project](https://lots-project.com/) — Websites that allows attackers to use their domain when conducting phishing, C2, exfiltration, and downloading tools to evade detection
 
 ### Evade AV/EDR  
-* [Inceptor](https://github.com/klezVirus/inceptor) — Automate common AV/EDR bypasses
-* [GPU Poisoning](https://gitlab.com/ORCA000/gp) — Hide payload inside GPU memory
 * [AntiVirus Evasion Tool (AVET)](https://github.com/govolution/avet) - Post-process exploits containing executable files targeted for Windows machines to avoid being recognized by antivirus software.
+* [GPU Poisoning](https://gitlab.com/ORCA000/gp) — Hide payload inside GPU memory
 * [Hyperion](https://nullsecurity.net/tools/binary.html) - Runtime encryptor for 32-bit portable executables ("PE `.exe`s").
-* [peCloak.py](https://www.securitysift.com/pecloak-py-an-experiment-in-av-evasion/) - Automates the process of hiding a malicious Windows executable from antivirus (AV) detection.
-* [peCloakCapstone](https://github.com/v-p-b/peCloakCapstone) - Multi-platform fork of the peCloak.py automated malware antivirus evasion tool.
+* [Inceptor](https://github.com/klezVirus/inceptor) — Automate common AV/EDR bypasses
+* [PeCloak.py](https://www.securitysift.com/pecloak-py-an-experiment-in-av-evasion/) - Automates the process of hiding a malicious Windows executable from antivirus (AV) detection.
+* [PeCloakCapstone](https://github.com/v-p-b/peCloakCapstone) - Multi-platform fork of the peCloak.py automated malware antivirus evasion tool.
 * [Shellter](https://www.shellterproject.com/) - Dynamic shellcode injection tool, and the first truly dynamic PE infector ever created.
 * [SigThief](https://github.com/secretsquirrel/SigThief) - Stealing signatures to evade AV.
 * [UniByAv](https://github.com/Mr-Un1k0d3r/UniByAv) - Simple obfuscator that takes raw shellcode and generates Anti-Virus friendly executables by using a brute-forcable, 32-bit XOR key.
@@ -1829,7 +1828,7 @@ Disrupting availability, compromising integrity by manipulating business and ope
 <br>
 
 ### Azure
-* [Azure](https://github.com/Azure/Stormspotter)
+* [Azure Stormspotter](https://github.com/Azure/Stormspotter)
 
 <br>
 
@@ -1854,13 +1853,13 @@ Disrupting availability, compromising integrity by manipulating business and ope
 <br>
 
 ## Compilation of Tools
-* [Hacktricks](https://book.hacktricks.xyz/) - Hacking TTPs
-* [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) - A list of useful payloads for bypassing systems
-* [Pentest-Tools](https://github.com/S3cur3Th1sSh1t/Pentest-Tools) — Cybersecurity repository
 * [EthHack](https://ethhack.com/category/security-tools/) — Repository security tool
 * [FSociety Hacking Tools](https://github.com/Manisso/fsociety) — Contains all the tools used in Mr. Robot series
-* [Red Team Resources](https://github.com/J0hnbX/RedTeam-Resources) - Compilation of Red Teaming resources
+* [Hacktricks](https://book.hacktricks.xyz/) - Hacking TTPs
 * [Kitploit’s Popular Hacking Tools](https://www.kitploit.com/2021/12/top-20-most-popular-hacking-tools-in.html)
+* [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) - A list of useful payloads for bypassing systems
+* [Pentest-Tools](https://github.com/S3cur3Th1sSh1t/Pentest-Tools) — Cybersecurity repository
+* [Red Team Resources](https://github.com/J0hnbX/RedTeam-Resources) - Compilation of Red Teaming resources
 * [Red Teaming Toolkit](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development)
 
 <hr>

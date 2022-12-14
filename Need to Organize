@@ -233,3 +233,13 @@ LocalXpose — Reverse proxy
 * [Cronhooks](https://cronhooks.io/) - Schedule on time or recurring webhooks. Free plan allows 5 ad-hoc schedules.
 * [Hook Relay](https://www.hookrelay.dev/) - Add webhook support to your app without the hassles: done-for-you queueing, retries with backoff, and logging. The free plan has 100 deliveries per day, 14-day retention, and 3 hook endpoints.
 * [Format Express](https://www.format-express.dev) - Instant online formatter for JSON / XML / SQL.
+
+
+
+* [ChipWhisperer](https://rtfm.newae.com/) - Complete open-source toolchain for side-channel power analysis and glitching attacks
+
+
+### Cryptography
+* [FeatherDuster](https://github.com/nccgroup/featherduster) - Analysis tool for discovering flaws in cryptography.
+* [rsatool](https://github.com/ius/rsatool) - Tool for calculating RSA and RSA-CRT parameters.
+* [xortool](https://github.com/hellman/xortool/) - XOR cipher analysis tool.
